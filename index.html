@@ -86,7 +86,33 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Topic Cards */
+        /* Scrollbar Styling */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; box-shadow: 0 0 5px var(--neon-cyan); }
+
+        /* View Toggle Buttons */
+        .view-toggle-btn {
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-muted);
+            background: transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .view-toggle-btn.active {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            background: rgba(0, 245, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+        }
+        .view-toggle-btn:hover:not(.active) {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: var(--text);
+        }
+
+        /* Topic Cards - Grid View */
         .topic-card {
             position: relative;
             background: rgba(10, 10, 18, 0.6);
@@ -98,7 +124,6 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
         }
-
         .topic-card::before {
             content: '';
             position: absolute;
@@ -111,23 +136,38 @@
             -webkit-mask-composite: xor;
             pointer-events: none;
         }
-
         .topic-card:hover {
             transform: translateY(-5px) scale(1.02);
             border-color: var(--neon-cyan);
             box-shadow: 0 0 30px rgba(0, 245, 255, 0.15);
         }
-
+        .topic-card:hover .topic-icon { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
         .topic-card.special-card {
             border-color: var(--neon-magenta);
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(10, 10, 18, 0.8));
         }
-        .topic-card.special-card:hover {
-            border-color: var(--neon-green);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
-        }
-
+        .topic-card.special-card:hover { border-color: var(--neon-green); box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); }
         .topic-icon { width: 48px; height: 48px; margin-bottom: 1rem; transition: all 0.3s ease; }
+
+        /* Topic List - Compact View */
+        .topic-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background: rgba(10, 10, 18, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .topic-list-item:hover {
+            background: rgba(0, 245, 255, 0.05);
+            border-color: rgba(0, 245, 255, 0.2);
+        }
+        .topic-list-item.special-list { border-left: 3px solid var(--neon-magenta); }
+        .topic-list-item.special-list:hover { background: rgba(255, 0, 255, 0.05); }
 
         /* Progress & Headers */
         .progress-track { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 245, 255, 0.15); }
@@ -135,12 +175,10 @@
 
         /* Flashcard Wrapper & Buttons */
         .flashcard-wrapper { position: relative; width: 100%; max-width: 420px; height: 320px; margin: 0 auto; }
-
         .border-btn-group {
             position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
             display: flex; gap: 20px; z-index: 20;
         }
-
         .border-btn {
             width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; cursor: pointer; transition: transform 0.2s; background: var(--bg-card); z-index: 25;
@@ -196,13 +234,8 @@
         .neon-text-magenta { color: var(--neon-magenta); text-shadow: 0 0 10px var(--neon-magenta); }
 
         /* Status Icons & Star Button */
-        .status-icons {
-            position: absolute; top: 15px; left: 15px;
-            display: flex; flex-direction: column; gap: 8px; z-index: 10;
-        }
-        .status-icon { 
-            font-size: 1.1rem; opacity: 0.3; transition: all 0.3s; cursor: default; 
-        }
+        .status-icons { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
+        .status-icon { font-size: 1.1rem; opacity: 0.3; transition: all 0.3s; cursor: default; }
         .status-icon.active { opacity: 1; }
         .status-icon.learned { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
         .status-icon.remembered { color: var(--neon-magenta); text-shadow: 0 0 8px var(--neon-magenta); }
@@ -289,10 +322,41 @@
 
     <!-- VIEW 1: TOPIC SELECTION -->
     <div id="topicView" class="view-container px-6 py-12">
-        <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col justify-center fade-in">
-            <h1 class="font-display text-3xl sm:text-4xl font-bold text-center mb-3 neon-text-cyan tracking-wider">SELECT TOPIC</h1>
-            <p class="text-center text-[var(--text-muted)] mb-12 tracking-wide">Choose a vocabulary category or challenge</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="topicGrid"></div>
+        <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col">
+            
+            <!-- Header -->
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
+                <div class="text-center sm:text-left">
+                    <h1 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan tracking-wider">SELECT TOPIC</h1>
+                    <p class="text-[var(--text-muted)] mt-1 tracking-wide text-sm">Choose a vocabulary category or challenge</p>
+                </div>
+                
+                <!-- View Toggle Controls -->
+                <div class="flex gap-2 bg-[var(--bg-card)] p-1 rounded-lg border border-[rgba(255,255,255,0.05)]">
+                    <button id="gridViewBtn" class="view-toggle-btn active" aria-label="Grid View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                        </svg>
+                    </button>
+                    <button id="listViewBtn" class="view-toggle-btn" aria-label="List View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scrollable Content Area (Fixed Padding) -->
+            <!-- Added p-3 to create space so hover scale doesn't get clipped -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-3 fade-in" style="max-height: calc(100vh - 220px);" id="topicContainer">
+                <div id="topicGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+            
         </div>
     </div>
 
@@ -455,7 +519,6 @@
             <p id="resultTrans" class="text-sm neon-text-green mb-2">Vietnamese (pos)</p>
             <p id="resultDef" class="text-sm text-center mb-4">Definition</p>
             <button id="resultContinueBtn" class="nav-btn w-full">CONTINUE</button>
-            <!-- Removed "Press SPACE to continue" text -->
         </div>
     </div>
 
@@ -514,6 +577,7 @@
         let learnIndex = 0;
         let isAnimating = false;
         let pendingExitCallback = null;
+        let viewMode = 'grid'; // 'grid' or 'list'
         
         // Hangman State
         let hangmanWord = null;
@@ -587,6 +651,8 @@
         const learnView = document.getElementById('learnView');
         const quizView = document.getElementById('quizView');
         const topicGrid = document.getElementById('topicGrid');
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
         const resultPanel = document.getElementById('resultPanel');
         const confirmPanel = document.getElementById('confirmPanel');
         
@@ -609,19 +675,57 @@
                     <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
                     <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">HARDCORE MODE</div>
                 </div>`;
-            const topicCards = topicsData.map(topic => `
-                <div class="topic-card" data-topic-id="${topic.id}" role="button" tabindex="0" aria-label="Study ${topic.title}">
-                    ${topic.icon}
-                    <h3 class="font-display text-lg font-bold mb-1">${topic.title}</h3>
-                    <p class="text-xs text-[var(--text-muted)]">${topic.description}</p>
-                    <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">${topic.words.length} CARDS</div>
-                </div>`).join('');
-            topicGrid.innerHTML = allWordsCard + topicCards;
-            topicGrid.querySelectorAll('.topic-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    playSound('slide');
-                    if(card.dataset.action === 'play-all') startHangmanGame(null); 
-                    else selectTopic(card.dataset.topicId);
+            
+            if (viewMode === 'grid') {
+                topicGrid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
+                const topicCards = topicsData.map(topic => `
+                    <div class="topic-card" data-topic-id="${topic.id}" role="button" tabindex="0" aria-label="Study ${topic.title}">
+                        ${topic.icon}
+                        <h3 class="font-display text-lg font-bold mb-1">${topic.title}</h3>
+                        <p class="text-xs text-[var(--text-muted)]">${topic.description}</p>
+                        <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">${topic.words.length} CARDS</div>
+                    </div>`).join('');
+                topicGrid.innerHTML = allWordsCard + topicCards;
+            } else {
+                // List View
+                topicGrid.className = "flex flex-col";
+                
+                const specialListHtml = `
+                  <div class="topic-list-item special-list" data-action="play-all" role="button" tabindex="0">
+                    <div class="flex items-center gap-4">
+                      <div class="w-8 h-8 rounded-full bg-[rgba(255,0,255,0.2)] flex items-center justify-center text-[var(--neon-green)]">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      </div>
+                      <div>
+                        <h3 class="font-display text-sm font-bold neon-text-green">Master Challenge</h3>
+                        <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
+                      </div>
+                    </div>
+                    <div class="text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">START</div>
+                  </div>`;
+                
+                const topicItems = topicsData.map(topic => `
+                  <div class="topic-list-item" data-topic-id="${topic.id}" role="button" tabindex="0">
+                    <div class="flex items-center gap-4">
+                      <div class="w-8 h-8 rounded-full bg-[rgba(0,245,255,0.1)] flex items-center justify-center text-[var(--neon-cyan)]">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>
+                      </div>
+                      <div>
+                        <h3 class="font-display text-sm font-bold">${topic.title}</h3>
+                        <p class="text-xs text-[var(--text-muted)]">${topic.words.length} Cards</p>
+                      </div>
+                    </div>
+                    <div class="text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">STUDY</div>
+                  </div>`).join('');
+                  
+                  topicGrid.innerHTML = specialListHtml + topicItems;
+            }
+
+            // Add listeners
+            topicGrid.querySelectorAll('[data-topic-id], [data-action]').forEach(el => {
+                el.addEventListener('click', () => {
+                    if(el.dataset.action === 'play-all') startHangmanGame(null); 
+                    else selectTopic(el.dataset.topicId);
                 });
             });
         }
@@ -646,19 +750,16 @@
             document.getElementById('pronBack').textContent = cardData.pron;
             document.getElementById('transBack').textContent = `${cardData.vietnamese} (${cardData.pos})`;
             
-            // Front Face Updates
             document.getElementById('exampleFront').textContent = cardData.example;
             document.getElementById('vietExFront').textContent = cardData.vietnamese_example;
-            document.getElementById('vietExFront').style.opacity = '0'; // Reset hidden state
+            document.getElementById('vietExFront').style.opacity = '0';
             
-            // Status Icons Update
             const learnedIcon = document.getElementById('statusLearned');
             const rememberedIcon = document.getElementById('statusRemembered');
             
             learnedIcon.classList.toggle('active', cardData.learned);
             rememberedIcon.classList.toggle('active', cardData.quizCorrectCount >= 2);
 
-            // Star Update
             const starBtn = document.getElementById('starBtn');
             starBtn.textContent = cardData.isFavorite ? '★' : '☆';
             starBtn.classList.toggle('active', cardData.isFavorite);
@@ -819,10 +920,7 @@
             const success = input.value.trim().toLowerCase() === w.word.toLowerCase();
             input.blur();
             if(!success) learnMistakes++;
-            
-            // Set learned status if correct in Step 2 or 3
             if(success) w.learned = true;
-
             showResultPanel(success, w);
         }
 
@@ -953,11 +1051,10 @@
             buttons.forEach(b => { b.disabled = true; b.onclick = null; if(b.innerText.includes(correct)) b.classList.add('correct'); });
             if(!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); } else { playSound('correct'); }
             
-            // Update Quiz Correct Count
             const w = quizQuestions[quizIndex];
             if(isCorrect) {
                 w.quizCorrectCount++;
-                if(w.quizCorrectCount >= 2) w.learned = true; // Just to ensure it reflects in flashcard status if needed
+                if(w.quizCorrectCount >= 2) w.learned = true;
                 quizScore++;
             }
             
@@ -993,6 +1090,21 @@
             document.getElementById('resultContinueBtn').addEventListener('click', () => { closeResultPanel(); nextLearnStep(); });
             document.getElementById('playAgainBtn').addEventListener('click', () => { startHangmanGame(currentTopic ? currentTopic.id : null); });
 
+            // View Toggle Listeners
+            gridViewBtn.addEventListener('click', () => {
+                viewMode = 'grid';
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+                renderTopics();
+            });
+
+            listViewBtn.addEventListener('click', () => {
+                viewMode = 'list';
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+                renderTopics();
+            });
+
             document.addEventListener('keydown', (e) => {
                 if (!hangmanView.classList.contains('hidden-view')) { const key = e.key.toUpperCase(); if (/^[A-Z]$/.test(key)) handleGuess(key); }
                 if (!flashcardView.classList.contains('hidden-view')) { if (e.key === 'ArrowLeft') navigateFlashcard(-1); if (e.key === 'ArrowRight') navigateFlashcard(1); if (e.key === ' ') { e.preventDefault(); flipCard(); } }
@@ -1005,16 +1117,10 @@
                     }
                 }
 
-                // Global Spacebar Logic
                 if (e.key === ' ' || e.key === 'Enter') {
-                    if (resultPanel.classList.contains('show')) { 
-                        e.preventDefault(); 
-                        closeResultPanel(); 
-                        nextLearnStep(); 
-                    }
+                    if (resultPanel.classList.contains('show')) { e.preventDefault(); closeResultPanel(); nextLearnStep(); }
                     else if (confirmPanel.classList.contains('show')) { e.preventDefault(); if(e.key === ' ') cancelExit(); }
                     else if (!learnView.classList.contains('hidden-view') && learnStep === 1 && !resultPanel.classList.contains('show')) {
-                        // Allow Space to continue in Learn Step 1
                         e.preventDefault();
                         const continueBtn = document.getElementById('learnContinueBtn');
                         if(continueBtn) continueBtn.click();
