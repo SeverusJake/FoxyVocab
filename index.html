@@ -1,319 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>C1 English Flashcards</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #05050a;
-            --bg-card: #0a0a12;
-            --neon-cyan: #00f5ff;
-            --neon-magenta: #ff00ff;
-            --neon-green: #00ff88;
-            --neon-red: #ff3333;
-            --neon-orange: #ff6b00;
-            --neon-blue: #00f3ff;
-            --text: #f0f0f5;
-            --text-muted: #6a6a7a;
-        }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body {
-            margin: 0;
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg);
-            min-height: 100vh;
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        .font-display { font-family: 'Orbitron', sans-serif; }
-
-        /* Background */
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            animation: float 10s ease-in-out infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .orb-1 { width: 500px; height: 500px; background: var(--neon-cyan); top: -150px; right: -150px; }
-        .orb-2 { width: 400px; height: 400px; background: var(--neon-magenta); bottom: -100px; left: -100px; animation-delay: -3s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(20px, -20px); }
-        }
-
-        /* Views */
-        .view-container {
-            position: relative;
-            z-index: 10;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 40px;
-        }
-
-        .hidden-view { display: none; }
-        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Scrollbar Styling */
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; box-shadow: 0 0 5px var(--neon-cyan); }
-
-        /* View Toggle Buttons */
-        .view-toggle-btn {
-            padding: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-muted);
-            background: transparent;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .view-toggle-btn.active {
-            color: var(--neon-cyan);
-            border-color: var(--neon-cyan);
-            background: rgba(0, 245, 255, 0.05);
-            box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
-        }
-        .view-toggle-btn:hover:not(.active) {
-            border-color: rgba(255, 255, 255, 0.3);
-            color: var(--text);
-        }
-
-        /* Topic Cards - Grid View */
-        .topic-card {
-            position: relative;
-            background: rgba(10, 10, 18, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        .topic-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.05));
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-        }
-        .topic-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 245, 255, 0.15);
-        }
-        .topic-card:hover .topic-icon { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
-        .topic-card.special-card {
-            border-color: var(--neon-magenta);
-            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(10, 10, 18, 0.8));
-        }
-        .topic-card.special-card:hover { border-color: var(--neon-green); box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); }
-        .topic-icon { width: 48px; height: 48px; margin-bottom: 1rem; transition: all 0.3s ease; }
-
-        /* Topic List - Compact View */
-        .topic-list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            background: rgba(10, 10, 18, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .topic-list-item:hover {
-            background: rgba(0, 245, 255, 0.05);
-            border-color: rgba(0, 245, 255, 0.2);
-        }
-        .topic-list-item.special-list { border-left: 3px solid var(--neon-magenta); }
-        .topic-list-item.special-list:hover { background: rgba(255, 0, 255, 0.05); }
-
-        /* Progress & Headers */
-        .progress-track { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 245, 255, 0.15); }
-        .progress-fill { background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta)); box-shadow: 0 0 20px var(--neon-cyan); transition: width 0.5s; }
-
-        /* Flashcard Wrapper & Buttons */
-        .flashcard-wrapper { position: relative; width: 100%; max-width: 420px; height: 320px; margin: 0 auto; }
-        .border-btn-group {
-            position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 20px; z-index: 20;
-        }
-        .border-btn {
-            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; cursor: pointer; transition: transform 0.2s; background: var(--bg-card); z-index: 25;
-            border: 2px solid var(--text); color: var(--text);
-        }
-        .border-btn:hover { transform: scale(1.15); }
-        .border-btn.speaker { border-color: var(--neon-orange); color: var(--neon-orange); box-shadow: 0 0 10px var(--neon-orange); }
-        .border-btn.snail { border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
-
-        /* Card Container & Animation */
-        .card-container { perspective: 1500px; width: 100%; height: 100%; }
-        #cardSlider { width: 100%; height: 100%; position: relative; transition: transform 0.3s ease, opacity 0.2s ease; }
-
-        .card {
-            position: relative; width: 100%; height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        .card.flipped { transform: rotateY(180deg); }
-        
-        .card-face {
-            position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-            border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 2rem; background: var(--bg-card); border: 1px solid rgba(0, 245, 255, 0.2); box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
-        }
-        .card-front::after { content: ''; position: absolute; inset: -1px; border-radius: 20px; background: linear-gradient(135deg, var(--neon-cyan), transparent 50%); z-index: -1; opacity: 0.3; }
-        .card-back { transform: rotateY(180deg); border-color: rgba(255, 0, 255, 0.2); box-shadow: 0 0 30px rgba(255, 0, 255, 0.1); }
-        .card-back::after { content: ''; position: absolute; inset: -1px; border-radius: 20px; background: linear-gradient(135deg, var(--neon-magenta), transparent 50%); z-index: -1; opacity: 0.3; }
-
-        /* Buttons */
-        .nav-btn {
-            background: rgba(10, 10, 18, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: 10px;
-            font-family: 'Orbitron', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text);
-            transition: all 0.3s ease; position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
-        }
-        .nav-btn:hover { box-shadow: 0 0 20px rgba(0, 245, 255, 0.3); transform: translateY(-2px); }
-        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
-        
-        .back-btn { background: transparent; border: none; color: var(--text-muted); transition: color 0.3s; padding: 0; cursor: pointer; }
-        .back-btn:hover { color: var(--neon-cyan); }
-
-        /* Specific Button Colors */
-        .game-btn { color: var(--neon-green); border-color: rgba(0, 255, 136, 0.3); }
-        .learn-btn { color: var(--neon-orange); border-color: rgba(255, 107, 0, 0.3); background: rgba(255, 107, 0, 0.05); }
-        .quiz-btn { color: var(--neon-blue); border-color: rgba(0, 243, 255, 0.3); background: rgba(0, 243, 255, 0.05); }
-        .underline-btn { background: none; border: none; color: var(--text-muted); text-decoration: underline; font-size: 0.8rem; cursor: pointer; padding: 5px 10px; transition: color 0.2s; }
-
-        /* Neon Text */
-        .neon-text-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
-        .neon-text-green { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
-        .neon-text-red { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
-        .neon-text-magenta { color: var(--neon-magenta); text-shadow: 0 0 10px var(--neon-magenta); }
-
-        /* Status Icons & Star Button */
-        .status-icons { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
-        .status-icon { font-size: 1.1rem; opacity: 0.3; transition: all 0.3s; cursor: default; }
-        .status-icon.active { opacity: 1; }
-        .status-icon.learned { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
-        .status-icon.remembered { color: var(--neon-magenta); text-shadow: 0 0 8px var(--neon-magenta); }
-
-        .star-btn {
-            position: absolute; top: 15px; right: 15px;
-            font-size: 1.5rem; color: var(--text); background: none; border: none;
-            cursor: pointer; z-index: 10; opacity: 0.6; transition: all 0.3s;
-        }
-        .star-btn:hover { opacity: 1; transform: scale(1.2); }
-        .star-btn.active { color: var(--neon-orange); opacity: 1; text-shadow: 0 0 10px var(--neon-orange); }
-
-        /* Translate Button on Card */
-        .trans-btn-card {
-            background: rgba(255,255,255,0.1); border: 1px solid var(--neon-text);
-            border-radius: 50%; width: 24px; height: 24px; display: flex;
-            align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem;
-            margin-left: 8px; transition: all 0.2s; flex-shrink: 0;
-        }
-        .trans-btn-card:hover { background: var(--neon-text); color: var(--bg); }
-        
-        /* HANGMAN SPECIFIC */
-        .hangman-svg { stroke: var(--neon-magenta); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 8px var(--neon-magenta)); width: 180px; height: 200px; }
-        .hangman-part { opacity: 0; transition: opacity 0.3s; }
-        .hangman-part.show { opacity: 1; }
-        .keyboard-btn {
-            width: 36px; height: 44px; background: rgba(10, 10, 18, 0.6); border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 6px; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;
-            transition: all 0.2s; cursor: pointer;
-        }
-        .keyboard-btn:hover:not(:disabled) { border-color: var(--neon-cyan); color: var(--neon-cyan); text-shadow: 0 0 5px var(--neon-cyan); }
-        .keyboard-btn:disabled { opacity: 0.2; cursor: not-allowed; }
-        .keyboard-btn.correct { border-color: var(--neon-green); color: var(--neon-green); background: rgba(0, 255, 136, 0.1); }
-        .keyboard-btn.wrong { border-color: var(--neon-red); color: var(--neon-red); background: rgba(255, 51, 51, 0.1); }
-        .word-letter-box {
-            width: 28px; height: 40px; border-bottom: 2px solid var(--neon-cyan); margin: 0 4px;
-            display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem; font-weight: bold; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        /* Quiz Options */
-        .quiz-option {
-            background: rgba(10, 10, 18, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;
-            border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--text);
-        }
-        .quiz-option:hover { background: rgba(0, 243, 255, 0.1); border-color: var(--neon-cyan); }
-        .quiz-option.correct { background: rgba(0, 255, 136, 0.2); border-color: var(--neon-green); color: var(--neon-green); }
-        .quiz-option.wrong { background: rgba(255, 51, 51, 0.2); border-color: var(--neon-red); color: var(--neon-red); }
-
-        /* Inputs */
-        input[type="text"] {
-            background: rgba(0,0,0,0.5); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 8px;
-            padding: 12px; color: var(--neon-cyan); font-size: 1.2rem; text-align: center;
-            width: 100%; outline: none; font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px;
-        }
-        input[type="text"]::placeholder { color: rgba(255,255,255,0.3); letter-spacing: 1px; }
-
-        .hint-display { display: flex; gap: 8px; margin-bottom: 20px; font-size: 1.5rem; font-family: 'Orbitron', monospace; justify-content: center; }
-        .hint-letter { width: 25px; border-bottom: 2px solid var(--neon-cyan); display: flex; justify-content: center; align-items: center; color: var(--neon-cyan); }
-        .hint-letter.revealed { color: var(--neon-green); border-bottom-color: var(--neon-green); }
-
-        /* Slide Panels (Modal) */
-        .slide-panel {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(10, 10, 18, 0.98); border-top: 2px solid var(--neon-magenta);
-            padding: 30px; box-sizing: border-box; transform: translateY(100%);
-            transition: transform 0.4s ease; z-index: 600;
-            display: flex; flex-direction: column; align-items: center; max-height: 70vh;
-            overflow-y: auto; border-radius: 20px 20px 0 0; backdrop-filter: blur(10px);
-        }
-        .slide-panel.show { transform: translateY(0); }
-
-        @media (prefers-reduced-motion: reduce) {
-            .orb, .bg-grid, .card { animation: none; }
-            .card { transition: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
+
 <body>
     <!-- Background Elements -->
     <div class="bg-grid"></div>
@@ -323,40 +24,49 @@
     <!-- VIEW 1: TOPIC SELECTION -->
     <div id="topicView" class="view-container px-6 py-12">
         <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col">
-            
+
             <!-- Header -->
             <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
                 <div class="text-center sm:text-left">
-                    <h1 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan tracking-wider">SELECT TOPIC</h1>
-                    <p class="text-[var(--text-muted)] mt-1 tracking-wide text-sm">Choose a vocabulary category or challenge</p>
+                    <h1 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan tracking-wider">SELECT TOPIC
+                    </h1>
+                    <p class="text-[var(--text-muted)] mt-1 tracking-wide text-sm">Choose a vocabulary category or
+                        challenge</p>
                 </div>
-                
+
                 <!-- View Toggle Controls -->
                 <div class="flex gap-2 bg-[var(--bg-card)] p-1 rounded-lg border border-[rgba(255,255,255,0.05)]">
                     <button id="gridViewBtn" class="view-toggle-btn active" aria-label="Grid View">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
                         </svg>
                     </button>
                     <button id="listViewBtn" class="view-toggle-btn" aria-label="List View">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
-                            <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
-                            <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6" />
+                            <line x1="8" y1="12" x2="21" y2="12" />
+                            <line x1="8" y1="18" x2="21" y2="18" />
+                            <line x1="3" y1="6" x2="3.01" y2="6" />
+                            <line x1="3" y1="12" x2="3.01" y2="12" />
+                            <line x1="3" y1="18" x2="3.01" y2="18" />
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Scrollable Content Area (Fixed Padding) -->
-            <!-- Added p-3 to create space so hover scale doesn't get clipped -->
-            <div class="flex-1 overflow-y-auto custom-scrollbar p-3 fade-in" style="max-height: calc(100vh - 220px);" id="topicContainer">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-3 fade-in" style="max-height: calc(100vh - 220px);"
+                id="topicContainer">
                 <div id="topicGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Injected via JS -->
+                    <!-- Topics injected via JS -->
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -365,11 +75,15 @@
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <!-- Header -->
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToTopicsBtn" aria-label="Back to topics">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                    id="backToTopicsBtn" aria-label="Back to topics">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
                     TOPICS
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC NAME</span>
+                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC
+                    NAME</span>
                 <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
             </div>
 
@@ -388,37 +102,44 @@
             <div class="flex-1 flex items-center justify-center mb-8">
                 <div class="flashcard-wrapper">
                     <div class="border-btn-group">
-                        <button class="border-btn speaker" onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 1.0)">🔊</button>
-                        <button class="border-btn snail" onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 0.6)">🐌</button>
+                        <button class="border-btn speaker"
+                            onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 1.0)">🔊</button>
+                        <button class="border-btn snail"
+                            onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 0.6)">🐌</button>
                     </div>
                     <div class="card-container">
                         <div id="cardSlider">
                             <div class="card" id="flashcard" role="button" tabindex="0">
                                 <div class="card-face card-front flex flex-col justify-center">
-                                    <!-- Status Icons (Top Left) -->
                                     <div class="status-icons">
                                         <div class="status-icon learned" id="statusLearned" title="Learned">🧠</div>
-                                        <div class="status-icon remembered" id="statusRemembered" title="Remembered">✔️</div>
+                                        <div class="status-icon remembered" id="statusRemembered" title="Remembered">✔️
+                                        </div>
                                     </div>
-                                    <!-- Star Button (Top Right) -->
-                                    <button class="star-btn" id="starBtn" onclick="event.stopPropagation(); toggleFavorite()">☆</button>
+                                    <button class="star-btn" id="starBtn"
+                                        onclick="event.stopPropagation(); toggleFavorite()">☆</button>
 
-                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight" id="wordFront">WORD</h2>
-                                    
-                                    <!-- New Front Card Content -->
+                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
+                                        id="wordFront">WORD</h2>
+
                                     <div class="mt-8 w-full text-center">
                                         <div class="flex items-center justify-center">
                                             <p class="text-base text-white" id="exampleFront">Example sentence.</p>
-                                            <button class="trans-btn-card" onclick="event.stopPropagation(); toggleFrontTrans()">🌐</button>
+                                            <button class="trans-btn-card"
+                                                onclick="event.stopPropagation(); toggleFrontTrans()">🌐</button>
                                         </div>
-                                        <p class="text-sm neon-text-green mt-2 h-5 transition-opacity opacity-0" id="vietExFront">Vietnamese example</p>
+                                        <p class="text-sm neon-text-green mt-2 h-5 transition-opacity opacity-0"
+                                            id="vietExFront">Vietnamese example</p>
                                     </div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
-                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wordBack">Word</h2>
+                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2"
+                                        id="wordBack">Word</h2>
                                     <p class="text-[var(--neon-cyan)] text-xs mb-4" id="pronBack">/pron/</p>
-                                    <p class="text-sm text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)</p>
-                                    <p class="text-base text-center text-[var(--text)] leading-relaxed" id="defBack">Definition</p>
+                                    <p class="text-sm text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)
+                                    </p>
+                                    <p class="text-base text-center text-[var(--text)] leading-relaxed" id="defBack">
+                                        Definition</p>
                                 </div>
                             </div>
                         </div>
@@ -444,13 +165,18 @@
     <div id="hangmanView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full items-center">
             <div class="w-full flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-game-btn" aria-label="Back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-game-btn"
+                    aria-label="Back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
                     EXIT
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="hangmanTitle">GAME MODE</span>
+                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="hangmanTitle">GAME
+                    MODE</span>
                 <div class="text-xs text-right">
-                    <div class="text-[var(--text-muted)]">Lives: <span id="livesCount" class="neon-text-cyan">6</span></div>
+                    <div class="text-[var(--text-muted)]">Lives: <span id="livesCount" class="neon-text-cyan">6</span>
+                    </div>
                     <div class="text-[var(--neon-orange)]">Streak: <span id="streakCount">0</span> 🔥</div>
                 </div>
             </div>
@@ -484,8 +210,11 @@
     <div id="learnView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn" aria-label="Back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn"
+                    aria-label="Back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
                     EXIT
                 </button>
                 <div class="progress-track h-1.5 rounded-full overflow-hidden w-1/2">
@@ -500,11 +229,15 @@
     <div id="quizView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-quiz-btn" aria-label="Back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-quiz-btn"
+                    aria-label="Back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
                     EXIT
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="quizProgressText">1/10</span>
+                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]"
+                    id="quizProgressText">1/10</span>
             </div>
             <div id="quizContentArea" class="flex-1 flex flex-col justify-center items-center"></div>
         </div>
@@ -523,614 +256,17 @@
     </div>
 
     <!-- CONFIRM EXIT PANEL -->
-    <div id="confirmPanel" class="slide-panel" style="border-color: var(--neon-red); box-shadow: 0 0 20px var(--neon-red);">
+    <div id="confirmPanel" class="slide-panel"
+        style="border-color: var(--neon-red); box-shadow: 0 0 20px var(--neon-red);">
         <div class="text-center mb-6 text-sm">Don’t go yet~ Finish it first or your progress will disappear 😭</div>
         <div class="flex flex-col gap-3 w-full">
-            <button class="nav-btn w-full" id="cancelExitBtn" style="border-color: var(--neon-cyan); color: var(--neon-cyan);">STAY</button>
-            <button class="nav-btn w-full" id="confirmExitBtn" style="border-color: var(--neon-red); color: var(--neon-red);">EXIT</button>
+            <button class="nav-btn w-full" id="cancelExitBtn"
+                style="border-color: var(--neon-cyan); color: var(--neon-cyan);">STAY</button>
+            <button class="nav-btn w-full" id="confirmExitBtn"
+                style="border-color: var(--neon-red); color: var(--neon-red);">EXIT</button>
         </div>
     </div>
 
-    <script>
-        // === DATA ===
-        const topicsData = [
-            {
-                id: 'logistics', title: 'Logistics', description: 'C1 Logistics & Supply Chain',
-                icon: `<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="1.5"><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>`,
-                words: [
-                    { word: "CONSIGNMENT", definition: "Goods sent to someone to sell.", pos: "noun", pron: "/kənˈsaɪn.mənt/", example: "The consignment arrived yesterday.", vietnamese: "Hàng ký gửi", vietnamese_example: "Lô hàng ký gửi đã đến hôm qua.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "PROCUREMENT", definition: "The process of obtaining goods or services.", pos: "noun", pron: "/prəˈkjʊə.mənt/", example: "Procurement takes time.", vietnamese: "Sự thu mua", vietnamese_example: "Thu mua tốn thời gian.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "FULFILLMENT", definition: "Completing and delivering an order.", pos: "noun", pron: "/fʊlˈfɪl.mənt/", example: "Order fulfillment is faster now.", vietnamese: "Sự hoàn tất đơn hàng", vietnamese_example: "Hoàn tất đơn hàng giờ nhanh hơn.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "LEAD TIME", definition: "Time between ordering and receiving goods.", pos: "noun", pron: "/liːd taɪm/", example: "Lead time is about five days.", vietnamese: "Thời gian chờ", vietnamese_example: "Thời gian chờ khoảng năm ngày.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "BACKORDER", definition: "An order that cannot be filled immediately.", pos: "noun", pron: "/ˈbækˌɔː.dər/", example: "It is currently on backorder.", vietnamese: "Đơn hàng nợ", vietnamese_example: "Nó hiện đang trong đơn hàng nợ.", isFavorite: false, learned: false, quizCorrectCount: 0 }
-                ]
-            },
-            {
-                id: 'business', title: 'Business', description: 'C1 Business & Finance Terms',
-                icon: `<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-magenta)" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-                words: [
-                    { word: "AMORTIZATION", definition: "Gradual reduction of a loan value.", pos: "noun", pron: "/ˌæm.ər.taɪˈzeɪ.ʃən/", example: "Check the amortization schedule.", vietnamese: "Sự khấu hao", vietnamese_example: "Kiểm tra lịch trình khấu hao.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "COLLATERAL", definition: "Property pledged as security for a loan.", pos: "noun", pron: "/kəˈlæt.ər.əl/", example: "They demanded collateral.", vietnamese: "Tài sản thế chấp", vietnamese_example: "Họ yêu cầu tài sản thế chấp.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "DIVERSIFICATION", definition: "Varying investments to reduce risk.", pos: "noun", pron: "/daɪˌvɜː.sɪ.fɪˈkeɪ.ʃən/", example: "Diversification is key.", vietnamese: "Sự đa dạng hóa", vietnamese_example: "Đa dạng hóa là chìa khóa.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "LIQUIDITY", definition: "Availability of liquid assets.", pos: "noun", pron: "/lɪˈkwɪd.ə.ti/", example: "High liquidity is good.", vietnamese: "Thanh khoản", vietnamese_example: "Thanh khoản cao là tốt.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "MERGER", definition: "Combination of two companies.", pos: "noun", pron: "/ˈmɜː.dʒər/", example: "The merger was announced.", vietnamese: "Sự sáp nhập", vietnamese_example: "Việc sáp nhập đã được công bố.", isFavorite: false, learned: false, quizCorrectCount: 0 }
-                ]
-            },
-            {
-                id: 'environment', title: 'Environment', description: 'C1 Nature & Ecology Terms',
-                icon: `<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-                words: [
-                    { word: "BIODEGRADABLE", definition: "Capable of being decomposed.", pos: "adj", pron: "/ˌbaɪ.əʊ.dɪˈɡreɪ.də.bəl/", example: "Use biodegradable packaging.", vietnamese: "Có thể phân hủy sinh học", vietnamese_example: "Sử dụng bao bì phân hủy sinh học.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "ECOSYSTEM", definition: "Biological community of organisms.", pos: "noun", pron: "/ˈiː.kəʊ.sɪs.təm/", example: "The marine ecosystem.", vietnamese: "Hệ sinh thái", vietnamese_example: "Hệ sinh thái biển.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "RENEWABLE", definition: "Energy from a source not depleted.", pos: "adj", pron: "/rɪˈnjuː.ə.bəl/", example: "Renewable energy sources.", vietnamese: "Tái tạo", vietnamese_example: "Nguồn năng lượng tái tạo.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "SUSTAINABILITY", definition: "Avoidance of depletion of resources.", pos: "noun", pron: "/səˌsteɪ.nəˈbɪl.ə.ti/", example: "Focus on sustainability.", vietnamese: "Tính bền vững", vietnamese_example: "Tập trung vào tính bền vững.", isFavorite: false, learned: false, quizCorrectCount: 0 },
-                    { word: "CONSERVATION", definition: "Prevention of wasteful use of resources.", pos: "noun", pron: "/ˌkɒn.səˈveɪ.ʃən/", example: "Wildlife conservation.", vietnamese: "Sự bảo tồn", vietnamese_example: "Bảo tồn động vật hoang dã.", isFavorite: false, learned: false, quizCorrectCount: 0 }
-                ]
-            }
-        ];
-
-        // === STATE ===
-        let currentTopic = null;
-        let currentCardIndex = 0;
-        let learnStep = 1;
-        let learnMistakes = 0;
-        let learnIndex = 0;
-        let isAnimating = false;
-        let pendingExitCallback = null;
-        let viewMode = 'grid'; // 'grid' or 'list'
-        
-        // Hangman State
-        let hangmanWord = null;
-        let previousWord = null; 
-        let guessedLetters = [];
-        let wrongGuesses = 0;
-        let gameOver = false;
-        let gameWords = []; 
-        let hangmanStreak = 0;
-
-        // Quiz State
-        let quizIndex = 0;
-        let quizScore = 0;
-        let quizQuestions = [];
-
-        // === AUDIO (Web Audio API) ===
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx; 
-
-        function initAudioContext() { if (!audioCtx) audioCtx = new AudioContext(); }
-
-        function playSound(type) {
-            initAudioContext();
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            const now = audioCtx.currentTime;
-
-            if (type === 'flip') {
-                osc.type = 'triangle'; osc.frequency.setValueAtTime(600, now); osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-                osc.start(now); osc.stop(now + 0.1);
-            } else if (type === 'slide') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); osc.frequency.exponentialRampToValueAtTime(600, now + 0.05);
-                gainNode.gain.setValueAtTime(0.05, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-                osc.start(now); osc.stop(now + 0.08);
-            } else if (type === 'correct') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); 
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-                osc.start(now); osc.stop(now + 0.2);
-            } else if (type === 'wrong') {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(100, now + 0.2);
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-                osc.start(now); osc.stop(now + 0.2);
-            } else if (type === 'win') {
-                osc.type = 'sine'; const notes = [523.25, 659.25, 783.99, 1046.50];
-                notes.forEach((freq, i) => { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-                osc.start(now); osc.stop(now + 0.5);
-            } else if (type === 'lose') {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(50, now + 0.5);
-                gainNode.gain.setValueAtTime(0.15, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-                osc.start(now); osc.stop(now + 0.5);
-            } else if (type === 'intro') {
-                osc.type = 'sine'; const notes = [261.63, 329.63, 392.00];
-                notes.forEach((freq, i) => { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-                osc.start(now); osc.stop(now + 0.4);
-            } else if (type === 'alert') {
-                osc.type = 'square'; osc.frequency.setValueAtTime(220, now); osc.frequency.setValueAtTime(180, now + 0.1); osc.frequency.setValueAtTime(220, now + 0.2);
-                gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-                osc.start(now); osc.stop(now + 0.3);
-            }
-        }
-
-        // === DOM ELEMENTS ===
-        const topicView = document.getElementById('topicView');
-        const flashcardView = document.getElementById('flashcardView');
-        const hangmanView = document.getElementById('hangmanView');
-        const learnView = document.getElementById('learnView');
-        const quizView = document.getElementById('quizView');
-        const topicGrid = document.getElementById('topicGrid');
-        const gridViewBtn = document.getElementById('gridViewBtn');
-        const listViewBtn = document.getElementById('listViewBtn');
-        const resultPanel = document.getElementById('resultPanel');
-        const confirmPanel = document.getElementById('confirmPanel');
-        
-        // === INITIALIZATION ===
-        function init() { renderTopics(); renderKeyboard(); setupEventListeners(); }
-
-        // === VIEW MANAGEMENT ===
-        function switchView(targetView, playIntro = false) {
-            [topicView, flashcardView, hangmanView, learnView, quizView].forEach(v => { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
-            targetView.classList.remove('hidden-view'); void targetView.offsetWidth; targetView.classList.add('fade-in');
-            if(playIntro) playSound('intro'); else playSound('slide');
-        }
-
-        // === TOPIC LOGIC ===
-        function renderTopics() {
-            const allWordsCard = `
-                <div class="topic-card special-card" data-action="play-all" role="button" tabindex="0" aria-label="Master Challenge">
-                    <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    <h3 class="font-display text-lg font-bold mb-1 neon-text-green">Master Challenge</h3>
-                    <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
-                    <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">HARDCORE MODE</div>
-                </div>`;
-            
-            if (viewMode === 'grid') {
-                topicGrid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
-                const topicCards = topicsData.map(topic => `
-                    <div class="topic-card" data-topic-id="${topic.id}" role="button" tabindex="0" aria-label="Study ${topic.title}">
-                        ${topic.icon}
-                        <h3 class="font-display text-lg font-bold mb-1">${topic.title}</h3>
-                        <p class="text-xs text-[var(--text-muted)]">${topic.description}</p>
-                        <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">${topic.words.length} CARDS</div>
-                    </div>`).join('');
-                topicGrid.innerHTML = allWordsCard + topicCards;
-            } else {
-                // List View
-                topicGrid.className = "flex flex-col";
-                
-                const specialListHtml = `
-                  <div class="topic-list-item special-list" data-action="play-all" role="button" tabindex="0">
-                    <div class="flex items-center gap-4">
-                      <div class="w-8 h-8 rounded-full bg-[rgba(255,0,255,0.2)] flex items-center justify-center text-[var(--neon-green)]">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                      </div>
-                      <div>
-                        <h3 class="font-display text-sm font-bold neon-text-green">Master Challenge</h3>
-                        <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
-                      </div>
-                    </div>
-                    <div class="text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">START</div>
-                  </div>`;
-                
-                const topicItems = topicsData.map(topic => `
-                  <div class="topic-list-item" data-topic-id="${topic.id}" role="button" tabindex="0">
-                    <div class="flex items-center gap-4">
-                      <div class="w-8 h-8 rounded-full bg-[rgba(0,245,255,0.1)] flex items-center justify-center text-[var(--neon-cyan)]">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>
-                      </div>
-                      <div>
-                        <h3 class="font-display text-sm font-bold">${topic.title}</h3>
-                        <p class="text-xs text-[var(--text-muted)]">${topic.words.length} Cards</p>
-                      </div>
-                    </div>
-                    <div class="text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">STUDY</div>
-                  </div>`).join('');
-                  
-                  topicGrid.innerHTML = specialListHtml + topicItems;
-            }
-
-            // Add listeners
-            topicGrid.querySelectorAll('[data-topic-id], [data-action]').forEach(el => {
-                el.addEventListener('click', () => {
-                    if(el.dataset.action === 'play-all') startHangmanGame(null); 
-                    else selectTopic(el.dataset.topicId);
-                });
-            });
-        }
-
-        function selectTopic(topicId) {
-            currentTopic = topicsData.find(t => t.id === topicId);
-            currentCardIndex = 0;
-            document.getElementById('topicTitle').textContent = currentTopic.title.toUpperCase();
-            updateFlashcard();
-            updateProgress();
-            switchView(flashcardView);
-            document.getElementById('flashcard').classList.remove('flipped');
-            speak(currentTopic.words[currentCardIndex].word, 1.0);
-        }
-
-        // === FLASHCARD LOGIC ===
-        function updateFlashcard() {
-            const cardData = currentTopic.words[currentCardIndex];
-            document.getElementById('wordFront').textContent = cardData.word;
-            document.getElementById('wordBack').textContent = cardData.word;
-            document.getElementById('defBack').textContent = cardData.definition;
-            document.getElementById('pronBack').textContent = cardData.pron;
-            document.getElementById('transBack').textContent = `${cardData.vietnamese} (${cardData.pos})`;
-            
-            document.getElementById('exampleFront').textContent = cardData.example;
-            document.getElementById('vietExFront').textContent = cardData.vietnamese_example;
-            document.getElementById('vietExFront').style.opacity = '0';
-            
-            const learnedIcon = document.getElementById('statusLearned');
-            const rememberedIcon = document.getElementById('statusRemembered');
-            
-            learnedIcon.classList.toggle('active', cardData.learned);
-            rememberedIcon.classList.toggle('active', cardData.quizCorrectCount >= 2);
-
-            const starBtn = document.getElementById('starBtn');
-            starBtn.textContent = cardData.isFavorite ? '★' : '☆';
-            starBtn.classList.toggle('active', cardData.isFavorite);
-        }
-
-        function toggleFavorite() {
-            playSound('flip');
-            const w = currentTopic.words[currentCardIndex];
-            w.isFavorite = !w.isFavorite;
-            updateFlashcard();
-        }
-
-        function updateProgress() {
-            const total = currentTopic.words.length;
-            const progress = ((currentCardIndex + 1) / total) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-            document.getElementById('progressText').textContent = `${currentCardIndex + 1}/${total}`;
-        }
-
-        function flipCard() {
-            playSound('flip');
-            const card = document.getElementById('flashcard');
-            card.classList.toggle('flipped');
-        }
-
-        function toggleFrontTrans() {
-            const el = document.getElementById('vietExFront');
-            el.style.opacity = el.style.opacity === '0' ? '1' : '0';
-            playSound('flip');
-        }
-
-        function navigateFlashcard(direction) {
-            if(isAnimating) return;
-            const newIndex = currentCardIndex + direction;
-            if (newIndex >= 0 && newIndex < currentTopic.words.length) {
-                playSound('slide');
-                isAnimating = true;
-                const slider = document.getElementById('cardSlider');
-                const card = document.getElementById('flashcard');
-                card.classList.remove('flipped');
-                slider.style.transition = 'transform 0.3s ease-in, opacity 0.2s ease-in';
-                slider.style.transform = direction === 1 ? 'translateX(-120%)' : 'translateX(120%)';
-                slider.style.opacity = '0';
-                setTimeout(() => {
-                    currentCardIndex = newIndex; updateFlashcard(); updateProgress();
-                    slider.style.transition = 'none';
-                    slider.style.transform = direction === 1 ? 'translateX(120%)' : 'translateX(-120%)';
-                    slider.offsetHeight; 
-                    slider.style.transition = 'transform 0.3s ease-out, opacity 0.2s ease-out';
-                    slider.style.transform = 'translateX(0)'; slider.style.opacity = '1';
-                    setTimeout(() => { isAnimating = false; speak(currentTopic.words[currentCardIndex].word, 1.0); }, 300);
-                }, 300);
-            }
-        }
-
-        // === LEARN MODE ===
-        function startLearnMode() {
-            learnIndex = 0; learnStep = 1; learnMistakes = 0;
-            updateLearnProgress(); renderLearnStep();
-            switchView(learnView, true);
-        }
-
-        function updateLearnProgress() {
-            const percent = ((learnIndex) / currentTopic.words.length) * 100;
-            document.getElementById('learnProgressBar').style.width = `${percent}%`;
-        }
-
-        function renderLearnStep() {
-            const w = currentTopic.words[learnIndex];
-            const area = document.getElementById('learnContentArea');
-            let html = '';
-
-            if (learnStep === 1) {
-                speak(w.word, 1.0);
-                html = `
-                    <div class="flashcard-wrapper mb-8">
-                        <div class="border-btn-group">
-                            <button class="border-btn speaker" onclick="event.stopPropagation(); speak('${w.word}', 1.0)">🔊</button>
-                            <button class="border-btn snail" onclick="event.stopPropagation(); speak('${w.word}', 0.6)">🐌</button>
-                        </div>
-                        <div class="card-container">
-                            <div class="card" onclick="playSound('flip'); this.classList.toggle('flipped')">
-                                <div class="card-face card-front flex flex-col justify-center">
-                                    <h2 class="font-display text-3xl font-bold neon-text-cyan text-center">${w.word}</h2>
-                                    <p class="text-[var(--text-muted)] mt-6 text-sm italic">${w.definition}</p>
-                                </div>
-                                <div class="card-face card-back flex flex-col justify-center">
-                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2">${w.word}</h2>
-                                    <p class="text-[var(--neon-cyan)] text-xs mb-4">${w.pron}</p>
-                                    <p class="text-sm neon-text-green mb-4">${w.vietnamese} (${w.pos})</p>
-                                    <p class="text-base text-center">${w.definition}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center gap-3 w-full">
-                        <button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width: 200px;">CONTINUE</button>
-                        <button class="underline-btn" onclick="skipWord()">I already know this word</button>
-                    </div>`;
-            } else if (learnStep === 2) {
-                speak(w.word, 1.0);
-                html = `
-                    <div class="text-center mb-6 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Listen and rewrite</h2></div>
-                    <div class="flex gap-4 mb-8">
-                        <button class="border-btn speaker" onclick="speak('${w.word}', 1.0)">🔊</button>
-                        <button class="border-btn snail" onclick="speak('${w.word}', 0.6)">🐌</button>
-                    </div>
-                    <input type="text" id="learnInput" class="mb-6" placeholder="Type what you hear" style="max-width: 300px;">
-                    <button class="nav-btn" onclick="checkLearn(2)" style="width: 150px;">CHECK</button>`;
-            } else if (learnStep === 3) {
-                speak(w.word, 1.0);
-                let wordArr = w.word.split(''); let indices = [];
-                let hintCount = w.word.length <= 5 ? 1 : (w.word.length <= 8 ? 2 : 3);
-                while(indices.length < hintCount){ let rand = Math.floor(Math.random() * wordArr.length); if(wordArr[rand] !== ' ' && indices.indexOf(rand) === -1) indices.push(rand); }
-                let displayHtml = wordArr.map((char, i) => {
-                    if (char === ' ') return `<div class="hint-letter" style="border:none; width:10px;"></div>`;
-                    if (indices.includes(i)) return `<div class="hint-letter revealed">${char.toUpperCase()}</div>`;
-                    return `<div class="hint-letter"></div>`;
-                }).join('');
-                const hintWidth = (w.word.length * 25) + ((w.word.length - 1) * 8);
-                html = `
-                    <div class="text-center mb-4 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Fill in the word</h2></div>
-                    <button class="border-btn speaker mb-4" onclick="speak('${w.word}', 1.0)" style="position:relative; top:0; left:0;">🔊</button>
-                    <p class="text-lg text-center mb-4 neon-text-green">${w.vietnamese}</p>
-                    <div class="hint-display mb-6">${displayHtml}</div>
-                    <input type="text" id="learnInput" class="mb-6" placeholder="Type the word" style="width: ${hintWidth}px; max-width: 100%;">
-                    <button class="nav-btn" onclick="checkLearn(3)" style="width: 150px;">CHECK</button>`;
-            }
-            area.innerHTML = html;
-            const input = document.getElementById('learnInput');
-            if(input) input.focus();
-        }
-
-        function nextLearnStep() {
-            learnStep++;
-            if(learnStep > 3) {
-                learnStep = 1; learnIndex++; updateLearnProgress();
-                if(learnIndex >= currentTopic.words.length) { showLearnComplete(); return; }
-            }
-            renderLearnStep();
-        }
-
-        function skipWord() {
-            learnIndex++; learnMistakes = 999; updateLearnProgress();
-            if (learnIndex >= currentTopic.words.length) showLearnComplete();
-            else { learnStep = 1; learnMistakes = 0; renderLearnStep(); }
-        }
-
-        function showLearnComplete() {
-            const area = document.getElementById('learnContentArea');
-            area.innerHTML = `<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2><p class="text-xl mb-8">You finished the lesson!</p><button class="nav-btn" onclick="exitConfirmed(switchView.bind(null, flashcardView))">BACK TO CARDS</button>`;
-            playSound('win');
-        }
-
-        function checkLearn(step) {
-            const input = document.getElementById('learnInput');
-            const w = currentTopic.words[learnIndex];
-            const success = input.value.trim().toLowerCase() === w.word.toLowerCase();
-            input.blur();
-            if(!success) learnMistakes++;
-            if(success) w.learned = true;
-            showResultPanel(success, w);
-        }
-
-        function showResultPanel(success, wordData) {
-            const panel = document.getElementById('resultPanel');
-            const icon = document.getElementById('resultIcon');
-            const term = document.getElementById('resultTerm');
-            const pron = document.getElementById('resultPron');
-            const trans = document.getElementById('resultTrans');
-            const def = document.getElementById('resultDef');
-            
-            if(success) { playSound('correct'); icon.textContent = "✔️"; icon.className = "text-2xl mb-2 neon-text-green"; }
-            else { playSound('wrong'); icon.textContent = "❌"; icon.className = "text-2xl mb-2 neon-text-red"; }
-            
-            term.textContent = wordData.word;
-            pron.textContent = wordData.pron;
-            trans.textContent = `${wordData.vietnamese} (${wordData.pos})`;
-            def.textContent = wordData.definition;
-            panel.style.transform = 'translateY(0)';
-        }
-
-        function closeResultPanel() { document.getElementById('resultPanel').style.transform = 'translateY(100%)'; }
-
-        // === HANGMAN LOGIC ===
-        function renderKeyboard() {
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-            const keyboard = document.getElementById('keyboard');
-            keyboard.innerHTML = letters.map(letter => `<button class="keyboard-btn" data-letter="${letter}">${letter}</button>`).join('');
-            keyboard.querySelectorAll('.keyboard-btn').forEach(btn => { btn.addEventListener('click', () => handleGuess(btn.dataset.letter)); });
-        }
-
-        function startHangmanGame(topicId) {
-            if (topicId) { const topic = topicsData.find(t => t.id === topicId); gameWords = [...topic.words]; document.getElementById('hangmanTitle').textContent = topic.title.toUpperCase(); }
-            else { gameWords = topicsData.flatMap(t => t.words); document.getElementById('hangmanTitle').textContent = "MASTER CHALLENGE"; }
-            guessedLetters = []; wrongGuesses = 0; gameOver = false; hangmanStreak = 0; previousWord = null;
-            document.getElementById('streakCount').textContent = '0';
-            nextHangmanWord();
-            switchView(hangmanView, true);
-        }
-
-        function nextHangmanWord() {
-            let pool = gameWords.filter(w => w.word !== previousWord?.word);
-            if(pool.length === 0) pool = gameWords;
-            hangmanWord = pool[Math.floor(Math.random() * pool.length)];
-            previousWord = hangmanWord;
-            guessedLetters = []; wrongGuesses = 0;
-            updateHangmanVisuals(); updateWordDisplay();
-            document.getElementById('hangmanHint').textContent = `"${hangmanWord.definition}"`;
-            document.getElementById('livesCount').textContent = 6;
-            document.getElementById('gameResult').classList.add('hidden');
-            document.querySelectorAll('.keyboard-btn').forEach(btn => { btn.disabled = false; btn.classList.remove('correct', 'wrong'); });
-        }
-
-        function handleGuess(letter) {
-            if (gameOver || guessedLetters.includes(letter)) return;
-            guessedLetters.push(letter);
-            const btn = document.querySelector(`[data-letter="${letter}"]`);
-            if (hangmanWord.word.includes(letter)) {
-                playSound('correct'); btn.classList.add('correct'); btn.disabled = true; updateWordDisplay(); checkWin();
-            } else {
-                playSound('wrong'); btn.classList.add('wrong'); btn.disabled = true; wrongGuesses++;
-                document.getElementById('livesCount').textContent = 6 - wrongGuesses; updateHangmanVisuals(); checkLose();
-            }
-        }
-
-        function updateWordDisplay() {
-            const word = hangmanWord.word;
-            let html = '';
-            for (let char of word) {
-                if (char === ' ' || char === '-') html += `<div class="mx-2"></div>`;
-                else if (guessedLetters.includes(char)) html += `<div class="word-letter-box">${char}</div>`;
-                else html += `<div class="word-letter-box"></div>`;
-            }
-            document.getElementById('wordDisplay').innerHTML = html;
-        }
-
-        function updateHangmanVisuals() {
-            const parts = ['hm-head', 'hm-body', 'hm-leftArm', 'hm-rightArm', 'hm-leftLeg', 'hm-rightLeg'];
-            parts.forEach((id, index) => { const el = document.getElementById(id); if (el) { if (index < wrongGuesses) el.classList.add('show'); else el.classList.remove('show'); } });
-        }
-
-        function checkWin() {
-            const allGuessed = hangmanWord.word.split('').every(char => char === ' ' || char === '-' || guessedLetters.includes(char));
-            if (allGuessed) {
-                gameOver = true; hangmanStreak++; document.getElementById('streakCount').textContent = hangmanStreak; playSound('win');
-                document.getElementById('resultText').textContent = "EXCELLENT!"; document.getElementById('resultText').className = "font-display text-2xl font-bold mb-2 neon-text-green";
-                document.getElementById('gameResult').classList.remove('hidden');
-            }
-        }
-
-        function checkLose() {
-            if (wrongGuesses >= 6) {
-                gameOver = true; hangmanStreak = 0; document.getElementById('streakCount').textContent = hangmanStreak; playSound('lose');
-                document.getElementById('resultText').textContent = `GAME OVER! Word: ${hangmanWord.word}`; document.getElementById('resultText').className = "font-display text-2xl font-bold mb-2 neon-text-red";
-                document.getElementById('gameResult').classList.remove('hidden');
-            }
-        }
-
-        // === QUIZ LOGIC ===
-        function startQuiz() {
-            quizIndex = 0; quizScore = 0; quizQuestions = [...currentTopic.words].sort(() => Math.random() - 0.5); renderQuiz();
-            switchView(quizView, true);
-        }
-
-        function renderQuiz() {
-            const q = quizQuestions[quizIndex];
-            const area = document.getElementById('quizContentArea');
-            document.getElementById('quizProgressText').textContent = `${quizIndex+1}/${quizQuestions.length}`;
-            let options = [q.definition];
-            let distractors = currentTopic.words.filter(w => w.word !== q.word).sort(() => Math.random() - 0.5).slice(0, 3);
-            distractors.forEach(d => options.push(d.definition)); options.sort(() => Math.random() - 0.5);
-            area.innerHTML = `
-                <h2 class="font-display text-xl text-center mb-8 neon-text-cyan">What is the meaning?</h2>
-                <div class="flashcard-wrapper mb-8" style="height: 100px;">
-                     <div class="card-face card-front flex flex-col justify-center" style="transform: none; position: relative; width:100%; height:100%;">
-                        <h2 class="font-display text-2xl font-bold neon-text-cyan text-center">${q.word}</h2>
-                     </div>
-                </div>
-                <div class="w-full flex flex-col gap-3" id="quizOptions">
-                    ${options.map((opt, i) => `<button class="quiz-option" onclick="checkQuiz(this, '${opt.replace(/'/g, "\\'")}', '${q.definition.replace(/'/g, "\\'")}')">${i+1}. ${opt}</button>`).join('')}
-                </div>`;
-            speak(q.word, 1.0);
-        }
-
-        function checkQuiz(btn, selected, correct) {
-            const buttons = document.querySelectorAll('.quiz-option');
-            const isCorrect = selected === correct;
-            buttons.forEach(b => { b.disabled = true; b.onclick = null; if(b.innerText.includes(correct)) b.classList.add('correct'); });
-            if(!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); } else { playSound('correct'); }
-            
-            const w = quizQuestions[quizIndex];
-            if(isCorrect) {
-                w.quizCorrectCount++;
-                if(w.quizCorrectCount >= 2) w.learned = true;
-                quizScore++;
-            }
-            
-            setTimeout(() => {
-                quizIndex++;
-                if(quizIndex < quizQuestions.length) renderQuiz();
-                else { playSound('win'); document.getElementById('quizContentArea').innerHTML = `<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2><p class="text-xl mb-8">Score: ${quizScore}/${quizQuestions.length}</p><button class="nav-btn" onclick="startQuiz()">TRY AGAIN</button>`; }
-            }, 1500);
-        }
-
-        // === EXIT LOGIC ===
-        function requestExit(callback) { playSound('alert'); pendingExitCallback = callback; confirmPanel.classList.add('show'); }
-        function exitConfirmed(callback) { playSound('slide'); confirmPanel.classList.remove('show'); closeResultPanel(); if(callback) callback(); }
-        function cancelExit() { playSound('slide'); confirmPanel.classList.remove('show'); pendingExitCallback = null; }
-
-        // === HELPERS ===
-        function speak(text, rate) { if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = rate; window.speechSynthesis.speak(utterance); } }
-
-        // === EVENT LISTENERS ===
-        function setupEventListeners() {
-            document.getElementById('backToTopicsBtn').addEventListener('click', () => { playSound('slide'); switchView(topicView); });
-            document.querySelectorAll('.exit-learn-btn').forEach(b => b.addEventListener('click', () => requestExit(() => switchView(flashcardView))));
-            document.querySelectorAll('.exit-quiz-btn').forEach(b => b.addEventListener('click', () => requestExit(() => switchView(flashcardView))));
-            document.querySelectorAll('.exit-game-btn').forEach(b => b.addEventListener('click', () => { if(currentTopic) requestExit(() => switchView(flashcardView)); else requestExit(() => switchView(topicView)); }));
-            document.getElementById('confirmExitBtn').addEventListener('click', () => { if(pendingExitCallback) exitConfirmed(pendingExitCallback); });
-            document.getElementById('cancelExitBtn').addEventListener('click', cancelExit);
-            document.getElementById('flashcard').addEventListener('click', flipCard);
-            document.getElementById('prevBtn').addEventListener('click', () => navigateFlashcard(-1));
-            document.getElementById('nextBtn').addEventListener('click', () => navigateFlashcard(1));
-            document.getElementById('startLearnBtn').addEventListener('click', startLearnMode);
-            document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
-            document.getElementById('playTopicGameBtn').addEventListener('click', () => startHangmanGame(currentTopic.id));
-            document.getElementById('resultContinueBtn').addEventListener('click', () => { closeResultPanel(); nextLearnStep(); });
-            document.getElementById('playAgainBtn').addEventListener('click', () => { startHangmanGame(currentTopic ? currentTopic.id : null); });
-
-            // View Toggle Listeners
-            gridViewBtn.addEventListener('click', () => {
-                viewMode = 'grid';
-                gridViewBtn.classList.add('active');
-                listViewBtn.classList.remove('active');
-                renderTopics();
-            });
-
-            listViewBtn.addEventListener('click', () => {
-                viewMode = 'list';
-                listViewBtn.classList.add('active');
-                gridViewBtn.classList.remove('active');
-                renderTopics();
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (!hangmanView.classList.contains('hidden-view')) { const key = e.key.toUpperCase(); if (/^[A-Z]$/.test(key)) handleGuess(key); }
-                if (!flashcardView.classList.contains('hidden-view')) { if (e.key === 'ArrowLeft') navigateFlashcard(-1); if (e.key === 'ArrowRight') navigateFlashcard(1); if (e.key === ' ') { e.preventDefault(); flipCard(); } }
-                if (!quizView.classList.contains('hidden-view')) { if (e.key >= '1' && e.key <= '4') { const idx = parseInt(e.key) - 1; const btns = document.querySelectorAll('.quiz-option'); if(btns[idx] && !btns[idx].disabled) btns[idx].click(); } }
-                
-                if (!learnView.classList.contains('hidden-view')) {
-                    if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
-                         const checkBtn = document.querySelector('#learnContentArea .nav-btn:last-of-type');
-                         if(checkBtn) checkBtn.click();
-                    }
-                }
-
-                if (e.key === ' ' || e.key === 'Enter') {
-                    if (resultPanel.classList.contains('show')) { e.preventDefault(); closeResultPanel(); nextLearnStep(); }
-                    else if (confirmPanel.classList.contains('show')) { e.preventDefault(); if(e.key === ' ') cancelExit(); }
-                    else if (!learnView.classList.contains('hidden-view') && learnStep === 1 && !resultPanel.classList.contains('show')) {
-                        e.preventDefault();
-                        const continueBtn = document.getElementById('learnContinueBtn');
-                        if(continueBtn) continueBtn.click();
-                    }
-                }
-                if (e.key === 'Escape') { if (confirmPanel.classList.contains('show')) cancelExit(); }
-            });
-        }
-
-        init();
-    </script>
 </body>
+
 </html>
