@@ -85,7 +85,9 @@
                 <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC
                     NAME</span>
                 <div class="flex gap-2">
-                    <button class="nav-btn game-btn text-xs px-3 py-1" style="border-color: var(--neon-cyan); color: var(--neon-cyan);" id="showAllWordsBtn">SHOW ALL</button>
+                    <button class="nav-btn game-btn text-xs px-3 py-1"
+                        style="border-color: var(--neon-cyan); color: var(--neon-cyan);" id="showAllWordsBtn">SHOW
+                        ALL</button>
                     <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
                 </div>
             </div>
@@ -125,24 +127,18 @@
                                     <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
                                         id="wordFront">WORD</h2>
 
-                                    <div class="mt-8 w-full text-center">
-                                        <div class="flex items-center justify-center">
-                                            <p class="text-base text-white" id="exampleFront">Example sentence.</p>
-                                            <button class="trans-btn-card"
-                                                onclick="event.stopPropagation(); toggleFrontTrans()">🌐</button>
+                                    <div class="mt-8 hint-container">
+                                        <div class="hint-row">
+                                            <div class="hint-text" id="hintText"></div>
+                                            <button class="trans-btn-card" id="transBtn" onclick="event.stopPropagation(); toggleFrontTrans()" style="display:none">🌐</button>
                                         </div>
-                                        <p class="text-sm neon-text-green mt-2 h-5 transition-opacity opacity-0"
-                                            id="vietExFront">Vietnamese example</p>
+                                        <div class="text-sm neon-text-green mt-2 min-h-[20px] transition-opacity opacity-0" id="vietExample"></div>
                                     </div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
-                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2"
-                                        id="wordBack">Word</h2>
-                                    <p class="text-[var(--neon-cyan)] text-xs mb-4" id="pronBack">/pron/</p>
-                                    <p class="text-sm text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)
-                                    </p>
-                                    <p class="text-base text-center text-[var(--text)] leading-relaxed" id="defBack">
-                                        Definition</p>
+                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wordBack">Word</h2>
+                                    <p class="text-[var(--neon-cyan)] text-sm mb-4" id="pronBack">/pron/</p>
+                                    <p class="text-lg text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)</p>
                                 </div>
                             </div>
                         </div>
@@ -257,10 +253,12 @@
                     </svg>
                     CARDS
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="compactListTitle">TOPIC NAME</span>
-                <div class="text-[var(--text-muted)] text-sm font-display tracking-wider w-16 text-right" id="compactListCount">0</div>
+                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="compactListTitle">TOPIC
+                    NAME</span>
+                <div class="text-[var(--text-muted)] text-sm font-display tracking-wider w-16 text-right"
+                    id="compactListCount">0</div>
             </div>
-            
+
             <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="compactListContainer">
                 <!-- List items injected via JS -->
             </div>

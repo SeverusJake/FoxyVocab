@@ -280,20 +280,32 @@ function updateFlashcard() {
     const cardData = getWordData(currentTopic.activeWords[currentCardIndex]);
     document.getElementById('wordFront').textContent = cardData.word;
     document.getElementById('wordBack').textContent = cardData.word;
-    document.getElementById('defBack').textContent = cardData.definition;
     document.getElementById('pronBack').textContent = cardData.pron;
     document.getElementById('transBack').textContent = `${cardData.vietnamese} (${cardData.pos})`;
     
-    document.getElementById('exampleFront').textContent = cardData.example;
-    document.getElementById('vietExFront').textContent = cardData.vietnamese_example;
-    document.getElementById('vietExFront').style.opacity = '0';
+    // Hint setup from User code
+    const hintText = document.getElementById('hintText');
+    const transBtn = document.getElementById('transBtn');
+    const vietExample = document.getElementById('vietExample');
+    
+    const showDefinition = Math.random() > 0.5;
+    if (showDefinition) {
+        hintText.innerText = cardData.definition;
+        transBtn.style.display = 'none'; // Hide translation button for definitions
+        vietExample.innerText = '';      // Wipe previous example payload
+    } else {
+        hintText.innerText = cardData.example;
+        transBtn.style.display = 'flex'; // Show translation button for examples
+        vietExample.innerText = cardData.vietnamese_example;
+    }
+    
+    vietExample.style.opacity = '0'; // reset opacity every update
     
     const learnedIcon = document.getElementById('statusLearned');
     const rememberedIcon = document.getElementById('statusRemembered');
-    
     learnedIcon.classList.toggle('active', cardData.learned);
-    rememberedIcon.classList.toggle('active', cardData.quizCorrectCount >= 2);
-
+    rememberedIcon.classList.toggle('active', !cardData.learned && cardData.quizCorrectCount > 0);
+    
     const starBtn = document.getElementById('starBtn');
     starBtn.textContent = cardData.isFavorite ? '★' : '☆';
     starBtn.classList.toggle('active', cardData.isFavorite);
@@ -321,7 +333,7 @@ function flipCard() {
 }
 
 function toggleFrontTrans() {
-    const el = document.getElementById('vietExFront');
+    const el = document.getElementById('vietExample');
     el.style.opacity = el.style.opacity === '0' ? '1' : '0';
     playSound('flip');
 }
