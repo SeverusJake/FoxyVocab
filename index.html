@@ -84,7 +84,10 @@
                 </button>
                 <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC
                     NAME</span>
-                <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
+                <div class="flex gap-2">
+                    <button class="nav-btn game-btn text-xs px-3 py-1" style="border-color: var(--neon-cyan); color: var(--neon-cyan);" id="showAllWordsBtn">SHOW ALL</button>
+                    <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
+                </div>
             </div>
 
             <!-- Progress -->
@@ -240,6 +243,27 @@
                     id="quizProgressText">1/10</span>
             </div>
             <div id="quizContentArea" class="flex-1 flex flex-col justify-center items-center"></div>
+        </div>
+    </div>
+
+    <!-- VIEW 6: COMPACT LIST -->
+    <div id="compactListView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-2xl mx-auto flex flex-col h-full">
+            <div class="flex items-center justify-between mb-6">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                    id="backFromListBtn" aria-label="Back to flashcards">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    CARDS
+                </button>
+                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="compactListTitle">TOPIC NAME</span>
+                <div class="text-[var(--text-muted)] text-sm font-display tracking-wider w-16 text-right" id="compactListCount">0</div>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="compactListContainer">
+                <!-- List items injected via JS -->
+            </div>
         </div>
     </div>
 

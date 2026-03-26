@@ -12,7 +12,7 @@ let viewMode = 'grid'; // 'grid' or 'list'
 
 function getWordData(wordId) {
     const staticData = dictionary[wordId];
-    const progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0 };
+    const progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
     return { word: wordId, ...staticData, ...progress };
 }
 
@@ -42,6 +42,7 @@ const flashcardView = document.getElementById('flashcardView');
 const hangmanView = document.getElementById('hangmanView');
 const learnView = document.getElementById('learnView');
 const quizView = document.getElementById('quizView');
+const compactListView = document.getElementById('compactListView');
 const topicGrid = document.getElementById('topicGrid');
 const gridViewBtn = document.getElementById('gridViewBtn');
 const listViewBtn = document.getElementById('listViewBtn');
@@ -112,7 +113,7 @@ function playSound(type) {
 
 // === VIEW MANAGEMENT ===
 function switchView(targetView, playIntro = false) {
-    [topicView, flashcardView, hangmanView, learnView, quizView].forEach(v => { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
+    [topicView, flashcardView, hangmanView, learnView, quizView, compactListView].forEach(v => { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
     targetView.classList.remove('hidden-view'); void targetView.offsetWidth; targetView.classList.add('fade-in');
     if(playIntro) playSound('intro'); else playSound('slide');
 }
@@ -181,18 +182,102 @@ function renderTopics() {
 
 function selectTopic(topicId) {
     currentTopic = topicsData.find(t => t.id === topicId);
+    
+    // Sort words by CEFR
+    const cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
+    currentTopic.sortedWords = [...currentTopic.words].sort((a,b) => {
+         const cefrA = dictionary[a].cefr || 'Uncategorized';
+         const cefrB = dictionary[b].cefr || 'Uncategorized';
+         return cefrRank[cefrA] - cefrRank[cefrB];
+    });
+
+    currentTopic.activeWords = currentTopic.sortedWords.filter(wId => !getWordData(wId).isKnown);
+    
+    if (currentTopic.activeWords.length === 0) {
+        alert("Awesome! You've marked every word as Known. We'll show them all again.");
+        currentTopic.activeWords = currentTopic.sortedWords;
+    }
+    
     currentCardIndex = 0;
     document.getElementById('topicTitle').textContent = currentTopic.title.toUpperCase();
     updateFlashcard();
     updateProgress();
     switchView(flashcardView);
     document.getElementById('flashcard').classList.remove('flipped');
-    speak(getWordData(currentTopic.words[currentCardIndex]).word, 1.0);
+    speak(getWordData(currentTopic.activeWords[currentCardIndex]).word, 1.0);
+}
+
+function renderCompactList() {
+    const container = document.getElementById('compactListContainer');
+    document.getElementById('compactListTitle').textContent = currentTopic.title.toUpperCase();
+    document.getElementById('compactListCount').textContent = `${currentTopic.sortedWords.length}`;
+    
+    let html = '<div class="flex flex-col gap-1 mx-auto w-full" style="max-width: 450px;">'; 
+    currentTopic.sortedWords.forEach((wordId, index) => {
+        const wData = getWordData(wordId);
+        const favIcon = wData.isFavorite ? '<span class="neon-text-cyan mt-1">★</span>' : '';
+        const knownClass = wData.isKnown ? 'known-btn active' : 'known-btn';
+        
+        html += `
+            <div class="p-3 rounded-lg flex items-center justify-between hover:bg-[rgba(255,255,255,0.05)] cursor-pointer transition-colors w-full"
+                 onclick="toggleTranslation(${index})">
+                <div class="flex-1 flex items-start">
+                    <span class="text-[var(--text-muted)] mr-3 font-display w-6 text-right mt-1">${index + 1}.</span>
+                    <div class="flex flex-col flex-1">
+                        <div class="flex items-baseline gap-2">
+                           <span class="font-display font-bold neon-text-magenta text-lg">${wData.word}</span>
+                           <span class="text-xs text-[var(--text-muted)] opacity-70">${wData.pron}</span>
+                        </div>
+                        <p class="text-sm neon-text-green max-h-0 overflow-hidden transition-all duration-300 opacity-0" id="listTrans_${index}" style="margin-top:0px;">${wData.vietnamese}</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 text-2xl items-center justify-center min-w-[60px]">
+                    ${favIcon}
+                    <button class="${knownClass}" onclick="event.stopPropagation(); toggleKnown('${wordId}', this)" title="Toggle Known Status">🎓</button>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    switchView(compactListView);
+}
+
+function toggleTranslation(index) {
+    const el = document.getElementById(`listTrans_${index}`);
+    if (el) {
+        if (el.style.maxHeight === '50px' || el.style.opacity === '1') {
+            el.style.maxHeight = '0px';
+            el.style.opacity = '0';
+            el.style.marginTop = '0px';
+        } else {
+            el.style.maxHeight = '50px';
+            el.style.opacity = '1';
+            el.style.marginTop = '4px';
+        }
+    }
+}
+
+function toggleKnown(wordId, btn) {
+    const wData = getWordData(wordId);
+    const newState = !wData.isKnown;
+    saveProgress(wordId, { isKnown: newState });
+    
+    currentTopic.activeWords = currentTopic.sortedWords.filter(wId => !getWordData(wId).isKnown);
+    if (currentTopic.activeWords.length === 0) {
+        currentTopic.activeWords = currentTopic.sortedWords;
+    }
+    
+    // Toggle visuals seamlessly
+    if (btn) {
+        if (newState) btn.classList.add('active');
+        else btn.classList.remove('active');
+    }
 }
 
 // === FLASHCARD LOGIC ===
 function updateFlashcard() {
-    const cardData = getWordData(currentTopic.words[currentCardIndex]);
+    const cardData = getWordData(currentTopic.activeWords[currentCardIndex]);
     document.getElementById('wordFront').textContent = cardData.word;
     document.getElementById('wordBack').textContent = cardData.word;
     document.getElementById('defBack').textContent = cardData.definition;
@@ -216,14 +301,14 @@ function updateFlashcard() {
 
 function toggleFavorite() {
     playSound('flip');
-    const wordId = currentTopic.words[currentCardIndex];
+    const wordId = currentTopic.activeWords[currentCardIndex];
     const wData = getWordData(wordId);
     saveProgress(wordId, { isFavorite: !wData.isFavorite });
     updateFlashcard();
 }
 
 function updateProgress() {
-    const total = currentTopic.words.length;
+    const total = currentTopic.activeWords.length;
     const progress = ((currentCardIndex + 1) / total) * 100;
     document.getElementById('progressBar').style.width = `${progress}%`;
     document.getElementById('progressText').textContent = `${currentCardIndex + 1}/${total}`;
@@ -244,7 +329,7 @@ function toggleFrontTrans() {
 function navigateFlashcard(direction) {
     if(isAnimating) return;
     const newIndex = currentCardIndex + direction;
-    if (newIndex >= 0 && newIndex < currentTopic.words.length) {
+    if (newIndex >= 0 && newIndex < currentTopic.activeWords.length) {
         playSound('slide');
         isAnimating = true;
         const slider = document.getElementById('cardSlider');
@@ -260,7 +345,7 @@ function navigateFlashcard(direction) {
             slider.offsetHeight; 
             slider.style.transition = 'transform 0.3s ease-out, opacity 0.2s ease-out';
             slider.style.transform = 'translateX(0)'; slider.style.opacity = '1';
-            setTimeout(() => { isAnimating = false; speak(getWordData(currentTopic.words[currentCardIndex]).word, 1.0); }, 300);
+            setTimeout(() => { isAnimating = false; speak(getWordData(currentTopic.activeWords[currentCardIndex]).word, 1.0); }, 300);
         }, 300);
     }
 }
@@ -273,12 +358,12 @@ function startLearnMode() {
 }
 
 function updateLearnProgress() {
-    const percent = ((learnIndex) / currentTopic.words.length) * 100;
+    const percent = ((learnIndex) / currentTopic.activeWords.length) * 100;
     document.getElementById('learnProgressBar').style.width = `${percent}%`;
 }
 
 function renderLearnStep() {
-    const w = getWordData(currentTopic.words[learnIndex]);
+    const w = getWordData(currentTopic.activeWords[learnIndex]);
     const area = document.getElementById('learnContentArea');
     let html = '';
 
@@ -347,14 +432,14 @@ function nextLearnStep() {
     learnStep++;
     if(learnStep > 3) {
         learnStep = 1; learnIndex++; updateLearnProgress();
-        if(learnIndex >= currentTopic.words.length) { showLearnComplete(); return; }
+        if(learnIndex >= currentTopic.activeWords.length) { showLearnComplete(); return; }
     }
     renderLearnStep();
 }
 
 function skipWord() {
     learnIndex++; learnMistakes = 999; updateLearnProgress();
-    if (learnIndex >= currentTopic.words.length) showLearnComplete();
+    if (learnIndex >= currentTopic.activeWords.length) showLearnComplete();
     else { learnStep = 1; learnMistakes = 0; renderLearnStep(); }
 }
 
@@ -366,7 +451,7 @@ function showLearnComplete() {
 
 function checkLearn(step) {
     const input = document.getElementById('learnInput');
-    const w = getWordData(currentTopic.words[learnIndex]);
+    const w = getWordData(currentTopic.activeWords[learnIndex]);
     const success = input.value.trim().toLowerCase() === w.word.toLowerCase();
     input.blur();
     if(!success) learnMistakes++;
@@ -541,6 +626,8 @@ function setupEventListeners() {
     document.getElementById('playTopicGameBtn').addEventListener('click', () => startHangmanGame(currentTopic.id));
     document.getElementById('resultContinueBtn').addEventListener('click', () => { closeResultPanel(); nextLearnStep(); });
     document.getElementById('playAgainBtn').addEventListener('click', () => { startHangmanGame(currentTopic ? currentTopic.id : null); });
+    document.getElementById('showAllWordsBtn').addEventListener('click', renderCompactList);
+    document.getElementById('backFromListBtn').addEventListener('click', () => { playSound('slide'); switchView(flashcardView); });
 
     // View Toggle Listeners
     gridViewBtn.addEventListener('click', () => {
