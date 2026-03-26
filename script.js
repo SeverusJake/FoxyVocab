@@ -1,5 +1,6 @@
 // === STATE ===
-console.log(topicsData);
+const STORAGE_KEY = 'foxyVocabProgress';
+let userProgress = {};
 let currentTopic = null;
 let currentCardIndex = 0;
 let learnStep = 1;
@@ -8,6 +9,18 @@ let learnIndex = 0;
 let isAnimating = false;
 let pendingExitCallback = null;
 let viewMode = 'grid'; // 'grid' or 'list'
+
+function getWordData(wordId) {
+    const staticData = dictionary[wordId];
+    const progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0 };
+    return { word: wordId, ...staticData, ...progress };
+}
+
+function saveProgress(wordId, updates) {
+    if (!userProgress[wordId]) userProgress[wordId] = { isFavorite: false, learned: false, quizCorrectCount: 0 };
+    userProgress[wordId] = { ...userProgress[wordId], ...updates };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
+}
 
 // Hangman State
 let hangmanWord = null;
@@ -37,11 +50,12 @@ const confirmPanel = document.getElementById('confirmPanel');
 
 // === INITIALIZATION ===
 function init() {
-    if (typeof topicsData !== 'undefined') {
+    if (typeof topicsData !== 'undefined' && typeof dictionary !== 'undefined') {
+        userProgress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
         renderTopics();
         setupEventListeners();
     } else {
-        document.getElementById('topicGrid').innerHTML = '<div class="text-red-500 text-center p-10">Failed to load topics. Make sure data.js is loaded properly.</div>';
+        document.getElementById('topicGrid').innerHTML = '<div class="text-red-500 text-center p-10">Failed to load topics/dictionary. Make sure data.js is loaded properly.</div>';
     }
 }
 
@@ -117,7 +131,7 @@ function renderTopics() {
         topicGrid.className = "grid grid-cols-1 sm-grid-cols-2 lg-grid-cols-3 gap-6";
         const topicCards = topicsData.map(topic => `
             <div class="topic-card" data-topic-id="${topic.id}" role="button" tabindex="0" aria-label="Study ${topic.title}">
-                ${topic.icon}
+                ${icons[topic.iconId]}
                 <h3 class="font-display text-lg font-bold mb-1">${topic.title}</h3>
                 <p class="text-xs text-[var(--text-muted)]">${topic.description}</p>
                 <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">${topic.words.length} CARDS</div>
@@ -173,12 +187,12 @@ function selectTopic(topicId) {
     updateProgress();
     switchView(flashcardView);
     document.getElementById('flashcard').classList.remove('flipped');
-    speak(currentTopic.words[currentCardIndex].word, 1.0);
+    speak(getWordData(currentTopic.words[currentCardIndex]).word, 1.0);
 }
 
 // === FLASHCARD LOGIC ===
 function updateFlashcard() {
-    const cardData = currentTopic.words[currentCardIndex];
+    const cardData = getWordData(currentTopic.words[currentCardIndex]);
     document.getElementById('wordFront').textContent = cardData.word;
     document.getElementById('wordBack').textContent = cardData.word;
     document.getElementById('defBack').textContent = cardData.definition;
@@ -202,8 +216,9 @@ function updateFlashcard() {
 
 function toggleFavorite() {
     playSound('flip');
-    const w = currentTopic.words[currentCardIndex];
-    w.isFavorite = !w.isFavorite;
+    const wordId = currentTopic.words[currentCardIndex];
+    const wData = getWordData(wordId);
+    saveProgress(wordId, { isFavorite: !wData.isFavorite });
     updateFlashcard();
 }
 
@@ -245,7 +260,7 @@ function navigateFlashcard(direction) {
             slider.offsetHeight; 
             slider.style.transition = 'transform 0.3s ease-out, opacity 0.2s ease-out';
             slider.style.transform = 'translateX(0)'; slider.style.opacity = '1';
-            setTimeout(() => { isAnimating = false; speak(currentTopic.words[currentCardIndex].word, 1.0); }, 300);
+            setTimeout(() => { isAnimating = false; speak(getWordData(currentTopic.words[currentCardIndex]).word, 1.0); }, 300);
         }, 300);
     }
 }
@@ -263,7 +278,7 @@ function updateLearnProgress() {
 }
 
 function renderLearnStep() {
-    const w = currentTopic.words[learnIndex];
+    const w = getWordData(currentTopic.words[learnIndex]);
     const area = document.getElementById('learnContentArea');
     let html = '';
 
@@ -351,11 +366,11 @@ function showLearnComplete() {
 
 function checkLearn(step) {
     const input = document.getElementById('learnInput');
-    const w = currentTopic.words[learnIndex];
+    const w = getWordData(currentTopic.words[learnIndex]);
     const success = input.value.trim().toLowerCase() === w.word.toLowerCase();
     input.blur();
     if(!success) learnMistakes++;
-    if(success) w.learned = true;
+    if(success) saveProgress(w.word, { learned: true });
     showResultPanel(success, w);
 }
 
@@ -388,8 +403,8 @@ function renderKeyboard() {
 }
 
 function startHangmanGame(topicId) {
-    if (topicId) { const topic = topicsData.find(t => t.id === topicId); gameWords = [...topic.words]; document.getElementById('hangmanTitle').textContent = topic.title.toUpperCase(); }
-    else { gameWords = topicsData.flatMap(t => t.words); document.getElementById('hangmanTitle').textContent = "MASTER CHALLENGE"; }
+    if (topicId) { const topic = topicsData.find(t => t.id === topicId); gameWords = topic.words.map(getWordData); document.getElementById('hangmanTitle').textContent = topic.title.toUpperCase(); }
+    else { gameWords = Object.keys(dictionary).map(getWordData); document.getElementById('hangmanTitle').textContent = "MASTER CHALLENGE"; }
     guessedLetters = []; wrongGuesses = 0; gameOver = false; hangmanStreak = 0; previousWord = null;
     document.getElementById('streakCount').textContent = '0';
     nextHangmanWord();
@@ -456,7 +471,7 @@ function checkLose() {
 
 // === QUIZ LOGIC ===
 function startQuiz() {
-    quizIndex = 0; quizScore = 0; quizQuestions = [...currentTopic.words].sort(() => Math.random() - 0.5); renderQuiz();
+    quizIndex = 0; quizScore = 0; quizQuestions = currentTopic.words.map(getWordData).sort(() => Math.random() - 0.5); renderQuiz();
     switchView(quizView, true);
 }
 
@@ -465,7 +480,7 @@ function renderQuiz() {
     const area = document.getElementById('quizContentArea');
     document.getElementById('quizProgressText').textContent = `${quizIndex+1}/${quizQuestions.length}`;
     let options = [q.definition];
-    let distractors = currentTopic.words.filter(w => w.word !== q.word).sort(() => Math.random() - 0.5).slice(0, 3);
+    let distractors = currentTopic.words.filter(id => id !== q.word).sort(() => Math.random() - 0.5).slice(0, 3).map(getWordData);
     distractors.forEach(d => options.push(d.definition)); options.sort(() => Math.random() - 0.5);
     area.innerHTML = `
         <h2 class="font-display text-xl text-center mb-8 neon-text-cyan">What is the meaning?</h2>
@@ -488,8 +503,10 @@ function checkQuiz(btn, selected, correct) {
     
     const w = quizQuestions[quizIndex];
     if(isCorrect) {
-        w.quizCorrectCount++;
-        if(w.quizCorrectCount >= 2) w.learned = true;
+        const newCount = (w.quizCorrectCount || 0) + 1;
+        const updates = { quizCorrectCount: newCount };
+        if(newCount >= 2) updates.learned = true;
+        saveProgress(w.word, updates);
         quizScore++;
     }
     
