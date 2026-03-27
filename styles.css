@@ -428,3 +428,187 @@ input[type="text"]::placeholder { color: rgba(255,255,255,0.3); letter-spacing: 
 @media (min-width: 1024px) {
     .lg-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* ===== MOBILE: phones < 640px ===== */
+@media (max-width: 639px) {
+
+    /* Safe-area insets for notched phones */
+    .view-container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+
+    /* Topic view: reduce top/bottom padding */
+    #topicView {
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Topic grid: always single column on phones */
+    #topicGrid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem;
+    }
+
+    /* Topic cards: reduce padding */
+    .topic-card {
+        padding: 1rem;
+    }
+    .topic-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Topic list items */
+    .topic-list-item {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Topic scrollable area: more space */
+    #topicContainer {
+        max-height: calc(100vh - 160px) !important;
+    }
+
+    /* Flashcard view: reduce padding */
+    #flashcardView {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Flashcard header: stack action buttons smaller */
+    #flashcardView .flex.items-center.justify-between {
+        gap: 0.5rem;
+    }
+    #showAllWordsBtn,
+    #playTopicGameBtn {
+        font-size: 0.6rem;
+        padding: 0.4rem 0.5rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* Flashcard wrapper: fill width on phone */
+    .flashcard-wrapper {
+        max-width: 100%;
+        height: 260px;
+    }
+
+    /* Speaker/snail buttons: move closer together */
+    .border-btn-group {
+        gap: 12px;
+    }
+    .border-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+
+    /* Word on card: scale down slightly */
+    #wordFront {
+        font-size: 1.6rem;
+    }
+    #wordBack {
+        font-size: 1.4rem;
+    }
+
+    /* Progress margin */
+    #flashcardView .mb-8 { margin-bottom: 1rem; }
+    #flashcardView .mb-6 { margin-bottom: 0.75rem; }
+
+    /* Navigation buttons */
+    #prevBtn, #nextBtn, #startLearnBtn, #startQuizBtn {
+        font-size: 0.65rem;
+        padding: 0.65rem 0.75rem;
+        letter-spacing: 0.07em;
+    }
+
+    /* Hangman view: reduce padding */
+    #hangmanView {
+        padding-top: 1rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* Hangman SVG: smaller on phone */
+    .hangman-svg {
+        width: 140px;
+        height: 160px;
+    }
+
+    /* Hangman keyboard: wrap rows, smaller keys */
+    #keyboard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+    .keyboard-btn {
+        width: 30px;
+        height: 38px;
+        font-size: 0.75rem;
+    }
+
+    /* Word letter boxes: smaller on phone */
+    .word-letter-box {
+        width: 22px;
+        height: 34px;
+        font-size: 1.1rem;
+        margin: 0 2px;
+    }
+
+    /* Word display: allow wrap */
+    #wordDisplay {
+        flex-wrap: wrap;
+        row-gap: 4px;
+        padding: 0 0.5rem;
+    }
+
+    /* Hangman hint: smaller text */
+    #hangmanHint {
+        font-size: 0.8rem;
+    }
+
+    /* Learn / Quiz views */
+    #learnView, #quizView {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Prevent iOS keyboard zoom: inputs must be >= 16px */
+    input[type="text"] {
+        font-size: 16px;
+    }
+
+    /* Compact list view */
+    #compactListView {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Slide panels: full-width padding */
+    .slide-panel {
+        padding: 20px 16px;
+    }
+
+    /* Orbs: reduce size so they don't cause scroll */
+    .orb-1 { width: 250px; height: 250px; }
+    .orb-2 { width: 200px; height: 200px; }
+
+    /* Ensure topic title doesn't overflow flashcard header */
+    #topicTitle {
+        font-size: 0.65rem;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Learn flashcard wrapper in learn view */
+    #learnView .flashcard-wrapper {
+        height: 230px;
+    }
+}
