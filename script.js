@@ -1,368 +1,406 @@
-// === STATE ===
-const STORAGE_KEY = 'foxyVocabProgress';
-let userProgress = {};
-let currentTopic = null;
-let currentCardIndex = 0;
-let learnStep = 1;
-let learnMistakes = 0;
-let learnIndex = 0;
-let isAnimating = false;
-let pendingExitCallback = null;
-let viewMode = 'grid'; // 'grid' or 'list'
+// === FoxyVocab Script ===
+console.log('[FoxyVocab] script.js: loading started');
 
+// === STATE ===
+var STORAGE_KEY = 'foxyVocabProgress';
+var userProgress = {};
+var currentCourse = null;
+var currentSet = null;
+var currentCardIndex = 0;
+var learnStep = 1;
+var learnMistakes = 0;
+var learnIndex = 0;
+var isAnimating = false;
+var pendingExitCallback = null;
+
+// Match state
+var matchWords = [];
+var matchCards = [];
+var matchSelected = null;
+var matchWrong = 0;
+var matchPairs = 0;
+var matchTimerInterval = null;
+var matchStartTime = 0;
+
+// Test state
+var testQuestions = [];
+var testIndex = 0;
+var testScore = 0;
+var testConfig = {};
+var testAnswers = [];
+
+// === HELPERS ===
 function getWordData(wordId) {
-    const staticData = dictionary[wordId];
-    const progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
-    return { word: wordId, ...staticData, ...progress };
+    var staticData = dictionary[wordId];
+    if (!staticData) return { word: wordId };
+    var progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
+    return Object.assign({ word: wordId }, staticData, progress);
 }
 
 function saveProgress(wordId, updates) {
-    if (!userProgress[wordId]) userProgress[wordId] = { isFavorite: false, learned: false, quizCorrectCount: 0 };
-    userProgress[wordId] = { ...userProgress[wordId], ...updates };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
+    if (!userProgress[wordId]) userProgress[wordId] = { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
+    Object.assign(userProgress[wordId], updates);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress)); } catch(e) { console.warn('[FoxyVocab] localStorage write failed:', e); }
 }
 
-// Hangman State
-let hangmanWord = null;
-let previousWord = null; 
-let guessedLetters = [];
-let wrongGuesses = 0;
-let gameOver = false;
-let gameWords = []; 
-let hangmanStreak = 0;
-
-// Quiz State
-let quizIndex = 0;
-let quizScore = 0;
-let quizQuestions = [];
-
-// === DOM ELEMENTS ===
-const topicView = document.getElementById('topicView');
-const flashcardView = document.getElementById('flashcardView');
-const hangmanView = document.getElementById('hangmanView');
-const learnView = document.getElementById('learnView');
-const quizView = document.getElementById('quizView');
-const compactListView = document.getElementById('compactListView');
-const topicGrid = document.getElementById('topicGrid');
-const gridViewBtn = document.getElementById('gridViewBtn');
-const listViewBtn = document.getElementById('listViewBtn');
-const resultPanel = document.getElementById('resultPanel');
-const confirmPanel = document.getElementById('confirmPanel');
-
-// === INITIALIZATION ===
-function init() {
-    if (typeof topicsData !== 'undefined' && typeof dictionary !== 'undefined') {
-        userProgress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-        renderTopics();
-        setupEventListeners();
-    } else {
-        document.getElementById('topicGrid').innerHTML = '<div class="text-red-500 text-center p-10">Failed to load topics/dictionary. Make sure data.js is loaded properly.</div>';
+function speak(text, rate) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        window.speechSynthesis.speak(utterance);
     }
 }
 
-// === AUDIO (Web Audio API) ===
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-let audioCtx; 
+function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+}
 
-function initAudioContext() { if (!audioCtx) audioCtx = new AudioContext(); }
+function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// === AUDIO ===
+var AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+var audioCtx;
+function initAudioContext() { if (!audioCtx && AudioCtxClass) audioCtx = new AudioCtxClass(); }
 
 function playSound(type) {
-    initAudioContext();
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    const now = audioCtx.currentTime;
-
-    if (type === 'flip') {
-        osc.type = 'triangle'; osc.frequency.setValueAtTime(600, now); osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-        osc.start(now); osc.stop(now + 0.1);
-    } else if (type === 'slide') {
-        osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); osc.frequency.exponentialRampToValueAtTime(600, now + 0.05);
-        gainNode.gain.setValueAtTime(0.05, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-        osc.start(now); osc.stop(now + 0.08);
-    } else if (type === 'correct') {
-        osc.type = 'sine'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); 
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-        osc.start(now); osc.stop(now + 0.2);
-    } else if (type === 'wrong') {
-        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(100, now + 0.2);
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-        osc.start(now); osc.stop(now + 0.2);
-    } else if (type === 'win') {
-        osc.type = 'sine'; const notes = [523.25, 659.25, 783.99, 1046.50];
-        notes.forEach((freq, i) => { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-        osc.start(now); osc.stop(now + 0.5);
-    } else if (type === 'lose') {
-        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(50, now + 0.5);
-        gainNode.gain.setValueAtTime(0.15, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-        osc.start(now); osc.stop(now + 0.5);
-    } else if (type === 'intro') {
-        osc.type = 'sine'; const notes = [261.63, 329.63, 392.00];
-        notes.forEach((freq, i) => { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-        osc.start(now); osc.stop(now + 0.4);
-    } else if (type === 'alert') {
-        osc.type = 'square'; osc.frequency.setValueAtTime(220, now); osc.frequency.setValueAtTime(180, now + 0.1); osc.frequency.setValueAtTime(220, now + 0.2);
-        gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-        osc.start(now); osc.stop(now + 0.3);
-    }
+    try {
+        initAudioContext();
+        if (!audioCtx) return;
+        var osc = audioCtx.createOscillator();
+        var gainNode = audioCtx.createGain();
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        var now = audioCtx.currentTime;
+        if (type === 'flip') {
+            osc.type = 'triangle'; osc.frequency.setValueAtTime(600, now); osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+            osc.start(now); osc.stop(now + 0.1);
+        } else if (type === 'slide') {
+            osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); osc.frequency.exponentialRampToValueAtTime(600, now + 0.05);
+            gainNode.gain.setValueAtTime(0.05, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+            osc.start(now); osc.stop(now + 0.08);
+        } else if (type === 'correct') {
+            osc.type = 'sine'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1);
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+            osc.start(now); osc.stop(now + 0.2);
+        } else if (type === 'wrong') {
+            osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(100, now + 0.2);
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+            osc.start(now); osc.stop(now + 0.2);
+        } else if (type === 'win') {
+            osc.type = 'sine'; var notes = [523.25, 659.25, 783.99, 1046.50];
+            notes.forEach(function(freq, i) { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+            osc.start(now); osc.stop(now + 0.5);
+        } else if (type === 'intro') {
+            osc.type = 'sine'; var notes2 = [261.63, 329.63, 392.00];
+            notes2.forEach(function(freq, i) { osc.frequency.setValueAtTime(freq, now + (i*0.1)); });
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+            osc.start(now); osc.stop(now + 0.4);
+        } else if (type === 'alert') {
+            osc.type = 'square'; osc.frequency.setValueAtTime(220, now); osc.frequency.setValueAtTime(180, now + 0.1); osc.frequency.setValueAtTime(220, now + 0.2);
+            gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc.start(now); osc.stop(now + 0.3);
+        }
+    } catch(e) { /* audio failure is non-critical */ }
 }
 
 // === VIEW MANAGEMENT ===
-function switchView(targetView, playIntro = false) {
-    [topicView, flashcardView, hangmanView, learnView, quizView, compactListView].forEach(v => { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
-    targetView.classList.remove('hidden-view'); void targetView.offsetWidth; targetView.classList.add('fade-in');
-    if(playIntro) playSound('intro'); else playSound('slide');
+var allViews = [];
+function switchView(targetView, playIntro) {
+    allViews.forEach(function(v) { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
+    targetView.classList.remove('hidden-view');
+    void targetView.offsetWidth;
+    targetView.classList.add('fade-in');
+    if (playIntro) playSound('intro'); else playSound('slide');
 }
 
-// === TOPIC LOGIC ===
-function renderTopics() {
-    const allWordsCard = `
-        <div class="topic-card special-card" data-action="play-all" role="button" tabindex="0" aria-label="Master Challenge">
-            <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <h3 class="font-display text-lg font-bold mb-1 neon-text-green">Master Challenge</h3>
-            <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
-            <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">HARDCORE MODE</div>
-        </div>`;
-    
-    if (viewMode === 'grid') {
-        topicGrid.className = "grid grid-cols-1 sm-grid-cols-2 lg-grid-cols-3 gap-6";
-        const topicCards = topicsData.map(topic => `
-            <div class="topic-card" data-topic-id="${topic.id}" role="button" tabindex="0" aria-label="Study ${topic.title}">
-                ${icons[topic.iconId]}
-                <h3 class="font-display text-lg font-bold mb-1">${topic.title}</h3>
-                <p class="text-xs text-[var(--text-muted)]">${topic.description}</p>
-                <div class="mt-3 text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">${topic.words.length} CARDS</div>
-            </div>`).join('');
-        topicGrid.innerHTML = allWordsCard + topicCards;
-    } else {
-        topicGrid.className = "flex flex-col";
-        
-        const specialListHtml = `
-          <div class="topic-list-item special-list" data-action="play-all" role="button" tabindex="0">
-            <div class="flex items-center gap-4">
-              <div class="w-8 h-8 rounded-full bg-[rgba(255,0,255,0.2)] flex items-center justify-center text-[var(--neon-green)]">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <div>
-                <h3 class="font-display text-sm font-bold neon-text-green">Master Challenge</h3>
-                <p class="text-xs text-[var(--text-muted)]">Hangman with all words</p>
-              </div>
-            </div>
-            <div class="text-[10px] font-display tracking-wider text-[var(--neon-green)] opacity-70">START</div>
-          </div>`;
-        
-        const topicItems = topicsData.map(topic => `
-          <div class="topic-list-item" data-topic-id="${topic.id}" role="button" tabindex="0">
-            <div class="flex items-center gap-4">
-              <div class="w-8 h-8 rounded-full bg-[rgba(0,245,255,0.1)] flex items-center justify-center text-[var(--neon-cyan)]">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>
-              </div>
-              <div>
-                <h3 class="font-display text-sm font-bold">${topic.title}</h3>
-                <p class="text-xs text-[var(--text-muted)]">${topic.words.length} Cards</p>
-              </div>
-            </div>
-            <div class="text-[10px] font-display tracking-wider text-[var(--neon-cyan)] opacity-70">STUDY</div>
-          </div>`).join('');
-          
-          topicGrid.innerHTML = specialListHtml + topicItems;
-    }
+// === DOM REFS ===
+var courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchView, matchResultView, compactListView;
+var resultPanel, confirmPanel;
 
-    topicGrid.querySelectorAll('[data-topic-id], [data-action]').forEach(el => {
-        el.addEventListener('click', () => {
-            if(el.dataset.action === 'play-all') startHangmanGame(null); 
-            else selectTopic(el.dataset.topicId);
-        });
+// ═══════════════════════════════════
+// COURSE VIEW (View 1)
+// ═══════════════════════════════════
+function renderCourses() {
+    var grid = document.getElementById('courseGrid');
+    var html = '';
+    coursesData.forEach(function(course) {
+        var totalWords = 0;
+        course.sets.forEach(function(s) { totalWords += s.words.length; });
+        html += '<div class="course-card" data-course-id="' + course.id + '" role="button" tabindex="0">' +
+            '<div class="course-card-icon">' + course.icon + '</div>' +
+            '<div class="course-card-info">' +
+                '<h3 class="font-display text-lg font-bold">' + escapeHtml(course.title) + '</h3>' +
+                '<p class="text-xs" style="color:var(--text-muted)">' + course.sets.length + ' sets · ' + totalWords + ' words</p>' +
+            '</div>' +
+            '<div class="course-card-arrow">›</div>' +
+        '</div>';
+    });
+    grid.innerHTML = html;
+    grid.querySelectorAll('[data-course-id]').forEach(function(el) {
+        el.addEventListener('click', function() { selectCourse(el.dataset.courseId); });
     });
 }
 
-function selectTopic(topicId) {
-    currentTopic = topicsData.find(t => t.id === topicId);
-    
+function selectCourse(courseId) {
+    currentCourse = coursesData.find(function(c) { return c.id === courseId; });
+    if (!currentCourse) return;
+    renderSets();
+    switchView(setView);
+}
+
+// ═══════════════════════════════════
+// SET VIEW (View 2)
+// ═══════════════════════════════════
+function renderSets() {
+    document.getElementById('setViewTitle').textContent = currentCourse.title.toUpperCase();
+    var grid = document.getElementById('setGrid');
+    var html = '';
+    currentCourse.sets.forEach(function(set, idx) {
+        html += '<div class="set-card" data-set-id="' + set.id + '" role="button" tabindex="0">' +
+            '<div class="set-card-number">' + (idx + 1) + '</div>' +
+            '<div class="set-card-info">' +
+                '<h3 class="font-display text-sm font-bold">' + escapeHtml(set.title) + '</h3>' +
+                '<p class="text-xs" style="color:var(--text-muted)">' + set.words.length + ' terms</p>' +
+            '</div>' +
+            '<div class="set-card-arrow">›</div>' +
+        '</div>';
+    });
+    grid.innerHTML = html;
+    grid.querySelectorAll('[data-set-id]').forEach(function(el) {
+        el.addEventListener('click', function() { selectSet(el.dataset.setId); });
+    });
+}
+
+function selectSet(setId) {
+    currentSet = null;
+    currentCourse.sets.forEach(function(s) { if (s.id === setId) currentSet = s; });
+    if (!currentSet) return;
+
     // Sort words by CEFR
-    const cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
-    currentTopic.sortedWords = [...currentTopic.words].sort((a,b) => {
-         const cefrA = dictionary[a].cefr || 'Uncategorized';
-         const cefrB = dictionary[b].cefr || 'Uncategorized';
-         return cefrRank[cefrA] - cefrRank[cefrB];
+    var cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
+    currentSet.sortedWords = currentSet.words.slice().sort(function(a, b) {
+        var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
+        var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
+        return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
     });
+    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
 
-    currentTopic.activeWords = currentTopic.sortedWords.filter(wId => !getWordData(wId).isKnown);
-    
-    if (currentTopic.activeWords.length === 0) {
-        alert("Awesome! You've marked every word as Known. We'll show them all again.");
-        currentTopic.activeWords = currentTopic.sortedWords;
-    }
-    
     currentCardIndex = 0;
-    document.getElementById('topicTitle').textContent = currentTopic.title.toUpperCase();
+    renderWordListView();
+    switchView(wordListView);
+}
+
+// ═══════════════════════════════════
+// WORD LIST VIEW (View 3)
+// ═══════════════════════════════════
+function renderWordListView() {
+    document.getElementById('wordListTitle').textContent = currentCourse.title.toUpperCase();
+    document.getElementById('wlSetName').textContent = currentSet.title;
+    document.getElementById('wlTermCount').textContent = currentSet.words.length + ' terms';
+    updateWLFlashcard();
+    renderWordCards();
+}
+
+function updateWLFlashcard() {
+    if (!currentSet || !currentSet.activeWords.length) return;
+    var wData = getWordData(currentSet.activeWords[currentCardIndex]);
+    document.getElementById('wlWordFront').textContent = wData.word;
+    document.getElementById('wlWordBack').textContent = wData.word;
+    document.getElementById('wlPronBack').textContent = wData.pron || '';
+    document.getElementById('wlTransBack').textContent = (wData.vietnamese || '') + ' (' + (wData.pos || '') + ')';
+
+    var learnedIcon = document.getElementById('wlStatusLearned');
+    var rememberedIcon = document.getElementById('wlStatusRemembered');
+    learnedIcon.classList.toggle('active', !!wData.learned);
+    rememberedIcon.classList.toggle('active', !wData.learned && (wData.quizCorrectCount || 0) > 0);
+
+    var starBtn = document.getElementById('wlStarBtn');
+    starBtn.textContent = wData.isFavorite ? '★' : '☆';
+    starBtn.classList.toggle('active', !!wData.isFavorite);
+
+    // Update carousel dots
+    var dotsContainer = document.getElementById('carouselDots');
+    var totalCards = Math.min(currentSet.activeWords.length, 5);
+    var dotsHtml = '';
+    for (var i = 0; i < totalCards; i++) {
+        dotsHtml += '<span class="carousel-dot' + (i === currentCardIndex % totalCards ? ' active' : '') + '"></span>';
+    }
+    dotsContainer.innerHTML = dotsHtml;
+}
+
+function renderWordCards() {
+    var container = document.getElementById('wordCardsContainer');
+    var html = '';
+    currentSet.sortedWords.forEach(function(wordId) {
+        var wData = getWordData(wordId);
+        html += '<div class="word-card">' +
+            '<div class="word-card-top">' +
+                '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
+                '<div class="word-card-actions">' +
+                    '<button class="word-card-btn" onclick="speak(\'' + escapeHtml(wData.word).replace(/'/g, "\\'") + '\', 1.0)">🔊</button>' +
+                    '<button class="word-card-btn" onclick="toggleFavoriteWord(\'' + escapeHtml(wData.word).replace(/'/g, "\\'") + '\', this)">' + (wData.isFavorite ? '★' : '☆') + '</button>' +
+                '</div>' +
+            '</div>' +
+            '<div class="word-card-bottom">' +
+                '<span class="word-card-meaning">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
+            '</div>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+}
+
+function toggleFavoriteWord(wordId, btn) {
+    var wData = getWordData(wordId);
+    saveProgress(wordId, { isFavorite: !wData.isFavorite });
+    if (btn) btn.textContent = getWordData(wordId).isFavorite ? '★' : '☆';
+    playSound('flip');
+}
+
+// ═══════════════════════════════════
+// FLASHCARD VIEW
+// ═══════════════════════════════════
+function openFlashcardView() {
+    currentCardIndex = 0;
+    document.getElementById('fcTopicTitle').textContent = currentSet.title.toUpperCase();
     updateFlashcard();
     updateProgress();
     switchView(flashcardView);
     document.getElementById('flashcard').classList.remove('flipped');
-    speak(getWordData(currentTopic.activeWords[currentCardIndex]).word, 1.0);
+    speak(getWordData(currentSet.activeWords[currentCardIndex]).word, 1.0);
 }
 
-function renderCompactList() {
-    const container = document.getElementById('compactListContainer');
-    document.getElementById('compactListTitle').textContent = currentTopic.title.toUpperCase();
-    document.getElementById('compactListCount').textContent = `${currentTopic.sortedWords.length}`;
-    
-    let html = '<div class="flex flex-col gap-1 mx-auto w-full" style="max-width: 450px;">'; 
-    currentTopic.sortedWords.forEach((wordId, index) => {
-        const wData = getWordData(wordId);
-        const favIcon = wData.isFavorite ? '<span class="neon-text-cyan mt-1">★</span>' : '';
-        const knownClass = wData.isKnown ? 'known-btn active' : 'known-btn';
-        
-        html += `
-            <div class="p-3 rounded-lg flex items-center justify-between hover:bg-[rgba(255,255,255,0.05)] cursor-pointer transition-colors w-full"
-                 onclick="toggleTranslation(${index})">
-                <div class="flex-1 flex items-start">
-                    <span class="text-[var(--text-muted)] mr-3 font-display w-6 text-right mt-1">${index + 1}.</span>
-                    <div class="flex flex-col flex-1">
-                        <div class="flex items-baseline gap-2">
-                           <span class="font-display font-bold neon-text-magenta text-lg">${wData.word}</span>
-                           <span class="text-xs text-[var(--text-muted)] opacity-70">${wData.pron}</span>
-                        </div>
-                        <p class="text-sm neon-text-green max-h-0 overflow-hidden transition-all duration-300 opacity-0" id="listTrans_${index}" style="margin-top:0px;">${wData.vietnamese}</p>
-                    </div>
-                </div>
-                <div class="flex gap-4 text-2xl items-center justify-center min-w-[60px]">
-                    ${favIcon}
-                    <button class="${knownClass}" onclick="event.stopPropagation(); toggleKnown('${wordId}', this)" title="Toggle Known Status">🎓</button>
-                </div>
-            </div>
-        `;
-    });
-    html += '</div>';
-    container.innerHTML = html;
-    switchView(compactListView);
-}
-
-function toggleTranslation(index) {
-    const el = document.getElementById(`listTrans_${index}`);
-    if (el) {
-        if (el.style.maxHeight === '50px' || el.style.opacity === '1') {
-            el.style.maxHeight = '0px';
-            el.style.opacity = '0';
-            el.style.marginTop = '0px';
-        } else {
-            el.style.maxHeight = '50px';
-            el.style.opacity = '1';
-            el.style.marginTop = '4px';
-        }
-    }
-}
-
-function toggleKnown(wordId, btn) {
-    const wData = getWordData(wordId);
-    const newState = !wData.isKnown;
-    saveProgress(wordId, { isKnown: newState });
-    
-    currentTopic.activeWords = currentTopic.sortedWords.filter(wId => !getWordData(wId).isKnown);
-    if (currentTopic.activeWords.length === 0) {
-        currentTopic.activeWords = currentTopic.sortedWords;
-    }
-    
-    // Toggle visuals seamlessly
-    if (btn) {
-        if (newState) btn.classList.add('active');
-        else btn.classList.remove('active');
-    }
-}
-
-// === FLASHCARD LOGIC ===
 function updateFlashcard() {
-    const cardData = getWordData(currentTopic.activeWords[currentCardIndex]);
+    var cardData = getWordData(currentSet.activeWords[currentCardIndex]);
     document.getElementById('wordFront').textContent = cardData.word;
     document.getElementById('wordBack').textContent = cardData.word;
-    document.getElementById('pronBack').textContent = cardData.pron;
-    document.getElementById('transBack').textContent = `${cardData.vietnamese} (${cardData.pos})`;
-    
-    // Hint setup from User code
-    const hintText = document.getElementById('hintText');
-    const transBtn = document.getElementById('transBtn');
-    const vietExample = document.getElementById('vietExample');
-    
-    const showDefinition = Math.random() > 0.5;
-    if (showDefinition) {
-        hintText.innerText = cardData.definition;
-        transBtn.style.display = 'none'; // Hide translation button for definitions
-        vietExample.innerText = '';      // Wipe previous example payload
+    document.getElementById('pronBack').textContent = cardData.pron || '';
+    document.getElementById('transBack').textContent = (cardData.vietnamese || '') + ' (' + (cardData.pos || '') + ')';
+
+    var hintText = document.getElementById('hintText');
+    var transBtn = document.getElementById('transBtn');
+    var vietExample = document.getElementById('vietExample');
+    var showDef = Math.random() > 0.5;
+    if (showDef) {
+        hintText.innerText = cardData.definition || '';
+        transBtn.style.display = 'none';
+        vietExample.innerText = '';
     } else {
-        hintText.innerText = cardData.example;
-        transBtn.style.display = 'flex'; // Show translation button for examples
-        vietExample.innerText = cardData.vietnamese_example;
+        hintText.innerText = cardData.example || '';
+        transBtn.style.display = 'flex';
+        vietExample.innerText = cardData.vietnamese_example || '';
     }
-    
-    vietExample.style.opacity = '0'; // reset opacity every update
-    
-    const learnedIcon = document.getElementById('statusLearned');
-    const rememberedIcon = document.getElementById('statusRemembered');
-    learnedIcon.classList.toggle('active', cardData.learned);
-    rememberedIcon.classList.toggle('active', !cardData.learned && cardData.quizCorrectCount > 0);
-    
-    const starBtn = document.getElementById('starBtn');
+    vietExample.style.opacity = '0';
+
+    var learnedIcon = document.getElementById('statusLearned');
+    var rememberedIcon = document.getElementById('statusRemembered');
+    learnedIcon.classList.toggle('active', !!cardData.learned);
+    rememberedIcon.classList.toggle('active', !cardData.learned && (cardData.quizCorrectCount || 0) > 0);
+
+    var starBtn = document.getElementById('starBtn');
     starBtn.textContent = cardData.isFavorite ? '★' : '☆';
-    starBtn.classList.toggle('active', cardData.isFavorite);
+    starBtn.classList.toggle('active', !!cardData.isFavorite);
 }
 
 function toggleFavorite() {
     playSound('flip');
-    const wordId = currentTopic.activeWords[currentCardIndex];
-    const wData = getWordData(wordId);
+    var wordId = currentSet.activeWords[currentCardIndex];
+    var wData = getWordData(wordId);
     saveProgress(wordId, { isFavorite: !wData.isFavorite });
     updateFlashcard();
 }
 
 function updateProgress() {
-    const total = currentTopic.activeWords.length;
-    const progress = ((currentCardIndex + 1) / total) * 100;
-    document.getElementById('progressBar').style.width = `${progress}%`;
-    document.getElementById('progressText').textContent = `${currentCardIndex + 1}/${total}`;
+    var total = currentSet.activeWords.length;
+    var progress = ((currentCardIndex + 1) / total) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+    document.getElementById('progressText').textContent = (currentCardIndex + 1) + '/' + total;
 }
 
 function flipCard() {
     playSound('flip');
-    const card = document.getElementById('flashcard');
-    card.classList.toggle('flipped');
+    document.getElementById('flashcard').classList.toggle('flipped');
 }
 
 function toggleFrontTrans() {
-    const el = document.getElementById('vietExample');
+    var el = document.getElementById('vietExample');
     el.style.opacity = el.style.opacity === '0' ? '1' : '0';
     playSound('flip');
 }
 
 function navigateFlashcard(direction) {
-    if(isAnimating) return;
-    const newIndex = currentCardIndex + direction;
-    if (newIndex >= 0 && newIndex < currentTopic.activeWords.length) {
+    if (isAnimating) return;
+    var newIndex = currentCardIndex + direction;
+    if (newIndex >= 0 && newIndex < currentSet.activeWords.length) {
         playSound('slide');
         isAnimating = true;
-        const slider = document.getElementById('cardSlider');
-        const card = document.getElementById('flashcard');
+        var slider = document.getElementById('cardSlider');
+        var card = document.getElementById('flashcard');
         card.classList.remove('flipped');
         slider.style.transition = 'transform 0.3s ease-in, opacity 0.2s ease-in';
         slider.style.transform = direction === 1 ? 'translateX(-120%)' : 'translateX(120%)';
         slider.style.opacity = '0';
-        setTimeout(() => {
-            currentCardIndex = newIndex; updateFlashcard(); updateProgress();
+        setTimeout(function() {
+            currentCardIndex = newIndex;
+            updateFlashcard();
+            updateProgress();
             slider.style.transition = 'none';
             slider.style.transform = direction === 1 ? 'translateX(120%)' : 'translateX(-120%)';
-            slider.offsetHeight; 
+            slider.offsetHeight;
             slider.style.transition = 'transform 0.3s ease-out, opacity 0.2s ease-out';
-            slider.style.transform = 'translateX(0)'; slider.style.opacity = '1';
-            setTimeout(() => { isAnimating = false; speak(getWordData(currentTopic.activeWords[currentCardIndex]).word, 1.0); }, 300);
+            slider.style.transform = 'translateX(0)';
+            slider.style.opacity = '1';
+            setTimeout(function() {
+                isAnimating = false;
+                speak(getWordData(currentSet.activeWords[currentCardIndex]).word, 1.0);
+            }, 300);
         }, 300);
     }
 }
 
-// === LEARN MODE ===
+// WL flashcard navigation
+function navigateWLFlashcard(direction) {
+    if (isAnimating) return;
+    var newIndex = currentCardIndex + direction;
+    if (newIndex >= 0 && newIndex < currentSet.activeWords.length) {
+        isAnimating = true;
+        var slider = document.getElementById('wlCardSlider');
+        var card = document.getElementById('wlFlashcard');
+        card.classList.remove('flipped');
+        slider.style.transition = 'transform 0.3s ease-in, opacity 0.2s ease-in';
+        slider.style.transform = direction === 1 ? 'translateX(-120%)' : 'translateX(120%)';
+        slider.style.opacity = '0';
+        setTimeout(function() {
+            currentCardIndex = newIndex;
+            updateWLFlashcard();
+            slider.style.transition = 'none';
+            slider.style.transform = direction === 1 ? 'translateX(120%)' : 'translateX(-120%)';
+            slider.offsetHeight;
+            slider.style.transition = 'transform 0.3s ease-out, opacity 0.2s ease-out';
+            slider.style.transform = 'translateX(0)';
+            slider.style.opacity = '1';
+            setTimeout(function() {
+                isAnimating = false;
+                speak(getWordData(currentSet.activeWords[currentCardIndex]).word, 1.0);
+            }, 300);
+        }, 300);
+    }
+}
+
+// ═══════════════════════════════════
+// LEARN MODE
+// ═══════════════════════════════════
 function startLearnMode() {
     learnIndex = 0; learnStep = 1; learnMistakes = 0;
     updateLearnProgress(); renderLearnStep();
@@ -370,383 +408,682 @@ function startLearnMode() {
 }
 
 function updateLearnProgress() {
-    const percent = ((learnIndex) / currentTopic.activeWords.length) * 100;
-    document.getElementById('learnProgressBar').style.width = `${percent}%`;
+    var percent = (learnIndex / currentSet.activeWords.length) * 100;
+    document.getElementById('learnProgressBar').style.width = percent + '%';
 }
 
 function renderLearnStep() {
-    const w = getWordData(currentTopic.activeWords[learnIndex]);
-    const area = document.getElementById('learnContentArea');
-    let html = '';
+    var w = getWordData(currentSet.activeWords[learnIndex]);
+    var area = document.getElementById('learnContentArea');
+    var html = '';
+    var safeWord = escapeHtml(w.word).replace(/'/g, "\\'");
 
     if (learnStep === 1) {
         speak(w.word, 1.0);
-        html = `
-            <div class="flashcard-wrapper mb-8">
-                <div class="border-btn-group">
-                    <button class="border-btn speaker" onclick="event.stopPropagation(); speak('${w.word}', 1.0)">🔊</button>
-                    <button class="border-btn snail" onclick="event.stopPropagation(); speak('${w.word}', 0.6)">🐌</button>
-                </div>
-                <div class="card-container">
-                    <div class="card" onclick="playSound('flip'); this.classList.toggle('flipped')">
-                        <div class="card-face card-front flex flex-col justify-center">
-                            <h2 class="font-display text-3xl font-bold neon-text-cyan text-center">${w.word}</h2>
-                            <p class="text-[var(--text-muted)] mt-6 text-sm italic">${w.definition}</p>
-                        </div>
-                        <div class="card-face card-back flex flex-col justify-center">
-                            <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2">${w.word}</h2>
-                            <p class="text-[var(--neon-cyan)] text-xs mb-4">${w.pron}</p>
-                            <p class="text-sm neon-text-green mb-4">${w.vietnamese} (${w.pos})</p>
-                            <p class="text-base text-center">${w.definition}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col items-center gap-3 w-full">
-                <button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width: 200px;">CONTINUE</button>
-                <button class="underline-btn" onclick="skipWord()">I already know this word</button>
-            </div>`;
+        html = '<div class="flashcard-wrapper mb-8">' +
+            '<div class="border-btn-group">' +
+                '<button class="border-btn speaker" onclick="event.stopPropagation(); speak(\'' + safeWord + '\', 1.0)">🔊</button>' +
+                '<button class="border-btn snail" onclick="event.stopPropagation(); speak(\'' + safeWord + '\', 0.6)">🐌</button>' +
+            '</div>' +
+            '<div class="card-container">' +
+                '<div class="card" onclick="playSound(\'flip\'); this.classList.toggle(\'flipped\')">' +
+                    '<div class="card-face card-front flex flex-col justify-center">' +
+                        '<h2 class="font-display text-3xl font-bold neon-text-cyan text-center">' + escapeHtml(w.word) + '</h2>' +
+                        '<p class="text-[var(--text-muted)] mt-6 text-sm italic">' + escapeHtml(w.definition || '') + '</p>' +
+                    '</div>' +
+                    '<div class="card-face card-back flex flex-col justify-center">' +
+                        '<h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2">' + escapeHtml(w.word) + '</h2>' +
+                        '<p class="text-xs mb-4" style="color: var(--blue)">' + escapeHtml(w.pron || '') + '</p>' +
+                        '<p class="text-sm neon-text-green mb-4">' + escapeHtml(w.vietnamese || '') + ' (' + (w.pos || '') + ')</p>' +
+                        '<p class="text-base text-center">' + escapeHtml(w.definition || '') + '</p>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+        '<div class="flex flex-col items-center gap-3 w-full">' +
+            '<button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width:200px">CONTINUE</button>' +
+            '<button class="underline-btn" onclick="skipWord()">I already know this word</button>' +
+        '</div>';
     } else if (learnStep === 2) {
         speak(w.word, 1.0);
-        html = `
-            <div class="text-center mb-6 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Listen and rewrite</h2></div>
-            <div class="flex gap-4 mb-8">
-                <button class="border-btn speaker" onclick="speak('${w.word}', 1.0)">🔊</button>
-                <button class="border-btn snail" onclick="speak('${w.word}', 0.6)">🐌</button>
-            </div>
-            <input type="text" id="learnInput" class="mb-6" placeholder="Type what you hear" style="max-width: 300px;">
-            <button class="nav-btn" onclick="checkLearn(2)" style="width: 150px;">CHECK</button>`;
+        html = '<div class="text-center mb-6 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Listen and rewrite</h2></div>' +
+            '<div class="flex gap-4 mb-8">' +
+                '<button class="border-btn speaker" onclick="speak(\'' + safeWord + '\', 1.0)">🔊</button>' +
+                '<button class="border-btn snail" onclick="speak(\'' + safeWord + '\', 0.6)">🐌</button>' +
+            '</div>' +
+            '<input type="text" id="learnInput" class="mb-6" placeholder="Type what you hear" style="max-width:300px">' +
+            '<button class="nav-btn" onclick="checkLearn(2)" style="width:150px">CHECK</button>';
     } else if (learnStep === 3) {
         speak(w.word, 1.0);
-        let wordArr = w.word.split(''); let indices = [];
-        let hintCount = w.word.length <= 5 ? 1 : (w.word.length <= 8 ? 2 : 3);
-        while(indices.length < hintCount){ let rand = Math.floor(Math.random() * wordArr.length); if(wordArr[rand] !== ' ' && indices.indexOf(rand) === -1) indices.push(rand); }
-        let displayHtml = wordArr.map((char, i) => {
-            if (char === ' ') return `<div class="hint-letter" style="border:none; width:10px;"></div>`;
-            if (indices.includes(i)) return `<div class="hint-letter revealed">${char.toUpperCase()}</div>`;
-            return `<div class="hint-letter"></div>`;
+        var wordArr = w.word.split('');
+        var indices = [];
+        var hintCount = w.word.length <= 5 ? 1 : (w.word.length <= 8 ? 2 : 3);
+        while (indices.length < hintCount) {
+            var rand = Math.floor(Math.random() * wordArr.length);
+            if (wordArr[rand] !== ' ' && indices.indexOf(rand) === -1) indices.push(rand);
+        }
+        var displayHtml = wordArr.map(function(ch, i) {
+            if (ch === ' ') return '<div class="hint-letter" style="border:none;width:10px"></div>';
+            if (indices.indexOf(i) !== -1) return '<div class="hint-letter revealed">' + ch.toUpperCase() + '</div>';
+            return '<div class="hint-letter"></div>';
         }).join('');
-        const hintWidth = (w.word.length * 25) + ((w.word.length - 1) * 8);
-        html = `
-            <div class="text-center mb-4 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Fill in the word</h2></div>
-            <button class="border-btn speaker mb-4" onclick="speak('${w.word}', 1.0)" style="position:relative; top:0; left:0;">🔊</button>
-            <p class="text-lg text-center mb-4 neon-text-green">${w.vietnamese}</p>
-            <div class="hint-display mb-6">${displayHtml}</div>
-            <input type="text" id="learnInput" class="mb-6" placeholder="Type the word" style="width: ${hintWidth}px; max-width: 100%;">
-            <button class="nav-btn" onclick="checkLearn(3)" style="width: 150px;">CHECK</button>`;
+        html = '<div class="text-center mb-4 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Fill in the word</h2></div>' +
+            '<button class="border-btn speaker mb-4" onclick="speak(\'' + safeWord + '\', 1.0)" style="position:relative">🔊</button>' +
+            '<p class="text-lg text-center mb-4 neon-text-green">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<div class="hint-display mb-6">' + displayHtml + '</div>' +
+            '<input type="text" id="learnInput" class="mb-6" placeholder="Type the word" style="max-width:300px">' +
+            '<button class="nav-btn" onclick="checkLearn(3)" style="width:150px">CHECK</button>';
     }
     area.innerHTML = html;
-    const input = document.getElementById('learnInput');
-    if(input) input.focus();
+    var input = document.getElementById('learnInput');
+    if (input) input.focus();
 }
 
 function nextLearnStep() {
     learnStep++;
-    if(learnStep > 3) {
+    if (learnStep > 3) {
         learnStep = 1; learnIndex++; updateLearnProgress();
-        if(learnIndex >= currentTopic.activeWords.length) { showLearnComplete(); return; }
+        if (learnIndex >= currentSet.activeWords.length) { showLearnComplete(); return; }
     }
     renderLearnStep();
 }
 
 function skipWord() {
-    learnIndex++; learnMistakes = 999; updateLearnProgress();
-    if (learnIndex >= currentTopic.activeWords.length) showLearnComplete();
+    learnIndex++; updateLearnProgress();
+    if (learnIndex >= currentSet.activeWords.length) showLearnComplete();
     else { learnStep = 1; learnMistakes = 0; renderLearnStep(); }
 }
 
 function showLearnComplete() {
-    const area = document.getElementById('learnContentArea');
-    area.innerHTML = `<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2><p class="text-xl mb-8">You finished the lesson!</p><button class="nav-btn" onclick="exitConfirmed(switchView.bind(null, flashcardView))">BACK TO CARDS</button>`;
+    var area = document.getElementById('learnContentArea');
+    area.innerHTML = '<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2>' +
+        '<p class="text-xl mb-8">You finished the lesson!</p>' +
+        '<button class="nav-btn" onclick="exitConfirmed(function(){ switchView(wordListView); })">BACK</button>';
     playSound('win');
 }
 
 function checkLearn(step) {
-    const input = document.getElementById('learnInput');
-    const w = getWordData(currentTopic.activeWords[learnIndex]);
-    const success = input.value.trim().toLowerCase() === w.word.toLowerCase();
+    var input = document.getElementById('learnInput');
+    var w = getWordData(currentSet.activeWords[learnIndex]);
+    var success = input.value.trim().toLowerCase() === w.word.toLowerCase();
     input.blur();
-    if(!success) learnMistakes++;
-    if(success) saveProgress(w.word, { learned: true });
+    if (!success) learnMistakes++;
+    if (success) saveProgress(w.word, { learned: true });
     showResultPanel(success, w);
 }
 
 function showResultPanel(success, wordData) {
-    const panel = document.getElementById('resultPanel');
-    const icon = document.getElementById('resultIcon');
-    const term = document.getElementById('resultTerm');
-    const pron = document.getElementById('resultPron');
-    const trans = document.getElementById('resultTrans');
-    const def = document.getElementById('resultDef');
-    
-    if(success) { playSound('correct'); icon.textContent = "✔️"; icon.className = "text-2xl mb-2 neon-text-green"; }
-    else { playSound('wrong'); icon.textContent = "❌"; icon.className = "text-2xl mb-2 neon-text-red"; }
-    
+    var panel = document.getElementById('resultPanel');
+    var icon = document.getElementById('resultIcon');
+    var term = document.getElementById('resultTerm');
+    var pron = document.getElementById('resultPron');
+    var trans = document.getElementById('resultTrans');
+    var def = document.getElementById('resultDef');
+    if (success) { playSound('correct'); icon.textContent = '✔️'; icon.className = 'text-2xl mb-2 neon-text-green'; }
+    else { playSound('wrong'); icon.textContent = '❌'; icon.className = 'text-2xl mb-2 neon-text-red'; }
     term.textContent = wordData.word;
-    pron.textContent = wordData.pron;
-    trans.textContent = `${wordData.vietnamese} (${wordData.pos})`;
-    def.textContent = wordData.definition;
+    pron.textContent = wordData.pron || '';
+    trans.textContent = (wordData.vietnamese || '') + ' (' + (wordData.pos || '') + ')';
+    def.textContent = wordData.definition || '';
     panel.style.transform = 'translateY(0)';
 }
-
 function closeResultPanel() { document.getElementById('resultPanel').style.transform = 'translateY(100%)'; }
 
-// === HANGMAN LOGIC ===
-function renderKeyboard() {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-    const keyboard = document.getElementById('keyboard');
-    keyboard.innerHTML = letters.map(letter => `<button class="keyboard-btn" data-letter="${letter}">${letter}</button>`).join('');
-    keyboard.querySelectorAll('.keyboard-btn').forEach(btn => { btn.addEventListener('click', () => handleGuess(btn.dataset.letter)); });
+// ═══════════════════════════════════
+// TEST MODE
+// ═══════════════════════════════════
+function openTestSettings() {
+    document.getElementById('testSettingsCourse').textContent = currentSet.title;
+    var maxQ = currentSet.words.length;
+    document.getElementById('testMaxLabel').textContent = '(max ' + maxQ + ')';
+    var countInput = document.getElementById('testQuestionCount');
+    countInput.max = maxQ;
+    if (parseInt(countInput.value) > maxQ) countInput.value = maxQ;
+    switchView(testSettingsView);
 }
 
-function startHangmanGame(topicId) {
-    if (topicId) { const topic = topicsData.find(t => t.id === topicId); gameWords = topic.words.map(getWordData); document.getElementById('hangmanTitle').textContent = topic.title.toUpperCase(); }
-    else { gameWords = Object.keys(dictionary).map(getWordData); document.getElementById('hangmanTitle').textContent = "MASTER CHALLENGE"; }
-    guessedLetters = []; wrongGuesses = 0; gameOver = false; hangmanStreak = 0; previousWord = null;
-    document.getElementById('streakCount').textContent = '0';
-    renderKeyboard();      // ← MUST come before nextHangmanWord()
-    nextHangmanWord();
-    switchView(hangmanView, true);
+function startTest() {
+    var qCount = parseInt(document.getElementById('testQuestionCount').value) || 20;
+    var maxQ = currentSet.words.length;
+    if (qCount > maxQ) qCount = maxQ;
+    if (qCount < 1) qCount = 1;
+
+    testConfig = {
+        count: qCount,
+        instantFeedback: document.getElementById('testInstantFeedback').checked,
+        trueFalse: document.getElementById('testTrueFalse').checked,
+        multipleChoice: document.getElementById('testMultipleChoice').checked,
+        fillIn: document.getElementById('testFillIn').checked,
+        written: document.getElementById('testWritten').checked
+    };
+
+    // Must have at least one type enabled
+    if (!testConfig.trueFalse && !testConfig.multipleChoice && !testConfig.fillIn && !testConfig.written) {
+        testConfig.trueFalse = true;
+    }
+
+    // Generate questions
+    var enabledTypes = [];
+    if (testConfig.trueFalse) enabledTypes.push('tf');
+    if (testConfig.multipleChoice) enabledTypes.push('mc');
+    if (testConfig.fillIn) enabledTypes.push('fillin');
+    if (testConfig.written) enabledTypes.push('written');
+
+    var wordPool = shuffle(currentSet.words.slice()).slice(0, qCount);
+    testQuestions = wordPool.map(function(wordId, idx) {
+        var type = enabledTypes[idx % enabledTypes.length];
+        return { wordId: wordId, type: type };
+    });
+    testQuestions = shuffle(testQuestions);
+
+    testIndex = 0;
+    testScore = 0;
+    testAnswers = [];
+    renderTestQuestion();
+    switchView(testView, true);
 }
 
-function nextHangmanWord() {
-    let pool = gameWords.filter(w => w.word !== previousWord?.word);
-    if(pool.length === 0) pool = gameWords;
-    hangmanWord = pool[Math.floor(Math.random() * pool.length)];
-    previousWord = hangmanWord;
-    guessedLetters = []; wrongGuesses = 0;
-    updateHangmanVisuals(); updateWordDisplay();
-    document.getElementById('hangmanHint').textContent = `"${hangmanWord.definition}"`;
-    document.getElementById('livesCount').textContent = 6;
-    document.getElementById('gameResult').classList.add('hidden');
-    document.querySelectorAll('.keyboard-btn').forEach(btn => { btn.disabled = false; btn.classList.remove('correct', 'wrong'); });
+function renderTestQuestion() {
+    if (testIndex >= testQuestions.length) { showTestResults(); return; }
+    var q = testQuestions[testIndex];
+    var w = getWordData(q.wordId);
+    var area = document.getElementById('testContentArea');
+    document.getElementById('testProgressText').textContent = (testIndex + 1) + ' / ' + testQuestions.length;
+    document.getElementById('testProgressBar').style.width = ((testIndex + 1) / testQuestions.length * 100) + '%';
+
+    var html = '';
+    if (q.type === 'tf') {
+        // True/False: show Vietnamese + English pair, sometimes correct sometimes wrong
+        var isCorrectPair = Math.random() > 0.5;
+        var displayWord = w;
+        if (!isCorrectPair) {
+            var others = currentSet.words.filter(function(id) { return id !== q.wordId; });
+            if (others.length > 0) {
+                var randomOther = others[Math.floor(Math.random() * others.length)];
+                displayWord = getWordData(randomOther);
+            } else { isCorrectPair = true; }
+        }
+        q._correctAnswer = isCorrectPair ? 'true' : 'false';
+        html = '<div class="test-question-area">' +
+            '<p class="test-label">Definition</p>' +
+            '<p class="test-definition">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<p class="test-label mt-4">Term</p>' +
+            '<p class="test-term">' + escapeHtml(displayWord.word) + '</p>' +
+            '<p class="test-label mt-6">Choose the answer</p>' +
+            '<div class="test-options-col">' +
+                '<button class="test-option-btn" onclick="answerTest(this, \'true\', \'' + q._correctAnswer + '\')">True</button>' +
+                '<button class="test-option-btn" onclick="answerTest(this, \'false\', \'' + q._correctAnswer + '\')">False</button>' +
+            '</div>' +
+        '</div>';
+    } else if (q.type === 'mc') {
+        // Multiple Choice: Vietnamese prompt, 4 English word options
+        var options = [w.word];
+        var distractors = currentSet.words.filter(function(id) { return id !== q.wordId; });
+        distractors = shuffle(distractors).slice(0, 3);
+        distractors.forEach(function(d) { options.push(d); });
+        options = shuffle(options);
+        q._correctAnswer = w.word;
+        html = '<div class="test-question-area">' +
+            '<p class="test-definition">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<p class="test-label mt-4">Choose the answer</p>' +
+            '<div class="test-options-col">' +
+                options.map(function(opt) {
+                    return '<button class="test-option-btn" onclick="answerTest(this, \'' + escapeHtml(opt).replace(/'/g, "\\'") + '\', \'' + escapeHtml(w.word).replace(/'/g, "\\'") + '\')">' + escapeHtml(opt) + '</button>';
+                }).join('') +
+            '</div>' +
+        '</div>';
+    } else if (q.type === 'fillin') {
+        // Fill-in: example with blank, 4 MC options
+        var example = w.example || 'The ___ is important.';
+        var blankedExample = example.replace(new RegExp(w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '___');
+        var options2 = [w.word];
+        var dist2 = shuffle(currentSet.words.filter(function(id) { return id !== q.wordId; })).slice(0, 3);
+        dist2.forEach(function(d) { options2.push(d); });
+        options2 = shuffle(options2);
+        q._correctAnswer = w.word;
+        html = '<div class="test-question-area">' +
+            '<p class="test-definition" style="font-style:italic">"' + escapeHtml(blankedExample) + '"</p>' +
+            '<p class="test-label mt-4">Choose the answer</p>' +
+            '<div class="test-options-col">' +
+                options2.map(function(opt) {
+                    return '<button class="test-option-btn" onclick="answerTest(this, \'' + escapeHtml(opt).replace(/'/g, "\\'") + '\', \'' + escapeHtml(w.word).replace(/'/g, "\\'") + '\')">' + escapeHtml(opt) + '</button>';
+                }).join('') +
+            '</div>' +
+        '</div>';
+    } else if (q.type === 'written') {
+        // Written: Vietnamese prompt, type English answer
+        q._correctAnswer = w.word;
+        html = '<div class="test-question-area">' +
+            '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<p class="test-label mt-6">Your answer</p>' +
+            '<div class="test-written-input-wrap">' +
+                '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
+                '<button class="test-dont-know" onclick="answerTestWritten(null)">Don\'t know?</button>' +
+            '</div>' +
+            '<button class="primary-btn mt-4" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
+        '</div>';
+    }
+    area.innerHTML = html;
+    var writtenInput = document.getElementById('testWrittenInput');
+    if (writtenInput) writtenInput.focus();
 }
 
-function handleGuess(letter) {
-    if (gameOver || guessedLetters.includes(letter)) return;
-    guessedLetters.push(letter);
-    const btn = document.querySelector(`[data-letter="${letter}"]`);
-    if (hangmanWord.word.includes(letter)) {
-        playSound('correct'); btn.classList.add('correct'); btn.disabled = true; updateWordDisplay(); checkWin();
+function answerTest(btn, selected, correct) {
+    var isCorrect = selected === correct;
+    var buttons = btn.parentElement.querySelectorAll('.test-option-btn');
+    buttons.forEach(function(b) {
+        b.disabled = true;
+        b.onclick = null;
+        if (b.textContent === correct || b.innerText === correct) b.classList.add('correct');
+    });
+    if (!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); }
+    else { playSound('correct'); testScore++; }
+
+    testAnswers.push({ wordId: testQuestions[testIndex].wordId, correct: isCorrect, type: testQuestions[testIndex].type });
+
+    if (testConfig.instantFeedback) {
+        // Show feedback briefly then advance
+        setTimeout(function() { testIndex++; renderTestQuestion(); }, 1200);
     } else {
-        playSound('wrong'); btn.classList.add('wrong'); btn.disabled = true; wrongGuesses++;
-        document.getElementById('livesCount').textContent = 6 - wrongGuesses; updateHangmanVisuals(); checkLose();
+        setTimeout(function() { testIndex++; renderTestQuestion(); }, 800);
     }
 }
 
-function updateWordDisplay() {
-    const word = hangmanWord.word;
-    let html = '';
-    for (let char of word) {
-        if (char === ' ' || char === '-') html += `<div class="mx-2"></div>`;
-        else if (guessedLetters.includes(char)) html += `<div class="word-letter-box">${char}</div>`;
-        else html += `<div class="word-letter-box"></div>`;
-    }
-    document.getElementById('wordDisplay').innerHTML = html;
-}
+function answerTestWritten(value) {
+    var q = testQuestions[testIndex];
+    var w = getWordData(q.wordId);
+    var isCorrect = value !== null && value.trim().toLowerCase() === w.word.toLowerCase();
+    if (isCorrect) { playSound('correct'); testScore++; }
+    else { playSound('wrong'); }
 
-function updateHangmanVisuals() {
-    const parts = ['hm-head', 'hm-body', 'hm-leftArm', 'hm-rightArm', 'hm-leftLeg', 'hm-rightLeg'];
-    parts.forEach((id, index) => { const el = document.getElementById(id); if (el) { if (index < wrongGuesses) el.classList.add('show'); else el.classList.remove('show'); } });
-}
+    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: 'written' });
 
-function checkWin() {
-    const allGuessed = hangmanWord.word.split('').every(char => char === ' ' || char === '-' || guessedLetters.includes(char));
-    if (allGuessed) {
-        gameOver = true; hangmanStreak++; document.getElementById('streakCount').textContent = hangmanStreak; playSound('win');
-        document.getElementById('resultText').textContent = "EXCELLENT!"; document.getElementById('resultText').className = "font-display text-2xl font-bold mb-2 neon-text-green";
-        document.getElementById('gameResult').classList.remove('hidden');
+    if (testConfig.instantFeedback) {
+        var area = document.getElementById('testContentArea');
+        var feedbackHtml = '<div class="test-question-area text-center">' +
+            '<div class="text-4xl mb-4">' + (isCorrect ? '✅' : '❌') + '</div>' +
+            '<p class="test-term">' + escapeHtml(w.word) + '</p>' +
+            '<p class="test-definition mt-2">' + escapeHtml(w.vietnamese || '') + '</p>' +
+        '</div>';
+        area.innerHTML = feedbackHtml;
+        setTimeout(function() { testIndex++; renderTestQuestion(); }, 1500);
+    } else {
+        setTimeout(function() { testIndex++; renderTestQuestion(); }, 500);
     }
 }
 
-function checkLose() {
-    if (wrongGuesses >= 6) {
-        gameOver = true; hangmanStreak = 0; document.getElementById('streakCount').textContent = hangmanStreak; playSound('lose');
-        document.getElementById('resultText').textContent = `GAME OVER! Word: ${hangmanWord.word}`; document.getElementById('resultText').className = "font-display text-2xl font-bold mb-2 neon-text-red";
-        document.getElementById('gameResult').classList.remove('hidden');
+function showTestResults() {
+    var area = document.getElementById('testContentArea');
+    var pct = Math.round((testScore / testQuestions.length) * 100);
+    var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
+    area.innerHTML = '<div class="flex flex-col items-center justify-center h-full">' +
+        '<div class="text-6xl mb-4">' + emoji + '</div>' +
+        '<h2 class="font-display text-2xl font-bold neon-text-green mb-2">Test Complete!</h2>' +
+        '<p class="text-3xl font-bold mb-2" style="color:var(--text)">' + testScore + ' / ' + testQuestions.length + '</p>' +
+        '<p class="text-sm mb-6" style="color:var(--text-muted)">' + pct + '% correct</p>' +
+        '<div class="flex flex-col gap-3 w-full" style="max-width:300px">' +
+            '<button class="primary-btn w-full" onclick="startTest()">Try Again</button>' +
+            '<button class="nav-btn w-full" onclick="switchView(wordListView)">Back to Set</button>' +
+        '</div>' +
+    '</div>';
+    playSound('win');
+}
+
+// ═══════════════════════════════════
+// MATCH GAME
+// ═══════════════════════════════════
+function startMatch() {
+    // Pick 6 random words
+    var pool = shuffle(currentSet.words.slice()).slice(0, 6);
+    matchWords = pool;
+    matchCards = [];
+    pool.forEach(function(wordId) {
+        var w = getWordData(wordId);
+        matchCards.push({ id: wordId + '_en', pairId: wordId, text: w.word, type: 'en' });
+        matchCards.push({ id: wordId + '_vi', pairId: wordId, text: w.vietnamese || '', type: 'vi' });
+    });
+    matchCards = shuffle(matchCards);
+    matchSelected = null;
+    matchWrong = 0;
+    matchPairs = 0;
+    matchStartTime = Date.now();
+
+    renderMatchGrid();
+    startMatchTimer();
+    switchView(matchView, true);
+}
+
+function renderMatchGrid() {
+    var grid = document.getElementById('matchGrid');
+    var html = '';
+    matchCards.forEach(function(card, idx) {
+        html += '<div class="match-card" data-idx="' + idx + '" onclick="selectMatchCard(' + idx + ')">' +
+            '<span class="match-card-text">' + escapeHtml(card.text) + '</span>' +
+        '</div>';
+    });
+    grid.innerHTML = html;
+}
+
+function startMatchTimer() {
+    var timerEl = document.getElementById('matchTimer');
+    if (matchTimerInterval) clearInterval(matchTimerInterval);
+    matchTimerInterval = setInterval(function() {
+        var elapsed = ((Date.now() - matchStartTime) / 1000).toFixed(1);
+        timerEl.textContent = elapsed + ' seconds';
+    }, 100);
+}
+
+function selectMatchCard(idx) {
+    var cardEl = document.querySelector('.match-card[data-idx="' + idx + '"]');
+    if (!cardEl || cardEl.classList.contains('matched') || cardEl.classList.contains('selected')) return;
+
+    if (matchSelected === null) {
+        // First selection
+        matchSelected = idx;
+        cardEl.classList.add('selected');
+    } else {
+        // Second selection
+        var firstIdx = matchSelected;
+        var firstEl = document.querySelector('.match-card[data-idx="' + firstIdx + '"]');
+        cardEl.classList.add('selected');
+
+        var card1 = matchCards[firstIdx];
+        var card2 = matchCards[idx];
+
+        if (card1.pairId === card2.pairId && card1.type !== card2.type) {
+            // Match found!
+            playSound('correct');
+            setTimeout(function() {
+                firstEl.classList.add('matched');
+                cardEl.classList.add('matched');
+                firstEl.classList.remove('selected');
+                cardEl.classList.remove('selected');
+                matchPairs++;
+                if (matchPairs >= matchWords.length) {
+                    // Game complete
+                    clearInterval(matchTimerInterval);
+                    setTimeout(function() { showMatchResults(); }, 500);
+                }
+            }, 300);
+        } else {
+            // No match
+            matchWrong++;
+            playSound('wrong');
+            setTimeout(function() {
+                firstEl.classList.remove('selected');
+                cardEl.classList.remove('selected');
+            }, 600);
+        }
+        matchSelected = null;
     }
 }
 
-// === QUIZ LOGIC ===
-function startQuiz() {
-    quizIndex = 0; quizScore = 0; quizQuestions = currentTopic.words.map(getWordData).sort(() => Math.random() - 0.5); renderQuiz();
-    switchView(quizView, true);
+function showMatchResults() {
+    var elapsed = ((Date.now() - matchStartTime) / 1000).toFixed(1);
+    document.getElementById('matchResultTime').textContent = elapsed + 's';
+    document.getElementById('matchResultWrong').textContent = matchWrong;
+    switchView(matchResultView);
 }
 
-function renderQuiz() {
-    const q = quizQuestions[quizIndex];
-    const area = document.getElementById('quizContentArea');
-    document.getElementById('quizProgressText').textContent = `${quizIndex+1}/${quizQuestions.length}`;
-    let options = [q.definition];
-    let distractors = currentTopic.words.filter(id => id !== q.word).sort(() => Math.random() - 0.5).slice(0, 3).map(getWordData);
-    distractors.forEach(d => options.push(d.definition)); options.sort(() => Math.random() - 0.5);
-    area.innerHTML = `
-        <h2 class="font-display text-xl text-center mb-8 neon-text-cyan">What is the meaning?</h2>
-        <div class="flashcard-wrapper mb-8" style="height: 100px;">
-             <div class="card-face card-front flex flex-col justify-center" style="transform: none; position: relative; width:100%; height:100%;">
-                <h2 class="font-display text-2xl font-bold neon-text-cyan text-center">${q.word}</h2>
-             </div>
-        </div>
-        <div class="w-full flex flex-col gap-3" id="quizOptions">
-            ${options.map((opt, i) => `<button class="quiz-option" onclick="checkQuiz(this, '${opt.replace(/'/g, "\\'")}', '${q.definition.replace(/'/g, "\\'")}')">${i+1}. ${opt}</button>`).join('')}
-        </div>`;
-    speak(q.word, 1.0);
+// ═══════════════════════════════════
+// COMPACT LIST VIEW
+// ═══════════════════════════════════
+function renderCompactList() {
+    var container = document.getElementById('compactListContainer');
+    document.getElementById('compactListTitle').textContent = currentSet.title.toUpperCase();
+    document.getElementById('compactListCount').textContent = currentSet.sortedWords.length;
+    var html = '<div class="flex flex-col gap-1 mx-auto w-full" style="max-width:450px">';
+    currentSet.sortedWords.forEach(function(wordId, index) {
+        var wData = getWordData(wordId);
+        var favIcon = wData.isFavorite ? '<span class="neon-text-cyan mt-1">★</span>' : '';
+        var knownClass = wData.isKnown ? 'known-btn active' : 'known-btn';
+        html += '<div class="p-3 rounded-lg flex items-center justify-between hover:bg-[rgba(255,255,255,0.05)] cursor-pointer transition-colors w-full" onclick="toggleTranslation(' + index + ')">' +
+            '<div class="flex-1 flex items-start">' +
+                '<span class="text-[var(--text-muted)] mr-3 font-display w-6 text-right mt-1">' + (index+1) + '.</span>' +
+                '<div class="flex flex-col flex-1">' +
+                    '<div class="flex items-baseline gap-2">' +
+                        '<span class="font-display font-bold neon-text-magenta text-lg">' + escapeHtml(wData.word) + '</span>' +
+                        '<span class="text-xs text-[var(--text-muted)] opacity-70">' + escapeHtml(wData.pron || '') + '</span>' +
+                    '</div>' +
+                    '<p class="text-sm neon-text-green max-h-0 overflow-hidden transition-all duration-300 opacity-0" id="listTrans_' + index + '" style="margin-top:0px">' + escapeHtml(wData.vietnamese || '') + '</p>' +
+                '</div>' +
+            '</div>' +
+            '<div class="flex gap-4 text-2xl items-center justify-center min-w-[60px]">' +
+                favIcon +
+                '<button class="' + knownClass + '" onclick="event.stopPropagation(); toggleKnown(\'' + escapeHtml(wordId).replace(/'/g, "\\'") + '\', this)" title="Toggle Known">🎓</button>' +
+            '</div>' +
+        '</div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    switchView(compactListView);
 }
 
-function checkQuiz(btn, selected, correct) {
-    const buttons = document.querySelectorAll('.quiz-option');
-    const isCorrect = selected === correct;
-    buttons.forEach(b => { b.disabled = true; b.onclick = null; if(b.innerText.includes(correct)) b.classList.add('correct'); });
-    if(!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); } else { playSound('correct'); }
-    
-    const w = quizQuestions[quizIndex];
-    if(isCorrect) {
-        const newCount = (w.quizCorrectCount || 0) + 1;
-        const updates = { quizCorrectCount: newCount };
-        if(newCount >= 2) updates.learned = true;
-        saveProgress(w.word, updates);
-        quizScore++;
+function toggleTranslation(index) {
+    var el = document.getElementById('listTrans_' + index);
+    if (el) {
+        if (el.style.maxHeight === '50px' || el.style.opacity === '1') {
+            el.style.maxHeight = '0px'; el.style.opacity = '0'; el.style.marginTop = '0px';
+        } else {
+            el.style.maxHeight = '50px'; el.style.opacity = '1'; el.style.marginTop = '4px';
+        }
     }
-    
-    setTimeout(() => {
-        quizIndex++;
-        if(quizIndex < quizQuestions.length) renderQuiz();
-        else { playSound('win'); document.getElementById('quizContentArea').innerHTML = `<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2><p class="text-xl mb-8">Score: ${quizScore}/${quizQuestions.length}</p><button class="nav-btn" onclick="startQuiz()">TRY AGAIN</button>`; }
-    }, 1500);
 }
 
-// === EXIT LOGIC ===
+function toggleKnown(wordId, btn) {
+    var wData = getWordData(wordId);
+    var newState = !wData.isKnown;
+    saveProgress(wordId, { isKnown: newState });
+    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    if (btn) { if (newState) btn.classList.add('active'); else btn.classList.remove('active'); }
+}
+
+// ═══════════════════════════════════
+// EXIT LOGIC
+// ═══════════════════════════════════
 function requestExit(callback) { playSound('alert'); pendingExitCallback = callback; confirmPanel.classList.add('show'); }
-function exitConfirmed(callback) { playSound('slide'); confirmPanel.classList.remove('show'); closeResultPanel(); if(callback) callback(); }
+function exitConfirmed(callback) { playSound('slide'); confirmPanel.classList.remove('show'); closeResultPanel(); if (callback) callback(); }
 function cancelExit() { playSound('slide'); confirmPanel.classList.remove('show'); pendingExitCallback = null; }
 
-// === HELPERS ===
-function speak(text, rate) { if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = rate; window.speechSynthesis.speak(utterance); } }
-
-// === EVENT LISTENERS ===
-function setupEventListeners() {
-    document.getElementById('backToTopicsBtn').addEventListener('click', () => { playSound('slide'); switchView(topicView); });
-    document.querySelectorAll('.exit-learn-btn').forEach(b => b.addEventListener('click', () => requestExit(() => switchView(flashcardView))));
-    document.querySelectorAll('.exit-quiz-btn').forEach(b => b.addEventListener('click', () => requestExit(() => switchView(flashcardView))));
-    document.querySelectorAll('.exit-game-btn').forEach(b => b.addEventListener('click', () => { if(currentTopic) requestExit(() => switchView(flashcardView)); else requestExit(() => switchView(topicView)); }));
-    document.getElementById('confirmExitBtn').addEventListener('click', () => { if(pendingExitCallback) exitConfirmed(pendingExitCallback); });
-    document.getElementById('cancelExitBtn').addEventListener('click', cancelExit);
-    document.getElementById('flashcard').addEventListener('click', flipCard);
-    document.getElementById('prevBtn').addEventListener('click', () => navigateFlashcard(-1));
-    document.getElementById('nextBtn').addEventListener('click', () => navigateFlashcard(1));
-    document.getElementById('startLearnBtn').addEventListener('click', startLearnMode);
-    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
-    document.getElementById('playTopicGameBtn').addEventListener('click', () => startHangmanGame(currentTopic.id));
-    document.getElementById('resultContinueBtn').addEventListener('click', () => { closeResultPanel(); nextLearnStep(); });
-    document.getElementById('playAgainBtn').addEventListener('click', () => { startHangmanGame(currentTopic ? currentTopic.id : null); });
-    document.getElementById('showAllWordsBtn').addEventListener('click', renderCompactList);
-    document.getElementById('backFromListBtn').addEventListener('click', () => { playSound('slide'); switchView(flashcardView); });
-
-    // View Toggle Listeners
-    gridViewBtn.addEventListener('click', () => {
-        viewMode = 'grid';
-        gridViewBtn.classList.add('active');
-        listViewBtn.classList.remove('active');
-        renderTopics();
-    });
-
-    listViewBtn.addEventListener('click', () => {
-        viewMode = 'list';
-        listViewBtn.classList.add('active');
-        gridViewBtn.classList.remove('active');
-        renderTopics();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (!hangmanView.classList.contains('hidden-view')) { const key = e.key.toUpperCase(); if (/^[A-Z]$/.test(key)) handleGuess(key); }
-        if (!flashcardView.classList.contains('hidden-view')) { if (e.key === 'ArrowLeft') navigateFlashcard(-1); if (e.key === 'ArrowRight') navigateFlashcard(1); if (e.key === ' ') { e.preventDefault(); flipCard(); } }
-        if (!quizView.classList.contains('hidden-view')) { if (e.key >= '1' && e.key <= '4') { const idx = parseInt(e.key) - 1; const btns = document.querySelectorAll('.quiz-option'); if(btns[idx] && !btns[idx].disabled) btns[idx].click(); } }
-        
-        if (!learnView.classList.contains('hidden-view')) {
-            if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
-                 const checkBtn = document.querySelector('#learnContentArea .nav-btn:last-of-type');
-                 if(checkBtn) checkBtn.click();
-            }
-        }
-
-        if (e.key === ' ' || e.key === 'Enter') {
-            if (resultPanel.classList.contains('show')) { e.preventDefault(); closeResultPanel(); nextLearnStep(); }
-            else if (confirmPanel.classList.contains('show')) { e.preventDefault(); if(e.key === ' ') cancelExit(); }
-            else if (!learnView.classList.contains('hidden-view') && learnStep === 1 && !resultPanel.classList.contains('show')) {
-                e.preventDefault();
-                const continueBtn = document.getElementById('learnContinueBtn');
-                if(continueBtn) continueBtn.click();
-            }
-        }
-        if (e.key === 'Escape') { if (confirmPanel.classList.contains('show')) cancelExit(); }
-    });
-
-    // ── Touch swipe for flashcard navigation ──────────────────────
-    let touchStartX = 0;
-    let touchStartY = 0;
-    const cardSlider = document.getElementById('cardSlider');
-    cardSlider.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    cardSlider.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const dy = e.changedTouches[0].clientY - touchStartY;
-        // Only treat as horizontal swipe if mostly horizontal
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-            if (dx < 0) navigateFlashcard(1);   // swipe left  → next
-            else        navigateFlashcard(-1);   // swipe right → prev
-        }
-    }, { passive: true });
-}
-
-// Start the app
-init();
-
 // ═══════════════════════════════════
-// SETTINGS PANEL & THEME TOGGLE
+// SETTINGS & THEME
 // ═══════════════════════════════════
-const THEME_KEY = 'foxyVocabTheme';
+var THEME_KEY = 'foxyVocabTheme';
 
 function applyTheme(isDark) {
-    if (isDark) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-    }
-    const label = document.getElementById('themeLabel');
-    const icon  = document.getElementById('themeIcon');
+    if (isDark) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    var label = document.getElementById('themeLabel');
+    var icon = document.getElementById('themeIcon');
     if (label) label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
-    if (icon)  icon.textContent  = isDark ? '☀️' : '🌙';
+    if (icon) icon.textContent = isDark ? '☀️' : '🌙';
 }
 
 function toggleTheme() {
-    const isDark = document.documentElement.hasAttribute('data-theme');
-    const newDark = !isDark;
+    var isDark = document.documentElement.hasAttribute('data-theme');
+    var newDark = !isDark;
     localStorage.setItem(THEME_KEY, newDark ? 'dark' : 'light');
     applyTheme(newDark);
 }
 
-function openSettings() {
-    document.getElementById('settingsPanel').classList.add('show');
-}
+function openSettings() { document.getElementById('settingsPanel').classList.add('show'); }
+function closeSettings() { document.getElementById('settingsPanel').classList.remove('show'); }
 
-function closeSettings() {
-    document.getElementById('settingsPanel').classList.remove('show');
-}
+// ═══════════════════════════════════
+// INITIALIZATION
+// ═══════════════════════════════════
+function init() {
+    console.log('[FoxyVocab] init() called');
+    if (typeof coursesData === 'undefined' || typeof dictionary === 'undefined') {
+        console.error('[FoxyVocab] data.js not loaded!');
+        var errEl = document.getElementById('loadError');
+        if (errEl) errEl.style.display = 'block';
+        return;
+    }
+    console.log('[FoxyVocab] Data loaded OK:', Object.keys(dictionary).length, 'words,', coursesData.length, 'courses');
 
-// Apply saved theme immediately on load (prevents flash)
-(function () {
-    const saved = localStorage.getItem(THEME_KEY);
+    try { userProgress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { userProgress = {}; }
+
+    // Cache DOM refs
+    courseView = document.getElementById('courseView');
+    setView = document.getElementById('setView');
+    wordListView = document.getElementById('wordListView');
+    flashcardView = document.getElementById('flashcardView');
+    learnView = document.getElementById('learnView');
+    testSettingsView = document.getElementById('testSettingsView');
+    testView = document.getElementById('testView');
+    matchView = document.getElementById('matchView');
+    matchResultView = document.getElementById('matchResultView');
+    compactListView = document.getElementById('compactListView');
+    resultPanel = document.getElementById('resultPanel');
+    confirmPanel = document.getElementById('confirmPanel');
+
+    allViews = [courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchView, matchResultView, compactListView];
+
+    renderCourses();
+    setupEventListeners();
+
+    // Apply saved theme
+    var saved = localStorage.getItem(THEME_KEY);
     if (saved === 'dark') applyTheme(true);
-})();
+}
 
-// Wire up buttons
-document.getElementById('settingsBtn').addEventListener('click', openSettings);
-document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
-document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+function setupEventListeners() {
+    // Course → Set navigation
+    document.getElementById('backToCoursesBtn').addEventListener('click', function() { playSound('slide'); switchView(courseView); });
+    document.getElementById('backToSetsBtn').addEventListener('click', function() { playSound('slide'); switchView(setView); });
+    document.getElementById('backFromFlashcardBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
+    document.getElementById('backFromListBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
 
-// Close settings with Escape key
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeSettings();
-});
+    // Word List view actions
+    document.getElementById('btnFlashcard').addEventListener('click', openFlashcardView);
+    document.getElementById('btnLearn').addEventListener('click', startLearnMode);
+    document.getElementById('btnTest').addEventListener('click', openTestSettings);
+    document.getElementById('btnMatch').addEventListener('click', startMatch);
+
+    // WL flashcard interactions
+    document.getElementById('wlFlashcard').addEventListener('click', function() {
+        playSound('flip');
+        document.getElementById('wlFlashcard').classList.toggle('flipped');
+    });
+    document.getElementById('wlStarBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!currentSet || !currentSet.activeWords.length) return;
+        var wordId = currentSet.activeWords[currentCardIndex];
+        var wData = getWordData(wordId);
+        saveProgress(wordId, { isFavorite: !wData.isFavorite });
+        updateWLFlashcard();
+        playSound('flip');
+    });
+    document.getElementById('wlSpeakerBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 1.0);
+    });
+    document.getElementById('wlSnailBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
+    });
+
+    // WL flashcard swipe
+    var wlSlider = document.getElementById('wlCardSlider');
+    var wlTouchStartX = 0, wlTouchStartY = 0;
+    wlSlider.addEventListener('touchstart', function(e) { wlTouchStartX = e.touches[0].clientX; wlTouchStartY = e.touches[0].clientY; }, { passive: true });
+    wlSlider.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - wlTouchStartX;
+        var dy = e.changedTouches[0].clientY - wlTouchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            if (dx < 0) navigateWLFlashcard(1); else navigateWLFlashcard(-1);
+        }
+    }, { passive: true });
+
+    // Flashcard view interactions
+    document.getElementById('flashcard').addEventListener('click', flipCard);
+    document.getElementById('prevBtn').addEventListener('click', function() { navigateFlashcard(-1); });
+    document.getElementById('nextBtn').addEventListener('click', function() { navigateFlashcard(1); });
+    document.getElementById('starBtn').addEventListener('click', function(e) { e.stopPropagation(); toggleFavorite(); });
+    document.getElementById('transBtn').addEventListener('click', function(e) { e.stopPropagation(); toggleFrontTrans(); });
+    document.getElementById('fcSpeakerBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 1.0);
+    });
+    document.getElementById('fcSnailBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
+    });
+
+    // Flashcard swipe
+    var fcSlider = document.getElementById('cardSlider');
+    var fcTouchStartX = 0, fcTouchStartY = 0;
+    fcSlider.addEventListener('touchstart', function(e) { fcTouchStartX = e.touches[0].clientX; fcTouchStartY = e.touches[0].clientY; }, { passive: true });
+    fcSlider.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - fcTouchStartX;
+        var dy = e.changedTouches[0].clientY - fcTouchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            if (dx < 0) navigateFlashcard(1); else navigateFlashcard(-1);
+        }
+    }, { passive: true });
+
+    // Learn exit
+    document.querySelectorAll('.exit-learn-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { switchView(wordListView); }); }); });
+
+    // Test
+    document.getElementById('closeTestSettingsBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
+    document.getElementById('startTestBtn').addEventListener('click', startTest);
+    document.querySelectorAll('.exit-test-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { switchView(wordListView); }); }); });
+
+    // Match
+    document.querySelectorAll('.exit-match-btn').forEach(function(b) { b.addEventListener('click', function() {
+        clearInterval(matchTimerInterval);
+        switchView(wordListView);
+    }); });
+    document.getElementById('matchRetryBtn').addEventListener('click', startMatch);
+    document.getElementById('matchBackBtn').addEventListener('click', function() { switchView(wordListView); });
+
+    // Result & Confirm panels
+    document.getElementById('resultContinueBtn').addEventListener('click', function() { closeResultPanel(); nextLearnStep(); });
+    document.getElementById('confirmExitBtn').addEventListener('click', function() { if (pendingExitCallback) exitConfirmed(pendingExitCallback); });
+    document.getElementById('cancelExitBtn').addEventListener('click', cancelExit);
+
+    // Settings
+    document.getElementById('settingsBtn').addEventListener('click', openSettings);
+    document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (flashcardView && !flashcardView.classList.contains('hidden-view')) {
+            if (e.key === 'ArrowLeft') navigateFlashcard(-1);
+            if (e.key === 'ArrowRight') navigateFlashcard(1);
+            if (e.key === ' ') { e.preventDefault(); flipCard(); }
+        }
+        if (learnView && !learnView.classList.contains('hidden-view')) {
+            if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
+                var checkBtn = document.querySelector('#learnContentArea .nav-btn:last-of-type');
+                if (checkBtn) checkBtn.click();
+            }
+        }
+        if (testView && !testView.classList.contains('hidden-view')) {
+            if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
+                var submitBtn = document.querySelector('#testContentArea .primary-btn');
+                if (submitBtn) submitBtn.click();
+            }
+        }
+        if (e.key === ' ' || e.key === 'Enter') {
+            if (resultPanel && resultPanel.style.transform === 'translateY(0px)') { e.preventDefault(); closeResultPanel(); nextLearnStep(); }
+            else if (confirmPanel && confirmPanel.classList.contains('show')) { e.preventDefault(); if (e.key === ' ') cancelExit(); }
+            else if (learnView && !learnView.classList.contains('hidden-view') && learnStep === 1) {
+                var continueBtn = document.getElementById('learnContinueBtn');
+                if (continueBtn) { e.preventDefault(); continueBtn.click(); }
+            }
+        }
+        if (e.key === 'Escape') {
+            if (confirmPanel && confirmPanel.classList.contains('show')) cancelExit();
+            closeSettings();
+        }
+    });
+}
+
+// Start the app
+init();
+console.log('[FoxyVocab] script.js: fully loaded');

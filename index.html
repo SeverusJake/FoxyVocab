@@ -4,22 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>C1 English Flashcards</title>
+    <title>FoxyVocab — Vocabulary Study App</title>
+    <meta name="description" content="Quizlet-style vocabulary study app for English learners with flashcards, tests, and matching games.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="data.js" defer></script>
     <script src="script.js" defer></script>
-    <!-- Restore saved theme before first paint (prevents flash) -->
+    <!-- Restore saved theme before first paint -->
     <script>
         (function() {
             if (localStorage.getItem('foxyVocabTheme') === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
         })();
+    </script>
+    <!-- Diagnostic: catch data.js load failure for old iPad -->
+    <script>
+        window.addEventListener('error', function(e) {
+            if (e.filename && e.filename.indexOf('data.js') !== -1) {
+                console.error('[FoxyVocab] data.js failed to load:', e.message);
+                var el = document.getElementById('loadError');
+                if (el) el.style.display = 'block';
+            }
+        });
     </script>
 </head>
 
@@ -29,44 +38,32 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- VIEW 1: TOPIC SELECTION -->
-    <div id="topicView" class="view-container px-6 py-12">
-        <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col">
+    <!-- LOAD ERROR (hidden by default, shown if data.js fails) -->
+    <div id="loadError" style="display:none; position:fixed; inset:0; z-index:9999; background:var(--bg); color:var(--text); padding:40px; text-align:center;">
+        <h2 style="color:#ff6b6b; margin-bottom:16px;">⚠️ Failed to load vocabulary data</h2>
+        <p style="margin-bottom:12px;">The app could not load <code>data.js</code>.</p>
+        <p style="font-size:14px; color:var(--text-muted);">Please check your browser console for details. If you're on an older device, try refreshing or using a newer browser.</p>
+    </div>
 
+    <noscript>
+        <div style="padding:40px; text-align:center; font-family:sans-serif;">
+            <h2>JavaScript Required</h2>
+            <p>FoxyVocab requires JavaScript to run. Please enable JavaScript in your browser settings.</p>
+        </div>
+    </noscript>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW 1: COURSE SELECTION           -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="courseView" class="view-container px-6 py-12">
+        <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col">
             <!-- Header -->
             <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
                 <div class="text-center sm:text-left">
-                    <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-wider" style="color: var(--text);">SELECT TOPIC
-                    </h1>
-                    <p style="color: var(--text-muted);" class="mt-1 tracking-wide text-sm">Choose a vocabulary category or
-                        challenge</p>
+                    <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-wider" style="color: var(--text);">FOXYVOCAB</h1>
+                    <p style="color: var(--text-muted);" class="mt-1 tracking-wide text-sm">Choose a course to study</p>
                 </div>
-
-                <!-- View Toggle + Settings -->
                 <div class="flex gap-2 items-center">
-                    <div class="flex gap-2 bg-[var(--bg-card)] p-1 rounded-lg border border-[rgba(0,0,0,0.08)]">
-                        <button id="gridViewBtn" class="view-toggle-btn active" aria-label="Grid View">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7" />
-                                <rect x="14" y="3" width="7" height="7" />
-                                <rect x="3" y="14" width="7" height="7" />
-                                <rect x="14" y="14" width="7" height="7" />
-                            </svg>
-                        </button>
-                        <button id="listViewBtn" class="view-toggle-btn" aria-label="List View">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6" />
-                                <line x1="8" y1="12" x2="21" y2="12" />
-                                <line x1="8" y1="18" x2="21" y2="18" />
-                                <line x1="3" y1="6" x2="3.01" y2="6" />
-                                <line x1="3" y1="12" x2="3.01" y2="12" />
-                                <line x1="3" y1="18" x2="3.01" y2="18" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Settings Gear Button -->
                     <button id="settingsBtn" class="view-toggle-btn" aria-label="Settings" title="Settings">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="3"/>
@@ -75,41 +72,141 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Scrollable Content Area -->
-            <div class="flex-1 overflow-y-auto custom-scrollbar p-3 fade-in" style="max-height: calc(100vh - 220px);"
-                id="topicContainer">
-                <div id="topicGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Topics injected via JS -->
+            <!-- Course Cards -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-3 fade-in" id="courseContainer">
+                <div id="courseGrid" class="flex flex-col gap-4">
+                    <!-- Courses injected via JS -->
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- VIEW 2: FLASHCARD LEARNING -->
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW 2: SET SELECTION              -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="setView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-2xl mx-auto flex flex-col h-full">
+            <div class="flex items-center justify-between mb-6">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToCoursesBtn" aria-label="Back to courses">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    COURSES
+                </button>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);" id="setViewTitle">COURSE</span>
+                <div style="width:80px"></div>
+            </div>
+            <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="setContainer">
+                <div id="setGrid" class="flex flex-col gap-3">
+                    <!-- Sets injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW 3: WORD LIST VIEW             -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="wordListView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-xl mx-auto flex flex-col h-full">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-4">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToSetsBtn" aria-label="Back to sets">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    SETS
+                </button>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);" id="wordListTitle">SET</span>
+                <div style="width:60px"></div>
+            </div>
+
+            <!-- Flashcard Carousel -->
+            <div class="flashcard-carousel-container mb-4">
+                <div class="flashcard-wrapper">
+                    <div class="card-audio-btns">
+                        <button class="border-btn speaker" id="wlSpeakerBtn">🔊</button>
+                        <button class="border-btn snail" id="wlSnailBtn">🐌</button>
+                    </div>
+                    <div class="card-container">
+                        <div id="wlCardSlider">
+                            <div class="card" id="wlFlashcard" role="button" tabindex="0">
+                                <div class="card-face card-front flex flex-col justify-center">
+                                    <div class="status-icons">
+                                        <div class="status-icon learned" id="wlStatusLearned" title="Learned">🧠</div>
+                                        <div class="status-icon remembered" id="wlStatusRemembered" title="Remembered">✔️</div>
+                                    </div>
+                                    <button class="star-btn" id="wlStarBtn">☆</button>
+                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight" id="wlWordFront">WORD</h2>
+                                    <div class="tap-hint">↩ tap to flip</div>
+                                </div>
+                                <div class="card-face card-back flex flex-col justify-center">
+                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wlWordBack">Word</h2>
+                                    <p class="pron-text text-sm mb-4" id="wlPronBack">/pron/</p>
+                                    <p class="text-lg text-center neon-text-green mb-4" id="wlTransBack">Vietnamese (pos)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dots -->
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+
+            <!-- Set Info -->
+            <div class="mb-4">
+                <h2 class="font-display text-xl font-bold" style="color: var(--text);" id="wlSetName">Set Name</h2>
+                <p class="text-xs" style="color: var(--text-muted);" id="wlTermCount">0 terms</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons-grid mb-6">
+                <button class="action-btn" id="btnFlashcard">
+                    <span class="action-btn-icon">🃏</span>
+                    <span>Flashcard</span>
+                </button>
+                <button class="action-btn" id="btnLearn">
+                    <span class="action-btn-icon">🔄</span>
+                    <span>Learn</span>
+                </button>
+                <button class="action-btn" id="btnTest">
+                    <span class="action-btn-icon">📝</span>
+                    <span>Test</span>
+                </button>
+                <button class="action-btn" id="btnMatch">
+                    <span class="action-btn-icon">🧩</span>
+                    <span>Match</span>
+                </button>
+            </div>
+
+            <!-- Word Cards List -->
+            <div class="word-cards-header mb-2">
+                <span class="font-display text-sm font-bold" style="color: var(--text);">Cards</span>
+                <span class="text-xs" style="color: var(--text-muted);" id="wlCardSort">Original</span>
+            </div>
+            <div class="flex-1 overflow-y-auto custom-scrollbar" id="wordCardsContainer">
+                <!-- Word cards injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: FLASHCARD FULL-SCREEN        -->
+    <!-- ═══════════════════════════════════ -->
     <div id="flashcardView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
-            <!-- Header: 2-row layout on mobile -->
             <div class="flashcard-header mb-4">
-                <!-- Row 1: Nav -->
                 <div class="flashcard-header-row1">
-                    <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
-                        id="backToTopicsBtn" aria-label="Back to topics">
+                    <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backFromFlashcardBtn" aria-label="Back">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M19 12H5M12 19l-7-7 7-7" />
                         </svg>
-                        TOPICS
+                        BACK
                     </button>
-                    <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);" id="topicTitle">TOPIC</span>
-                    <!-- Action buttons row (visible on all sizes) -->
-                    <div class="fc-action-buttons">
-                        <button class="nav-btn game-btn fc-action-btn" id="showAllWordsBtn" title="Show word list">📋 LIST</button>
-                        <button class="nav-btn game-btn fc-action-btn" id="playTopicGameBtn" title="Play Hangman">🎮 GAME</button>
-                    </div>
+                    <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);" id="fcTopicTitle">TOPIC</span>
+                    <div style="width:60px"></div>
                 </div>
             </div>
-
             <!-- Progress -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2 text-xs font-display text-[var(--text-muted)]">
@@ -120,16 +217,12 @@
                     <div class="progress-fill h-full rounded-full" id="progressBar" style="width: 20%"></div>
                 </div>
             </div>
-
             <!-- Flashcard -->
             <div class="flex-1 flex items-center justify-center mb-4">
                 <div class="flashcard-wrapper">
-                    <!-- Speaker buttons now sit BELOW the card top, not above -->
                     <div class="card-audio-btns">
-                        <button class="border-btn speaker"
-                            onclick="event.stopPropagation(); speak(currentTopic.activeWords[currentCardIndex], 1.0)">🔊</button>
-                        <button class="border-btn snail"
-                            onclick="event.stopPropagation(); speak(currentTopic.activeWords[currentCardIndex], 0.6)">🐌</button>
+                        <button class="border-btn speaker" id="fcSpeakerBtn">🔊</button>
+                        <button class="border-btn snail" id="fcSnailBtn">🐌</button>
                     </div>
                     <div class="card-container">
                         <div id="cardSlider">
@@ -137,24 +230,17 @@
                                 <div class="card-face card-front flex flex-col justify-center">
                                     <div class="status-icons">
                                         <div class="status-icon learned" id="statusLearned" title="Learned">🧠</div>
-                                        <div class="status-icon remembered" id="statusRemembered" title="Remembered">✔️
-                                        </div>
+                                        <div class="status-icon remembered" id="statusRemembered" title="Remembered">✔️</div>
                                     </div>
-                                    <button class="star-btn" id="starBtn"
-                                        onclick="event.stopPropagation(); toggleFavorite()">☆</button>
-
-                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
-                                        id="wordFront">WORD</h2>
-
+                                    <button class="star-btn" id="starBtn">☆</button>
+                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight" id="wordFront">WORD</h2>
                                     <div class="mt-6 hint-container">
                                         <div class="hint-row">
                                             <div class="hint-text" id="hintText"></div>
-                                            <button class="trans-btn-card" id="transBtn" onclick="event.stopPropagation(); toggleFrontTrans()" style="display:none">🌐</button>
+                                            <button class="trans-btn-card" id="transBtn" style="display:none">🌐</button>
                                         </div>
                                         <div class="text-sm neon-text-green mt-2 min-h-[20px] transition-opacity opacity-0" id="vietExample"></div>
                                     </div>
-
-                                    <!-- Tap to flip hint -->
                                     <div class="tap-hint">↩ tap to flip</div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
@@ -167,72 +253,23 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Navigation & Actions -->
+            <!-- Navigation -->
             <div class="flex flex-col items-center gap-4 pb-4">
                 <div class="flex justify-center gap-4 w-full">
                     <button class="nav-btn flex-1" id="prevBtn">❮ PREV</button>
                     <button class="nav-btn flex-1" id="nextBtn">NEXT ❯</button>
                 </div>
-                <div class="flex justify-center gap-4 w-full">
-                    <button class="nav-btn learn-btn flex-1" id="startLearnBtn">LEARN</button>
-                    <button class="nav-btn quiz-btn flex-1" id="startQuizBtn">QUIZ</button>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- VIEW 3: HANGMAN GAME -->
-    <div id="hangmanView" class="view-container hidden-view px-6 py-8">
-        <div class="w-full max-w-xl mx-auto flex flex-col h-full items-center">
-            <div class="w-full flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-game-btn"
-                    aria-label="Back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7" />
-                    </svg>
-                    EXIT
-                </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="hangmanTitle">GAME
-                    MODE</span>
-                <div class="text-xs text-right">
-                    <div style="color: var(--text-muted)">Lives: <span id="livesCount" style="color: var(--blue); font-weight: 700;">6</span>
-                    </div>
-                    <div style="color: var(--orange)">Streak: <span id="streakCount">0</span> 🔥</div>
-                </div>
-            </div>
-            <div class="mb-6 relative">
-                <svg class="hangman-svg" viewBox="0 0 200 220">
-                    <line x1="20" y1="210" x2="100" y2="210" style="stroke:#BDBDBD; filter:none;" />
-                    <line x1="60" y1="210" x2="60" y2="20" style="stroke:#BDBDBD; filter:none;" />
-                    <line x1="60" y1="20" x2="140" y2="20" style="stroke:#BDBDBD; filter:none;" />
-                    <line x1="140" y1="20" x2="140" y2="50" style="stroke:#BDBDBD; filter:none;" />
-                    <circle id="hm-head" class="hangman-part" cx="140" cy="70" r="20" fill="none" />
-                    <line id="hm-body" class="hangman-part" x1="140" y1="90" x2="140" y2="140" />
-                    <line id="hm-leftArm" class="hangman-part" x1="140" y1="110" x2="110" y2="130" />
-                    <line id="hm-rightArm" class="hangman-part" x1="140" y1="110" x2="170" y2="130" />
-                    <line id="hm-leftLeg" class="hangman-part" x1="140" y1="140" x2="110" y2="180" />
-                    <line id="hm-rightLeg" class="hangman-part" x1="140" y1="140" x2="170" y2="180" />
-                </svg>
-            </div>
-            <div class="flex flex-wrap justify-center mb-8 px-4" id="wordDisplay"></div>
-            <div class="text-center mb-6 px-4 h-12">
-                <p class="text-sm text-[var(--text-muted)] italic" id="hangmanHint">Hint loading...</p>
-            </div>
-            <div id="gameResult" class="hidden mb-4 text-center">
-                <h3 class="font-display text-2xl font-bold mb-2" id="resultText">RESULT</h3>
-                <button id="playAgainBtn" class="nav-btn text-xs">PLAY AGAIN</button>
-            </div>
-            <div class="w-full max-w-md px-2" id="keyboard"></div>
-        </div>
-    </div>
-
-    <!-- VIEW 4: LEARN MODE -->
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: LEARN MODE                   -->
+    <!-- ═══════════════════════════════════ -->
     <div id="learnView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn"
-                    aria-label="Back">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn" aria-label="Back">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
@@ -246,48 +283,177 @@
         </div>
     </div>
 
-    <!-- VIEW 5: QUIZ MODE -->
-    <div id="quizView" class="view-container hidden-view px-6 py-8">
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: TEST SETTINGS                -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="testSettingsView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
-            <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-quiz-btn"
-                    aria-label="Back">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7" />
+            <div class="flex items-center justify-between mb-2">
+                <button class="back-btn" id="closeTestSettingsBtn" aria-label="Close">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-                    EXIT
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]"
-                    id="quizProgressText">1/10</span>
+                <div style="width:40px"></div>
             </div>
-            <div id="quizContentArea" class="flex-1 flex flex-col justify-center items-center"></div>
+            <p class="text-xs" style="color: var(--text-muted);" id="testSettingsCourse">Course Name</p>
+            <h2 class="font-display text-2xl font-bold mb-6" style="color: var(--text);">Set up your test</h2>
+
+            <!-- Question Count -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Question count <span class="text-xs" style="color: var(--text-muted);" id="testMaxLabel">(max 20)</span></span>
+                <input type="number" class="test-count-input" id="testQuestionCount" value="20" min="1">
+            </div>
+
+            <!-- Instant Feedback -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Instant feedback</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testInstantFeedback">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-divider my-4"></div>
+
+            <!-- True/False -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">True / False</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testTrueFalse" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Multiple Choice -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Multiple choice</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testMultipleChoice">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Fill-in -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Fill in</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testFillIn">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Written -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Written</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testWritten">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="flex-1"></div>
+            <button class="primary-btn w-full mb-4" id="startTestBtn">Start test</button>
         </div>
     </div>
 
-    <!-- VIEW 6: COMPACT LIST -->
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: ACTIVE TEST                  -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="testView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-xl mx-auto flex flex-col h-full">
+            <div class="flex items-center justify-between mb-2">
+                <button class="back-btn exit-test-btn" aria-label="Exit test">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text);" id="testProgressText">1 / 20</span>
+                <div style="width:40px"></div>
+            </div>
+            <div class="progress-track h-1 rounded-full overflow-hidden mb-6">
+                <div class="progress-fill h-full rounded-full" id="testProgressBar" style="width: 0%"></div>
+            </div>
+            <div id="testContentArea" class="flex-1 flex flex-col"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: MATCH GAME                   -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="matchView" class="view-container hidden-view px-6 py-4">
+        <div class="w-full max-w-lg mx-auto flex flex-col h-full">
+            <div class="flex items-center justify-between mb-4">
+                <button class="back-btn exit-match-btn" aria-label="Exit match">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <span class="font-display text-base tracking-wider" style="color: var(--text);" id="matchTimer">0.0 seconds</span>
+                <div class="flex gap-2">
+                    <button class="view-toggle-btn" id="matchSoundBtn" title="Toggle sound">🔊</button>
+                    <button class="view-toggle-btn" id="matchSettingsBtn" title="Settings">⚙️</button>
+                </div>
+            </div>
+            <div class="match-grid" id="matchGrid">
+                <!-- Match cards injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: MATCH RESULTS                -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="matchResultView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-md mx-auto flex flex-col items-center justify-center h-full">
+            <div class="text-6xl mb-6">🎉</div>
+            <h2 class="font-display text-2xl font-bold mb-6 neon-text-green">MATCH COMPLETE!</h2>
+            <div class="match-result-stats mb-8">
+                <div class="match-stat">
+                    <span class="match-stat-label">Time</span>
+                    <span class="match-stat-value" id="matchResultTime">0.0s</span>
+                </div>
+                <div class="match-stat">
+                    <span class="match-stat-label">Wrong attempts</span>
+                    <span class="match-stat-value" id="matchResultWrong">0</span>
+                </div>
+            </div>
+            <div class="flex flex-col gap-3 w-full">
+                <button class="primary-btn w-full" id="matchRetryBtn">Retry</button>
+                <button class="nav-btn w-full" id="matchBackBtn">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: COMPACT LIST                 -->
+    <!-- ═══════════════════════════════════ -->
     <div id="compactListView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-2xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
-                    id="backFromListBtn" aria-label="Back to flashcards">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backFromListBtn" aria-label="Back">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
-                    CARDS
+                    BACK
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="compactListTitle">TOPIC
-                    NAME</span>
-                <div class="text-sm font-display tracking-wider w-16 text-right" style="color: var(--text-muted)"
-                    id="compactListCount">0</div>
+                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="compactListTitle">TOPIC NAME</span>
+                <div class="text-sm font-display tracking-wider w-16 text-right" style="color: var(--text-muted)" id="compactListCount">0</div>
             </div>
-
             <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="compactListContainer">
                 <!-- List items injected via JS -->
             </div>
         </div>
     </div>
 
-    <!-- RESULT PANEL -->
+    <!-- ═══════════════════════════════════ -->
+    <!-- PANELS (shared overlays)           -->
+    <!-- ═══════════════════════════════════ -->
+
+    <!-- RESULT PANEL (learn mode feedback) -->
     <div id="resultPanel" class="slide-panel">
         <div class="flex flex-col items-center w-full">
             <div id="resultIcon" style="font-size: 2rem; margin-bottom: 10px;">✔️</div>
@@ -301,12 +467,10 @@
 
     <!-- CONFIRM EXIT PANEL -->
     <div id="confirmPanel" class="slide-panel">
-        <div class="text-center mb-6 text-sm">Don’t go yet~ Finish it first or your progress will disappear 😭</div>
+        <div class="text-center mb-6 text-sm">Don't go yet~ Finish it first or your progress will disappear 😭</div>
         <div class="flex flex-col gap-3 w-full">
-            <button class="nav-btn w-full" id="cancelExitBtn"
-                style="background: var(--yellow); border-color: var(--yellow-dark); color: var(--text); font-weight: 700;">STAY</button>
-            <button class="nav-btn w-full" id="confirmExitBtn"
-                style="background: var(--red-bg); border-color: var(--red); color: var(--red);">EXIT</button>
+            <button class="nav-btn w-full" id="cancelExitBtn" style="background: var(--yellow); border-color: var(--yellow-dark); color: var(--text); font-weight: 700;">STAY</button>
+            <button class="nav-btn w-full" id="confirmExitBtn" style="background: var(--red-bg); border-color: var(--red); color: var(--red);">EXIT</button>
         </div>
     </div>
 
@@ -321,10 +485,7 @@
                 </svg>
             </button>
         </div>
-
         <div class="settings-divider"></div>
-
-        <!-- Theme Row -->
         <div class="settings-row">
             <div class="settings-row-info">
                 <span class="settings-row-label">Appearance</span>

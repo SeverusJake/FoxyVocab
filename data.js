@@ -1,4 +1,6 @@
-// data.js
+// data.js — FoxyVocab Data Layer
+// Diagnostic logging for old iPad compatibility
+console.log('[FoxyVocab] data.js: loading started');
 
 /**
  * @typedef {Object} VocabularyWord
@@ -15,7 +17,7 @@
  * Global dictionary of all words.
  * @type {Object.<string, VocabularyWord>}
  */
-const dictionary = {
+var dictionary = {
     "CONSIGNMENT": { "definition": "Goods sent to someone to sell.", "pos": "noun", "pron": "/kənˈsaɪn.mənt/", "example": "The consignment arrived yesterday.", "vietnamese": "Hàng ký gửi", "vietnamese_example": "Lô hàng ký gửi đã đến hôm qua.", "cefr": "C1" },
     "PROCUREMENT": { "definition": "The process of obtaining goods or services.", "pos": "noun", "pron": "/prəˈkjʊə.mənt/", "example": "Procurement takes time.", "vietnamese": "Sự thu mua", "vietnamese_example": "Thu mua tốn thời gian.", "cefr": "C1" },
     "FULFILLMENT": { "definition": "Completing and delivering an order.", "pos": "noun", "pron": "/fʊlˈfɪl.mənt/", "example": "Order fulfillment is faster now.", "vietnamese": "Sự hoàn tất đơn hàng", "vietnamese_example": "Hoàn tất đơn hàng giờ nhanh hơn.", "cefr": "B2" },
@@ -57,54 +59,64 @@ const dictionary = {
 };
 
 /**
- * @type {Object.<string, string>}
+ * Course → Set hierarchy.
+ * Each course contains sets, each set references word IDs from the dictionary.
+ * @type {Array.<{id: string, title: string, icon: string, sets: Array.<{id: string, title: string, words: string[]}>}>}
  */
-const icons = {
-    logistics:   '<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>',
-    business:    '<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--yellow-dark)" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
-    environment: '<svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
-};
-
-
-/**
- * @typedef {Object} Topic
- * @property {string} id
- * @property {string} title
- * @property {string} description
- * @property {keyof typeof icons} iconId
- * @property {string[]} words
- */
-
-/**
- * @type {Topic[]}
- */
-const topicsData = [
+var coursesData = [
     {
-        "id": "logistics",
-        "title": "Logistics",
-        "description": "C1 Logistics & Supply Chain",
-        "iconId": "logistics",
-        "words": [
-            "CONSIGNMENT", "PROCUREMENT", "FULFILLMENT", "LEAD TIME", "BACKORDER",
-            "FREIGHT", "AIR FREIGHT", "TRAIN FREIGHT", "AIRWAY BILL", "OCEAN FREIGHT",
-            "LAND FREIGHT", "COURIER", "FORWARDER", "CUSTOMS CLEARANCE", "INCOTERMS",
-            "BILL OF LADING", "LETTER OF CREDIT", "CONTAINER", "PALLET", "DEMURRAGE",
-            "CARRIER", "SHIPPING", "DELIVERY", "ROUTING", "TRACKING", "FREIGHT FORWARDER",
-            "THIRD-PARTY LOGISTICS", "LAST MILE"
+        "id": "topic",
+        "title": "Topic",
+        "icon": "📚",
+        "sets": [
+            {
+                "id": "logistics",
+                "title": "Logistics & Supply Chain",
+                "words": [
+                    "CONSIGNMENT", "PROCUREMENT", "FULFILLMENT", "LEAD TIME", "BACKORDER",
+                    "FREIGHT", "AIR FREIGHT", "TRAIN FREIGHT", "AIRWAY BILL", "OCEAN FREIGHT",
+                    "LAND FREIGHT", "COURIER", "FORWARDER", "CUSTOMS CLEARANCE", "INCOTERMS",
+                    "BILL OF LADING", "LETTER OF CREDIT", "CONTAINER", "PALLET", "DEMURRAGE",
+                    "CARRIER", "SHIPPING", "DELIVERY", "ROUTING", "TRACKING", "FREIGHT FORWARDER",
+                    "THIRD-PARTY LOGISTICS", "LAST MILE"
+                ]
+            },
+            {
+                "id": "business",
+                "title": "Business & Finance",
+                "words": ["AMORTIZATION", "COLLATERAL", "DIVERSIFICATION", "LIQUIDITY", "MERGER"]
+            },
+            {
+                "id": "environment",
+                "title": "Nature & Ecology",
+                "words": ["BIODEGRADABLE", "ECOSYSTEM", "RENEWABLE", "SUSTAINABILITY", "CONSERVATION"]
+            }
         ]
     },
     {
-        "id": "business",
-        "title": "Business",
-        "description": "C1 Business & Finance Terms",
-        "iconId": "business",
-        "words": ["AMORTIZATION", "COLLATERAL", "DIVERSIFICATION", "LIQUIDITY", "MERGER"]
+        "id": "ielts",
+        "title": "IELTS",
+        "icon": "🎓",
+        "sets": [
+            {
+                "id": "ielts-placeholder",
+                "title": "IELTS Placeholder Set",
+                "words": ["CONSIGNMENT", "PROCUREMENT", "FULFILLMENT", "LEAD TIME", "BACKORDER"]
+            }
+        ]
     },
     {
-        "id": "environment",
-        "title": "Environment",
-        "description": "C1 Nature & Ecology Terms",
-        "iconId": "environment",
-        "words": ["BIODEGRADABLE", "ECOSYSTEM", "RENEWABLE", "SUSTAINABILITY", "CONSERVATION"]
+        "id": "toeic",
+        "title": "TOEIC",
+        "icon": "📝",
+        "sets": [
+            {
+                "id": "toeic-placeholder",
+                "title": "TOEIC Placeholder Set",
+                "words": ["AMORTIZATION", "COLLATERAL", "DIVERSIFICATION", "LIQUIDITY", "MERGER"]
+            }
+        ]
     }
 ];
+
+console.log('[FoxyVocab] data.js: loaded successfully, dictionary has', Object.keys(dictionary).length, 'words,', coursesData.length, 'courses');
