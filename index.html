@@ -156,7 +156,7 @@
             </div>
 
             <!-- Set Info -->
-            <div class="mb-4">
+            <div class="mt-6 mb-4">
                 <h2 class="font-display text-xl font-bold" style="color: var(--text);" id="wlSetName">Set Name</h2>
                 <p class="text-xs" style="color: var(--text-muted);" id="wlTermCount">0 terms</p>
             </div>
@@ -184,7 +184,7 @@
             <!-- Word Cards List -->
             <div class="word-cards-header mb-2">
                 <span class="font-display text-sm font-bold" style="color: var(--text);">Cards</span>
-                <span class="text-xs" style="color: var(--text-muted);" id="wlCardSort">Original</span>
+                <button class="view-toggle-btn text-xs py-1 px-2" id="wlModeToggleBtn">Set</button>
             </div>
             <div class="flex-1 overflow-y-auto custom-scrollbar" id="wordCardsContainer">
                 <!-- Word cards injected via JS -->
@@ -312,7 +312,16 @@
             <div class="test-setting-row">
                 <span class="test-setting-label">Instant feedback</span>
                 <label class="toggle-switch">
-                    <input type="checkbox" id="testInstantFeedback">
+                    <input type="checkbox" id="testInstantFeedback" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Speak -->
+            <div class="test-setting-row">
+                <span class="test-setting-label">Speak (read aloud)</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="testSpeak" checked>
                     <span class="toggle-slider"></span>
                 </label>
             </div>
@@ -386,7 +395,7 @@
     <!-- VIEW: MATCH GAME                   -->
     <!-- ═══════════════════════════════════ -->
     <div id="matchView" class="view-container hidden-view px-6 py-4">
-        <div class="w-full max-w-lg mx-auto flex flex-col h-full">
+        <div class="w-full flex-1 mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-4">
                 <button class="back-btn exit-match-btn" aria-label="Exit match">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">

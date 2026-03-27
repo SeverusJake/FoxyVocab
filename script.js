@@ -12,6 +12,7 @@ var learnMistakes = 0;
 var learnIndex = 0;
 var isAnimating = false;
 var pendingExitCallback = null;
+var isWordListSetMode = false;
 
 // Match state
 var matchWords = [];
@@ -232,10 +233,24 @@ function updateWLFlashcard() {
 
     // Update carousel dots
     var dotsContainer = document.getElementById('carouselDots');
-    var totalCards = Math.min(currentSet.activeWords.length, 5);
+    var totalCards = currentSet.activeWords.length;
     var dotsHtml = '';
-    for (var i = 0; i < totalCards; i++) {
-        dotsHtml += '<span class="carousel-dot' + (i === currentCardIndex % totalCards ? ' active' : '') + '"></span>';
+    if (totalCards <= 5) {
+        for (var i = 0; i < totalCards; i++) {
+            dotsHtml += '<span class="carousel-dot' + (i === currentCardIndex ? ' active' : '') + '"></span>';
+        }
+    } else {
+        var start = currentCardIndex - 2;
+        var end = currentCardIndex + 2;
+        if (start < 0) { start = 0; end = 4; }
+        if (end >= totalCards) { end = totalCards - 1; start = end - 4; }
+        for (var i = start; i <= end; i++) {
+            var classes = ['carousel-dot'];
+            if (i === currentCardIndex) classes.push('active');
+            else if (i === start && start > 0) classes.push('small');
+            else if (i === end && end < totalCards - 1) classes.push('small');
+            dotsHtml += '<span class="' + classes.join(' ') + '"></span>';
+        }
     }
     dotsContainer.innerHTML = dotsHtml;
 }
@@ -245,20 +260,53 @@ function renderWordCards() {
     var html = '';
     currentSet.sortedWords.forEach(function(wordId) {
         var wData = getWordData(wordId);
-        html += '<div class="word-card">' +
-            '<div class="word-card-top">' +
-                '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
-                '<div class="word-card-actions">' +
-                    '<button class="word-card-btn" onclick="speak(\'' + escapeHtml(wData.word).replace(/'/g, "\\'") + '\', 1.0)">🔊</button>' +
-                    '<button class="word-card-btn" onclick="toggleFavoriteWord(\'' + escapeHtml(wData.word).replace(/'/g, "\\'") + '\', this)">' + (wData.isFavorite ? '★' : '☆') + '</button>' +
+        var safeWordStr = escapeHtml(wData.word).replace(/'/g, "\\'");
+        var favIcon = wData.isFavorite ? '★' : '☆';
+        
+        if (isWordListSetMode) {
+            var cardClass = wData.isKnown ? 'word-card is-known' : 'word-card';
+            var toggleMeaningStr = 'onclick="var el=this.querySelector(\'.word-card-meaning\'); el.style.display=el.style.display===\'none\'?\'block\':\'none\'"';
+            html += '<div class="' + cardClass + '" style="cursor:pointer;" ' + toggleMeaningStr + '>' +
+                '<div class="word-card-top">' +
+                    '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
+                    '<div class="word-card-actions">' +
+                        '<button class="word-card-btn" onclick="event.stopPropagation(); speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
+                        '<div style="display:flex; flex-direction:column; gap:4px;">' +
+                            '<button class="word-card-btn" onclick="event.stopPropagation(); toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
+                            '<button class="word-card-btn" onclick="event.stopPropagation(); toggleWordKnown(\'' + safeWordStr + '\')">🎓</button>' +
+                        '</div>' +
+                    '</div>' +
                 '</div>' +
-            '</div>' +
-            '<div class="word-card-bottom">' +
-                '<span class="word-card-meaning">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
-            '</div>' +
-        '</div>';
+                '<div class="word-card-bottom">' +
+                    '<span class="word-card-meaning" style="display:none;">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
+                '</div>' +
+            '</div>';
+        } else {
+            html += '<div class="word-card">' +
+                '<div class="word-card-top">' +
+                    '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
+                    '<div class="word-card-actions">' +
+                        '<button class="word-card-btn" onclick="speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
+                        '<button class="word-card-btn" onclick="toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="word-card-bottom">' +
+                    '<span class="word-card-meaning">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
+                '</div>' +
+            '</div>';
+        }
     });
     container.innerHTML = html;
+}
+
+function toggleWordKnown(wordId) {
+    var wData = getWordData(wordId);
+    saveProgress(wordId, { isKnown: !wData.isKnown });
+    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    renderWordCards();
+    updateWLFlashcard();
+    playSound('flip');
 }
 
 function toggleFavoriteWord(wordId, btn) {
@@ -551,6 +599,7 @@ function startTest() {
     testConfig = {
         count: qCount,
         instantFeedback: document.getElementById('testInstantFeedback').checked,
+        speak: document.getElementById('testSpeak') ? document.getElementById('testSpeak').checked : true,
         trueFalse: document.getElementById('testTrueFalse').checked,
         multipleChoice: document.getElementById('testMultipleChoice').checked,
         fillIn: document.getElementById('testFillIn').checked,
@@ -652,6 +701,13 @@ function renderTestQuestion() {
         '</div>';
     } else if (q.type === 'written') {
         // Written: Vietnamese prompt, type English answer
+        var keysHtml = '';
+        var keyboardChars = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
+        keyboardChars.forEach(function(ch) {
+            keysHtml += '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
+        });
+        keysHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
+        
         q._correctAnswer = w.word;
         html = '<div class="test-question-area">' +
             '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
@@ -660,7 +716,8 @@ function renderTestQuestion() {
                 '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
                 '<button class="test-dont-know" onclick="answerTestWritten(null)">Don\'t know?</button>' +
             '</div>' +
-            '<button class="primary-btn mt-4" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
+            '<div class="visual-keyboard">' + keysHtml + '</div>' +
+            '<button class="primary-btn mt-4 mx-auto" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
         '</div>';
     }
     area.innerHTML = html;
@@ -679,10 +736,11 @@ function answerTest(btn, selected, correct) {
     if (!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); }
     else { playSound('correct'); testScore++; }
 
+    if (testConfig.speak) { speak(correct, 1.0); } // speak word immediately if testSpeak is true
+
     testAnswers.push({ wordId: testQuestions[testIndex].wordId, correct: isCorrect, type: testQuestions[testIndex].type });
 
     if (testConfig.instantFeedback) {
-        // Show feedback briefly then advance
         setTimeout(function() { testIndex++; renderTestQuestion(); }, 1200);
     } else {
         setTimeout(function() { testIndex++; renderTestQuestion(); }, 800);
@@ -696,17 +754,13 @@ function answerTestWritten(value) {
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
 
+    if (testConfig.speak) { speak(w.word, 1.0); } // speak word immediately if testSpeak is true
+
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: 'written' });
 
     if (testConfig.instantFeedback) {
-        var area = document.getElementById('testContentArea');
-        var feedbackHtml = '<div class="test-question-area text-center">' +
-            '<div class="text-4xl mb-4">' + (isCorrect ? '✅' : '❌') + '</div>' +
-            '<p class="test-term">' + escapeHtml(w.word) + '</p>' +
-            '<p class="test-definition mt-2">' + escapeHtml(w.vietnamese || '') + '</p>' +
-        '</div>';
-        area.innerHTML = feedbackHtml;
-        setTimeout(function() { testIndex++; renderTestQuestion(); }, 1500);
+        showResultPanel(isCorrect, w);
+        setTimeout(function() { closeResultPanel(); testIndex++; renderTestQuestion(); }, 2500);
     } else {
         setTimeout(function() { testIndex++; renderTestQuestion(); }, 500);
     }
@@ -996,6 +1050,25 @@ function setupEventListeners() {
             if (dx < 0) navigateWLFlashcard(1); else navigateWLFlashcard(-1);
         }
     }, { passive: true });
+    
+    var wlIsDown = false; var wlStartX;
+    wlSlider.addEventListener('mousedown', function(e) { wlIsDown = true; wlStartX = e.pageX; });
+    wlSlider.addEventListener('mouseleave', function() { wlIsDown = false; });
+    wlSlider.addEventListener('mouseup', function(e) {
+        if (!wlIsDown) return; wlIsDown = false;
+        var dx = e.pageX - wlStartX;
+        if (Math.abs(dx) > 50) { if (dx < 0) navigateWLFlashcard(1); else navigateWLFlashcard(-1); }
+    });
+
+    // Word List Toggle Switch
+    var toggleBtn = document.getElementById('wlModeToggleBtn');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+            isWordListSetMode = !isWordListSetMode;
+            e.target.textContent = isWordListSetMode ? 'Original' : 'Set';
+            renderWordCards();
+        });
+    }
 
     // Flashcard view interactions
     document.getElementById('flashcard').addEventListener('click', flipCard);
@@ -1023,6 +1096,15 @@ function setupEventListeners() {
             if (dx < 0) navigateFlashcard(1); else navigateFlashcard(-1);
         }
     }, { passive: true });
+    
+    var fcIsDown = false; var fcStartX;
+    fcSlider.addEventListener('mousedown', function(e) { fcIsDown = true; fcStartX = e.pageX; });
+    fcSlider.addEventListener('mouseleave', function() { fcIsDown = false; });
+    fcSlider.addEventListener('mouseup', function(e) {
+        if (!fcIsDown) return; fcIsDown = false;
+        var dx = e.pageX - fcStartX;
+        if (Math.abs(dx) > 50) { if (dx < 0) navigateFlashcard(1); else navigateFlashcard(-1); }
+    });
 
     // Learn exit
     document.querySelectorAll('.exit-learn-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { switchView(wordListView); }); }); });
@@ -1056,6 +1138,13 @@ function setupEventListeners() {
             if (e.key === 'ArrowLeft') navigateFlashcard(-1);
             if (e.key === 'ArrowRight') navigateFlashcard(1);
             if (e.key === ' ') { e.preventDefault(); flipCard(); }
+        }
+        if (wordListView && !wordListView.classList.contains('hidden-view')) {
+            // Check if focus is NOT on an input (prevents jumping around instead of typing)
+            if (document.activeElement.tagName !== 'INPUT') {
+                if (e.key === 'ArrowLeft') navigateWLFlashcard(-1);
+                if (e.key === 'ArrowRight') navigateWLFlashcard(1);
+            }
         }
         if (learnView && !learnView.classList.contains('hidden-view')) {
             if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
