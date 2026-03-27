@@ -13,6 +13,14 @@
         rel="stylesheet">
     <script src="data.js" defer></script>
     <script src="script.js" defer></script>
+    <!-- Restore saved theme before first paint (prevents flash) -->
+    <script>
+        (function() {
+            if (localStorage.getItem('foxyVocabTheme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -28,32 +36,41 @@
             <!-- Header -->
             <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
                 <div class="text-center sm:text-left">
-                    <h1 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan tracking-wider">SELECT TOPIC
+                    <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-wider" style="color: var(--text);">SELECT TOPIC
                     </h1>
-                    <p class="text-[var(--text-muted)] mt-1 tracking-wide text-sm">Choose a vocabulary category or
+                    <p style="color: var(--text-muted);" class="mt-1 tracking-wide text-sm">Choose a vocabulary category or
                         challenge</p>
                 </div>
 
-                <!-- View Toggle Controls -->
-                <div class="flex gap-2 bg-[var(--bg-card)] p-1 rounded-lg border border-[rgba(255,255,255,0.05)]">
-                    <button id="gridViewBtn" class="view-toggle-btn active" aria-label="Grid View">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7" />
-                            <rect x="14" y="3" width="7" height="7" />
-                            <rect x="3" y="14" width="7" height="7" />
-                            <rect x="14" y="14" width="7" height="7" />
-                        </svg>
-                    </button>
-                    <button id="listViewBtn" class="view-toggle-btn" aria-label="List View">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="8" y1="6" x2="21" y2="6" />
-                            <line x1="8" y1="12" x2="21" y2="12" />
-                            <line x1="8" y1="18" x2="21" y2="18" />
-                            <line x1="3" y1="6" x2="3.01" y2="6" />
-                            <line x1="3" y1="12" x2="3.01" y2="12" />
-                            <line x1="3" y1="18" x2="3.01" y2="18" />
+                <!-- View Toggle + Settings -->
+                <div class="flex gap-2 items-center">
+                    <div class="flex gap-2 bg-[var(--bg-card)] p-1 rounded-lg border border-[rgba(0,0,0,0.08)]">
+                        <button id="gridViewBtn" class="view-toggle-btn active" aria-label="Grid View">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7" />
+                                <rect x="14" y="3" width="7" height="7" />
+                                <rect x="3" y="14" width="7" height="7" />
+                                <rect x="14" y="14" width="7" height="7" />
+                            </svg>
+                        </button>
+                        <button id="listViewBtn" class="view-toggle-btn" aria-label="List View">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="8" y1="6" x2="21" y2="6" />
+                                <line x1="8" y1="12" x2="21" y2="12" />
+                                <line x1="8" y1="18" x2="21" y2="18" />
+                                <line x1="3" y1="6" x2="3.01" y2="6" />
+                                <line x1="3" y1="12" x2="3.01" y2="12" />
+                                <line x1="3" y1="18" x2="3.01" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Settings Gear Button -->
+                    <button id="settingsBtn" class="view-toggle-btn" aria-label="Settings" title="Settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                         </svg>
                     </button>
                 </div>
@@ -85,8 +102,7 @@
                 <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC
                     NAME</span>
                 <div class="flex gap-2">
-                    <button class="nav-btn game-btn text-xs px-3 py-1"
-                        style="border-color: var(--neon-cyan); color: var(--neon-cyan);" id="showAllWordsBtn">SHOW
+                    <button class="nav-btn game-btn text-xs px-3 py-1" id="showAllWordsBtn">SHOW
                         ALL</button>
                     <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
                 </div>
@@ -171,20 +187,20 @@
                     </svg>
                     EXIT
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="hangmanTitle">GAME
+                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="hangmanTitle">GAME
                     MODE</span>
                 <div class="text-xs text-right">
-                    <div class="text-[var(--text-muted)]">Lives: <span id="livesCount" class="neon-text-cyan">6</span>
+                    <div style="color: var(--text-muted)">Lives: <span id="livesCount" style="color: var(--blue); font-weight: 700;">6</span>
                     </div>
-                    <div class="text-[var(--neon-orange)]">Streak: <span id="streakCount">0</span> 🔥</div>
+                    <div style="color: var(--orange)">Streak: <span id="streakCount">0</span> 🔥</div>
                 </div>
             </div>
             <div class="mb-6 relative">
                 <svg class="hangman-svg" viewBox="0 0 200 220">
-                    <line x1="20" y1="210" x2="100" y2="210" style="stroke:var(--text-muted); filter:none;" />
-                    <line x1="60" y1="210" x2="60" y2="20" style="stroke:var(--text-muted); filter:none;" />
-                    <line x1="60" y1="20" x2="140" y2="20" style="stroke:var(--text-muted); filter:none;" />
-                    <line x1="140" y1="20" x2="140" y2="50" style="stroke:var(--text-muted); filter:none;" />
+                    <line x1="20" y1="210" x2="100" y2="210" style="stroke:#BDBDBD; filter:none;" />
+                    <line x1="60" y1="210" x2="60" y2="20" style="stroke:#BDBDBD; filter:none;" />
+                    <line x1="60" y1="20" x2="140" y2="20" style="stroke:#BDBDBD; filter:none;" />
+                    <line x1="140" y1="20" x2="140" y2="50" style="stroke:#BDBDBD; filter:none;" />
                     <circle id="hm-head" class="hangman-part" cx="140" cy="70" r="20" fill="none" />
                     <line id="hm-body" class="hangman-part" x1="140" y1="90" x2="140" y2="140" />
                     <line id="hm-leftArm" class="hangman-part" x1="140" y1="110" x2="110" y2="130" />
@@ -253,9 +269,9 @@
                     </svg>
                     CARDS
                 </button>
-                <span class="font-display text-sm tracking-wider text-[var(--neon-green)]" id="compactListTitle">TOPIC
+                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="compactListTitle">TOPIC
                     NAME</span>
-                <div class="text-[var(--text-muted)] text-sm font-display tracking-wider w-16 text-right"
+                <div class="text-sm font-display tracking-wider w-16 text-right" style="color: var(--text-muted)"
                     id="compactListCount">0</div>
             </div>
 
@@ -266,26 +282,54 @@
     </div>
 
     <!-- RESULT PANEL -->
-    <div id="resultPanel" class="slide-panel" style="border-color: var(--neon-cyan);">
+    <div id="resultPanel" class="slide-panel">
         <div class="flex flex-col items-center w-full">
             <div id="resultIcon" style="font-size: 2rem; margin-bottom: 10px;">✔️</div>
-            <h3 id="resultTerm" class="font-display text-xl neon-text-magenta mb-1">Term</h3>
-            <p id="resultPron" class="text-xs text-[var(--neon-cyan)] mb-2">/pron/</p>
-            <p id="resultTrans" class="text-sm neon-text-green mb-2">Vietnamese (pos)</p>
-            <p id="resultDef" class="text-sm text-center mb-4">Definition</p>
-            <button id="resultContinueBtn" class="nav-btn w-full">CONTINUE</button>
+            <h3 id="resultTerm" class="font-display text-xl mb-1" style="color: #8B3A8B">Term</h3>
+            <p id="resultPron" class="text-xs mb-2" style="color: var(--blue)">/pron/</p>
+            <p id="resultTrans" class="text-sm mb-2 neon-text-green">Vietnamese (pos)</p>
+            <p id="resultDef" class="text-sm text-center mb-4" style="color: var(--text-muted)">Definition</p>
+            <button id="resultContinueBtn" class="nav-btn w-full" style="background: var(--green); color: white; border-color: var(--green-dark);">CONTINUE</button>
         </div>
     </div>
 
     <!-- CONFIRM EXIT PANEL -->
-    <div id="confirmPanel" class="slide-panel"
-        style="border-color: var(--neon-red); box-shadow: 0 0 20px var(--neon-red);">
+    <div id="confirmPanel" class="slide-panel">
         <div class="text-center mb-6 text-sm">Don’t go yet~ Finish it first or your progress will disappear 😭</div>
         <div class="flex flex-col gap-3 w-full">
             <button class="nav-btn w-full" id="cancelExitBtn"
-                style="border-color: var(--neon-cyan); color: var(--neon-cyan);">STAY</button>
+                style="background: var(--yellow); border-color: var(--yellow-dark); color: var(--text); font-weight: 700;">STAY</button>
             <button class="nav-btn w-full" id="confirmExitBtn"
-                style="border-color: var(--neon-red); color: var(--neon-red);">EXIT</button>
+                style="background: var(--red-bg); border-color: var(--red); color: var(--red);">EXIT</button>
+        </div>
+    </div>
+
+    <!-- SETTINGS PANEL -->
+    <div id="settingsPanel" class="slide-panel settings-panel">
+        <div class="settings-panel-header">
+            <h2 class="font-display text-lg font-bold tracking-wider" style="color: var(--text);">⚙️ SETTINGS</h2>
+            <button id="closeSettingsBtn" class="back-btn" aria-label="Close settings">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="settings-divider"></div>
+
+        <!-- Theme Row -->
+        <div class="settings-row">
+            <div class="settings-row-info">
+                <span class="settings-row-label">Appearance</span>
+                <span class="settings-row-sub" id="themeLabel">Light Mode</span>
+            </div>
+            <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <span class="theme-toggle-icon" id="themeIcon">🌙</span>
+                <span class="theme-toggle-track">
+                    <span class="theme-toggle-thumb"></span>
+                </span>
+            </button>
         </div>
     </div>
 

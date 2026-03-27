@@ -683,3 +683,51 @@ function setupEventListeners() {
 
 // Start the app
 init();
+
+// ═══════════════════════════════════
+// SETTINGS PANEL & THEME TOGGLE
+// ═══════════════════════════════════
+const THEME_KEY = 'foxyVocabTheme';
+
+function applyTheme(isDark) {
+    if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+    }
+    const label = document.getElementById('themeLabel');
+    const icon  = document.getElementById('themeIcon');
+    if (label) label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+    if (icon)  icon.textContent  = isDark ? '☀️' : '🌙';
+}
+
+function toggleTheme() {
+    const isDark = document.documentElement.hasAttribute('data-theme');
+    const newDark = !isDark;
+    localStorage.setItem(THEME_KEY, newDark ? 'dark' : 'light');
+    applyTheme(newDark);
+}
+
+function openSettings() {
+    document.getElementById('settingsPanel').classList.add('show');
+}
+
+function closeSettings() {
+    document.getElementById('settingsPanel').classList.remove('show');
+}
+
+// Apply saved theme immediately on load (prevents flash)
+(function () {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'dark') applyTheme(true);
+})();
+
+// Wire up buttons
+document.getElementById('settingsBtn').addEventListener('click', openSettings);
+document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
+document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+
+// Close settings with Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSettings();
+});
