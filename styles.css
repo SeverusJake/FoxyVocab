@@ -4,6 +4,9 @@
    Palette: White • Yellow #FFC83A • Green #4CAF50
    ======================================== */
 
+/* Utility */
+.hidden { display: none !important; }
+
 :root {
     --bg:           #F5F5F5;
     --bg-card:      #FFFFFF;
@@ -291,11 +294,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: 0.65rem 1rem;
     background: var(--bg-card);
     border: 1.5px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.4rem;
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: var(--shadow-sm);
@@ -340,21 +343,19 @@ body {
     margin: 0 auto;
 }
 
-/* Speaker / snail buttons */
-.border-btn-group {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
+/* Speaker / snail buttons — sit BELOW the card area, not overlapping top */
+.card-audio-btns {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 10px;
     z-index: 20;
 }
 .border-btn {
-    width: 50px; height: 50px;
+    width: 46px; height: 46px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     background: var(--bg-card);
@@ -412,8 +413,30 @@ body {
     color: var(--text);
     text-shadow: none;
 }
-#pronBack  { color: var(--text-muted); }
+/* Pronunciation — styled with accent color and clear size */
+.pron-text {
+    color: var(--blue);
+    font-size: 0.95rem;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
 #transBack { color: var(--green-dark); text-shadow: none; }
+
+/* Tap-to-flip hint */
+.tap-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.card.flipped .tap-hint { display: none; }
 
 /* ═══════════════════════════════════════
    BUTTONS
@@ -478,10 +501,15 @@ body {
 
 .game-btn  { color: var(--green-dark); border-color: var(--green-light); background: var(--green-bg); }
 .game-btn:hover  { background: var(--green-light); border-color: var(--green); }
-.learn-btn { color: var(--orange); border-color: rgba(255,152,0,0.3); background: rgba(255,152,0,0.07); }
-.learn-btn:hover { background: rgba(255,152,0,0.15); border-color: var(--orange); }
-.quiz-btn  { color: var(--blue); border-color: rgba(33,150,243,0.3); background: rgba(33,150,243,0.07); }
-.quiz-btn:hover  { background: rgba(33,150,243,0.15); border-color: var(--blue); }
+/* Give LEARN and QUIZ real visual weight */
+.learn-btn { color: #B85C00; border-color: rgba(255,152,0,0.5); background: rgba(255,152,0,0.12); font-weight: 700; }
+.learn-btn:hover { background: rgba(255,152,0,0.22); border-color: var(--orange); color: var(--orange); }
+.quiz-btn  { color: #1565C0; border-color: rgba(33,150,243,0.5); background: rgba(33,150,243,0.12); font-weight: 700; }
+.quiz-btn:hover  { background: rgba(33,150,243,0.22); border-color: var(--blue); color: var(--blue); }
+
+/* Active press feedback */
+.nav-btn:active   { transform: scale(0.96) !important; box-shadow: none !important; }
+.border-btn:active { transform: scale(0.92) !important; }
 
 .underline-btn {
     background: none; border: none;
@@ -506,7 +534,8 @@ body {
     position: absolute; top: 12px; left: 12px;
     display: flex; flex-direction: column; gap: 6px; z-index: 10;
 }
-.status-icon { font-size: 1rem; opacity: 0.25; transition: all 0.3s; cursor: default; }
+/* Status icons — more visible in light mode */
+.status-icon { font-size: 1rem; opacity: 0.42; transition: all 0.3s; cursor: default; }
 .status-icon.active { opacity: 1; }
 .status-icon.learned    { color: var(--blue); }
 .status-icon.remembered { color: #8B3A8B; }
@@ -688,11 +717,47 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 #confirmPanel { border-top-color: var(--red); box-shadow: 0 -8px 40px rgba(244,67,54,0.15); }
 
 /* ═══════════════════════════════════════
+   FLASHCARD HEADER (2-row on mobile)
+═══════════════════════════════════════ */
+.flashcard-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.flashcard-header-row1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.fc-action-buttons {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.fc-action-btn {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.6rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+/* Fix flashcard view height so card fills viewport */
+#flashcardView {
+    height: 100vh;
+}
+
+/* ═══════════════════════════════════════
    HANGMAN SVG STATIC LINES (gallows)
 ═══════════════════════════════════════ */
 #hangmanView svg line[style] {
     stroke: var(--text-muted) !important;
     filter: none !important;
+}
+/* Gallows structural lines — more visible */
+.hangman-svg line:not(.hangman-part) {
+    stroke: #BDBDBD !important;
+    stroke-width: 3 !important;
 }
 
 /* ═══════════════════════════════════════
@@ -743,19 +808,15 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
         padding-top: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
+        overflow: hidden;
     }
-    #showAllWordsBtn,
-    #playTopicGameBtn { font-size: 0.6rem; padding: 0.4rem 0.5rem; letter-spacing: 0.05em; }
 
-    .flashcard-wrapper { max-width: 100%; height: 260px; }
-    .border-btn-group  { gap: 12px; }
-    .border-btn        { width: 42px; height: 42px; font-size: 1.2rem; }
+    .flashcard-wrapper { max-width: 100%; height: 250px; }
+    .card-audio-btns   { gap: 12px; margin-bottom: 6px; }
+    .border-btn        { width: 40px; height: 40px; font-size: 1.1rem; }
 
     #wordFront { font-size: 1.6rem; }
     #wordBack  { font-size: 1.4rem; }
-
-    #flashcardView .mb-8 { margin-bottom: 1rem; }
-    #flashcardView .mb-6 { margin-bottom: 0.75rem; }
 
     #prevBtn, #nextBtn, #startLearnBtn, #startQuizBtn {
         font-size: 0.65rem; padding: 0.65rem 0.75rem; letter-spacing: 0.07em;

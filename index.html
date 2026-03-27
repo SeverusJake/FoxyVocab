@@ -90,21 +90,23 @@
     <!-- VIEW 2: FLASHCARD LEARNING -->
     <div id="flashcardView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
-            <!-- Header -->
-            <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
-                    id="backToTopicsBtn" aria-label="Back to topics">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7" />
-                    </svg>
-                    TOPICS
-                </button>
-                <span class="font-display text-sm tracking-wider text-[var(--text-muted)]" id="topicTitle">TOPIC
-                    NAME</span>
-                <div class="flex gap-2">
-                    <button class="nav-btn game-btn text-xs px-3 py-1" id="showAllWordsBtn">SHOW
-                        ALL</button>
-                    <button class="nav-btn game-btn text-xs px-3 py-1" id="playTopicGameBtn">HANGMAN</button>
+            <!-- Header: 2-row layout on mobile -->
+            <div class="flashcard-header mb-4">
+                <!-- Row 1: Nav -->
+                <div class="flashcard-header-row1">
+                    <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                        id="backToTopicsBtn" aria-label="Back to topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        TOPICS
+                    </button>
+                    <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);" id="topicTitle">TOPIC</span>
+                    <!-- Action buttons row (visible on all sizes) -->
+                    <div class="fc-action-buttons">
+                        <button class="nav-btn game-btn fc-action-btn" id="showAllWordsBtn" title="Show word list">📋 LIST</button>
+                        <button class="nav-btn game-btn fc-action-btn" id="playTopicGameBtn" title="Play Hangman">🎮 GAME</button>
+                    </div>
                 </div>
             </div>
 
@@ -120,13 +122,14 @@
             </div>
 
             <!-- Flashcard -->
-            <div class="flex-1 flex items-center justify-center mb-8">
+            <div class="flex-1 flex items-center justify-center mb-4">
                 <div class="flashcard-wrapper">
-                    <div class="border-btn-group">
+                    <!-- Speaker buttons now sit BELOW the card top, not above -->
+                    <div class="card-audio-btns">
                         <button class="border-btn speaker"
-                            onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 1.0)">🔊</button>
+                            onclick="event.stopPropagation(); speak(currentTopic.activeWords[currentCardIndex], 1.0)">🔊</button>
                         <button class="border-btn snail"
-                            onclick="event.stopPropagation(); speak(currentTopic.words[currentCardIndex].word, 0.6)">🐌</button>
+                            onclick="event.stopPropagation(); speak(currentTopic.activeWords[currentCardIndex], 0.6)">🐌</button>
                     </div>
                     <div class="card-container">
                         <div id="cardSlider">
@@ -143,17 +146,20 @@
                                     <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
                                         id="wordFront">WORD</h2>
 
-                                    <div class="mt-8 hint-container">
+                                    <div class="mt-6 hint-container">
                                         <div class="hint-row">
                                             <div class="hint-text" id="hintText"></div>
                                             <button class="trans-btn-card" id="transBtn" onclick="event.stopPropagation(); toggleFrontTrans()" style="display:none">🌐</button>
                                         </div>
                                         <div class="text-sm neon-text-green mt-2 min-h-[20px] transition-opacity opacity-0" id="vietExample"></div>
                                     </div>
+
+                                    <!-- Tap to flip hint -->
+                                    <div class="tap-hint">↩ tap to flip</div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
                                     <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wordBack">Word</h2>
-                                    <p class="text-[var(--neon-cyan)] text-sm mb-4" id="pronBack">/pron/</p>
+                                    <p class="pron-text text-sm mb-4" id="pronBack">/pron/</p>
                                     <p class="text-lg text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)</p>
                                 </div>
                             </div>

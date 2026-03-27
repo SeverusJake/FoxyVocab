@@ -504,6 +504,7 @@ function startHangmanGame(topicId) {
     else { gameWords = Object.keys(dictionary).map(getWordData); document.getElementById('hangmanTitle').textContent = "MASTER CHALLENGE"; }
     guessedLetters = []; wrongGuesses = 0; gameOver = false; hangmanStreak = 0; previousWord = null;
     document.getElementById('streakCount').textContent = '0';
+    renderKeyboard();      // ← MUST come before nextHangmanWord()
     nextHangmanWord();
     switchView(hangmanView, true);
 }
@@ -679,6 +680,24 @@ function setupEventListeners() {
         }
         if (e.key === 'Escape') { if (confirmPanel.classList.contains('show')) cancelExit(); }
     });
+
+    // ── Touch swipe for flashcard navigation ──────────────────────
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const cardSlider = document.getElementById('cardSlider');
+    cardSlider.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    cardSlider.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        // Only treat as horizontal swipe if mostly horizontal
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            if (dx < 0) navigateFlashcard(1);   // swipe left  → next
+            else        navigateFlashcard(-1);   // swipe right → prev
+        }
+    }, { passive: true });
 }
 
 // Start the app
