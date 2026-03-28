@@ -65,6 +65,30 @@ var dictionary = {
  */
 var coursesData = [
     {
+        "id": "ielts",
+        "title": "IELTS",
+        "icon": "🎓",
+        "sets": [
+            {
+                "id": "ielts-placeholder",
+                "title": "IELTS Placeholder Set",
+                "words": ["CONSIGNMENT", "PROCUREMENT", "FULFILLMENT", "LEAD TIME", "BACKORDER"]
+            }
+        ]
+    },
+    {
+        "id": "toeic",
+        "title": "TOEIC",
+        "icon": "📝",
+        "sets": [
+            {
+                "id": "toeic-placeholder",
+                "title": "TOEIC Placeholder Set",
+                "words": ["AMORTIZATION", "COLLATERAL", "DIVERSIFICATION", "LIQUIDITY", "MERGER"]
+            }
+        ]
+    },
+    {
         "id": "topic",
         "title": "Topic",
         "icon": "📚",
@@ -90,30 +114,6 @@ var coursesData = [
                 "id": "environment",
                 "title": "Nature & Ecology",
                 "words": ["BIODEGRADABLE", "ECOSYSTEM", "RENEWABLE", "SUSTAINABILITY", "CONSERVATION"]
-            }
-        ]
-    },
-    {
-        "id": "ielts",
-        "title": "IELTS",
-        "icon": "🎓",
-        "sets": [
-            {
-                "id": "ielts-placeholder",
-                "title": "IELTS Placeholder Set",
-                "words": ["CONSIGNMENT", "PROCUREMENT", "FULFILLMENT", "LEAD TIME", "BACKORDER"]
-            }
-        ]
-    },
-    {
-        "id": "toeic",
-        "title": "TOEIC",
-        "icon": "📝",
-        "sets": [
-            {
-                "id": "toeic-placeholder",
-                "title": "TOEIC Placeholder Set",
-                "words": ["AMORTIZATION", "COLLATERAL", "DIVERSIFICATION", "LIQUIDITY", "MERGER"]
             }
         ]
     }

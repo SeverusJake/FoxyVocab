@@ -223,9 +223,7 @@ function updateWLFlashcard() {
     document.getElementById('wlTransBack').textContent = (wData.vietnamese || '') + ' (' + (wData.pos || '') + ')';
 
     var learnedIcon = document.getElementById('wlStatusLearned');
-    var rememberedIcon = document.getElementById('wlStatusRemembered');
     learnedIcon.classList.toggle('active', !!wData.learned);
-    rememberedIcon.classList.toggle('active', !wData.learned && (wData.quizCorrectCount || 0) > 0);
 
     var starBtn = document.getElementById('wlStarBtn');
     starBtn.textContent = wData.isFavorite ? '★' : '☆';
@@ -260,8 +258,10 @@ function renderWordCards() {
     var html = '';
     currentSet.sortedWords.forEach(function(wordId) {
         var wData = getWordData(wordId);
+        var isFav = wData.isFavorite;
+        var favIcon = isFav ? '★' : '☆';
+        var starClass = isFav ? 'word-card-btn star-active' : 'word-card-btn';
         var safeWordStr = escapeHtml(wData.word).replace(/'/g, "\\'");
-        var favIcon = wData.isFavorite ? '★' : '☆';
         
         if (isWordListSetMode) {
             var cardClass = wData.isKnown ? 'word-card is-known' : 'word-card';
@@ -272,7 +272,7 @@ function renderWordCards() {
                     '<div class="word-card-actions">' +
                         '<button class="word-card-btn" onclick="event.stopPropagation(); speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
                         '<div style="display:flex; flex-direction:column; gap:4px;">' +
-                            '<button class="word-card-btn" onclick="event.stopPropagation(); toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
+                            '<button class="' + starClass + '" onclick="event.stopPropagation(); toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
                             '<button class="word-card-btn" onclick="event.stopPropagation(); toggleWordKnown(\'' + safeWordStr + '\')">🎓</button>' +
                         '</div>' +
                     '</div>' +
@@ -287,7 +287,7 @@ function renderWordCards() {
                     '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
                     '<div class="word-card-actions">' +
                         '<button class="word-card-btn" onclick="speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
-                        '<button class="word-card-btn" onclick="toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
+                        '<button class="' + starClass + '" onclick="toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
                     '</div>' +
                 '</div>' +
                 '<div class="word-card-bottom">' +
@@ -311,8 +311,12 @@ function toggleWordKnown(wordId) {
 
 function toggleFavoriteWord(wordId, btn) {
     var wData = getWordData(wordId);
-    saveProgress(wordId, { isFavorite: !wData.isFavorite });
-    if (btn) btn.textContent = getWordData(wordId).isFavorite ? '★' : '☆';
+    var isFav = !wData.isFavorite;
+    saveProgress(wordId, { isFavorite: isFav });
+    if (btn) {
+        btn.textContent = isFav ? '★' : '☆';
+        btn.classList.toggle('star-active', isFav);
+    }
     playSound('flip');
 }
 
@@ -352,9 +356,7 @@ function updateFlashcard() {
     vietExample.style.opacity = '0';
 
     var learnedIcon = document.getElementById('statusLearned');
-    var rememberedIcon = document.getElementById('statusRemembered');
     learnedIcon.classList.toggle('active', !!cardData.learned);
-    rememberedIcon.classList.toggle('active', !cardData.learned && (cardData.quizCorrectCount || 0) > 0);
 
     var starBtn = document.getElementById('starBtn');
     starBtn.textContent = cardData.isFavorite ? '★' : '☆';
@@ -606,23 +608,34 @@ function startTest() {
         written: document.getElementById('testWritten').checked
     };
 
-    // Must have at least one type enabled
     if (!testConfig.trueFalse && !testConfig.multipleChoice && !testConfig.fillIn && !testConfig.written) {
         testConfig.trueFalse = true;
     }
 
-    // Generate questions
     var enabledTypes = [];
     if (testConfig.trueFalse) enabledTypes.push('tf');
     if (testConfig.multipleChoice) enabledTypes.push('mc');
     if (testConfig.fillIn) enabledTypes.push('fillin');
     if (testConfig.written) enabledTypes.push('written');
 
-    var wordPool = shuffle(currentSet.words.slice()).slice(0, qCount);
-    testQuestions = wordPool.map(function(wordId, idx) {
-        var type = enabledTypes[idx % enabledTypes.length];
-        return { wordId: wordId, type: type };
-    });
+    var wordPool = shuffle(currentSet.words.slice());
+    testQuestions = [];
+    for (var i = 0; i < qCount; i++) {
+        var q = { wordId: wordPool[i], type: enabledTypes[i % enabledTypes.length] };
+        if (q.type === 'tf') {
+            var dists = wordPool.filter(function(id) { return id !== q.wordId; });
+            q.distractorId = dists[Math.floor(Math.random() * dists.length)];
+        } else if (q.type === 'mc') {
+            var options = [q.wordId];
+            while (options.length < 4 && options.length < wordPool.length) {
+                var randId = wordPool[Math.floor(Math.random() * wordPool.length)];
+                if (options.indexOf(randId) === -1) options.push(randId);
+            }
+            q.options = shuffle(options);
+            q._isEngPrompt = Math.random() > 0.5;
+        }
+        testQuestions.push(q);
+    }
     testQuestions = shuffle(testQuestions);
 
     testIndex = 0;
@@ -635,86 +648,58 @@ function startTest() {
 function renderTestQuestion() {
     if (testIndex >= testQuestions.length) { showTestResults(); return; }
     var q = testQuestions[testIndex];
-    var w = getWordData(q.wordId);
     var area = document.getElementById('testContentArea');
     document.getElementById('testProgressText').textContent = (testIndex + 1) + ' / ' + testQuestions.length;
     document.getElementById('testProgressBar').style.width = ((testIndex + 1) / testQuestions.length * 100) + '%';
 
     var html = '';
     if (q.type === 'tf') {
-        // True/False: show Vietnamese + English pair, sometimes correct sometimes wrong
-        var isCorrectPair = Math.random() > 0.5;
-        var displayWord = w;
-        if (!isCorrectPair) {
-            var others = currentSet.words.filter(function(id) { return id !== q.wordId; });
-            if (others.length > 0) {
-                var randomOther = others[Math.floor(Math.random() * others.length)];
-                displayWord = getWordData(randomOther);
-            } else { isCorrectPair = true; }
-        }
-        q._correctAnswer = isCorrectPair ? 'true' : 'false';
-        html = '<div class="test-question-area">' +
-            '<p class="test-label">Definition</p>' +
-            '<p class="test-definition">' + escapeHtml(w.vietnamese || '') + '</p>' +
-            '<p class="test-label mt-4">Term</p>' +
-            '<p class="test-term">' + escapeHtml(displayWord.word) + '</p>' +
-            '<p class="test-label mt-6">Choose the answer</p>' +
-            '<div class="test-options-col">' +
-                '<button class="test-option-btn" onclick="answerTest(this, \'true\', \'' + q._correctAnswer + '\')">True</button>' +
-                '<button class="test-option-btn" onclick="answerTest(this, \'false\', \'' + q._correctAnswer + '\')">False</button>' +
-            '</div>' +
+        var w = getWordData(q.wordId);
+        var dist = getWordData(q.distractorId);
+        var showCorrect = Math.random() > 0.5;
+        q._isTrue = showCorrect;
+        
+        var shownTerm = showCorrect ? w.word : dist.word;
+        if (testConfig.speak) { speak(shownTerm, 1.0); }
+
+        html = '<div class="test-question-area text-center">' +
+            '<p class="test-term text-3xl mb-4 text-[var(--blue)] font-bold">' + escapeHtml(shownTerm) + '</p>' +
+            '<p class="test-definition mb-6 text-lg">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
+        '</div>' +
+        '<div class="test-options-col">' +
+            '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(true, this)">True</button>' +
+            '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(false, this)">False</button>' +
         '</div>';
     } else if (q.type === 'mc') {
-        // Multiple Choice: Vietnamese prompt, 4 English word options
-        var options = [w.word];
-        var distractors = currentSet.words.filter(function(id) { return id !== q.wordId; });
-        distractors = shuffle(distractors).slice(0, 3);
-        distractors.forEach(function(d) { options.push(d); });
-        options = shuffle(options);
-        q._correctAnswer = w.word;
+        var w = getWordData(q.wordId);
+        var optsHtml = '';
+        q.options.forEach(function(optId, idx) {
+            var optW = getWordData(optId);
+            var optText = q._isEngPrompt ? ('(' + (optW.pos || '') + ') ' + escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word);
+            optsHtml += '<button class="test-option-btn text-left" onclick="answerTest(' + idx + ', this)">' + optText + '</button>';
+        });
+        
+        var promptText = q._isEngPrompt ? escapeHtml(w.word) : ('(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || ''));
+        if (q._isEngPrompt && testConfig.speak) { speak(w.word, 1.0); }
+
         html = '<div class="test-question-area">' +
-            '<p class="test-definition">' + escapeHtml(w.vietnamese || '') + '</p>' +
-            '<p class="test-label mt-4">Choose the answer</p>' +
-            '<div class="test-options-col">' +
-                options.map(function(opt) {
-                    return '<button class="test-option-btn" onclick="answerTest(this, \'' + escapeHtml(opt).replace(/'/g, "\\'") + '\', \'' + escapeHtml(w.word).replace(/'/g, "\\'") + '\')">' + escapeHtml(opt) + '</button>';
-                }).join('') +
-            '</div>' +
-        '</div>';
-    } else if (q.type === 'fillin') {
-        // Fill-in: example with blank, 4 MC options
-        var example = w.example || 'The ___ is important.';
-        var blankedExample = example.replace(new RegExp(w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '___');
-        var options2 = [w.word];
-        var dist2 = shuffle(currentSet.words.filter(function(id) { return id !== q.wordId; })).slice(0, 3);
-        dist2.forEach(function(d) { options2.push(d); });
-        options2 = shuffle(options2);
-        q._correctAnswer = w.word;
-        html = '<div class="test-question-area">' +
-            '<p class="test-definition" style="font-style:italic">"' + escapeHtml(blankedExample) + '"</p>' +
-            '<p class="test-label mt-4">Choose the answer</p>' +
-            '<div class="test-options-col">' +
-                options2.map(function(opt) {
-                    return '<button class="test-option-btn" onclick="answerTest(this, \'' + escapeHtml(opt).replace(/'/g, "\\'") + '\', \'' + escapeHtml(w.word).replace(/'/g, "\\'") + '\')">' + escapeHtml(opt) + '</button>';
-                }).join('') +
-            '</div>' +
+            '<p class="' + (q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4') + '">' + promptText + '</p>' +
+            '<p class="test-label mt-4">Select the correct matching term</p>' +
+            '<div class="test-options-col">' + optsHtml + '</div>' +
         '</div>';
     } else if (q.type === 'written') {
-        // Written: Vietnamese prompt, type English answer
+        var w = getWordData(q.wordId);
         var keysHtml = '';
-        var keyboardChars = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
-        keyboardChars.forEach(function(ch) {
+        'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').forEach(function(ch) {
             keysHtml += '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
         });
         keysHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
         
-        q._correctAnswer = w.word;
         html = '<div class="test-question-area">' +
             '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
             '<p class="test-label mt-6">Your answer</p>' +
             '<div class="test-written-input-wrap">' +
                 '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
-                '<button class="test-dont-know" onclick="answerTestWritten(null)">Don\'t know?</button>' +
             '</div>' +
             '<div class="visual-keyboard">' + keysHtml + '</div>' +
             '<button class="primary-btn mt-4 mx-auto" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
@@ -725,26 +710,33 @@ function renderTestQuestion() {
     if (writtenInput) writtenInput.focus();
 }
 
-function answerTest(btn, selected, correct) {
-    var isCorrect = selected === correct;
-    var buttons = btn.parentElement.querySelectorAll('.test-option-btn');
-    buttons.forEach(function(b) {
-        b.disabled = true;
-        b.onclick = null;
-        if (b.textContent === correct || b.innerText === correct) b.classList.add('correct');
-    });
-    if (!isCorrect) { btn.classList.add('wrong'); playSound('wrong'); }
-    else { playSound('correct'); testScore++; }
-
-    if (testConfig.speak) { speak(correct, 1.0); } // speak word immediately if testSpeak is true
-
-    testAnswers.push({ wordId: testQuestions[testIndex].wordId, correct: isCorrect, type: testQuestions[testIndex].type });
-
-    if (testConfig.instantFeedback) {
-        setTimeout(function() { testIndex++; renderTestQuestion(); }, 1200);
-    } else {
-        setTimeout(function() { testIndex++; renderTestQuestion(); }, 800);
+function answerTest(val, btn) {
+    var q = testQuestions[testIndex];
+    var isCorrect = false;
+    if (q.type === 'tf') {
+        isCorrect = (val === q._isTrue);
+    } else if (q.type === 'mc') {
+        isCorrect = (q.options[val] === q.wordId);
     }
+
+    if (isCorrect) { playSound('correct'); testScore++; }
+    else { playSound('wrong'); }
+
+    var buttons = btn.parentElement.querySelectorAll('.test-option-btn');
+    buttons.forEach(function(b, i) { 
+        b.disabled = true; 
+        if (q.type === 'tf') {
+            if ((i === 0 ? true : false) === q._isTrue) b.classList.add('correct');
+        } else if (q.type === 'mc') {
+            if (q.options[i] === q.wordId) b.classList.add('correct');
+        }
+    });
+    if (!isCorrect) btn.classList.add('wrong');
+
+    if (testConfig.speak && q.type !== 'tf' && !q._isEngPrompt) { speak(getWordData(q.wordId).word, 1.0); }
+
+    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
+    setTimeout(function() { testIndex++; renderTestQuestion(); }, 1000);
 }
 
 function answerTestWritten(value) {
@@ -754,7 +746,7 @@ function answerTestWritten(value) {
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
 
-    if (testConfig.speak) { speak(w.word, 1.0); } // speak word immediately if testSpeak is true
+    if (testConfig.speak) { speak(w.word, 1.0); }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: 'written' });
 
@@ -787,7 +779,6 @@ function showTestResults() {
 // MATCH GAME
 // ═══════════════════════════════════
 function startMatch() {
-    // Pick 6 random words
     var pool = shuffle(currentSet.words.slice()).slice(0, 6);
     matchWords = pool;
     matchCards = [];
@@ -832,11 +823,9 @@ function selectMatchCard(idx) {
     if (!cardEl || cardEl.classList.contains('matched') || cardEl.classList.contains('selected')) return;
 
     if (matchSelected === null) {
-        // First selection
         matchSelected = idx;
         cardEl.classList.add('selected');
     } else {
-        // Second selection
         var firstIdx = matchSelected;
         var firstEl = document.querySelector('.match-card[data-idx="' + firstIdx + '"]');
         cardEl.classList.add('selected');
@@ -847,25 +836,25 @@ function selectMatchCard(idx) {
         if (card1.pairId === card2.pairId && card1.type !== card2.type) {
             // Match found!
             playSound('correct');
-            setTimeout(function() {
-                firstEl.classList.add('matched');
-                cardEl.classList.add('matched');
-                firstEl.classList.remove('selected');
-                cardEl.classList.remove('selected');
-                matchPairs++;
-                if (matchPairs >= matchWords.length) {
-                    // Game complete
-                    clearInterval(matchTimerInterval);
-                    setTimeout(function() { showMatchResults(); }, 500);
-                }
-            }, 300);
+            firstEl.classList.remove('selected');
+            cardEl.classList.remove('selected');
+            firstEl.classList.add('matched');
+            cardEl.classList.add('matched');
+            matchPairs++;
+            if (matchPairs >= matchWords.length) {
+                // Game complete
+                clearInterval(matchTimerInterval);
+                setTimeout(function() { showMatchResults(); }, 600);
+            }
         } else {
             // No match
-            matchWrong++;
             playSound('wrong');
+            matchWrong++;
+            firstEl.classList.add('wrong');
+            cardEl.classList.add('wrong');
             setTimeout(function() {
-                firstEl.classList.remove('selected');
-                cardEl.classList.remove('selected');
+                firstEl.classList.remove('selected', 'wrong');
+                cardEl.classList.remove('selected', 'wrong');
             }, 600);
         }
         matchSelected = null;

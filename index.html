@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>FoxyVocab — Vocabulary Study App</title>
-    <meta name="description" content="Quizlet-style vocabulary study app for English learners with flashcards, tests, and matching games.">
+    <meta name="description"
+        content="Quizlet-style vocabulary study app for English learners with flashcards, tests, and matching games.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <script src="data.js" defer></script>
     <script src="script.js" defer></script>
     <link rel="icon" type="image/x-icon" href="public/foxy.ico">
     <link rel="icon" type="image/webp" href="public/foxy.webp">
     <!-- Restore saved theme before first paint -->
     <script>
-        (function() {
+        (function () {
             if (localStorage.getItem('foxyVocabTheme') === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
@@ -24,7 +27,7 @@
     </script>
     <!-- Diagnostic: catch data.js load failure for old iPad -->
     <script>
-        window.addEventListener('error', function(e) {
+        window.addEventListener('error', function (e) {
             if (e.filename && e.filename.indexOf('data.js') !== -1) {
                 console.error('[FoxyVocab] data.js failed to load:', e.message);
                 var el = document.getElementById('loadError');
@@ -41,10 +44,12 @@
     <div class="orb orb-2"></div>
 
     <!-- LOAD ERROR (hidden by default, shown if data.js fails) -->
-    <div id="loadError" style="display:none; position:fixed; inset:0; z-index:9999; background:var(--bg); color:var(--text); padding:40px; text-align:center;">
+    <div id="loadError"
+        style="display:none; position:fixed; inset:0; z-index:9999; background:var(--bg); color:var(--text); padding:40px; text-align:center;">
         <h2 style="color:#ff6b6b; margin-bottom:16px;">⚠️ Failed to load vocabulary data</h2>
         <p style="margin-bottom:12px;">The app could not load <code>data.js</code>.</p>
-        <p style="font-size:14px; color:var(--text-muted);">Please check your browser console for details. If you're on an older device, try refreshing or using a newer browser.</p>
+        <p style="font-size:14px; color:var(--text-muted);">Please check your browser console for details. If you're on
+            an older device, try refreshing or using a newer browser.</p>
     </div>
 
     <noscript>
@@ -61,15 +66,19 @@
         <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col">
             <!-- Header -->
             <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-                <div class="text-center sm:text-left">
-                    <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-wider" style="color: var(--text);">FOXYVOCAB</h1>
+                <div class="text-center sm:text-left flex items-center gap-3">
+                    <img src="avatar.png" style="height: 38px; width: 38px; border-radius: 50%; object-fit: cover;">
+                    <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-wider" style="color: var(--text);">
+                        FOXYVOCAB</h1>
                     <p style="color: var(--text-muted);" class="mt-1 tracking-wide text-sm">Choose a course to study</p>
                 </div>
                 <div class="flex gap-2 items-center">
                     <button id="settingsBtn" class="view-toggle-btn" aria-label="Settings" title="Settings">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
                         </svg>
                     </button>
                 </div>
@@ -89,13 +98,15 @@
     <div id="setView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-2xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToCoursesBtn" aria-label="Back to courses">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                    id="backToCoursesBtn" aria-label="Back to courses">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
                     COURSES
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);" id="setViewTitle">COURSE</span>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);"
+                    id="setViewTitle">COURSE</span>
                 <div style="width:80px"></div>
             </div>
             <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="setContainer">
@@ -113,13 +124,15 @@
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <!-- Header -->
             <div class="flex items-center justify-between mb-4">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToSetsBtn" aria-label="Back to sets">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backToSetsBtn"
+                    aria-label="Back to sets">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
                     SETS
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);" id="wordListTitle">SET</span>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);"
+                    id="wordListTitle">SET</span>
                 <div style="width:60px"></div>
             </div>
 
@@ -136,23 +149,25 @@
                                 <div class="card-face card-front flex flex-col justify-center">
                                     <div class="status-icons">
                                         <div class="status-icon learned" id="wlStatusLearned" title="Learned">🧠</div>
-                                        <div class="status-icon remembered" id="wlStatusRemembered" title="Remembered">✔️</div>
                                     </div>
                                     <button class="star-btn" id="wlStarBtn">☆</button>
-                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight" id="wlWordFront">WORD</h2>
+                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
+                                        id="wlWordFront">WORD</h2>
                                     <div class="tap-hint">↩ tap to flip</div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
-                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wlWordBack">Word</h2>
+                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2"
+                                        id="wlWordBack">Word</h2>
                                     <p class="pron-text text-sm mb-4" id="wlPronBack">/pron/</p>
-                                    <p class="text-lg text-center neon-text-green mb-4" id="wlTransBack">Vietnamese (pos)</p>
+                                    <p class="text-lg text-center neon-text-green mb-4" id="wlTransBack">Vietnamese
+                                        (pos)</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Dots -->
-                <div class="carousel-dots" id="carouselDots"></div>
+                <div class="carousel-dots mt-8" id="carouselDots"></div>
             </div>
 
             <!-- Set Info -->
@@ -199,13 +214,16 @@
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flashcard-header mb-4">
                 <div class="flashcard-header-row1">
-                    <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backFromFlashcardBtn" aria-label="Back">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                        id="backFromFlashcardBtn" aria-label="Back">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M19 12H5M12 19l-7-7 7-7" />
                         </svg>
                         BACK
                     </button>
-                    <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);" id="fcTopicTitle">TOPIC</span>
+                    <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);"
+                        id="fcTopicTitle">TOPIC</span>
                     <div style="width:60px"></div>
                 </div>
             </div>
@@ -232,23 +250,27 @@
                                 <div class="card-face card-front flex flex-col justify-center">
                                     <div class="status-icons">
                                         <div class="status-icon learned" id="statusLearned" title="Learned">🧠</div>
-                                        <div class="status-icon remembered" id="statusRemembered" title="Remembered">✔️</div>
                                     </div>
                                     <button class="star-btn" id="starBtn">☆</button>
-                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight" id="wordFront">WORD</h2>
+                                    <h2 class="font-display text-3xl sm:text-4xl font-bold neon-text-cyan text-center leading-tight"
+                                        id="wordFront">WORD</h2>
                                     <div class="mt-6 hint-container">
                                         <div class="hint-row">
                                             <div class="hint-text" id="hintText"></div>
-                                            <button class="trans-btn-card" id="transBtn" style="display:none">🌐</button>
+                                            <button class="trans-btn-card" id="transBtn"
+                                                style="display:none">🌐</button>
                                         </div>
-                                        <div class="text-sm neon-text-green mt-2 min-h-[20px] transition-opacity opacity-0" id="vietExample"></div>
+                                        <div class="text-sm neon-text-green mt-2 min-h-[20px] transition-opacity opacity-0"
+                                            id="vietExample"></div>
                                     </div>
                                     <div class="tap-hint">↩ tap to flip</div>
                                 </div>
                                 <div class="card-face card-back flex flex-col justify-center">
-                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2" id="wordBack">Word</h2>
+                                    <h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2"
+                                        id="wordBack">Word</h2>
                                     <p class="pron-text text-sm mb-4" id="pronBack">/pron/</p>
-                                    <p class="text-lg text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)</p>
+                                    <p class="text-lg text-center neon-text-green mb-4" id="transBack">Vietnamese (pos)
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -271,7 +293,8 @@
     <div id="learnView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn" aria-label="Back">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider exit-learn-btn"
+                    aria-label="Back">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
@@ -292,7 +315,8 @@
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-2">
                 <button class="back-btn" id="closeTestSettingsBtn" aria-label="Close">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
@@ -304,7 +328,8 @@
 
             <!-- Question Count -->
             <div class="test-setting-row">
-                <span class="test-setting-label">Question count <span class="text-xs" style="color: var(--text-muted);" id="testMaxLabel">(max 20)</span></span>
+                <span class="test-setting-label">Question count <span class="text-xs" style="color: var(--text-muted);"
+                        id="testMaxLabel">(max 20)</span></span>
                 <input type="number" class="test-count-input" id="testQuestionCount" value="20" min="1">
             </div>
 
@@ -376,12 +401,14 @@
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-2">
                 <button class="back-btn exit-test-btn" aria-label="Exit test">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--text);" id="testProgressText">1 / 20</span>
+                <span class="font-display text-sm tracking-wider" style="color: var(--text);" id="testProgressText">1 /
+                    20</span>
                 <div style="width:40px"></div>
             </div>
             <div class="progress-track h-1 rounded-full overflow-hidden mb-6">
@@ -398,16 +425,15 @@
         <div class="w-full flex-1 mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-4">
                 <button class="back-btn exit-match-btn" aria-label="Exit match">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
-                <span class="font-display text-base tracking-wider" style="color: var(--text);" id="matchTimer">0.0 seconds</span>
-                <div class="flex gap-2">
-                    <button class="view-toggle-btn" id="matchSoundBtn" title="Toggle sound">🔊</button>
-                    <button class="view-toggle-btn" id="matchSettingsBtn" title="Settings">⚙️</button>
-                </div>
+                <span class="font-display text-base tracking-wider" style="color: var(--text);" id="matchTimer">0.0
+                    seconds</span>
+                <!-- Replaced buttons container with empty space -->
             </div>
             <div class="match-grid" id="matchGrid">
                 <!-- Match cards injected via JS -->
@@ -445,14 +471,17 @@
     <div id="compactListView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-2xl mx-auto flex flex-col h-full">
             <div class="flex items-center justify-between mb-6">
-                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider" id="backFromListBtn" aria-label="Back">
+                <button class="back-btn flex items-center gap-2 text-sm font-display tracking-wider"
+                    id="backFromListBtn" aria-label="Back">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
                     BACK
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)" id="compactListTitle">TOPIC NAME</span>
-                <div class="text-sm font-display tracking-wider w-16 text-right" style="color: var(--text-muted)" id="compactListCount">0</div>
+                <span class="font-display text-sm tracking-wider" style="color: var(--green-dark)"
+                    id="compactListTitle">TOPIC NAME</span>
+                <div class="text-sm font-display tracking-wider w-16 text-right" style="color: var(--text-muted)"
+                    id="compactListCount">0</div>
             </div>
             <div class="flex-1 overflow-y-auto custom-scrollbar pr-2" id="compactListContainer">
                 <!-- List items injected via JS -->
@@ -472,7 +501,8 @@
             <p id="resultPron" class="text-xs mb-2" style="color: var(--blue)">/pron/</p>
             <p id="resultTrans" class="text-sm mb-2 neon-text-green">Vietnamese (pos)</p>
             <p id="resultDef" class="text-sm text-center mb-4" style="color: var(--text-muted)">Definition</p>
-            <button id="resultContinueBtn" class="nav-btn w-full" style="background: var(--green); color: white; border-color: var(--green-dark);">CONTINUE</button>
+            <button id="resultContinueBtn" class="nav-btn w-full"
+                style="background: var(--green); color: white; border-color: var(--green-dark);">CONTINUE</button>
         </div>
     </div>
 
@@ -480,8 +510,10 @@
     <div id="confirmPanel" class="slide-panel">
         <div class="text-center mb-6 text-sm">Don't go yet~ Finish it first or your progress will disappear 😭</div>
         <div class="flex flex-col gap-3 w-full">
-            <button class="nav-btn w-full" id="cancelExitBtn" style="background: var(--yellow); border-color: var(--yellow-dark); color: var(--text); font-weight: 700;">STAY</button>
-            <button class="nav-btn w-full" id="confirmExitBtn" style="background: var(--red-bg); border-color: var(--red); color: var(--red);">EXIT</button>
+            <button class="nav-btn w-full" id="cancelExitBtn"
+                style="background: var(--yellow); border-color: var(--yellow-dark); color: var(--text); font-weight: 700;">STAY</button>
+            <button class="nav-btn w-full" id="confirmExitBtn"
+                style="background: var(--red-bg); border-color: var(--red); color: var(--red);">EXIT</button>
         </div>
     </div>
 

@@ -16,24 +16,31 @@
     --yellow:       #FFC83A;
     --yellow-dark:  #E6A800;
     --yellow-light: #FFF3C4;
-    --yellow-bg:    #FFF8E1;
+    /* Vibrant Colors for light mode */
+    --bg:           #f4f7fa;
+    --bg-card:      #ffffff;
+    --bg-surface:   #f0f4f8;
 
-    /* Secondary accent — friendly green */
-    --green:        #4CAF50;
-    --green-dark:   #388E3C;
-    --green-light:  #C8E6C9;
-    --green-bg:     #E8F5E9;
+    --yellow:       #FFB703;
+    --yellow-dark:  #FB8500;
+    --yellow-light: rgba(255,183,3,0.15);
+    --yellow-bg:    rgba(255,183,3,0.08);
 
-    /* Status / alert */
-    --red:          #F44336;
-    --red-bg:       #FFEBEE;
-    --blue:         #2196F3;
-    --orange:       #FF9800;
+    --green:        #06D6A0;
+    --green-dark:   #04A77D;
+    --green-light:  rgba(6,214,160,0.15);
+    --green-bg:     rgba(6,214,160,0.08);
 
-    /* Text */
-    --text:         #1A1A2E;
-    --text-muted:   #757575;
-    --text-light:   #BDBDBD;
+    --red:          #EF476F;
+    --red-bg:       rgba(239,71,111,0.1);
+    
+    --blue:         #118AB2;
+    --blue-dark:    #073B4C;
+    --orange:       #FF9F1C;
+
+    --text:         #2B2D42;
+    --text-muted:   #6C757D;
+    --text-light:   #ADB5BD;
 
     /* Shadows */
     --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
@@ -336,15 +343,45 @@ body {
 /* ═══════════════════════════════════════
    FLASHCARD
 ═══════════════════════════════════════ */
-.flashcard-wrapper {
+/* Interactive components */
+/* Duplicate removed */
+
+/* Flashcard Container and Dots */
+.flashcard-carousel-container {
     position: relative;
     width: 100%;
-    max-width: 420px;
-    height: 320px;
-    margin: 0 auto;
 }
+.flashcard-wrapper {
+    perspective: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    height: 16px;
+    position: relative;
+    z-index: 10;
+}
+.carousel-dot {
+    width: 8px; height: 8px;
+    background: var(--text-light);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-dot.active {
+    background: var(--yellow);
+    transform: scale(1.3);
+}
+.carousel-dot.small { transform: scale(0.6); opacity: 0.6; }
+.carousel-dot.tiny { transform: scale(0.3); opacity: 0.3; }
 
-/* Speaker / snail buttons — sit BELOW the card area, not overlapping top */
+/* Speaker / snail buttons */
 .card-audio-btns {
     display: flex;
     justify-content: center;
@@ -476,8 +513,11 @@ body {
 }
 
 /* Confirm Exit Buttons Desktop */
-#confirmPanel > div.flex-col {
-    flex-direction: row;
+#confirmPanel .flex-col {
+    align-items: center;
+}
+#confirmPanel .flex-col > button {
+    width: 50% !important;
 }
 
 /* Primary yellow button */
@@ -547,13 +587,13 @@ body {
 .status-icon.remembered { color: #8B3A8B; }
 
 .star-btn {
-    position: absolute; top: 12px; right: 12px;
-    font-size: 1.4rem; color: var(--text-light);
-    background: none; border: none; cursor: pointer;
-    z-index: 10; opacity: 0.5; transition: all 0.2s;
+    background: none; border: none; font-size: 1.4rem; cursor: pointer;
+    color: var(--text-light); transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+    padding: 0; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
+    position: absolute; top: 12px; right: 12px; z-index: 10;
 }
-.star-btn:hover { opacity: 1; transform: scale(1.2); }
-.star-btn.active { color: var(--yellow-dark); opacity: 1; text-shadow: 0 0 6px rgba(255,200,58,0.5); }
+.star-btn:hover { color: var(--yellow); transform: scale(1.15) rotate(10deg); }
+.star-btn.active { color: var(--yellow); transform: scale(1.15); text-shadow: 0 0 12px var(--yellow-light); opacity: 1; }
 
 .known-btn {
     font-size: 1.4rem; background: none; border: none; padding: 0; outline: none;
@@ -716,11 +756,12 @@ body {
 }
 .word-card-actions { display: flex; gap: 8px; }
 .word-card-btn {
-    background: none; border: none;
-    font-size: 1.1rem; cursor: pointer;
-    padding: 2px; transition: transform 0.2s;
+    background: none; border: none; font-size: 1.2rem; cursor: pointer;
+    color: var(--text-muted); opacity: 0.6; transition: all 0.2s;
+    padding: 0; outline: none;
 }
-.word-card-btn:hover { transform: scale(1.2); }
+.word-card-btn:hover { opacity: 1; color: var(--blue); transform: scale(1.1); }
+.word-card-btn.star-active { color: var(--yellow); opacity: 1; text-shadow: 0 0 4px var(--yellow-light); }
 .word-card-bottom {
     margin-top: 4px;
 }
@@ -786,18 +827,27 @@ body {
 ═══════════════════════════════════════ */
 .match-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 0.6rem;
     flex: 1;
-    align-content: start;
+    height: 100%;
+    align-content: stretch;
     padding: 0.25rem;
 }
+@media (min-width: 640px) {
+    .match-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
 .match-card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0.5rem;
-    min-height: 70px;
+    padding: 0.5rem;
+    height: 100%;
     background: var(--bg-card);
     border: 2px solid var(--border);
     border-radius: 12px;
@@ -805,6 +855,7 @@ body {
     transition: all 0.2s;
     box-shadow: var(--shadow-sm);
     text-align: center;
+    user-select: none;
 }
 .match-card:hover:not(.matched):not(.selected) {
     border-color: var(--yellow);
@@ -818,10 +869,26 @@ body {
     transform: scale(1.03);
 }
 .match-card.matched {
-    opacity: 0;
+    border-color: var(--green);
+    background: var(--green-bg);
+    animation: vanish 0.6s forwards;
     pointer-events: none;
-    transform: scale(0.8);
-    transition: all 0.4s;
+}
+@keyframes vanish {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.5; border-width: 4px; }
+    100% { transform: scale(0); opacity: 0; border-width: 0; }
+}
+.match-card.wrong {
+    border-color: var(--red);
+    background: var(--red-bg);
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 .match-card-text {
     font-size: 0.85rem;
@@ -1195,8 +1262,8 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
     }
 
     /* Confirm Exit Buttons Mobile */
-    #confirmPanel > div.flex-col {
-        flex-direction: column !important;
+    #confirmPanel .flex-col > button {
+        width: 100% !important;
     }
 
     /* Action buttons */
@@ -1331,6 +1398,7 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 
 /* Dark — match */
 [data-theme="dark"] .match-card:hover:not(.matched):not(.selected) { border-color: #00f5ff; background: rgba(0,245,255,0.05); }
+[data-theme="dark"] .match-card.selected { border-color: var(--orange); background: rgba(255, 159, 28, 0.15); }
 
 /* Dark — slide panels */
 [data-theme="dark"] .slide-panel { background: rgba(10,10,18,0.98); box-shadow: 0 -8px 40px rgba(0,0,0,0.5); }
@@ -1458,7 +1526,7 @@ input[type="text"], .quiz-option, .view-toggle-btn,
 
 /* Ensure the flashcard wrapper height allows word list content below */
 #wordListView .flashcard-wrapper {
-    height: 220px;
+    height: 280px;
     max-width: 100%;
 }
 
