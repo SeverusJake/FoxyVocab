@@ -775,8 +775,7 @@ body {
     border-color: var(--green-dark);
 }
 .word-card.is-known .word-card-term,
-.word-card.is-known .word-card-meaning,
-.word-card.is-known .word-card-btn {
+.word-card.is-known .word-card-meaning {
     color: white;
 }
 
@@ -839,6 +838,7 @@ body {
     .match-grid {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 1fr);
+        gap: 1.5rem;
     }
 }
 .match-card {
@@ -857,10 +857,12 @@ body {
     text-align: center;
     user-select: none;
 }
-.match-card:hover:not(.matched):not(.selected) {
-    border-color: var(--yellow);
-    background: var(--yellow-bg);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .match-card:hover:not(.matched):not(.selected) {
+        border-color: var(--yellow);
+        background: var(--yellow-bg);
+        transform: translateY(-2px);
+    }
 }
 .match-card.selected {
     border-color: var(--blue);
@@ -895,6 +897,11 @@ body {
     font-weight: 600;
     color: var(--text);
     word-break: break-word;
+}
+@media (min-width: 640px) {
+    .match-card-text {
+        font-size: 1.25rem;
+    }
 }
 
 /* Match result stats */
@@ -1367,6 +1374,7 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 [data-theme="dark"] .action-btn { background: rgba(13,13,24,0.7); }
 [data-theme="dark"] .action-btn:hover { background: rgba(0,245,255,0.08); border-color: #00f5ff; }
 [data-theme="dark"] .word-card { background: rgba(13,13,24,0.5); border-color: rgba(255,255,255,0.06); }
+[data-theme="dark"] .word-card.is-known { background: var(--green-dark); border-color: var(--green); }
 [data-theme="dark"] .match-card { background: rgba(13,13,24,0.7); }
 [data-theme="dark"] .match-card.selected { background: rgba(0,245,255,0.1); border-color: #00f5ff; }
 [data-theme="dark"] .test-option-btn { background: rgba(13,13,24,0.8); }
@@ -1524,8 +1532,9 @@ input[type="text"], .quiz-option, .view-toggle-btn,
     .sm\:text-4xl  { font-size: 2.25rem; }
 }
 
-/* Ensure the flashcard wrapper height allows word list content below */
-#wordListView .flashcard-wrapper {
+/* Ensure the flashcard wrapper height allows content below */
+#wordListView .flashcard-wrapper,
+#learnView .flashcard-wrapper {
     height: 280px;
     max-width: 100%;
 }

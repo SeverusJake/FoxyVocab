@@ -256,7 +256,17 @@ function updateWLFlashcard() {
 function renderWordCards() {
     var container = document.getElementById('wordCardsContainer');
     var html = '';
-    currentSet.sortedWords.forEach(function(wordId) {
+    
+    var wordsToRender = currentSet.sortedWords.slice();
+    if (!isWordListSetMode) {
+        wordsToRender.sort(function(a, b) {
+            var ka = getWordData(a).isKnown ? 1 : 0;
+            var kb = getWordData(b).isKnown ? 1 : 0;
+            return ka - kb;
+        });
+    }
+
+    wordsToRender.forEach(function(wordId) {
         var wData = getWordData(wordId);
         var isFav = wData.isFavorite;
         var favIcon = isFav ? '★' : '☆';
@@ -282,7 +292,8 @@ function renderWordCards() {
                 '</div>' +
             '</div>';
         } else {
-            html += '<div class="word-card">' +
+            var cardClass = wData.isKnown ? 'word-card is-known' : 'word-card';
+            html += '<div class="' + cardClass + '">' +
                 '<div class="word-card-top">' +
                     '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
                     '<div class="word-card-actions">' +
@@ -490,9 +501,9 @@ function renderLearnStep() {
                 '</div>' +
             '</div>' +
         '</div>' +
-        '<div class="flex flex-col items-center gap-3 w-full">' +
-            '<button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width:200px">CONTINUE</button>' +
-            '<button class="underline-btn" onclick="skipWord()">I already know this word</button>' +
+        '<div class="flex flex-col items-center gap-3 w-full fixed bottom-8 left-0 right-0 px-6 z-20 sm:static sm:mt-8 sm:px-0">' +
+            '<button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width:100%; max-width:300px; padding: 1rem; box-shadow: var(--shadow-md);">CONTINUE</button>' +
+            '<button class="underline-btn bg-transparent font-bold" onclick="skipWord()" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">I already know this word</button>' +
         '</div>';
     } else if (learnStep === 2) {
         speak(w.word, 1.0);

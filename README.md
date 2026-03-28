@@ -49,36 +49,54 @@ For development with live reload:
 npx live-server
 ```
 
-## Data Format
+## How to Add Data
 
-Words are stored in `data.js` with this structure:
+FoxyVocab uses a completely frontend, local JavaScript data file (`data.js`). The data is split into two logical parts: **the Dictionary** and **the Courses**.
 
+### 1. The Dictionary
+All vocabulary words must first be defined in the `dictionary` object at the top of the file. Each key is the exact word (case-sensitive), and its value contains its definition and translations.
 ```js
-// Global dictionary of all words
 const dictionary = {
-    "WORD": {
-        definition: "English definition",
-        pos: "noun|verb|adj|...",
-        pron: "/IPA/",
-        example: "Example sentence.",
-        vietnamese: "Vietnamese translation",
-        vietnamese_example: "Vietnamese example",
-        cefr: "A1|A2|B1|B2|C1|C2"
+    "apple": {
+        definition: "A round fruit with red or green skin and a whitish interior.",
+        pos: "noun",
+        pron: "/ˈæp.əl/",
+        example: "She took a bite of the apple.",
+        vietnamese: "quả táo",
+        vietnamese_example: "Cô ấy cắn một miếng táo.",
+        cefr: "A1"
     }
 };
+```
 
-// Course → Set hierarchy
+### 2. Courses and Sets
+Once a word exists in the dictionary, it can be attached to any set! `coursesData` defines the navigation hierarchy.
+- **Course**: Contains an `id`, `title`, an emoji `icon`, and an array of `sets`.
+- **Set**: Contains an `id`, `title`, and an array of `words`. *Note: The strings here must exactly match the keys used in the dictionary.*
+```js
 const coursesData = [
     {
-        id: "topic",
-        title: "Topic",
-        icon: "📚",
+        id: "fruits-course",
+        title: "Fruit Basics",
+        icon: "🍎",
         sets: [
-            { id: "logistics", title: "Logistics", words: ["WORD1", "WORD2", ...] }
+            { 
+                id: "basic-fruits", 
+                title: "Basic Fruits", 
+                words: ["apple", "banana", "orange"] 
+            }
         ]
     }
 ];
 ```
+
+### Step-by-Step Instructions
+1. Open `data.js`.
+2. Add any new words you want to teach to the `dictionary` object. Make sure the formatting (quotes and commas) is strictly followed!
+3. Scroll down to the `coursesData` array.
+4. Create a new item inside a course's `sets` array (or create an entirely new course object).
+5. Give the set an `id`, `title`, and insert your dictionary words into the `words` array.
+6. Refresh the page! The new courses and sets will automatically appear on the home screen.
 
 ## Navigation Flow
 
