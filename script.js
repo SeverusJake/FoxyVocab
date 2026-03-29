@@ -501,10 +501,14 @@ function renderLearnStep() {
                 '</div>' +
             '</div>' +
         '</div>' +
-        '<div class="flex flex-col items-center gap-3 w-full fixed bottom-8 left-0 right-0 px-6 z-20 sm:static sm:mt-8 sm:px-0">' +
+        '<div class="absolute bottom-4 left-0 w-full flex flex-col items-center gap-3 px-6 z-20">' +
             '<button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width:100%; max-width:300px; padding: 1rem; box-shadow: var(--shadow-md);">CONTINUE</button>' +
-            '<button class="underline-btn bg-transparent font-bold" onclick="skipWord()" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">I already know this word</button>' +
+            '<button class="underline-btn bg-transparent font-bold pb-2" onclick="skipWord()" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">I already know this word</button>' +
         '</div>';
+        
+        // Ensure parent is relative and tall enough
+        var lca = document.getElementById('learnContentArea');
+        if(lca) { lca.classList.add('relative'); lca.style.minHeight = '400px'; }
     } else if (learnStep === 2) {
         speak(w.word, 1.0);
         html = '<div class="text-center mb-6 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Listen and rewrite</h2></div>' +
@@ -698,7 +702,7 @@ function renderTestQuestion() {
             '<p class="test-label mt-4">Select the correct matching term</p>' +
             '<div class="test-options-col">' + optsHtml + '</div>' +
         '</div>';
-    } else if (q.type === 'written') {
+    } else if (q.type === 'written' || q.type === 'fillin') {
         var w = getWordData(q.wordId);
         var keysHtml = '';
         'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').forEach(function(ch) {
@@ -706,8 +710,20 @@ function renderTestQuestion() {
         });
         keysHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
         
+        var promptHtml = '';
+        if (q.type === 'fillin') {
+            var exStr = w.example || w.definition || '';
+            var re = new RegExp(w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "gi");
+            var blanked = exStr.replace(re, "______");
+            if (blanked === exStr && w.example) blanked = exStr + " (______)";
+            promptHtml = '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' +
+                         '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + escapeHtml(blanked) + '</p>';
+        } else {
+            promptHtml = '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>';
+        }
+
         html = '<div class="test-question-area">' +
-            '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
+            promptHtml +
             '<p class="test-label mt-6">Your answer</p>' +
             '<div class="test-written-input-wrap">' +
                 '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
@@ -759,7 +775,7 @@ function answerTestWritten(value) {
 
     if (testConfig.speak) { speak(w.word, 1.0); }
 
-    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: 'written' });
+    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
 
     if (testConfig.instantFeedback) {
         showResultPanel(isCorrect, w);

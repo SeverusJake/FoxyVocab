@@ -1533,6 +1533,7 @@ input[type="text"], .quiz-option, .view-toggle-btn,
 }
 
 /* Ensure the flashcard wrapper height allows content below */
+#flashcardView .flashcard-wrapper,
 #wordListView .flashcard-wrapper,
 #learnView .flashcard-wrapper {
     height: 280px;
