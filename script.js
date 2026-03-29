@@ -31,6 +31,25 @@ var testConfig = {};
 var testAnswers = [];
 
 // === HELPERS ===
+(function detectLowPerformance() {
+    try {
+        var isLowPerf = false;
+        var ua = navigator.userAgent;
+        var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (isIOS) {
+            var match = ua.match(/OS (\d+)_/);
+            if (match && parseInt(match[1], 10) <= 15) isLowPerf = true;
+        }
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) {
+            isLowPerf = true;
+        }
+        if (isLowPerf) {
+            console.log('[FoxyVocab] Low performance device detected. Optimizing graphics.');
+            document.documentElement.classList.add('low-performance');
+        }
+    } catch(e) {}
+})();
+
 function getWordData(wordId) {
     var staticData = dictionary[wordId];
     if (!staticData) return { word: wordId };
