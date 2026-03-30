@@ -658,18 +658,86 @@ body {
 .course-card-arrow { font-size: 1.8rem; color: var(--text-light); flex-shrink: 0; transition: transform 0.2s; }
 .course-card:hover .course-card-arrow { transform: translateX(4px); color: var(--yellow); }
 
+.learning-book-panel {
+    background: linear-gradient(135deg, rgba(17,138,178,0.08), rgba(6,214,160,0.08));
+    border: 1.5px solid rgba(17,138,178,0.18);
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+.learning-book-panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+.learning-book-kicker {
+    margin: 0 0 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+}
+.learning-book-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(17,138,178,0.12);
+    color: var(--blue-dark);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+}
+.learning-book-summary {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+.learning-book-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.learning-book-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: var(--bg-card);
+    border: 1px solid rgba(17,138,178,0.14);
+    color: var(--text);
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-sm);
+}
+.learning-book-chip.muted {
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.6);
+}
+.learning-book-empty {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.7);
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+}
+
 /* ═══════════════════════════════════════
    SET CARDS (View 2)
 ═══════════════════════════════════════ */
 .set-card {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
     padding: 1rem 1.25rem;
     background: var(--bg-card);
     border: 1.5px solid var(--border);
     border-radius: 12px;
-    cursor: pointer;
     transition: all 0.2s;
     box-shadow: var(--shadow-sm);
 }
@@ -677,6 +745,12 @@ body {
     border-color: var(--yellow);
     background: var(--yellow-bg);
     box-shadow: 0 4px 16px rgba(255,200,58,0.18);
+}
+.set-card-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
 }
 .set-card-number {
     font-family: 'Orbitron', sans-serif;
@@ -689,6 +763,45 @@ body {
 .set-card-info { flex: 1; }
 .set-card-arrow { font-size: 1.4rem; color: var(--text-light); transition: transform 0.2s; }
 .set-card:hover .set-card-arrow { transform: translateX(4px); color: var(--yellow); }
+.set-card-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+}
+.set-card-select-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.set-learning-select {
+    min-width: 170px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+}
+.set-learning-select:focus { border-color: var(--yellow); }
+.set-card.is-learned {
+    background: linear-gradient(135deg, rgba(6,214,160,0.18), rgba(6,214,160,0.08));
+    border-color: var(--green);
+    box-shadow: 0 6px 18px rgba(6,214,160,0.2);
+}
+.set-card.is-learned:hover {
+    background: linear-gradient(135deg, rgba(6,214,160,0.22), rgba(6,214,160,0.12));
+    border-color: var(--green-dark);
+}
+.set-card.is-learned .set-card-number,
+.set-card.is-learned .set-card-arrow { color: var(--green-dark); }
+.set-card.is-learned:hover .set-card-arrow { color: var(--green-dark); }
 
 /* ═══════════════════════════════════════
    ACTION BUTTONS GRID (View 3)
@@ -1029,6 +1142,43 @@ body {
 .test-option-btn:hover:not(:disabled) { background: var(--yellow-bg); border-color: var(--yellow); }
 .test-option-btn.correct { background: var(--green-bg) !important; border-color: var(--green) !important; color: var(--green-dark) !important; font-weight: 600; }
 .test-option-btn.wrong   { background: var(--red-bg) !important; border-color: var(--red) !important; color: var(--red) !important; }
+.test-results-wrong-list {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid var(--border);
+}
+.test-results-label {
+    margin: 0 0 0.75rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+.test-results-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+.test-results-item:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+.test-results-word {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text);
+}
+.test-results-meaning {
+    color: var(--text-muted);
+    text-align: right;
+}
 
 /* Test written input */
 .test-written-input-wrap {
@@ -1086,6 +1236,13 @@ body {
 .primary-btn:active { transform: scale(0.97); }
 [data-theme="dark"] .primary-btn { background: #00f5ff; color: #0d0d18; box-shadow: 0 4px 16px rgba(0,245,255,0.3); }
 [data-theme="dark"] .primary-btn:hover { background: #00dce6; }
+.nav-btn:disabled,
+.primary-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
 
 /* ═══════════════════════════════════════
    INPUTS
@@ -1267,6 +1424,14 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
         gap: 0.75rem;
     }
     .topic-card { padding: 1rem; }
+    .set-card-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .set-learning-select {
+        width: 100%;
+        min-width: 0;
+    }
     .topic-icon { width: 36px; height: 36px; margin-bottom: 0.5rem; }
     .topic-list-item { padding: 0.75rem 1rem; }
 
@@ -1398,6 +1563,40 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 [data-theme="dark"] .action-btn:hover { background: rgba(0,245,255,0.08); border-color: #00f5ff; }
 [data-theme="dark"] .word-card { background: rgba(13,13,24,0.5); border-color: rgba(255,255,255,0.06); }
 [data-theme="dark"] .word-card.is-known { background: var(--green-dark); border-color: var(--green); }
+[data-theme="dark"] .learning-book-panel {
+    background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(0,255,136,0.08));
+    border-color: rgba(0,245,255,0.2);
+}
+[data-theme="dark"] .learning-book-count {
+    background: rgba(0,245,255,0.12);
+    color: #00f5ff;
+}
+[data-theme="dark"] .learning-book-chip,
+[data-theme="dark"] .learning-book-empty,
+[data-theme="dark"] .test-results-wrong-list,
+[data-theme="dark"] .set-learning-select {
+    background: rgba(13,13,24,0.82);
+    border-color: rgba(255,255,255,0.1);
+    color: #f5f7ff;
+}
+[data-theme="dark"] .learning-book-chip.muted,
+[data-theme="dark"] .test-results-meaning,
+[data-theme="dark"] .learning-book-summary,
+[data-theme="dark"] .set-card-select-label,
+[data-theme="dark"] .test-results-label {
+    color: #a7b3c8;
+}
+[data-theme="dark"] .set-card.is-learned {
+    background: linear-gradient(135deg, rgba(0,255,136,0.15), rgba(0,255,136,0.06));
+    border-color: #00ff88;
+}
+[data-theme="dark"] .set-card.is-learned .set-card-number,
+[data-theme="dark"] .set-card.is-learned .set-card-arrow {
+    color: #00ff88;
+}
+[data-theme="dark"] .set-card.is-learned:hover .set-card-arrow {
+    color: #00ff88;
+}
 [data-theme="dark"] .match-card { background: rgba(13,13,24,0.7); }
 [data-theme="dark"] .match-card.selected { background: rgba(0,245,255,0.1); border-color: #00f5ff; }
 [data-theme="dark"] .test-option-btn { background: rgba(13,13,24,0.8); }

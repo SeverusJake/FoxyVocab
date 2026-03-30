@@ -95,7 +95,22 @@
                 <div id="courseGrid" class="flex flex-col gap-4">
                     <!-- Courses injected via JS -->
                 </div>
+                <div id="learningBookSection" class="learning-book-panel mt-6">
+                    <div class="learning-book-panel-head">
+                        <div>
+                            <p class="learning-book-kicker">Learning Book</p>
+                            <h2 class="font-display text-xl font-bold" style="color: var(--text);">Words to Review</h2>
+                        </div>
+                        <span id="learningBookCountBadge" class="learning-book-count">0 words</span>
+                    </div>
+                    <p id="learningBookSummary" class="learning-book-summary">Your incorrect answers and active learning sets will appear here.</p>
+                    <div id="learningBookPreview" class="learning-book-preview">
+                        <!-- Learning Book words injected via JS -->
+                    </div>
+                    <button class="primary-btn w-full mt-3" id="learningBookReviewBtn">Review Learning Book</button>
+                </div>
             </div>
+            <button class="nav-btn w-full mt-6" id="courseReviewShortcutBtn">REVIEW LEARNING BOOK</button>
         </div>
     </div>
 
@@ -121,6 +136,7 @@
                     <!-- Sets injected via JS -->
                 </div>
             </div>
+            <button class="nav-btn w-full mt-6" id="setReviewShortcutBtn">REVIEW LEARNING BOOK</button>
         </div>
     </div>
 

@@ -3,7 +3,7 @@ console.log('[FoxyVocab] script.js: loading started');
 
 // === STATE ===
 var STORAGE_KEY = 'foxyVocabProgress';
-var userProgress = {};
+var userProgress = createEmptyProgressState();
 var currentCourse = null;
 var currentSet = null;
 var currentCardIndex = 0;
@@ -29,6 +29,35 @@ var testIndex = 0;
 var testScore = 0;
 var testConfig = {};
 var testAnswers = [];
+var currentTestSession = null;
+
+function createWordProgressState() {
+    return { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false, consecutiveCorrect: 0 };
+}
+
+function createEmptyProgressState() {
+    return { words: {}, sets: {}, learningBook: { mistakeWords: {} } };
+}
+
+function normalizeProgressState(rawState) {
+    if (!rawState || typeof rawState !== 'object' || Array.isArray(rawState)) {
+        return createEmptyProgressState();
+    }
+    if (rawState.words || rawState.sets || rawState.learningBook) {
+        return {
+            words: rawState.words || {},
+            sets: rawState.sets || {},
+            learningBook: {
+                mistakeWords: rawState.learningBook && rawState.learningBook.mistakeWords ? rawState.learningBook.mistakeWords : {}
+            }
+        };
+    }
+    return { words: rawState, sets: {}, learningBook: { mistakeWords: {} } };
+}
+
+function saveAppState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress)); } catch(e) { console.warn('[FoxyVocab] localStorage write failed:', e); }
+}
 
 // === HELPERS ===
 (function detectLowPerformance() {
@@ -53,14 +82,147 @@ var testAnswers = [];
 function getWordData(wordId) {
     var staticData = dictionary[wordId];
     if (!staticData) return { word: wordId };
-    var progress = userProgress[wordId] || { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
+    var progress = userProgress.words[wordId] || createWordProgressState();
     return Object.assign({ word: wordId }, staticData, progress);
 }
 
 function saveProgress(wordId, updates) {
-    if (!userProgress[wordId]) userProgress[wordId] = { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false };
-    Object.assign(userProgress[wordId], updates);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress)); } catch(e) { console.warn('[FoxyVocab] localStorage write failed:', e); }
+    if (!userProgress.words[wordId]) userProgress.words[wordId] = createWordProgressState();
+    Object.assign(userProgress.words[wordId], updates);
+    saveAppState();
+}
+
+function getSetProgressKey(courseId, setId) {
+    return courseId + '::' + setId;
+}
+
+function getSetLearningStatus(courseId, setId) {
+    var key = getSetProgressKey(courseId, setId);
+    return userProgress.sets[key] || 'not-learned';
+}
+
+function saveSetLearningStatus(courseId, setId, status) {
+    userProgress.sets[getSetProgressKey(courseId, setId)] = status;
+    saveAppState();
+}
+
+function getLearningBookWords() {
+    var seen = {};
+    var words = [];
+
+    coursesData.forEach(function(course) {
+        course.sets.forEach(function(set) {
+            if (getSetLearningStatus(course.id, set.id) !== 'learning') return;
+            set.words.forEach(function(wordId) {
+                if (seen[wordId] || getWordData(wordId).isKnown) return;
+                seen[wordId] = true;
+                words.push(wordId);
+            });
+        });
+    });
+
+    Object.keys(userProgress.learningBook.mistakeWords || {}).forEach(function(wordId) {
+        if (seen[wordId] || getWordData(wordId).isKnown) return;
+        seen[wordId] = true;
+        words.push(wordId);
+    });
+
+    return words;
+}
+
+function addLearningBookMistake(wordId) {
+    userProgress.learningBook.mistakeWords[wordId] = true;
+    saveAppState();
+}
+
+function removeLearningBookMistake(wordId) {
+    if (userProgress.learningBook.mistakeWords[wordId]) {
+        delete userProgress.learningBook.mistakeWords[wordId];
+        saveAppState();
+    }
+}
+
+function refreshCurrentSetActiveWords() {
+    if (!currentSet || !currentSet.sortedWords) return;
+    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    if (currentCardIndex >= currentSet.activeWords.length) currentCardIndex = 0;
+}
+
+function renderLearningBookPanel() {
+    var words = getLearningBookWords();
+    var preview = document.getElementById('learningBookPreview');
+    var summary = document.getElementById('learningBookSummary');
+    var badge = document.getElementById('learningBookCountBadge');
+    var reviewBtn = document.getElementById('learningBookReviewBtn');
+    var courseShortcut = document.getElementById('courseReviewShortcutBtn');
+    var setShortcut = document.getElementById('setReviewShortcutBtn');
+    if (!preview || !summary || !badge || !reviewBtn) return;
+
+    var learningSetCount = Object.keys(userProgress.sets).filter(function(key) { return userProgress.sets[key] === 'learning'; }).length;
+    var mistakeCount = Object.keys(userProgress.learningBook.mistakeWords || {}).filter(function(wordId) { return !getWordData(wordId).isKnown; }).length;
+    var hasWords = words.length > 0;
+
+    badge.textContent = words.length + ' word' + (words.length === 1 ? '' : 's');
+    if (hasWords) {
+        summary.textContent = learningSetCount + ' learning set' + (learningSetCount === 1 ? '' : 's') + ' and ' + mistakeCount + ' incorrect word' + (mistakeCount === 1 ? '' : 's') + ' are queued for review.';
+        preview.innerHTML = words.slice(0, 12).map(function(wordId) {
+            var w = getWordData(wordId);
+            return '<span class="learning-book-chip">' + escapeHtml(w.word) + '</span>';
+        }).join('');
+        if (words.length > 12) preview.innerHTML += '<span class="learning-book-chip muted">+' + (words.length - 12) + ' more</span>';
+    } else {
+        summary.textContent = 'Mark a set as Learning or miss a test word to build your review queue.';
+        preview.innerHTML = '<div class="learning-book-empty">Learning Book is empty.</div>';
+    }
+
+    reviewBtn.disabled = !hasWords;
+    if (courseShortcut) {
+        courseShortcut.disabled = !hasWords;
+        courseShortcut.textContent = hasWords ? 'REVIEW LEARNING BOOK (' + words.length + ')' : 'REVIEW LEARNING BOOK';
+    }
+    if (setShortcut) {
+        setShortcut.disabled = !hasWords;
+        setShortcut.textContent = hasWords ? 'REVIEW LEARNING BOOK (' + words.length + ')' : 'REVIEW LEARNING BOOK';
+    }
+}
+
+function recordTestOutcome(wordId, isCorrect) {
+    var wData = getWordData(wordId);
+    if (isCorrect) {
+        var nextStreak = (wData.consecutiveCorrect || 0) + 1;
+        var updates = { consecutiveCorrect: nextStreak };
+        if (nextStreak >= 2) {
+            updates.isKnown = true;
+            updates.consecutiveCorrect = 0;
+            removeLearningBookMistake(wordId);
+        }
+        saveProgress(wordId, updates);
+    } else {
+        saveProgress(wordId, { consecutiveCorrect: 0, isKnown: false });
+        addLearningBookMistake(wordId);
+    }
+
+    refreshCurrentSetActiveWords();
+    renderLearningBookPanel();
+}
+
+function returnFromTest() {
+    if (currentTestSession && currentTestSession.returnView === wordListView && currentSet) {
+        refreshCurrentSetActiveWords();
+        renderWordListView();
+    }
+    if (currentTestSession && currentTestSession.returnView === setView && currentCourse) {
+        renderSets();
+    }
+    if (currentTestSession && currentTestSession.returnView === courseView) {
+        renderCourses();
+    }
+    if (currentTestSession && currentTestSession.returnView) {
+        switchView(currentTestSession.returnView);
+        return;
+    }
+    switchView(wordListView);
 }
 
 function speak(text, rate) {
@@ -206,6 +368,7 @@ function renderCourses() {
     grid.querySelectorAll('[data-course-id]').forEach(function(el) {
         el.addEventListener('click', function() { selectCourse(el.dataset.courseId); });
     });
+    renderLearningBookPanel();
 }
 
 function selectCourse(courseId) {
@@ -223,19 +386,40 @@ function renderSets() {
     var grid = document.getElementById('setGrid');
     var html = '';
     currentCourse.sets.forEach(function(set, idx) {
-        html += '<div class="set-card" data-set-id="' + set.id + '" role="button" tabindex="0">' +
-            '<div class="set-card-number">' + (idx + 1) + '</div>' +
-            '<div class="set-card-info">' +
-                '<h3 class="font-display text-sm font-bold">' + escapeHtml(set.title) + '</h3>' +
-                '<p class="text-xs" style="color:var(--text-muted)">' + set.words.length + ' terms</p>' +
+        var status = getSetLearningStatus(currentCourse.id, set.id);
+        var selectId = 'setLearningSelect_' + idx;
+        html += '<div class="set-card' + (status === 'learned' ? ' is-learned' : '') + '">' +
+            '<div class="set-card-main" data-set-id="' + set.id + '" role="button" tabindex="0">' +
+                '<div class="set-card-number">' + (idx + 1) + '</div>' +
+                '<div class="set-card-info">' +
+                    '<h3 class="font-display text-sm font-bold">' + escapeHtml(set.title) + '</h3>' +
+                    '<p class="text-xs" style="color:var(--text-muted)">' + set.words.length + ' terms</p>' +
+                '</div>' +
+                '<div class="set-card-arrow">></div>' +
             '</div>' +
-            '<div class="set-card-arrow">›</div>' +
+            '<div class="set-card-controls">' +
+                '<label class="set-card-select-label" for="' + selectId + '">Selection</label>' +
+                '<select id="' + selectId + '" class="set-learning-select" data-set-learning-id="' + set.id + '">' +
+                    '<option value="not-learned"' + (status === 'not-learned' ? ' selected' : '') + '>Haven\'t Learned</option>' +
+                    '<option value="learning"' + (status === 'learning' ? ' selected' : '') + '>Learning</option>' +
+                    '<option value="learned"' + (status === 'learned' ? ' selected' : '') + '>Learned</option>' +
+                '</select>' +
+            '</div>' +
         '</div>';
     });
     grid.innerHTML = html;
     grid.querySelectorAll('[data-set-id]').forEach(function(el) {
         el.addEventListener('click', function() { selectSet(el.dataset.setId); });
     });
+    grid.querySelectorAll('[data-set-learning-id]').forEach(function(el) {
+        el.addEventListener('click', function(e) { e.stopPropagation(); });
+        el.addEventListener('change', function(e) {
+            saveSetLearningStatus(currentCourse.id, el.dataset.setLearningId, e.target.value);
+            renderSets();
+            renderCourses();
+        });
+    });
+    renderLearningBookPanel();
 }
 
 function selectSet(setId) {
@@ -367,11 +551,13 @@ function renderWordCards() {
 
 function toggleWordKnown(wordId) {
     var wData = getWordData(wordId);
-    saveProgress(wordId, { isKnown: !wData.isKnown });
-    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
-    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    var newState = !wData.isKnown;
+    saveProgress(wordId, { isKnown: newState, consecutiveCorrect: 0 });
+    if (newState) removeLearningBookMistake(wordId);
+    refreshCurrentSetActiveWords();
     renderWordCards();
     updateWLFlashcard();
+    renderLearningBookPanel();
     playSound('flip');
 }
 
@@ -389,6 +575,32 @@ function toggleFavoriteWord(wordId, btn) {
 // ═══════════════════════════════════
 // FLASHCARD VIEW
 // ═══════════════════════════════════
+function toggleFavoriteWord(wordId, btn) {
+    var wData = getWordData(wordId);
+    var isFav = !wData.isFavorite;
+    saveProgress(wordId, { isFavorite: isFav });
+    if (currentSet) {
+        updateWLFlashcard();
+        updateFlashcard();
+        renderWordCards();
+    }
+    if (btn) {
+        btn.textContent = isFav ? '★' : '☆';
+        btn.classList.toggle('star-active', isFav);
+    }
+    playSound('flip');
+}
+
+function toggleFavorite() {
+    playSound('flip');
+    var wordId = currentSet.activeWords[currentCardIndex];
+    var wData = getWordData(wordId);
+    saveProgress(wordId, { isFavorite: !wData.isFavorite });
+    updateFlashcard();
+    updateWLFlashcard();
+    renderWordCards();
+}
+
 function openFlashcardView() {
     currentCardIndex = 0;
     document.getElementById('fcTopicTitle').textContent = currentSet.title.toUpperCase();
@@ -435,6 +647,8 @@ function toggleFavorite() {
     var wData = getWordData(wordId);
     saveProgress(wordId, { isFavorite: !wData.isFavorite });
     updateFlashcard();
+    updateWLFlashcard();
+    renderWordCards();
 }
 
 function updateProgress() {
@@ -652,19 +866,60 @@ function closeResultPanel() { document.getElementById('resultPanel').style.trans
 // ═══════════════════════════════════
 // TEST MODE
 // ═══════════════════════════════════
+function getActiveTestWordPool() {
+    if (!currentTestSession) return [];
+    if (currentTestSession.source === 'learning-book') return getLearningBookWords();
+    return currentTestSession.wordIds.slice();
+}
+
 function openTestSettings() {
-    document.getElementById('testSettingsCourse').textContent = currentSet.title;
-    var maxQ = currentSet.words.length;
+    if (!currentSet) return;
+    currentTestSession = {
+        source: 'set',
+        title: currentSet.title,
+        wordIds: currentSet.words.slice(),
+        returnView: wordListView,
+        returnLabel: 'Back to Set'
+    };
+    openCurrentTestSettings();
+}
+
+function openLearningBookReview(originView) {
+    var words = getLearningBookWords();
+    if (!words.length) {
+        window.alert('Learning Book is empty.');
+        return;
+    }
+    currentTestSession = {
+        source: 'learning-book',
+        title: 'Learning Book',
+        wordIds: words,
+        returnView: originView || courseView,
+        returnLabel: originView === setView ? 'Back to Set' : 'Back to Courses'
+    };
+    openCurrentTestSettings();
+}
+
+function openCurrentTestSettings() {
+    var wordPool = getActiveTestWordPool();
+    var maxQ = wordPool.length;
+    document.getElementById('testSettingsCourse').textContent = currentTestSession ? currentTestSession.title : 'Test';
     document.getElementById('testMaxLabel').textContent = '(max ' + maxQ + ')';
     var countInput = document.getElementById('testQuestionCount');
-    countInput.max = maxQ;
-    if (parseInt(countInput.value) > maxQ) countInput.value = maxQ;
+    countInput.max = Math.max(maxQ, 1);
+    if (!parseInt(countInput.value) || parseInt(countInput.value) > maxQ) countInput.value = Math.max(maxQ, 1);
     switchView(testSettingsView);
 }
 
 function startTest() {
+    var wordPool = shuffle(getActiveTestWordPool());
+    if (!wordPool.length) {
+        window.alert('There are no words to test right now.');
+        returnFromTest();
+        return;
+    }
     var qCount = parseInt(document.getElementById('testQuestionCount').value) || 20;
-    var maxQ = currentSet.words.length;
+    var maxQ = wordPool.length;
     if (qCount > maxQ) qCount = maxQ;
     if (qCount < 1) qCount = 1;
 
@@ -688,10 +943,13 @@ function startTest() {
     if (testConfig.fillIn) enabledTypes.push('fillin');
     if (testConfig.written) enabledTypes.push('written');
 
-    var wordPool = shuffle(currentSet.words.slice());
     testQuestions = [];
     for (var i = 0; i < qCount; i++) {
-        var q = { wordId: wordPool[i], type: enabledTypes[i % enabledTypes.length] };
+        var nextType = enabledTypes[i % enabledTypes.length];
+        if (wordPool.length < 2 && (nextType === 'tf' || nextType === 'mc')) {
+            nextType = testConfig.written ? 'written' : (testConfig.fillIn ? 'fillin' : 'written');
+        }
+        var q = { wordId: wordPool[i], type: nextType };
         if (q.type === 'tf') {
             var dists = wordPool.filter(function(id) { return id !== q.wordId; });
             q.distractorId = dists[Math.floor(Math.random() * dists.length)];
@@ -860,6 +1118,53 @@ function showTestResults() {
 // ═══════════════════════════════════
 // MATCH GAME
 // ═══════════════════════════════════
+function showTestResults() {
+    var area = document.getElementById('testContentArea');
+    var pct = Math.round((testScore / testQuestions.length) * 100);
+    var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
+    if (currentTestSession && currentTestSession.source === 'set' && currentCourse && currentSet) {
+        saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
+        renderSets();
+        renderCourses();
+    }
+    testAnswers.forEach(function(answer) {
+        recordTestOutcome(answer.wordId, answer.correct);
+    });
+    var wrongMap = {};
+    var wrongWords = [];
+    testAnswers.forEach(function(answer) {
+        if (!answer.correct && !wrongMap[answer.wordId]) {
+            wrongMap[answer.wordId] = true;
+            wrongWords.push(answer.wordId);
+        }
+    });
+    var wrongHtml = '';
+    if (wrongWords.length) {
+        wrongHtml = '<div class="test-results-wrong-list">' +
+            '<p class="test-results-label">Incorrect words</p>' +
+            wrongWords.map(function(wordId) {
+                var w = getWordData(wordId);
+                return '<div class="test-results-item">' +
+                    '<span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
+                    '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span>' +
+                '</div>';
+            }).join('') +
+        '</div>';
+    }
+    area.innerHTML = '<div class="flex flex-col items-center justify-center h-full">' +
+        '<div class="text-6xl mb-4">' + emoji + '</div>' +
+        '<h2 class="font-display text-2xl font-bold neon-text-green mb-2">Test Complete!</h2>' +
+        '<p class="text-3xl font-bold mb-2" style="color:var(--text)">' + testScore + ' / ' + testQuestions.length + '</p>' +
+        '<p class="text-sm mb-6" style="color:var(--text-muted)">' + pct + '% correct</p>' +
+        wrongHtml +
+        '<div class="flex flex-col gap-3 w-full" style="max-width:300px">' +
+            '<button class="primary-btn w-full" onclick="startTest()">Try Again</button>' +
+            '<button class="nav-btn w-full" onclick="returnFromTest()">' + (currentTestSession ? currentTestSession.returnLabel : 'Back') + '</button>' +
+        '</div>' +
+    '</div>';
+    playSound('win');
+}
+
 function startMatch() {
     var pool = shuffle(currentSet.words.slice()).slice(0, 6);
     matchWords = pool;
@@ -998,10 +1303,11 @@ function toggleTranslation(index) {
 function toggleKnown(wordId, btn) {
     var wData = getWordData(wordId);
     var newState = !wData.isKnown;
-    saveProgress(wordId, { isKnown: newState });
-    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
-    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    saveProgress(wordId, { isKnown: newState, consecutiveCorrect: 0 });
+    if (newState) removeLearningBookMistake(wordId);
+    refreshCurrentSetActiveWords();
     if (btn) { if (newState) btn.classList.add('active'); else btn.classList.remove('active'); }
+    renderLearningBookPanel();
 }
 
 // ═══════════════════════════════════
@@ -1048,7 +1354,7 @@ function init() {
     }
     console.log('[FoxyVocab] Data loaded OK:', Object.keys(dictionary).length, 'words,', coursesData.length, 'courses');
 
-    try { userProgress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { userProgress = {}; }
+    try { userProgress = normalizeProgressState(JSON.parse(localStorage.getItem(STORAGE_KEY))); } catch(e) { userProgress = createEmptyProgressState(); }
 
     // Cache DOM refs
     courseView = document.getElementById('courseView');
@@ -1068,6 +1374,7 @@ function init() {
 
     renderCourses();
     setupEventListeners();
+    renderLearningBookPanel();
 
     // Apply saved theme
     var saved = localStorage.getItem(THEME_KEY);
@@ -1089,6 +1396,9 @@ function setupEventListeners() {
     document.getElementById('btnLearn').addEventListener('click', startLearnMode);
     document.getElementById('btnTest').addEventListener('click', openTestSettings);
     document.getElementById('btnMatch').addEventListener('click', startMatch);
+    document.getElementById('learningBookReviewBtn').addEventListener('click', function() { openLearningBookReview(courseView); });
+    document.getElementById('courseReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(courseView); });
+    document.getElementById('setReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(setView); });
 
     // WL flashcard interactions
     document.getElementById('wlFlashcard').addEventListener('click', function() {
@@ -1184,9 +1494,9 @@ function setupEventListeners() {
     document.querySelectorAll('.exit-learn-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { switchView(wordListView); }); }); });
 
     // Test
-    document.getElementById('closeTestSettingsBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
+    document.getElementById('closeTestSettingsBtn').addEventListener('click', function() { playSound('slide'); returnFromTest(); });
     document.getElementById('startTestBtn').addEventListener('click', startTest);
-    document.querySelectorAll('.exit-test-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { switchView(wordListView); }); }); });
+    document.querySelectorAll('.exit-test-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { returnFromTest(); }); }); });
 
     // Match
     document.querySelectorAll('.exit-match-btn').forEach(function(b) { b.addEventListener('click', function() {
