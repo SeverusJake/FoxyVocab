@@ -156,7 +156,7 @@
                 </button>
                 <span class="font-display text-sm tracking-wider" style="color: var(--text-muted);"
                     id="wordListTitle">SET</span>
-                <div style="width:60px"></div>
+                <button id="wlMuteBtn" class="view-toggle-btn mute-header-btn" aria-label="Toggle speech mute" title="Toggle speech mute">🔊</button>
             </div>
 
             <!-- Flashcard Carousel -->
@@ -247,7 +247,7 @@
                     </button>
                     <span class="font-display text-sm tracking-wider" style="color:var(--text-muted);"
                         id="fcTopicTitle">TOPIC</span>
-                    <div style="width:60px"></div>
+                    <button id="fcMuteBtn" class="view-toggle-btn mute-header-btn" aria-label="Toggle speech mute" title="Toggle speech mute">🔊</button>
                 </div>
             </div>
             <!-- Progress -->
@@ -326,8 +326,10 @@
                 <div class="progress-track h-1.5 rounded-full overflow-hidden w-1/2">
                     <div class="progress-fill h-full rounded-full" id="learnProgressBar" style="width: 0%"></div>
                 </div>
+                <button id="learnMuteBtn" class="view-toggle-btn mute-header-btn" aria-label="Toggle speech mute" title="Toggle speech mute">🔊</button>
             </div>
             <div id="learnContentArea" class="flex-1 flex flex-col justify-center items-center pt-10"></div>
+            <div id="learnActionTray" class="learn-action-tray"></div>
         </div>
     </div>
 
@@ -461,8 +463,8 @@
 
             <div class="test-setting-row">
                 <span class="test-setting-label">Word count <span class="text-xs" style="color: var(--text-muted);"
-                        id="matchMaxLabel">(max 20)</span></span>
-                <input type="number" class="test-count-input" id="matchWordCount" value="6" min="1">
+                        id="matchMaxLabel">(total words in this round)</span></span>
+                <input type="number" class="test-count-input" id="matchWordCount" value="6" min="2">
             </div>
 
             <div class="test-setting-row">
@@ -473,7 +475,7 @@
                 </label>
             </div>
 
-            <p class="text-sm mt-4" style="color: var(--text-muted);">When refill is on, the board adds unseen words back in when only 4 cards remain.</p>
+            <p class="text-sm mt-4" style="color: var(--text-muted);">Choose the total words for the whole round. Match shows 6 words / 12 cards at a time and refills when 4 cards remain.</p>
 
             <div class="flex-1"></div>
             <button class="primary-btn w-full mb-4" id="startMatchBtn">Start match</button>
@@ -500,6 +502,7 @@
             <div class="match-grid" id="matchGrid">
                 <!-- Match cards injected via JS -->
             </div>
+            <div id="matchEffects" class="match-effects-layer" aria-hidden="true"></div>
         </div>
     </div>
 
@@ -520,6 +523,7 @@
                     <span class="match-stat-value" id="matchResultWrong">0</span>
                 </div>
             </div>
+            <div id="matchResultWrongWords" class="test-results-wrong-list mb-8" style="display:none;"></div>
             <div class="flex flex-col gap-3 w-full">
                 <button class="primary-btn w-full" id="matchRetryBtn">Retry</button>
                 <button class="nav-btn w-full" id="matchBackBtn">Back</button>

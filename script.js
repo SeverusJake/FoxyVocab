@@ -24,6 +24,8 @@ var matchStartTime = 0;
 var matchConfig = { count: 6, refill: false };
 var matchRemainingWords = [];
 var matchSessionWords = [];
+var matchPenaltySeconds = 0;
+var matchWrongWordMap = {};
 
 // Test state
 var testQuestions = [];
@@ -38,7 +40,7 @@ function createWordProgressState() {
 }
 
 function createEmptyProgressState() {
-    return { words: {}, sets: {}, learningBook: { mistakeWords: {} } };
+    return { words: {}, sets: {}, learningBook: { mistakeWords: {} }, settings: { speechMuted: false } };
 }
 
 function normalizeProgressState(rawState) {
@@ -55,6 +57,9 @@ function normalizeProgressState(rawState) {
             sets: rawState.sets || {},
             learningBook: {
                 mistakeWords: rawState.learningBook && rawState.learningBook.mistakeWords ? rawState.learningBook.mistakeWords : {}
+            },
+            settings: {
+                speechMuted: !!(rawState.settings && rawState.settings.speechMuted)
             }
         };
     }
@@ -62,7 +67,7 @@ function normalizeProgressState(rawState) {
     Object.keys(rawState).forEach(function(wordId) {
         migratedWords[wordId] = normalizeWordProgress(rawState[wordId]);
     });
-    return { words: migratedWords, sets: {}, learningBook: { mistakeWords: {} } };
+    return { words: migratedWords, sets: {}, learningBook: { mistakeWords: {} }, settings: { speechMuted: false } };
 }
 
 function normalizeWordProgress(progress) {
@@ -316,7 +321,34 @@ function returnFromWordList() {
     switchView(setView);
 }
 
+function isSpeechMuted() {
+    return !!(userProgress.settings && userProgress.settings.speechMuted);
+}
+
+function updateSpeechMuteButtons() {
+    ['wlMuteBtn', 'fcMuteBtn', 'learnMuteBtn'].forEach(function(id) {
+        var btn = document.getElementById(id);
+        if (!btn) return;
+        var muted = isSpeechMuted();
+        btn.textContent = muted ? '🔇' : '🔊';
+        btn.classList.toggle('active', muted);
+        btn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+        btn.setAttribute('title', muted ? 'Unmute speech' : 'Mute speech');
+        btn.setAttribute('aria-label', muted ? 'Unmute speech' : 'Mute speech');
+    });
+}
+
+function toggleSpeechMute() {
+    if (!userProgress.settings) userProgress.settings = { speechMuted: false };
+    userProgress.settings.speechMuted = !userProgress.settings.speechMuted;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    saveAppState();
+    updateSpeechMuteButtons();
+    playSound('flip');
+}
+
 function speak(text, rate) {
+    if (isSpeechMuted()) return;
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         var utterance = new SpeechSynthesisUtterance(text);
@@ -324,6 +356,20 @@ function speak(text, rate) {
         utterance.rate = rate;
         window.speechSynthesis.speak(utterance);
     }
+}
+
+function renderLearnActionTray(config) {
+    var tray = document.getElementById('learnActionTray');
+    if (!tray) return;
+    config = config || {};
+    var secondaryHtml = config.secondaryLabel ? (
+        '<button class="underline-btn bg-transparent font-bold pb-2" onclick="' + config.secondaryAction + '" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">' + config.secondaryLabel + '</button>'
+    ) : '';
+    tray.innerHTML = '<div class="learn-action-inner">' +
+        '<button class="nav-btn learn-primary-btn" onclick="' + (config.primaryAction || '') + '">' + (config.primaryLabel || 'CONTINUE') + '</button>' +
+        secondaryHtml +
+    '</div>';
+    updateSpeechMuteButtons();
 }
 
 function shuffle(arr) {
@@ -815,14 +861,16 @@ function renderLearnStep() {
     var area = document.getElementById('learnContentArea');
     var html = '';
     var safeWord = escapeHtml(w.word).replace(/'/g, "\\'");
+    var speakNormalAction = "speak('" + safeWord + "', 1.0)";
+    var speakSlowAction = "speak('" + safeWord + "', 0.6)";
 
     if (learnStep === 1) {
         speak(w.word, 1.0);
-        html = '<div class="flashcard-wrapper mb-8">' +
-            '<div class="border-btn-group">' +
-                '<button class="border-btn speaker" onclick="event.stopPropagation(); speak(\'' + safeWord + '\', 1.0)">🔊</button>' +
-                '<button class="border-btn snail" onclick="event.stopPropagation(); speak(\'' + safeWord + '\', 0.6)">🐌</button>' +
+        html = '<div class="border-btn-group mb-4">' +
+                '<button class="border-btn speaker" onclick="' + speakNormalAction + '">🔊</button>' +
+                '<button class="border-btn snail" onclick="' + speakSlowAction + '">🐌</button>' +
             '</div>' +
+            '<div class="flashcard-wrapper mb-8">' +
             '<div class="card-container">' +
                 '<div class="card" onclick="playSound(\'flip\'); this.classList.toggle(\'flipped\')">' +
                     '<div class="card-face card-front flex flex-col justify-center">' +
@@ -837,24 +885,30 @@ function renderLearnStep() {
                     '</div>' +
                 '</div>' +
             '</div>' +
-        '</div>' +
-        '<div class="absolute bottom-4 left-0 w-full flex flex-col items-center gap-3 px-6 z-20">' +
-            '<button class="nav-btn" id="learnContinueBtn" onclick="nextLearnStep()" style="width:100%; max-width:300px; padding: 1rem; box-shadow: var(--shadow-md);">CONTINUE</button>' +
-            '<button class="underline-btn bg-transparent font-bold pb-2" onclick="skipWord()" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">I already know this word</button>' +
         '</div>';
-        
-        // Ensure parent is relative and tall enough
-        var lca = document.getElementById('learnContentArea');
-        if(lca) { lca.classList.add('relative'); lca.style.minHeight = '400px'; }
+        renderLearnActionTray({
+            speakerAction: speakNormalAction,
+            snailAction: speakSlowAction,
+            primaryLabel: 'CONTINUE',
+            primaryAction: 'nextLearnStep()',
+            secondaryLabel: 'I already know this word',
+            secondaryAction: 'skipWord()'
+        });
     } else if (learnStep === 2) {
         speak(w.word, 1.0);
         html = '<div class="text-center mb-6 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Listen and rewrite</h2></div>' +
-            '<div class="flex gap-4 mb-8">' +
-                '<button class="border-btn speaker" onclick="speak(\'' + safeWord + '\', 1.0)">🔊</button>' +
-                '<button class="border-btn snail" onclick="speak(\'' + safeWord + '\', 0.6)">🐌</button>' +
+            '<div class="border-btn-group mb-6">' +
+                '<button class="border-btn speaker" onclick="' + speakNormalAction + '">🔊</button>' +
+                '<button class="border-btn snail" onclick="' + speakSlowAction + '">🐌</button>' +
             '</div>' +
             '<input type="text" id="learnInput" class="mb-6" placeholder="Type what you hear" style="max-width:300px">' +
-            '<button class="nav-btn" onclick="checkLearn(2)" style="width:150px">CHECK</button>';
+            '<div class="learn-input-spacer"></div>';
+        renderLearnActionTray({
+            speakerAction: speakNormalAction,
+            snailAction: speakSlowAction,
+            primaryLabel: 'CHECK',
+            primaryAction: 'checkLearn(2)'
+        });
     } else if (learnStep === 3) {
         speak(w.word, 1.0);
         var wordArr = w.word.split('');
@@ -870,11 +924,20 @@ function renderLearnStep() {
             return '<div class="hint-letter"></div>';
         }).join('');
         html = '<div class="text-center mb-4 w-full"><h2 class="font-display text-xl neon-text-cyan mb-2">Fill in the word</h2></div>' +
-            '<button class="border-btn speaker mb-4" onclick="speak(\'' + safeWord + '\', 1.0)" style="position:relative">🔊</button>' +
+            '<div class="border-btn-group mb-4">' +
+                '<button class="border-btn speaker" onclick="' + speakNormalAction + '">🔊</button>' +
+                '<button class="border-btn snail" onclick="' + speakSlowAction + '">🐌</button>' +
+            '</div>' +
             '<p class="text-lg text-center mb-4 neon-text-green">' + escapeHtml(w.vietnamese || '') + '</p>' +
             '<div class="hint-display mb-6">' + displayHtml + '</div>' +
             '<input type="text" id="learnInput" class="mb-6" placeholder="Type the word" style="max-width:300px">' +
-            '<button class="nav-btn" onclick="checkLearn(3)" style="width:150px">CHECK</button>';
+            '<div class="learn-input-spacer"></div>';
+        renderLearnActionTray({
+            speakerAction: speakNormalAction,
+            snailAction: speakSlowAction,
+            primaryLabel: 'CHECK',
+            primaryAction: 'checkLearn(3)'
+        });
     }
     area.innerHTML = html;
     var input = document.getElementById('learnInput');
@@ -899,8 +962,14 @@ function skipWord() {
 function showLearnComplete() {
     var area = document.getElementById('learnContentArea');
     area.innerHTML = '<h2 class="font-display text-2xl neon-text-green mb-4">COMPLETE!</h2>' +
-        '<p class="text-xl mb-8">You finished the lesson!</p>' +
-        '<button class="nav-btn" onclick="exitConfirmed(function(){ switchView(wordListView); })">BACK</button>';
+        '<p class="text-xl mb-8">You finished the lesson!</p>';
+    renderLearnActionTray({
+        showAudio: false,
+        speakerAction: '',
+        snailAction: '',
+        primaryLabel: 'BACK',
+        primaryAction: 'exitConfirmed(function(){ switchView(wordListView); })'
+    });
     playSound('win');
 }
 
@@ -1061,6 +1130,7 @@ function renderTestQuestion() {
         html = '<div class="test-question-area text-center">' +
             '<p class="test-term text-3xl mb-4 text-[var(--blue)] font-bold">' + escapeHtml(shownTerm) + '</p>' +
             '<p class="test-definition mb-6 text-lg">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<div id="testTfReveal" class="test-results-wrong-list" style="display:none; margin: 0 auto 1rem; max-width: 360px;"></div>' +
         '</div>' +
         '<div class="test-options-col">' +
             '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(true, this)">True</button>' +
@@ -1110,7 +1180,8 @@ function renderTestQuestion() {
                 '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
             '</div>' +
             '<div class="visual-keyboard">' + keysHtml + '</div>' +
-            '<button class="primary-btn mt-4 mx-auto" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
+            '<button class="primary-btn mt-4 mx-auto" id="testWrittenSubmitBtn" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
+            '<div id="testWrittenReveal" class="test-results-wrong-list mt-4" style="display:none;"></div>' +
         '</div>';
     }
     area.innerHTML = html;
@@ -1129,6 +1200,7 @@ function answerTest(val, btn) {
 
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
+    if (btn && typeof btn.blur === 'function') btn.blur();
 
     var buttons = btn.parentElement.querySelectorAll('.test-option-btn');
     buttons.forEach(function(b, i) {
@@ -1142,6 +1214,16 @@ function answerTest(val, btn) {
     if (!isCorrect) btn.classList.add('wrong');
 
     if (testConfig.speak && q.type !== 'tf' && !q._isEngPrompt) { speak(getWordData(q.wordId).word, 1.0); }
+    if (q.type === 'tf' && !q._isTrue) {
+        var reveal = document.getElementById('testTfReveal');
+        if (reveal) {
+            var shownWord = getWordData(q.distractorId);
+            reveal.innerHTML = '<p class="test-results-label">Correct Answer</p>' +
+                '<div class="test-results-item"><span class="test-results-word">' + escapeHtml(shownWord.word) + '</span>' +
+                '<span class="test-results-meaning">' + escapeHtml(shownWord.vietnamese || '') + '</span></div>';
+            reveal.style.display = 'block';
+        }
+    }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
     setTimeout(function() { testIndex++; renderTestQuestion(); }, 1000);
@@ -1151,10 +1233,23 @@ function answerTestWritten(value) {
     var q = testQuestions[testIndex];
     var w = getWordData(q.wordId);
     var isCorrect = value !== null && value.trim().toLowerCase() === w.word.toLowerCase();
+    var input = document.getElementById('testWrittenInput');
+    var submitBtn = document.getElementById('testWrittenSubmitBtn');
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
+    if (input) input.blur();
+    if (submitBtn) submitBtn.blur();
+    if (input) input.disabled = true;
+    if (submitBtn) submitBtn.disabled = true;
 
     if (testConfig.speak) { speak(w.word, 1.0); }
+    var reveal = document.getElementById('testWrittenReveal');
+    if (reveal) {
+        reveal.innerHTML = '<p class="test-results-label">Correct Answer</p>' +
+            '<div class="test-results-item"><span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
+            '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span></div>';
+        reveal.style.display = 'block';
+    }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
 
@@ -1220,17 +1315,18 @@ function getMatchWordPool() {
 function openMatchSettings() {
     if (!currentSet) return;
     var wordPool = getMatchWordPool();
-    if (!wordPool.length) {
-        window.alert('There are no words to match right now.');
+    if (wordPool.length < 2) {
+        window.alert('You need at least 2 words to start Match.');
         return;
     }
     var countInput = document.getElementById('matchWordCount');
     var maxWords = wordPool.length;
     document.getElementById('matchSettingsCourse').textContent = currentSet.title;
-    document.getElementById('matchMaxLabel').textContent = '(max ' + maxWords + ')';
-    countInput.max = Math.max(maxWords, 1);
+    document.getElementById('matchMaxLabel').textContent = '(2 to ' + maxWords + ' total words)';
+    countInput.max = maxWords;
+    countInput.min = 2;
     if (!parseInt(countInput.value, 10) || parseInt(countInput.value, 10) > maxWords) {
-        countInput.value = Math.min(Math.max(matchConfig.count || 6, 1), maxWords);
+        countInput.value = Math.min(Math.max(matchConfig.count || 6, 2), maxWords);
     }
     switchView(matchSettingsView);
 }
@@ -1242,43 +1338,43 @@ function createMatchCards(wordIds) {
         cards.push({ id: wordId + '_en_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.word, type: 'en' });
         cards.push({ id: wordId + '_vi_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.vietnamese || '', type: 'vi' });
     });
-    return cards;
+    return shuffle(cards);
 }
 
 function maybeRefillMatchBoard() {
     if (!matchConfig.refill) return;
     if (matchCards.length !== 4) return;
     if (!matchRemainingWords.length) return;
-    var targetPairs = Math.max(1, matchConfig.count || 1);
-    while ((matchCards.length / 2) < targetPairs && matchRemainingWords.length) {
-        var nextWord = matchRemainingWords.shift();
-        matchCards = matchCards.concat(createMatchCards([nextWord]));
+    var refillWords = matchRemainingWords.splice(0, Math.min(4, matchRemainingWords.length));
+    if (refillWords.length) {
+        matchCards = matchCards.concat(createMatchCards(refillWords));
     }
-    matchCards = shuffle(matchCards);
 }
 
 function startMatch() {
     var sourceWords = shuffle(getMatchWordPool());
-    if (!sourceWords.length) {
-        window.alert('There are no words to match right now.');
+    if (sourceWords.length < 2) {
+        window.alert('You need at least 2 words to start Match.');
         return;
     }
 
     var desiredCount = parseInt(document.getElementById('matchWordCount').value, 10) || 6;
-    if (desiredCount < 1) desiredCount = 1;
+    if (desiredCount < 2) desiredCount = 2;
     if (desiredCount > sourceWords.length) desiredCount = sourceWords.length;
 
     matchConfig = {
         count: desiredCount,
         refill: document.getElementById('matchRefill').checked
     };
-    matchSessionWords = sourceWords.slice();
-    matchRemainingWords = sourceWords.slice(desiredCount);
-    matchWords = sourceWords.slice(0, desiredCount);
-    matchCards = shuffle(createMatchCards(matchWords));
+    matchSessionWords = sourceWords.slice(0, desiredCount);
+    matchRemainingWords = matchSessionWords.slice(Math.min(6, matchSessionWords.length));
+    matchWords = matchSessionWords.slice(0, Math.min(6, matchSessionWords.length));
+    matchCards = createMatchCards(matchWords);
     matchSelected = null;
     matchWrong = 0;
     matchStartTime = Date.now();
+    matchPenaltySeconds = 0;
+    matchWrongWordMap = {};
 
     renderMatchGrid();
     startMatchTimer();
@@ -1300,9 +1396,29 @@ function startMatchTimer() {
     var timerEl = document.getElementById('matchTimer');
     if (matchTimerInterval) clearInterval(matchTimerInterval);
     matchTimerInterval = setInterval(function() {
-        var elapsed = ((Date.now() - matchStartTime) / 1000).toFixed(1);
+        var elapsed = getMatchElapsedSeconds().toFixed(1);
         timerEl.textContent = elapsed + ' seconds';
     }, 100);
+}
+
+function getMatchElapsedSeconds() {
+    return ((Date.now() - matchStartTime) / 1000) + matchPenaltySeconds;
+}
+
+function showMatchPenalty(cardEl) {
+    var layer = document.getElementById('matchEffects');
+    if (!layer || !cardEl) return;
+    var layerRect = layer.getBoundingClientRect();
+    var cardRect = cardEl.getBoundingClientRect();
+    var effect = document.createElement('div');
+    effect.className = 'match-penalty-fx';
+    effect.textContent = '+1 sec';
+    effect.style.left = (cardRect.left - layerRect.left + cardRect.width / 2) + 'px';
+    effect.style.top = (cardRect.top - layerRect.top + cardRect.height / 2) + 'px';
+    layer.appendChild(effect);
+    setTimeout(function() {
+        if (effect.parentNode) effect.parentNode.removeChild(effect);
+    }, 900);
 }
 
 function finishMatchPair(firstIdx, secondIdx) {
@@ -1312,7 +1428,7 @@ function finishMatchPair(firstIdx, secondIdx) {
     matchCards.splice(low, 1);
     maybeRefillMatchBoard();
     renderMatchGrid();
-    if (!matchCards.length && !matchRemainingWords.length) {
+    if (!matchCards.length) {
         clearInterval(matchTimerInterval);
         setTimeout(function() { showMatchResults(); }, 300);
     }
@@ -1353,10 +1469,14 @@ function selectMatchCard(idx) {
         } else {
             playSound('wrong');
             matchWrong++;
+            matchPenaltySeconds += 1;
             applyWordScoreDelta(card1.pairId, -4, { addMistake: true });
             applyWordScoreDelta(card2.pairId, -4, { addMistake: true });
+            matchWrongWordMap[card1.pairId] = true;
+            matchWrongWordMap[card2.pairId] = true;
             firstEl.classList.add('wrong');
             cardEl.classList.add('wrong');
+            showMatchPenalty(cardEl);
             setTimeout(function() {
                 firstEl.classList.remove('selected', 'wrong');
                 cardEl.classList.remove('selected', 'wrong');
@@ -1369,9 +1489,27 @@ function selectMatchCard(idx) {
 }
 
 function showMatchResults() {
-    var elapsed = ((Date.now() - matchStartTime) / 1000).toFixed(1);
+    var elapsed = getMatchElapsedSeconds().toFixed(1);
+    var wrongWords = Object.keys(matchWrongWordMap);
+    var wrongContainer = document.getElementById('matchResultWrongWords');
     document.getElementById('matchResultTime').textContent = elapsed + 's';
     document.getElementById('matchResultWrong').textContent = matchWrong;
+    if (wrongContainer) {
+        if (wrongWords.length) {
+            wrongContainer.innerHTML = '<p class="test-results-label">Wrong Words</p>' +
+                wrongWords.map(function(wordId) {
+                    var w = getWordData(wordId);
+                    return '<div class="test-results-item">' +
+                        '<span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
+                        '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span>' +
+                    '</div>';
+                }).join('');
+            wrongContainer.style.display = 'block';
+        } else {
+            wrongContainer.innerHTML = '';
+            wrongContainer.style.display = 'none';
+        }
+    }
     switchView(matchResultView);
 }
 // COMPACT LIST VIEW
@@ -1497,6 +1635,7 @@ function init() {
     renderCourses();
     setupEventListeners();
     renderLearningBookPanel();
+    updateSpeechMuteButtons();
 
     // Apply saved theme
     var saved = localStorage.getItem(THEME_KEY);
@@ -1547,6 +1686,10 @@ function setupEventListeners() {
         e.stopPropagation();
         if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
     });
+    document.getElementById('wlMuteBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSpeechMute();
+    });
 
     // WL flashcard swipe
     var wlSlider = document.getElementById('wlCardSlider');
@@ -1592,6 +1735,14 @@ function setupEventListeners() {
     document.getElementById('fcSnailBtn').addEventListener('click', function(e) {
         e.stopPropagation();
         if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
+    });
+    document.getElementById('fcMuteBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSpeechMute();
+    });
+    document.getElementById('learnMuteBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSpeechMute();
     });
 
     // Flashcard swipe
@@ -1663,7 +1814,7 @@ function setupEventListeners() {
         }
         if (learnView && !learnView.classList.contains('hidden-view')) {
             if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
-                var checkBtn = document.querySelector('#learnContentArea .nav-btn:last-of-type');
+                var checkBtn = document.querySelector('#learnActionTray .learn-primary-btn');
                 if (checkBtn) checkBtn.click();
             }
         }
