@@ -1387,9 +1387,17 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 
 /* Visual Keyboard */
 .visual-keyboard {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    gap: 6px; margin-top: 16px; width: 100%; max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 16px; width: 100%; max-width: 400px;
     margin-left: auto; margin-right: auto;
+}
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
 }
 .key-btn {
     background: var(--bg-surface); border: 1.5px solid var(--border);
@@ -1398,10 +1406,11 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
     font-size: 1.1rem; font-family: 'Space Grotesk', sans-serif;
     color: var(--text); cursor: pointer; transition: all 0.1s;
     user-select: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    flex: 1 1 10%; max-width: 40px;
+    flex: 1 1 0;
+    max-width: 40px;
 }
 .key-btn:active { transform: scale(0.92); background: var(--yellow-light); border-color: var(--yellow); }
-.key-btn.backspace { flex: 1 1 20%; max-width: 60px; background: var(--red-bg); color: var(--red); border-color: rgba(244,67,54,0.3); font-size: 1.2rem; }
+.key-btn.backspace { flex: 1.2 1 0; max-width: 72px; background: var(--red-bg); color: var(--red); border-color: rgba(244,67,54,0.3); font-size: 1.2rem; }
 [data-theme="dark"] .key-btn { background: rgba(13,13,24,0.8); }
 
 /* ═══════════════════════════════════════

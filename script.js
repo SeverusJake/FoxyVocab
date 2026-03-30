@@ -331,16 +331,30 @@ function isSpeechMuted() {
 }
 
 function updateSpeechMuteButtons() {
-    ['wlMuteBtn', 'fcMuteBtn', 'learnMuteBtn'].forEach(function(id) {
-        var btn = document.getElementById(id);
-        if (!btn) return;
-        var muted = isSpeechMuted();
+    var btn = document.getElementById('settingsMuteBtn');
+    var label = document.getElementById('speechMuteLabel');
+    var muted = isSpeechMuted();
+    if (btn) {
         btn.textContent = muted ? '🔇' : '🔊';
         btn.classList.toggle('active', muted);
         btn.setAttribute('aria-pressed', muted ? 'true' : 'false');
         btn.setAttribute('title', muted ? 'Unmute speech' : 'Mute speech');
         btn.setAttribute('aria-label', muted ? 'Unmute speech' : 'Mute speech');
-    });
+    }
+    if (label) label.textContent = muted ? 'Muted' : 'On';
+}
+
+function updateFullscreenButton() {
+    var btn = document.getElementById('settingsFullscreenBtn');
+    var label = document.getElementById('fullscreenLabel');
+    var isFullscreen = !!document.fullscreenElement;
+    if (btn) {
+        btn.classList.toggle('active', isFullscreen);
+        btn.setAttribute('aria-pressed', isFullscreen ? 'true' : 'false');
+        btn.setAttribute('title', isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen');
+        btn.setAttribute('aria-label', isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen');
+    }
+    if (label) label.textContent = isFullscreen ? 'On' : 'Off';
 }
 
 function toggleSpeechMute() {
@@ -474,6 +488,7 @@ function toggleFullscreen() {
             if (document.documentElement.webkitRequestFullscreen) {
                 document.documentElement.webkitRequestFullscreen();
             }
+            updateFullscreenButton();
         });
     } else {
         if (document.exitFullscreen) {
@@ -482,6 +497,7 @@ function toggleFullscreen() {
             document.webkitExitFullscreen();
         }
     }
+    setTimeout(updateFullscreenButton, 50);
 }
 
 // === DOM REFS ===
@@ -1196,11 +1212,20 @@ function renderTestQuestion() {
         '</div>';
     } else if (q.type === 'written' || q.type === 'fillin') {
         var writtenWord = getWordData(q.wordId);
-        var keysHtml = '';
-        'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').forEach(function(ch) {
-            keysHtml += '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
-        });
-        keysHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
+        var keyboardRows = [
+            ['Q','W','E','R','T','Y','U','I','O','P'],
+            ['A','S','D','F','G','H','J','K','L'],
+            ['Z','X','C','V','B','N','M']
+        ];
+        var keysHtml = keyboardRows.map(function(row, rowIndex) {
+            var rowHtml = row.map(function(ch) {
+                return '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
+            }).join('');
+            if (rowIndex === 2) {
+                rowHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
+            }
+            return '<div class="keyboard-row keyboard-row-' + (rowIndex + 1) + '">' + rowHtml + '</div>';
+        }).join('');
 
         var promptHtml = '';
         if (q.type === 'fillin') {
@@ -1408,13 +1433,13 @@ function maybeRefillMatchBoard() {
     if (!refillWords.length) return;
 
     var refillCards = createMatchCards(refillWords);
-    var emptySlots = shuffle(getMatchEmptySlotIndices()).slice(0, refillCards.length);
     matchIsRefilling = true;
     refillCards.forEach(function(card, idx) {
-        var slotIndex = emptySlots[idx];
         matchRefillTimeouts.push(setTimeout(function() {
+            var emptySlots = getMatchEmptySlotIndices();
+            if (!emptySlots.length) return;
+            var slotIndex = emptySlots[Math.floor(Math.random() * emptySlots.length)];
             if (typeof slotIndex !== 'number') return;
-            card.enterDelay = idx * 100;
             matchBoardSlots[slotIndex] = card;
             renderMatchGrid();
             if (idx === refillCards.length - 1) {
@@ -1731,10 +1756,13 @@ function init() {
     setupEventListeners();
     renderLearningBookPanel();
     updateSpeechMuteButtons();
+    updateFullscreenButton();
 
     // Apply saved theme
     var saved = localStorage.getItem(THEME_KEY);
     if (saved === 'dark') applyTheme(true);
+
+    document.addEventListener('fullscreenchange', updateFullscreenButton);
 
     // Initial history state
     history.replaceState({ viewId: 'courseView' }, "", "");
@@ -1780,10 +1808,6 @@ function setupEventListeners() {
     document.getElementById('wlSnailBtn').addEventListener('click', function(e) {
         e.stopPropagation();
         if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
-    });
-    document.getElementById('wlMuteBtn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleSpeechMute();
     });
 
     // WL flashcard swipe
@@ -1831,15 +1855,6 @@ function setupEventListeners() {
         e.stopPropagation();
         if (currentSet && currentSet.activeWords[currentCardIndex]) speak(currentSet.activeWords[currentCardIndex], 0.6);
     });
-    document.getElementById('fcMuteBtn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleSpeechMute();
-    });
-    document.getElementById('learnMuteBtn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleSpeechMute();
-    });
-
     // Flashcard swipe
     var fcSlider = document.getElementById('cardSlider');
     var fcTouchStartX = 0, fcTouchStartY = 0;
@@ -1886,13 +1901,22 @@ function setupEventListeners() {
     document.getElementById('cancelExitBtn').addEventListener('click', cancelExit);
 
     // Settings
-    document.getElementById('settingsBtn').addEventListener('click', openSettings);
+    document.querySelectorAll('.settings-open-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openSettings();
+        });
+    });
     document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
-
-    // Fullscreen
-    var fsBtn = document.getElementById('fullscreenBtn');
-    if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
+    document.getElementById('settingsMuteBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSpeechMute();
+    });
+    document.getElementById('settingsFullscreenBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleFullscreen();
+    });
 
     // Keyboard shortcuts
     document.addEventListener('keydown', function(e) {
@@ -1944,6 +1968,3 @@ function setupEventListeners() {
 // Start the app
 init();
 console.log('[FoxyVocab] script.js: fully loaded');
-
-
-
