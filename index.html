@@ -442,6 +442,45 @@
     </div>
 
     <!-- ═══════════════════════════════════ -->
+    <!-- VIEW: MATCH SETTINGS               -->
+    <!-- ═══════════════════════════════════ -->
+    <div id="matchSettingsView" class="view-container hidden-view px-6 py-8">
+        <div class="w-full max-w-xl mx-auto flex flex-col h-full">
+            <div class="flex items-center justify-between mb-2">
+                <button class="back-btn" id="closeMatchSettingsBtn" aria-label="Close">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <div style="width:40px"></div>
+            </div>
+            <p class="text-xs" style="color: var(--text-muted);" id="matchSettingsCourse">Set Name</p>
+            <h2 class="font-display text-2xl font-bold mb-6" style="color: var(--text);">Set up your match</h2>
+
+            <div class="test-setting-row">
+                <span class="test-setting-label">Word count <span class="text-xs" style="color: var(--text-muted);"
+                        id="matchMaxLabel">(max 20)</span></span>
+                <input type="number" class="test-count-input" id="matchWordCount" value="6" min="1">
+            </div>
+
+            <div class="test-setting-row">
+                <span class="test-setting-label">Refill cards</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="matchRefill">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <p class="text-sm mt-4" style="color: var(--text-muted);">When refill is on, the board adds unseen words back in when only 4 cards remain.</p>
+
+            <div class="flex-1"></div>
+            <button class="primary-btn w-full mb-4" id="startMatchBtn">Start match</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
     <!-- VIEW: MATCH GAME                   -->
     <!-- ═══════════════════════════════════ -->
     <div id="matchView" class="view-container hidden-view px-6 py-4">
@@ -569,3 +608,4 @@
 </body>
 
 </html>
+

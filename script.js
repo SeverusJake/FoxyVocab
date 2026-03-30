@@ -19,9 +19,11 @@ var matchWords = [];
 var matchCards = [];
 var matchSelected = null;
 var matchWrong = 0;
-var matchPairs = 0;
 var matchTimerInterval = null;
 var matchStartTime = 0;
+var matchConfig = { count: 6, refill: false };
+var matchRemainingWords = [];
+var matchSessionWords = [];
 
 // Test state
 var testQuestions = [];
@@ -32,7 +34,7 @@ var testAnswers = [];
 var currentTestSession = null;
 
 function createWordProgressState() {
-    return { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false, consecutiveCorrect: 0 };
+    return { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false, masteryScore: 0 };
 }
 
 function createEmptyProgressState() {
@@ -44,15 +46,36 @@ function normalizeProgressState(rawState) {
         return createEmptyProgressState();
     }
     if (rawState.words || rawState.sets || rawState.learningBook) {
+        var normalizedWords = {};
+        Object.keys(rawState.words || {}).forEach(function(wordId) {
+            normalizedWords[wordId] = normalizeWordProgress(rawState.words[wordId]);
+        });
         return {
-            words: rawState.words || {},
+            words: normalizedWords,
             sets: rawState.sets || {},
             learningBook: {
                 mistakeWords: rawState.learningBook && rawState.learningBook.mistakeWords ? rawState.learningBook.mistakeWords : {}
             }
         };
     }
-    return { words: rawState, sets: {}, learningBook: { mistakeWords: {} } };
+    var migratedWords = {};
+    Object.keys(rawState).forEach(function(wordId) {
+        migratedWords[wordId] = normalizeWordProgress(rawState[wordId]);
+    });
+    return { words: migratedWords, sets: {}, learningBook: { mistakeWords: {} } };
+}
+
+function normalizeWordProgress(progress) {
+    var base = createWordProgressState();
+    var merged = Object.assign(base, progress || {});
+    if (typeof merged.masteryScore !== 'number') {
+        if (typeof merged.consecutiveCorrect === 'number') merged.masteryScore = merged.consecutiveCorrect >= 2 ? 8 : 0;
+        else merged.masteryScore = merged.isKnown ? 8 : 0;
+    }
+    if (merged.masteryScore < 0) merged.masteryScore = 0;
+    merged.isKnown = merged.masteryScore > 7;
+    delete merged.consecutiveCorrect;
+    return merged;
 }
 
 function saveAppState() {
@@ -89,7 +112,81 @@ function getWordData(wordId) {
 function saveProgress(wordId, updates) {
     if (!userProgress.words[wordId]) userProgress.words[wordId] = createWordProgressState();
     Object.assign(userProgress.words[wordId], updates);
+    userProgress.words[wordId] = normalizeWordProgress(userProgress.words[wordId]);
     saveAppState();
+}
+
+function getCurrentWordPool() {
+    return currentSet ? currentSet.words.slice() : [];
+}
+
+function getCurrentWordSourceTitle() {
+    if (!currentSet) return '';
+    if (currentSet.isLearningBook) return 'LEARNING BOOK';
+    return currentCourse ? currentCourse.title.toUpperCase() : currentSet.title.toUpperCase();
+}
+
+function applyWordScoreDelta(wordId, delta, options) {
+    options = options || {};
+    var wData = getWordData(wordId);
+    var nextScore = wData.masteryScore + delta;
+    if (nextScore < 0) nextScore = 0;
+    saveProgress(wordId, { masteryScore: nextScore });
+    if (nextScore > 7) {
+        removeLearningBookMistake(wordId);
+    } else if (options.addMistake) {
+        addLearningBookMistake(wordId);
+    }
+}
+
+function getTestScoreDelta(answer) {
+    if (!answer.correct) return -4;
+    if (answer.type === 'tf') return 1;
+    if (answer.type === 'mc') return 2;
+    if (answer.type === 'fillin') return 3;
+    if (answer.type === 'written') return 4;
+    return 0;
+}
+
+function buildWordSource(wordIds, title, opts) {
+    var source = {
+        id: (opts && opts.id) || title.toLowerCase().replace(/\s+/g, '-'),
+        title: title,
+        words: wordIds.slice(),
+        parentView: opts && opts.parentView ? opts.parentView : setView,
+        parentTitle: opts && opts.parentTitle ? opts.parentTitle : 'SETS',
+        isLearningBook: !!(opts && opts.isLearningBook)
+    };
+    var cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
+    source.sortedWords = source.words.slice().sort(function(a, b) {
+        var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
+        var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
+        return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
+    });
+    source.activeWords = source.sortedWords.filter(function(wordId) { return !getWordData(wordId).isKnown; });
+    if (source.activeWords.length === 0) source.activeWords = source.sortedWords.slice();
+    return source;
+}
+
+function openWordSource(source, targetView) {
+    currentSet = source;
+    currentCardIndex = 0;
+    renderWordListView();
+    switchView(targetView || wordListView);
+}
+
+function openLearningBookList() {
+    var words = getLearningBookWords();
+    if (!words.length) {
+        window.alert('Learning Book is empty.');
+        return;
+    }
+    openWordSource(buildWordSource(words, 'Learning Book', {
+        id: 'learning-book',
+        isLearningBook: true,
+        parentView: courseView,
+        parentTitle: 'COURSES'
+    }), wordListView);
 }
 
 function getSetProgressKey(courseId, setId) {
@@ -187,22 +284,8 @@ function renderLearningBookPanel() {
     }
 }
 
-function recordTestOutcome(wordId, isCorrect) {
-    var wData = getWordData(wordId);
-    if (isCorrect) {
-        var nextStreak = (wData.consecutiveCorrect || 0) + 1;
-        var updates = { consecutiveCorrect: nextStreak };
-        if (nextStreak >= 2) {
-            updates.isKnown = true;
-            updates.consecutiveCorrect = 0;
-            removeLearningBookMistake(wordId);
-        }
-        saveProgress(wordId, updates);
-    } else {
-        saveProgress(wordId, { consecutiveCorrect: 0, isKnown: false });
-        addLearningBookMistake(wordId);
-    }
-
+function recordTestOutcome(answer) {
+    applyWordScoreDelta(answer.wordId, getTestScoreDelta(answer), { addMistake: !answer.correct });
     refreshCurrentSetActiveWords();
     renderLearningBookPanel();
 }
@@ -223,6 +306,14 @@ function returnFromTest() {
         return;
     }
     switchView(wordListView);
+}
+
+function returnFromWordList() {
+    if (currentSet && currentSet.parentView) {
+        switchView(currentSet.parentView);
+        return;
+    }
+    switchView(setView);
 }
 
 function speak(text, rate) {
@@ -343,7 +434,7 @@ function toggleFullscreen() {
 }
 
 // === DOM REFS ===
-var courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchView, matchResultView, compactListView;
+var courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchSettingsView, matchView, matchResultView, compactListView;
 var resultPanel, confirmPanel;
 
 // ═══════════════════════════════════
@@ -423,32 +514,24 @@ function renderSets() {
 }
 
 function selectSet(setId) {
-    currentSet = null;
-    currentCourse.sets.forEach(function(s) { if (s.id === setId) currentSet = s; });
-    if (!currentSet) return;
-
-    // Sort words by CEFR
-    var cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
-    currentSet.sortedWords = currentSet.words.slice().sort(function(a, b) {
-        var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
-        var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
-        return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
-    });
-    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
-    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
-
-    currentCardIndex = 0;
-    renderWordListView();
-    switchView(wordListView);
+    var selectedSet = null;
+    currentCourse.sets.forEach(function(s) { if (s.id === setId) selectedSet = s; });
+    if (!selectedSet) return;
+    openWordSource(buildWordSource(selectedSet.words, selectedSet.title, {
+        id: selectedSet.id,
+        parentView: setView,
+        parentTitle: 'SETS'
+    }), wordListView);
 }
 
 // ═══════════════════════════════════
 // WORD LIST VIEW (View 3)
 // ═══════════════════════════════════
 function renderWordListView() {
-    document.getElementById('wordListTitle').textContent = currentCourse.title.toUpperCase();
+    document.getElementById('wordListTitle').textContent = getCurrentWordSourceTitle();
     document.getElementById('wlSetName').textContent = currentSet.title;
     document.getElementById('wlTermCount').textContent = currentSet.words.length + ' terms';
+    document.getElementById('backToSetsBtn').lastChild.textContent = ' ' + (currentSet.parentTitle || 'SETS');
     updateWLFlashcard();
     renderWordCards();
 }
@@ -552,7 +635,7 @@ function renderWordCards() {
 function toggleWordKnown(wordId) {
     var wData = getWordData(wordId);
     var newState = !wData.isKnown;
-    saveProgress(wordId, { isKnown: newState, consecutiveCorrect: 0 });
+    saveProgress(wordId, { isKnown: newState, masteryScore: newState ? 8 : 0 });
     if (newState) removeLearningBookMistake(wordId);
     refreshCurrentSetActiveWords();
     renderWordCards();
@@ -561,16 +644,6 @@ function toggleWordKnown(wordId) {
     playSound('flip');
 }
 
-function toggleFavoriteWord(wordId, btn) {
-    var wData = getWordData(wordId);
-    var isFav = !wData.isFavorite;
-    saveProgress(wordId, { isFavorite: isFav });
-    if (btn) {
-        btn.textContent = isFav ? '★' : '☆';
-        btn.classList.toggle('star-active', isFav);
-    }
-    playSound('flip');
-}
 
 // ═══════════════════════════════════
 // FLASHCARD VIEW
@@ -580,6 +653,7 @@ function toggleFavoriteWord(wordId, btn) {
     var isFav = !wData.isFavorite;
     saveProgress(wordId, { isFavorite: isFav });
     if (currentSet) {
+        refreshCurrentSetActiveWords();
         updateWLFlashcard();
         updateFlashcard();
         renderWordCards();
@@ -592,14 +666,17 @@ function toggleFavoriteWord(wordId, btn) {
 }
 
 function toggleFavorite() {
+    if (!currentSet || !currentSet.activeWords.length) return;
     playSound('flip');
     var wordId = currentSet.activeWords[currentCardIndex];
     var wData = getWordData(wordId);
     saveProgress(wordId, { isFavorite: !wData.isFavorite });
+    refreshCurrentSetActiveWords();
     updateFlashcard();
     updateWLFlashcard();
     renderWordCards();
 }
+
 
 function openFlashcardView() {
     currentCardIndex = 0;
@@ -641,15 +718,6 @@ function updateFlashcard() {
     starBtn.classList.toggle('active', !!cardData.isFavorite);
 }
 
-function toggleFavorite() {
-    playSound('flip');
-    var wordId = currentSet.activeWords[currentCardIndex];
-    var wData = getWordData(wordId);
-    saveProgress(wordId, { isFavorite: !wData.isFavorite });
-    updateFlashcard();
-    updateWLFlashcard();
-    renderWordCards();
-}
 
 function updateProgress() {
     var total = currentSet.activeWords.length;
@@ -875,11 +943,11 @@ function getActiveTestWordPool() {
 function openTestSettings() {
     if (!currentSet) return;
     currentTestSession = {
-        source: 'set',
+        source: currentSet.isLearningBook ? 'learning-book' : 'set',
         title: currentSet.title,
         wordIds: currentSet.words.slice(),
         returnView: wordListView,
-        returnLabel: 'Back to Set'
+        returnLabel: 'Back'
     };
     openCurrentTestSettings();
 }
@@ -907,7 +975,7 @@ function openCurrentTestSettings() {
     document.getElementById('testMaxLabel').textContent = '(max ' + maxQ + ')';
     var countInput = document.getElementById('testQuestionCount');
     countInput.max = Math.max(maxQ, 1);
-    if (!parseInt(countInput.value) || parseInt(countInput.value) > maxQ) countInput.value = Math.max(maxQ, 1);
+    if (!parseInt(countInput.value, 10) || parseInt(countInput.value, 10) > maxQ) countInput.value = Math.max(maxQ, 1);
     switchView(testSettingsView);
 }
 
@@ -918,7 +986,7 @@ function startTest() {
         returnFromTest();
         return;
     }
-    var qCount = parseInt(document.getElementById('testQuestionCount').value) || 20;
+    var qCount = parseInt(document.getElementById('testQuestionCount').value, 10) || 20;
     var maxQ = wordPool.length;
     if (qCount > maxQ) qCount = maxQ;
     if (qCount < 1) qCount = 1;
@@ -986,7 +1054,7 @@ function renderTestQuestion() {
         var dist = getWordData(q.distractorId);
         var showCorrect = Math.random() > 0.5;
         q._isTrue = showCorrect;
-        
+
         var shownTerm = showCorrect ? w.word : dist.word;
         if (testConfig.speak) { speak(shownTerm, 1.0); }
 
@@ -999,16 +1067,16 @@ function renderTestQuestion() {
             '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(false, this)">False</button>' +
         '</div>';
     } else if (q.type === 'mc') {
-        var w = getWordData(q.wordId);
+        var mcWord = getWordData(q.wordId);
         var optsHtml = '';
         q.options.forEach(function(optId, idx) {
             var optW = getWordData(optId);
             var optText = q._isEngPrompt ? ('(' + (optW.pos || '') + ') ' + escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word);
             optsHtml += '<button class="test-option-btn text-left" onclick="answerTest(' + idx + ', this)">' + optText + '</button>';
         });
-        
-        var promptText = q._isEngPrompt ? escapeHtml(w.word) : ('(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || ''));
-        if (q._isEngPrompt && testConfig.speak) { speak(w.word, 1.0); }
+
+        var promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : ('(' + (mcWord.pos || '') + ') ' + escapeHtml(mcWord.vietnamese || ''));
+        if (q._isEngPrompt && testConfig.speak) { speak(mcWord.word, 1.0); }
 
         html = '<div class="test-question-area">' +
             '<p class="' + (q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4') + '">' + promptText + '</p>' +
@@ -1016,23 +1084,23 @@ function renderTestQuestion() {
             '<div class="test-options-col">' + optsHtml + '</div>' +
         '</div>';
     } else if (q.type === 'written' || q.type === 'fillin') {
-        var w = getWordData(q.wordId);
+        var writtenWord = getWordData(q.wordId);
         var keysHtml = '';
         'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').forEach(function(ch) {
             keysHtml += '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
         });
         keysHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
-        
+
         var promptHtml = '';
         if (q.type === 'fillin') {
-            var exStr = w.example || w.definition || '';
-            var re = new RegExp(w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "gi");
-            var blanked = exStr.replace(re, "______");
-            if (blanked === exStr && w.example) blanked = exStr + " (______)";
+            var exStr = writtenWord.example || writtenWord.definition || '';
+            var re = new RegExp(writtenWord.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+            var blanked = exStr.replace(re, '______');
+            if (blanked === exStr && writtenWord.example) blanked = exStr + ' (______)';
             promptHtml = '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' +
                          '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + escapeHtml(blanked) + '</p>';
         } else {
-            promptHtml = '<p class="test-definition">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>';
+            promptHtml = '<p class="test-definition">(' + (writtenWord.pos || '') + ') ' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
         }
 
         html = '<div class="test-question-area">' +
@@ -1063,8 +1131,8 @@ function answerTest(val, btn) {
     else { playSound('wrong'); }
 
     var buttons = btn.parentElement.querySelectorAll('.test-option-btn');
-    buttons.forEach(function(b, i) { 
-        b.disabled = true; 
+    buttons.forEach(function(b, i) {
+        b.disabled = true;
         if (q.type === 'tf') {
             if ((i === 0 ? true : false) === q._isTrue) b.classList.add('correct');
         } else if (q.type === 'mc') {
@@ -1102,33 +1170,13 @@ function showTestResults() {
     var area = document.getElementById('testContentArea');
     var pct = Math.round((testScore / testQuestions.length) * 100);
     var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
-    area.innerHTML = '<div class="flex flex-col items-center justify-center h-full">' +
-        '<div class="text-6xl mb-4">' + emoji + '</div>' +
-        '<h2 class="font-display text-2xl font-bold neon-text-green mb-2">Test Complete!</h2>' +
-        '<p class="text-3xl font-bold mb-2" style="color:var(--text)">' + testScore + ' / ' + testQuestions.length + '</p>' +
-        '<p class="text-sm mb-6" style="color:var(--text-muted)">' + pct + '% correct</p>' +
-        '<div class="flex flex-col gap-3 w-full" style="max-width:300px">' +
-            '<button class="primary-btn w-full" onclick="startTest()">Try Again</button>' +
-            '<button class="nav-btn w-full" onclick="switchView(wordListView)">Back to Set</button>' +
-        '</div>' +
-    '</div>';
-    playSound('win');
-}
-
-// ═══════════════════════════════════
-// MATCH GAME
-// ═══════════════════════════════════
-function showTestResults() {
-    var area = document.getElementById('testContentArea');
-    var pct = Math.round((testScore / testQuestions.length) * 100);
-    var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
-    if (currentTestSession && currentTestSession.source === 'set' && currentCourse && currentSet) {
+    if (currentTestSession && currentTestSession.source === 'set' && currentCourse && currentSet && !currentSet.isLearningBook) {
         saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
         renderSets();
         renderCourses();
     }
     testAnswers.forEach(function(answer) {
-        recordTestOutcome(answer.wordId, answer.correct);
+        recordTestOutcome(answer);
     });
     var wrongMap = {};
     var wrongWords = [];
@@ -1165,19 +1213,71 @@ function showTestResults() {
     playSound('win');
 }
 
-function startMatch() {
-    var pool = shuffle(currentSet.words.slice()).slice(0, 6);
-    matchWords = pool;
-    matchCards = [];
-    pool.forEach(function(wordId) {
+function getMatchWordPool() {
+    return currentSet ? currentSet.words.slice() : [];
+}
+
+function openMatchSettings() {
+    if (!currentSet) return;
+    var wordPool = getMatchWordPool();
+    if (!wordPool.length) {
+        window.alert('There are no words to match right now.');
+        return;
+    }
+    var countInput = document.getElementById('matchWordCount');
+    var maxWords = wordPool.length;
+    document.getElementById('matchSettingsCourse').textContent = currentSet.title;
+    document.getElementById('matchMaxLabel').textContent = '(max ' + maxWords + ')';
+    countInput.max = Math.max(maxWords, 1);
+    if (!parseInt(countInput.value, 10) || parseInt(countInput.value, 10) > maxWords) {
+        countInput.value = Math.min(Math.max(matchConfig.count || 6, 1), maxWords);
+    }
+    switchView(matchSettingsView);
+}
+
+function createMatchCards(wordIds) {
+    var cards = [];
+    wordIds.forEach(function(wordId) {
         var w = getWordData(wordId);
-        matchCards.push({ id: wordId + '_en', pairId: wordId, text: w.word, type: 'en' });
-        matchCards.push({ id: wordId + '_vi', pairId: wordId, text: w.vietnamese || '', type: 'vi' });
+        cards.push({ id: wordId + '_en_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.word, type: 'en' });
+        cards.push({ id: wordId + '_vi_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.vietnamese || '', type: 'vi' });
     });
+    return cards;
+}
+
+function maybeRefillMatchBoard() {
+    if (!matchConfig.refill) return;
+    if (matchCards.length !== 4) return;
+    if (!matchRemainingWords.length) return;
+    var targetPairs = Math.max(1, matchConfig.count || 1);
+    while ((matchCards.length / 2) < targetPairs && matchRemainingWords.length) {
+        var nextWord = matchRemainingWords.shift();
+        matchCards = matchCards.concat(createMatchCards([nextWord]));
+    }
     matchCards = shuffle(matchCards);
+}
+
+function startMatch() {
+    var sourceWords = shuffle(getMatchWordPool());
+    if (!sourceWords.length) {
+        window.alert('There are no words to match right now.');
+        return;
+    }
+
+    var desiredCount = parseInt(document.getElementById('matchWordCount').value, 10) || 6;
+    if (desiredCount < 1) desiredCount = 1;
+    if (desiredCount > sourceWords.length) desiredCount = sourceWords.length;
+
+    matchConfig = {
+        count: desiredCount,
+        refill: document.getElementById('matchRefill').checked
+    };
+    matchSessionWords = sourceWords.slice();
+    matchRemainingWords = sourceWords.slice(desiredCount);
+    matchWords = sourceWords.slice(0, desiredCount);
+    matchCards = shuffle(createMatchCards(matchWords));
     matchSelected = null;
     matchWrong = 0;
-    matchPairs = 0;
     matchStartTime = Date.now();
 
     renderMatchGrid();
@@ -1205,9 +1305,22 @@ function startMatchTimer() {
     }, 100);
 }
 
+function finishMatchPair(firstIdx, secondIdx) {
+    var high = Math.max(firstIdx, secondIdx);
+    var low = Math.min(firstIdx, secondIdx);
+    matchCards.splice(high, 1);
+    matchCards.splice(low, 1);
+    maybeRefillMatchBoard();
+    renderMatchGrid();
+    if (!matchCards.length && !matchRemainingWords.length) {
+        clearInterval(matchTimerInterval);
+        setTimeout(function() { showMatchResults(); }, 300);
+    }
+}
+
 function selectMatchCard(idx) {
     var cardEl = document.querySelector('.match-card[data-idx="' + idx + '"]');
-    if (!cardEl || cardEl.classList.contains('matched') || cardEl.classList.contains('selected')) return;
+    if (!cardEl || cardEl.classList.contains('selected')) return;
 
     if (matchSelected === null) {
         matchSelected = idx;
@@ -1215,34 +1328,41 @@ function selectMatchCard(idx) {
     } else {
         var firstIdx = matchSelected;
         var firstEl = document.querySelector('.match-card[data-idx="' + firstIdx + '"]');
+        if (!firstEl) {
+            matchSelected = null;
+            return;
+        }
         cardEl.classList.add('selected');
 
         var card1 = matchCards[firstIdx];
         var card2 = matchCards[idx];
 
         if (card1.pairId === card2.pairId && card1.type !== card2.type) {
-            // Match found!
             playSound('correct');
+            applyWordScoreDelta(card1.pairId, 3);
             firstEl.classList.remove('selected');
             cardEl.classList.remove('selected');
             firstEl.classList.add('matched');
             cardEl.classList.add('matched');
-            matchPairs++;
-            if (matchPairs >= matchWords.length) {
-                // Game complete
-                clearInterval(matchTimerInterval);
-                setTimeout(function() { showMatchResults(); }, 600);
-            }
+            setTimeout(function() {
+                finishMatchPair(firstIdx, idx);
+                renderLearningBookPanel();
+                refreshCurrentSetActiveWords();
+                if (currentSet) renderWordListView();
+            }, 450);
         } else {
-            // No match
             playSound('wrong');
             matchWrong++;
+            applyWordScoreDelta(card1.pairId, -4, { addMistake: true });
+            applyWordScoreDelta(card2.pairId, -4, { addMistake: true });
             firstEl.classList.add('wrong');
             cardEl.classList.add('wrong');
             setTimeout(function() {
                 firstEl.classList.remove('selected', 'wrong');
                 cardEl.classList.remove('selected', 'wrong');
             }, 600);
+            renderLearningBookPanel();
+            refreshCurrentSetActiveWords();
         }
         matchSelected = null;
     }
@@ -1254,8 +1374,6 @@ function showMatchResults() {
     document.getElementById('matchResultWrong').textContent = matchWrong;
     switchView(matchResultView);
 }
-
-// ═══════════════════════════════════
 // COMPACT LIST VIEW
 // ═══════════════════════════════════
 function renderCompactList() {
@@ -1303,9 +1421,12 @@ function toggleTranslation(index) {
 function toggleKnown(wordId, btn) {
     var wData = getWordData(wordId);
     var newState = !wData.isKnown;
-    saveProgress(wordId, { isKnown: newState, consecutiveCorrect: 0 });
+    saveProgress(wordId, { isKnown: newState, masteryScore: newState ? 8 : 0 });
     if (newState) removeLearningBookMistake(wordId);
     refreshCurrentSetActiveWords();
+    renderWordCards();
+    updateWLFlashcard();
+    updateFlashcard();
     if (btn) { if (newState) btn.classList.add('active'); else btn.classList.remove('active'); }
     renderLearningBookPanel();
 }
@@ -1364,13 +1485,14 @@ function init() {
     learnView = document.getElementById('learnView');
     testSettingsView = document.getElementById('testSettingsView');
     testView = document.getElementById('testView');
+    matchSettingsView = document.getElementById('matchSettingsView');
     matchView = document.getElementById('matchView');
     matchResultView = document.getElementById('matchResultView');
     compactListView = document.getElementById('compactListView');
     resultPanel = document.getElementById('resultPanel');
     confirmPanel = document.getElementById('confirmPanel');
 
-    allViews = [courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchView, matchResultView, compactListView];
+    allViews = [courseView, setView, wordListView, flashcardView, learnView, testSettingsView, testView, matchSettingsView, matchView, matchResultView, compactListView];
 
     renderCourses();
     setupEventListeners();
@@ -1387,7 +1509,7 @@ function init() {
 function setupEventListeners() {
     // Course → Set navigation
     document.getElementById('backToCoursesBtn').addEventListener('click', function() { playSound('slide'); switchView(courseView); });
-    document.getElementById('backToSetsBtn').addEventListener('click', function() { playSound('slide'); switchView(setView); });
+    document.getElementById('backToSetsBtn').addEventListener('click', function() { playSound('slide'); returnFromWordList(); });
     document.getElementById('backFromFlashcardBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
     document.getElementById('backFromListBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
 
@@ -1395,8 +1517,9 @@ function setupEventListeners() {
     document.getElementById('btnFlashcard').addEventListener('click', openFlashcardView);
     document.getElementById('btnLearn').addEventListener('click', startLearnMode);
     document.getElementById('btnTest').addEventListener('click', openTestSettings);
-    document.getElementById('btnMatch').addEventListener('click', startMatch);
-    document.getElementById('learningBookReviewBtn').addEventListener('click', function() { openLearningBookReview(courseView); });
+    document.getElementById('btnMatch').addEventListener('click', openMatchSettings);
+    document.getElementById('learningBookSection').addEventListener('click', openLearningBookList);
+    document.getElementById('learningBookReviewBtn').addEventListener('click', function(e) { e.stopPropagation(); openLearningBookReview(courseView); });
     document.getElementById('courseReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(courseView); });
     document.getElementById('setReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(setView); });
 
@@ -1412,6 +1535,8 @@ function setupEventListeners() {
         var wData = getWordData(wordId);
         saveProgress(wordId, { isFavorite: !wData.isFavorite });
         updateWLFlashcard();
+        updateFlashcard();
+        renderWordCards();
         playSound('flip');
     });
     document.getElementById('wlSpeakerBtn').addEventListener('click', function(e) {
@@ -1499,6 +1624,8 @@ function setupEventListeners() {
     document.querySelectorAll('.exit-test-btn').forEach(function(b) { b.addEventListener('click', function() { requestExit(function() { returnFromTest(); }); }); });
 
     // Match
+    document.getElementById('closeMatchSettingsBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
+    document.getElementById('startMatchBtn').addEventListener('click', startMatch);
     document.querySelectorAll('.exit-match-btn').forEach(function(b) { b.addEventListener('click', function() {
         clearInterval(matchTimerInterval);
         switchView(wordListView);
@@ -1564,3 +1691,6 @@ function setupEventListeners() {
 // Start the app
 init();
 console.log('[FoxyVocab] script.js: fully loaded');
+
+
+
