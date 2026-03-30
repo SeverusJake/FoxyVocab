@@ -17,6 +17,7 @@ var isWordListSetMode = false;
 // Match state
 var matchWords = [];
 var matchCards = [];
+var matchBoardSlots = [];
 var matchSelected = null;
 var matchWrong = 0;
 var matchTimerInterval = null;
@@ -26,6 +27,8 @@ var matchRemainingWords = [];
 var matchSessionWords = [];
 var matchPenaltySeconds = 0;
 var matchWrongWordMap = {};
+var matchIsRefilling = false;
+var matchRefillTimeouts = [];
 
 // Test state
 var testQuestions = [];
@@ -34,6 +37,7 @@ var testScore = 0;
 var testConfig = {};
 var testAnswers = [];
 var currentTestSession = null;
+var testAdvanceTimer = null;
 
 function createWordProgressState() {
     return { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false, masteryScore: 0 };
@@ -296,6 +300,7 @@ function recordTestOutcome(answer) {
 }
 
 function returnFromTest() {
+    clearTestAdvanceTimer();
     if (currentTestSession && currentTestSession.returnView === wordListView && currentSet) {
         refreshCurrentSetActiveWords();
         renderWordListView();
@@ -1062,7 +1067,7 @@ function startTest() {
 
     testConfig = {
         count: qCount,
-        instantFeedback: document.getElementById('testInstantFeedback').checked,
+        noTimeout: document.getElementById('testNoTimeout').checked,
         speak: document.getElementById('testSpeak') ? document.getElementById('testSpeak').checked : true,
         trueFalse: document.getElementById('testTrueFalse').checked,
         multipleChoice: document.getElementById('testMultipleChoice').checked,
@@ -1106,11 +1111,45 @@ function startTest() {
     testIndex = 0;
     testScore = 0;
     testAnswers = [];
+    clearTestAdvanceTimer();
     renderTestQuestion();
     switchView(testView, true);
 }
 
+function clearTestAdvanceTimer() {
+    if (testAdvanceTimer) {
+        clearTimeout(testAdvanceTimer);
+        testAdvanceTimer = null;
+    }
+}
+
+function advanceToNextTestQuestion() {
+    clearTestAdvanceTimer();
+    testIndex++;
+    renderTestQuestion();
+}
+
+function renderTestContinueArea() {
+    return '<div id="testContinueArea" class="test-continue-area" style="display:none;"></div>';
+}
+
+function handleAnsweredTestQuestion() {
+    clearTestAdvanceTimer();
+    if (testConfig.noTimeout) {
+        testAdvanceTimer = setTimeout(function() {
+            advanceToNextTestQuestion();
+        }, 500);
+        return;
+    }
+    var continueArea = document.getElementById('testContinueArea');
+    if (continueArea) {
+        continueArea.innerHTML = '<button class="primary-btn test-continue-btn" id="testContinueBtn" onclick="advanceToNextTestQuestion()">Continue</button>';
+        continueArea.style.display = 'flex';
+    }
+}
+
 function renderTestQuestion() {
+    clearTestAdvanceTimer();
     if (testIndex >= testQuestions.length) { showTestResults(); return; }
     var q = testQuestions[testIndex];
     var area = document.getElementById('testContentArea');
@@ -1129,29 +1168,31 @@ function renderTestQuestion() {
 
         html = '<div class="test-question-area text-center">' +
             '<p class="test-term text-3xl mb-4 text-[var(--blue)] font-bold">' + escapeHtml(shownTerm) + '</p>' +
-            '<p class="test-definition mb-6 text-lg">(' + (w.pos || '') + ') ' + escapeHtml(w.vietnamese || '') + '</p>' +
-            '<div id="testTfReveal" class="test-results-wrong-list" style="display:none; margin: 0 auto 1rem; max-width: 360px;"></div>' +
-        '</div>' +
-        '<div class="test-options-col">' +
-            '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(true, this)">True</button>' +
-            '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(false, this)">False</button>' +
+            '<p class="test-definition mb-6 text-lg">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<div class="test-options-col">' +
+                '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(true, this)">True</button>' +
+                '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(false, this)">False</button>' +
+            '</div>' +
+            '<div id="testTfReveal" class="test-inline-reveal" style="display:none;"></div>' +
+            renderTestContinueArea() +
         '</div>';
     } else if (q.type === 'mc') {
         var mcWord = getWordData(q.wordId);
         var optsHtml = '';
         q.options.forEach(function(optId, idx) {
             var optW = getWordData(optId);
-            var optText = q._isEngPrompt ? ('(' + (optW.pos || '') + ') ' + escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word);
+            var optText = q._isEngPrompt ? (escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word);
             optsHtml += '<button class="test-option-btn text-left" onclick="answerTest(' + idx + ', this)">' + optText + '</button>';
         });
 
-        var promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : ('(' + (mcWord.pos || '') + ') ' + escapeHtml(mcWord.vietnamese || ''));
+        var promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : (escapeHtml(mcWord.vietnamese || ''));
         if (q._isEngPrompt && testConfig.speak) { speak(mcWord.word, 1.0); }
 
         html = '<div class="test-question-area">' +
             '<p class="' + (q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4') + '">' + promptText + '</p>' +
             '<p class="test-label mt-4">Select the correct matching term</p>' +
             '<div class="test-options-col">' + optsHtml + '</div>' +
+            renderTestContinueArea() +
         '</div>';
     } else if (q.type === 'written' || q.type === 'fillin') {
         var writtenWord = getWordData(q.wordId);
@@ -1167,10 +1208,11 @@ function renderTestQuestion() {
             var re = new RegExp(writtenWord.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
             var blanked = exStr.replace(re, '______');
             if (blanked === exStr && writtenWord.example) blanked = exStr + ' (______)';
+            blanked = escapeHtml(blanked.replace('______', '___FILL_ANSWER___')).replace('___FILL_ANSWER___', '<span id="testFillAnswerSlot" class="test-fill-answer-slot">______</span>');
             promptHtml = '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' +
-                         '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + escapeHtml(blanked) + '</p>';
+                         '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + blanked + '</p>';
         } else {
-            promptHtml = '<p class="test-definition">(' + (writtenWord.pos || '') + ') ' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
+            promptHtml = '<p class="test-definition">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
         }
 
         html = '<div class="test-question-area">' +
@@ -1181,7 +1223,7 @@ function renderTestQuestion() {
             '</div>' +
             '<div class="visual-keyboard">' + keysHtml + '</div>' +
             '<button class="primary-btn mt-4 mx-auto" id="testWrittenSubmitBtn" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
-            '<div id="testWrittenReveal" class="test-results-wrong-list mt-4" style="display:none;"></div>' +
+            renderTestContinueArea() +
         '</div>';
     }
     area.innerHTML = html;
@@ -1226,7 +1268,7 @@ function answerTest(val, btn) {
     }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
-    setTimeout(function() { testIndex++; renderTestQuestion(); }, 1000);
+    handleAnsweredTestQuestion();
 }
 
 function answerTestWritten(value) {
@@ -1243,25 +1285,23 @@ function answerTestWritten(value) {
     if (submitBtn) submitBtn.disabled = true;
 
     if (testConfig.speak) { speak(w.word, 1.0); }
-    var reveal = document.getElementById('testWrittenReveal');
-    if (reveal) {
-        reveal.innerHTML = '<p class="test-results-label">Correct Answer</p>' +
-            '<div class="test-results-item"><span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
-            '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span></div>';
-        reveal.style.display = 'block';
+    if (q.type === 'fillin') {
+        var fillAnswerSlot = document.getElementById('testFillAnswerSlot');
+        if (fillAnswerSlot) {
+            fillAnswerSlot.textContent = w.word;
+            fillAnswerSlot.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+        }
+    } else if (input) {
+        input.value = w.word;
+        input.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
     }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
-
-    if (testConfig.instantFeedback) {
-        showResultPanel(isCorrect, w);
-        setTimeout(function() { closeResultPanel(); testIndex++; renderTestQuestion(); }, 2500);
-    } else {
-        setTimeout(function() { testIndex++; renderTestQuestion(); }, 500);
-    }
+    handleAnsweredTestQuestion();
 }
 
 function showTestResults() {
+    clearTestAdvanceTimer();
     var area = document.getElementById('testContentArea');
     var pct = Math.round((testScore / testQuestions.length) * 100);
     var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
@@ -1341,14 +1381,53 @@ function createMatchCards(wordIds) {
     return shuffle(cards);
 }
 
+function getMatchActiveCardCount() {
+    return matchBoardSlots.filter(function(card) { return !!card; }).length;
+}
+
+function getMatchEmptySlotIndices() {
+    var empty = [];
+    matchBoardSlots.forEach(function(card, idx) {
+        if (!card) empty.push(idx);
+    });
+    return empty;
+}
+
+function clearMatchRefillTimeouts() {
+    while (matchRefillTimeouts.length) {
+        clearTimeout(matchRefillTimeouts.pop());
+    }
+    matchIsRefilling = false;
+}
+
 function maybeRefillMatchBoard() {
     if (!matchConfig.refill) return;
-    if (matchCards.length !== 4) return;
+    if (getMatchActiveCardCount() !== 4) return;
     if (!matchRemainingWords.length) return;
     var refillWords = matchRemainingWords.splice(0, Math.min(4, matchRemainingWords.length));
-    if (refillWords.length) {
-        matchCards = matchCards.concat(createMatchCards(refillWords));
-    }
+    if (!refillWords.length) return;
+
+    var refillCards = createMatchCards(refillWords);
+    var emptySlots = shuffle(getMatchEmptySlotIndices()).slice(0, refillCards.length);
+    matchIsRefilling = true;
+    refillCards.forEach(function(card, idx) {
+        var slotIndex = emptySlots[idx];
+        matchRefillTimeouts.push(setTimeout(function() {
+            if (typeof slotIndex !== 'number') return;
+            card.enterDelay = idx * 100;
+            matchBoardSlots[slotIndex] = card;
+            renderMatchGrid();
+            if (idx === refillCards.length - 1) {
+                matchRefillTimeouts.push(setTimeout(function() {
+                    matchBoardSlots.forEach(function(slotCard) {
+                        if (slotCard) delete slotCard.enterDelay;
+                    });
+                    matchIsRefilling = false;
+                    renderMatchGrid();
+                }, 220));
+            }
+        }, idx * 100));
+    });
 }
 
 function startMatch() {
@@ -1369,12 +1448,15 @@ function startMatch() {
     matchSessionWords = sourceWords.slice(0, desiredCount);
     matchRemainingWords = matchSessionWords.slice(Math.min(6, matchSessionWords.length));
     matchWords = matchSessionWords.slice(0, Math.min(6, matchSessionWords.length));
-    matchCards = createMatchCards(matchWords);
+    clearMatchRefillTimeouts();
+    matchBoardSlots = createMatchCards(matchWords);
+    matchCards = matchBoardSlots;
     matchSelected = null;
     matchWrong = 0;
     matchStartTime = Date.now();
     matchPenaltySeconds = 0;
     matchWrongWordMap = {};
+    matchIsRefilling = false;
 
     renderMatchGrid();
     startMatchTimer();
@@ -1384,8 +1466,16 @@ function startMatch() {
 function renderMatchGrid() {
     var grid = document.getElementById('matchGrid');
     var html = '';
-    matchCards.forEach(function(card, idx) {
-        html += '<div class="match-card" data-idx="' + idx + '" onclick="selectMatchCard(' + idx + ')">' +
+    matchBoardSlots.forEach(function(card, idx) {
+        if (!card) {
+            html += '<div class="match-card match-card-empty" data-idx="' + idx + '" aria-hidden="true"></div>';
+            return;
+        }
+        var className = 'match-card';
+        if (typeof matchSelected === 'number' && matchSelected === idx) className += ' selected';
+        if (typeof card.enterDelay === 'number') className += ' match-card-entering';
+        var style = typeof card.enterDelay === 'number' ? ' style="animation-delay:' + card.enterDelay + 'ms"' : '';
+        html += '<div class="' + className + '" data-idx="' + idx + '" onclick="selectMatchCard(' + idx + ')"' + style + '>' +
             '<span class="match-card-text">' + escapeHtml(card.text) + '</span>' +
         '</div>';
     });
@@ -1422,25 +1512,27 @@ function showMatchPenalty(cardEl) {
 }
 
 function finishMatchPair(firstIdx, secondIdx) {
-    var high = Math.max(firstIdx, secondIdx);
-    var low = Math.min(firstIdx, secondIdx);
-    matchCards.splice(high, 1);
-    matchCards.splice(low, 1);
-    maybeRefillMatchBoard();
+    matchBoardSlots[firstIdx] = null;
+    matchBoardSlots[secondIdx] = null;
     renderMatchGrid();
-    if (!matchCards.length) {
+    if (!getMatchActiveCardCount()) {
         clearInterval(matchTimerInterval);
         setTimeout(function() { showMatchResults(); }, 300);
+        return;
     }
+    maybeRefillMatchBoard();
 }
 
 function selectMatchCard(idx) {
+    if (matchIsRefilling) return;
     var cardEl = document.querySelector('.match-card[data-idx="' + idx + '"]');
     if (!cardEl || cardEl.classList.contains('selected')) return;
+    var currentCard = matchBoardSlots[idx];
+    if (!currentCard) return;
 
     if (matchSelected === null) {
         matchSelected = idx;
-        cardEl.classList.add('selected');
+        renderMatchGrid();
     } else {
         var firstIdx = matchSelected;
         var firstEl = document.querySelector('.match-card[data-idx="' + firstIdx + '"]');
@@ -1448,16 +1540,18 @@ function selectMatchCard(idx) {
             matchSelected = null;
             return;
         }
+        var card1 = matchBoardSlots[firstIdx];
+        var card2 = matchBoardSlots[idx];
+        if (!card1 || !card2) {
+            matchSelected = null;
+            renderMatchGrid();
+            return;
+        }
         cardEl.classList.add('selected');
-
-        var card1 = matchCards[firstIdx];
-        var card2 = matchCards[idx];
 
         if (card1.pairId === card2.pairId && card1.type !== card2.type) {
             playSound('correct');
             applyWordScoreDelta(card1.pairId, 3);
-            firstEl.classList.remove('selected');
-            cardEl.classList.remove('selected');
             firstEl.classList.add('matched');
             cardEl.classList.add('matched');
             setTimeout(function() {
@@ -1489,6 +1583,7 @@ function selectMatchCard(idx) {
 }
 
 function showMatchResults() {
+    clearMatchRefillTimeouts();
     var elapsed = getMatchElapsedSeconds().toFixed(1);
     var wrongWords = Object.keys(matchWrongWordMap);
     var wrongContainer = document.getElementById('matchResultWrongWords');
@@ -1778,6 +1873,7 @@ function setupEventListeners() {
     document.getElementById('closeMatchSettingsBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
     document.getElementById('startMatchBtn').addEventListener('click', startMatch);
     document.querySelectorAll('.exit-match-btn').forEach(function(b) { b.addEventListener('click', function() {
+        clearMatchRefillTimeouts();
         clearInterval(matchTimerInterval);
         switchView(wordListView);
     }); });
@@ -1822,6 +1918,12 @@ function setupEventListeners() {
             if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
                 var submitBtn = document.querySelector('#testContentArea .primary-btn');
                 if (submitBtn) submitBtn.click();
+            } else if (e.key === 'Enter') {
+                var continueBtn = document.getElementById('testContinueBtn');
+                if (continueBtn) {
+                    e.preventDefault();
+                    continueBtn.click();
+                }
             }
         }
         if (e.key === ' ' || e.key === 'Enter') {

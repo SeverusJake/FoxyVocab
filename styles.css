@@ -990,6 +990,17 @@ body {
     text-align: center;
     user-select: none;
 }
+.match-card-empty {
+    background: transparent;
+    border: 2px dashed rgba(0,0,0,0.08);
+    box-shadow: none;
+    cursor: default;
+}
+.match-card-entering {
+    opacity: 0;
+    transform: scale(0.75);
+    animation: matchCardPopIn 0.3s ease-out forwards;
+}
 @media (hover: hover) {
     .match-card:hover:not(.matched):not(.selected) {
         border-color: var(--yellow);
@@ -1075,6 +1086,10 @@ body {
     0% { opacity: 0; transform: translate(-50%, -20%); }
     20% { opacity: 1; transform: translate(-50%, -50%); }
     100% { opacity: 0; transform: translate(-50%, -150%); }
+}
+@keyframes matchCardPopIn {
+    0% { opacity: 0; transform: scale(0.75); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 /* ═══════════════════════════════════════
@@ -1224,6 +1239,43 @@ body {
     color: var(--text-muted);
     text-align: right;
 }
+.test-inline-reveal {
+    width: 100%;
+    max-width: 420px;
+    margin: 1rem auto 0;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+.test-inline-reveal strong {
+    color: var(--blue-dark);
+}
+.test-continue-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+.test-continue-btn {
+    width: 220px;
+    max-width: 100%;
+}
+.test-fill-answer-slot {
+    display: inline-block;
+    min-width: 7ch;
+    padding: 0 0.25rem;
+    border-bottom: 2px dashed var(--border);
+    color: var(--text-muted);
+}
+.test-fill-answer-slot.is-correct {
+    color: var(--green-dark);
+    border-bottom-color: var(--green);
+}
+.test-fill-answer-slot.is-wrong {
+    color: var(--red);
+    border-bottom-color: var(--red);
+}
 
 /* Test written input */
 .test-written-input-wrap {
@@ -1248,6 +1300,16 @@ body {
 }
 .test-written-input:focus { border-color: var(--yellow); }
 .test-written-input::placeholder { color: var(--text-light); letter-spacing: normal; }
+.test-written-input.is-correct {
+    color: var(--green-dark);
+    border-color: var(--green);
+    background: var(--green-bg);
+}
+.test-written-input.is-wrong {
+    color: var(--red);
+    border-color: var(--red);
+    background: var(--red-bg);
+}
 .test-dont-know {
     position: absolute;
     right: 12px; top: 50%; transform: translateY(-50%);
@@ -1681,11 +1743,17 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
     color: #00ff88;
 }
 [data-theme="dark"] .match-card { background: rgba(13,13,24,0.7); }
+[data-theme="dark"] .match-card-empty {
+    background: transparent;
+    border-color: rgba(255,255,255,0.08);
+}
 [data-theme="dark"] .match-card.selected { background: rgba(0,245,255,0.1); border-color: #00f5ff; }
 [data-theme="dark"] .test-option-btn { background: rgba(13,13,24,0.8); }
 [data-theme="dark"] .test-option-btn:hover:not(:disabled) { background: rgba(0,245,255,0.05); border-color: #00f5ff; }
 [data-theme="dark"] .test-count-input { background: rgba(0,0,0,0.4); color: #00f5ff; border-color: rgba(255,255,255,0.1); }
 [data-theme="dark"] .test-written-input { background: rgba(0,0,0,0.4); color: #00f5ff; }
+[data-theme="dark"] .test-inline-reveal { background: rgba(13,13,24,0.82); border-color: rgba(255,255,255,0.1); }
+[data-theme="dark"] .test-inline-reveal strong { color: #00f5ff; }
 [data-theme="dark"] .carousel-dot.active { background: #00f5ff; }
 
 /* Dark — flashcard faces */
