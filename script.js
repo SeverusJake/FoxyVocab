@@ -136,12 +136,48 @@ function playSound(type) {
 
 // === VIEW MANAGEMENT ===
 var allViews = [];
-function switchView(targetView, playIntro) {
+function switchView(targetView, playIntro, skipPush) {
+    if (!skipPush) {
+        history.pushState({ viewId: targetView.id }, "", "");
+    }
     allViews.forEach(function(v) { v.classList.add('hidden-view'); v.classList.remove('fade-in'); });
     targetView.classList.remove('hidden-view');
     void targetView.offsetWidth;
     targetView.classList.add('fade-in');
     if (playIntro) playSound('intro'); else playSound('slide');
+}
+
+window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.viewId) {
+        var view = document.getElementById(event.state.viewId);
+        if (view) switchView(view, false, true);
+    } else {
+        // Fallback to initial view if no state
+        if (courseView) switchView(courseView, true, true);
+    }
+});
+
+window.addEventListener('beforeunload', function (e) {
+    // Standard prompt to confirm exit
+    e.preventDefault();
+    e.returnValue = '';
+});
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(function(err) {
+            // Some mobile browsers require different prefixes or might fail
+            if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            }
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
 }
 
 // === DOM REFS ===
@@ -1036,6 +1072,9 @@ function init() {
     // Apply saved theme
     var saved = localStorage.getItem(THEME_KEY);
     if (saved === 'dark') applyTheme(true);
+
+    // Initial history state
+    history.replaceState({ viewId: 'courseView' }, "", "");
 }
 
 function setupEventListeners() {
@@ -1166,6 +1205,10 @@ function setupEventListeners() {
     document.getElementById('settingsBtn').addEventListener('click', openSettings);
     document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+
+    // Fullscreen
+    var fsBtn = document.getElementById('fullscreenBtn');
+    if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
 
     // Keyboard shortcuts
     document.addEventListener('keydown', function(e) {
