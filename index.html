@@ -444,7 +444,7 @@
     <!-- ═══════════════════════════════════ -->
     <div id="testView" class="view-container hidden-view px-6 py-8">
         <div class="w-full max-w-xl mx-auto flex flex-col h-full">
-            <div class="flex items-center justify-between mb-2">
+            <div class="test-topbar">
                 <button class="back-btn exit-test-btn" aria-label="Exit test">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5">
@@ -452,8 +452,10 @@
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
-                <span class="font-display text-sm tracking-wider" style="color: var(--text);" id="testProgressText">1 /
-                    20</span>
+                <div class="test-topbar-center">
+                    <span class="font-display text-sm tracking-wider" style="color: var(--text);" id="testProgressText">1 / 20</span>
+                    <span class="test-timer" id="testTimer">0.0 seconds</span>
+                </div>
                 <button class="view-toggle-btn settings-open-btn" aria-label="Settings" title="Settings">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="3" />
@@ -545,7 +547,7 @@
     <!-- VIEW: MATCH RESULTS                -->
     <!-- ═══════════════════════════════════ -->
     <div id="matchResultView" class="view-container hidden-view px-6 py-8">
-        <div class="w-full max-w-md mx-auto flex flex-col items-center justify-center h-full">
+        <div class="w-full max-w-md mx-auto flex flex-col h-full">
             <div class="w-full flex items-center justify-end mb-4">
                 <button class="view-toggle-btn settings-open-btn" aria-label="Settings" title="Settings">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -554,20 +556,38 @@
                     </svg>
                 </button>
             </div>
-            <div class="text-6xl mb-6">🎉</div>
-            <h2 class="font-display text-2xl font-bold mb-6 neon-text-green">MATCH COMPLETE!</h2>
-            <div class="match-result-stats mb-8">
-                <div class="match-stat">
-                    <span class="match-stat-label">Time</span>
-                    <span class="match-stat-value" id="matchResultTime">0.0s</span>
+            <div class="result-shell">
+                <div class="result-title-wrap">
+                    <p class="result-kicker">Match Results</p>
+                    <h2 class="font-display text-2xl font-bold" id="matchResultTitle">MATCH COMPLETE!</h2>
                 </div>
-                <div class="match-stat">
-                    <span class="match-stat-label">Wrong attempts</span>
-                    <span class="match-stat-value" id="matchResultWrong">0</span>
+                <div class="result-ring-wrap">
+                    <div class="result-ring">
+                        <svg width="160" height="160" viewBox="0 0 160 160" aria-hidden="true">
+                            <circle class="result-ring-bg" cx="80" cy="80" r="68"></circle>
+                            <circle class="result-ring-fg" id="matchResultRing" cx="80" cy="80" r="68"></circle>
+                        </svg>
+                        <div class="result-ring-center">
+                            <span class="result-ring-percent" id="matchResultPercent">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-stat-row">
+                    <div class="result-stat-card">
+                        <span class="result-stat-label">Time</span>
+                        <span class="result-stat-value" id="matchResultTime">0.0s</span>
+                    </div>
+                    <div class="result-stat-card">
+                        <span class="result-stat-label">Right answers</span>
+                        <span class="result-stat-value" id="matchResultScore">0 / 0</span>
+                    </div>
+                </div>
+                <div class="result-list-wrap">
+                    <p class="result-list-title">Word results</p>
+                    <div id="matchResultList" class="result-word-list"></div>
                 </div>
             </div>
-            <div id="matchResultWrongWords" class="test-results-wrong-list mb-8" style="display:none;"></div>
-            <div class="flex flex-col gap-3 w-full">
+            <div class="flex flex-col gap-3 w-full mt-6">
                 <button class="primary-btn w-full" id="matchRetryBtn">Retry</button>
                 <button class="nav-btn w-full" id="matchBackBtn">Back</button>
             </div>

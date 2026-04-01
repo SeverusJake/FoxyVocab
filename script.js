@@ -38,6 +38,10 @@ var testConfig = {};
 var testAnswers = [];
 var currentTestSession = null;
 var testAdvanceTimer = null;
+var testTimerInterval = null;
+var testStartTime = 0;
+var testElapsedSeconds = 0;
+var testWrittenState = null;
 
 function createWordProgressState() {
     return { isFavorite: false, learned: false, quizCorrectCount: 0, isKnown: false, masteryScore: 0 };
@@ -301,6 +305,10 @@ function recordTestOutcome(answer) {
 
 function returnFromTest() {
     clearTestAdvanceTimer();
+    clearTestTimer();
+    testWrittenState = null;
+    testElapsedSeconds = 0;
+    setTestTimerLabel(0);
     if (currentTestSession && currentTestSession.returnView === wordListView && currentSet) {
         refreshCurrentSetActiveWords();
         renderWordListView();
@@ -402,6 +410,276 @@ function shuffle(arr) {
 
 function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function formatElapsedSeconds(seconds) {
+    return (Math.round(seconds * 10) / 10).toFixed(1) + ' seconds';
+}
+
+function setTestTimerLabel(seconds) {
+    var timerEl = document.getElementById('testTimer');
+    if (timerEl) timerEl.textContent = formatElapsedSeconds(seconds);
+}
+
+function clearTestTimer() {
+    if (testTimerInterval) {
+        clearInterval(testTimerInterval);
+        testTimerInterval = null;
+    }
+}
+
+function startTestTimer() {
+    clearTestTimer();
+    testStartTime = Date.now();
+    testElapsedSeconds = 0;
+    setTestTimerLabel(0);
+    testTimerInterval = setInterval(function() {
+        testElapsedSeconds = (Date.now() - testStartTime) / 1000;
+        setTestTimerLabel(testElapsedSeconds);
+    }, 100);
+}
+
+function stopTestTimer() {
+    if (testStartTime) {
+        testElapsedSeconds = (Date.now() - testStartTime) / 1000;
+    }
+    clearTestTimer();
+    setTestTimerLabel(testElapsedSeconds);
+}
+
+function isWrittenEditableChar(ch) {
+    return /^[A-Za-z]$/.test(ch);
+}
+
+function getWrittenEditableIndices(answer) {
+    var indices = [];
+    for (var i = 0; i < answer.length; i++) {
+        if (isWrittenEditableChar(answer.charAt(i))) indices.push(i);
+    }
+    return indices;
+}
+
+function getWrittenHintCount(editableCount) {
+    if (editableCount <= 2) return 0;
+    if (editableCount <= 4) return 1;
+    if (editableCount <= 6) return 2;
+    return Math.min(3, Math.max(2, editableCount - 2)) === 2 ? 2 : (Math.random() > 0.5 ? 3 : 2);
+}
+
+function createWrittenPromptState(answer) {
+    var editableIndices = getWrittenEditableIndices(answer);
+    var shuffledEditable = shuffle(editableIndices);
+    var hintCount = Math.min(getWrittenHintCount(editableIndices.length), editableIndices.length ? editableIndices.length - 1 : 0);
+    var hintMap = {};
+    var typedMap = {};
+    shuffledEditable.slice(0, Math.max(0, hintCount)).forEach(function(idx) {
+        hintMap[idx] = answer.charAt(idx).toLowerCase();
+    });
+    return {
+        answer: answer,
+        hintMap: hintMap,
+        typedMap: typedMap,
+        editableIndices: editableIndices,
+        cursorIndex: editableIndices.length ? editableIndices[0] : -1,
+        showSolution: false,
+        solvedCorrectly: false
+    };
+}
+
+function getNextWrittenEditablePosition(state, fromIndex) {
+    var editableIndices = state.editableIndices;
+    if (!editableIndices.length) return -1;
+    var startOffset = editableIndices.indexOf(fromIndex);
+    if (startOffset < 0) startOffset = 0;
+    startOffset = (startOffset + 1) % editableIndices.length;
+    for (var i = 0; i < editableIndices.length; i++) {
+        var idx = editableIndices[(i + startOffset) % editableIndices.length];
+        if (!state.typedMap[idx]) return idx;
+    }
+    return -1;
+}
+
+function getWrittenCursorPosition(state) {
+    if (typeof state.cursorIndex === 'number' && state.editableIndices.indexOf(state.cursorIndex) !== -1) {
+        return state.cursorIndex;
+    }
+    return state.editableIndices.length ? state.editableIndices[0] : -1;
+}
+
+function getWrittenNextEmptyPosition(state) {
+    for (var i = 0; i < state.editableIndices.length; i++) {
+        var idx = state.editableIndices[i];
+        if (!state.typedMap[idx]) return idx;
+    }
+    return -1;
+}
+
+function isWrittenComplete(state) {
+    return getWrittenNextEmptyPosition(state) === -1;
+}
+
+function buildWrittenUserAnswer(state) {
+    var out = '';
+    for (var i = 0; i < state.answer.length; i++) {
+        var rawChar = state.answer.charAt(i);
+        if (!isWrittenEditableChar(rawChar)) {
+            out += rawChar;
+        } else if (state.typedMap[i]) {
+            out += state.typedMap[i];
+        }
+    }
+    return out;
+}
+
+function renderWrittenAnswerBoxes(state) {
+    var currentPos = getWrittenCursorPosition(state);
+    var boxesHtml = '';
+    for (var i = 0; i < state.answer.length; i++) {
+        var answerChar = state.answer.charAt(i);
+        var classes = ['test-written-box'];
+        var displayChar = '';
+        if (!isWrittenEditableChar(answerChar)) {
+            classes.push('is-separator');
+            displayChar = escapeHtml(answerChar);
+        } else if (state.showSolution) {
+            displayChar = escapeHtml(answerChar.toUpperCase());
+            classes.push('is-filled');
+        } else if (state.typedMap[i]) {
+            classes.push('is-filled');
+            displayChar = escapeHtml(state.typedMap[i].toUpperCase());
+        } else if (state.hintMap[i]) {
+            classes.push('is-hint');
+            displayChar = escapeHtml(answerChar.toUpperCase());
+        } else if (i === currentPos) {
+            classes.push('is-active');
+        }
+        boxesHtml += '<button type="button" class="' + classes.join(' ') + '" data-letter-index="' + i + '" aria-label="Letter ' + (i + 1) + '">' + displayChar + '</button>';
+    }
+    return boxesHtml;
+}
+
+function focusWrittenInput() {
+    var hiddenInput = document.getElementById('testWrittenInputHidden');
+    if (hiddenInput && !hiddenInput.disabled) hiddenInput.focus();
+}
+
+function renderWrittenPromptUI() {
+    if (!testWrittenState) return;
+    var boxWrap = document.getElementById('testWrittenBoxes');
+    var submitBtn = document.getElementById('testWrittenSubmitBtn');
+    if (!boxWrap) return;
+    boxWrap.className = 'test-written-boxes' +
+        (testWrittenState.showSolution ? (testWrittenState.solvedCorrectly ? ' is-correct' : ' is-wrong') : '');
+    boxWrap.innerHTML = renderWrittenAnswerBoxes(testWrittenState);
+    if (submitBtn) {
+        submitBtn.disabled = testWrittenState.showSolution ? !testConfig.noTimeout : !isWrittenComplete(testWrittenState);
+        submitBtn.textContent = testWrittenState.showSolution && testConfig.noTimeout ? 'Continue' : 'Submit';
+    }
+}
+
+function attachWrittenPromptHandlers() {
+    var hiddenInput = document.getElementById('testWrittenInputHidden');
+    var boxWrap = document.getElementById('testWrittenBoxes');
+    var keyboard = document.querySelector('#testContentArea .visual-keyboard');
+    if (!hiddenInput || !boxWrap || !testWrittenState) return;
+    hiddenInput.addEventListener('input', function() {
+        if (!testWrittenState || testWrittenState.showSolution) {
+            this.value = '';
+            return;
+        }
+        var value = this.value;
+        var ch = value.slice(-1).toLowerCase();
+        if (isWrittenEditableChar(ch)) {
+            var nextPos = getWrittenCursorPosition(testWrittenState);
+            if (nextPos !== -1) {
+                testWrittenState.typedMap[nextPos] = ch;
+                testWrittenState.cursorIndex = getNextWrittenEditablePosition(testWrittenState, nextPos);
+                if (testWrittenState.cursorIndex === -1) testWrittenState.cursorIndex = nextPos;
+                renderWrittenPromptUI();
+            }
+        }
+        this.value = '';
+    });
+    hiddenInput.addEventListener('keydown', function(e) {
+        if (!testWrittenState || testWrittenState.showSolution) return;
+        if (e.key === 'Backspace') {
+            e.preventDefault();
+            for (var i = testWrittenState.editableIndices.length - 1; i >= 0; i--) {
+                var idx = testWrittenState.editableIndices[i];
+                if (testWrittenState.typedMap[idx]) {
+                    delete testWrittenState.typedMap[idx];
+                    testWrittenState.cursorIndex = idx;
+                    renderWrittenPromptUI();
+                    break;
+                }
+            }
+        }
+    });
+    hiddenInput.addEventListener('paste', function(e) { e.preventDefault(); });
+    boxWrap.addEventListener('click', function(e) {
+        if (!testWrittenState || testWrittenState.showSolution) return;
+        var box = e.target.closest('[data-letter-index]');
+        if (box) {
+            var letterIndex = parseInt(box.getAttribute('data-letter-index'), 10);
+            if (testWrittenState.editableIndices.indexOf(letterIndex) !== -1) testWrittenState.cursorIndex = letterIndex;
+        }
+        renderWrittenPromptUI();
+        focusWrittenInput();
+    });
+    if (keyboard) {
+        keyboard.addEventListener('click', function(e) {
+            if (!testWrittenState || testWrittenState.showSolution) return;
+            var key = e.target.closest('[data-key]');
+            if (!key) return;
+            var value = key.getAttribute('data-key');
+            if (value === 'backspace') {
+                var backspaceEvent = new KeyboardEvent('keydown', { key: 'Backspace', bubbles: true });
+                hiddenInput.dispatchEvent(backspaceEvent);
+                focusWrittenInput();
+                return;
+            }
+            hiddenInput.value = value;
+            var inputEvent = new Event('input', { bubbles: true });
+            hiddenInput.dispatchEvent(inputEvent);
+            focusWrittenInput();
+        });
+    }
+    setTimeout(focusWrittenInput, 0);
+}
+
+function animateResultRing(circleId, percentId, pct) {
+    var circle = document.getElementById(circleId);
+    var percentEl = document.getElementById(percentId);
+    if (!circle || !percentEl) return;
+    var radius = parseFloat(circle.getAttribute('r')) || 68;
+    var circumference = 2 * Math.PI * radius;
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset = circumference;
+    percentEl.textContent = '0%';
+    requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+            circle.style.strokeDashoffset = circumference - (pct / 100) * circumference;
+        });
+    });
+    var current = 0;
+    var step = Math.max(1, Math.ceil(pct / 30));
+    var interval = setInterval(function() {
+        current = Math.min(current + step, pct);
+        percentEl.textContent = current + '%';
+        if (current >= pct) clearInterval(interval);
+    }, 22);
+}
+
+function renderResultWordRows(items) {
+    return items.map(function(item) {
+        return '<div class="result-word-item">' +
+            '<span class="result-word-icon ' + (item.correct ? 'is-correct' : 'is-wrong') + '">' + (item.correct ? '✓' : '✕') + '</span>' +
+            '<div class="result-word-copy">' +
+                '<div class="result-word-term">' + escapeHtml(item.word) + '</div>' +
+                '<div class="result-word-meaning">' + escapeHtml(item.meaning || '') + '</div>' +
+            '</div>' +
+        '</div>';
+    }).join('');
 }
 
 // === AUDIO ===
@@ -1127,7 +1405,9 @@ function startTest() {
     testIndex = 0;
     testScore = 0;
     testAnswers = [];
+    testWrittenState = null;
     clearTestAdvanceTimer();
+    startTestTimer();
     renderTestQuestion();
     switchView(testView, true);
 }
@@ -1151,12 +1431,14 @@ function renderTestContinueArea() {
 
 function handleAnsweredTestQuestion() {
     clearTestAdvanceTimer();
-    if (testConfig.noTimeout) {
+    var q = testQuestions[testIndex];
+    if (testConfig.noTimeout && q && q.type !== 'written') {
         testAdvanceTimer = setTimeout(function() {
             advanceToNextTestQuestion();
         }, 500);
         return;
     }
+    if (testConfig.noTimeout && q && q.type === 'written') return;
     var continueArea = document.getElementById('testContinueArea');
     if (continueArea) {
         continueArea.innerHTML = '<button class="primary-btn test-continue-btn" id="testContinueBtn" onclick="advanceToNextTestQuestion()">Continue</button>';
@@ -1167,6 +1449,7 @@ function handleAnsweredTestQuestion() {
 function renderTestQuestion() {
     clearTestAdvanceTimer();
     if (testIndex >= testQuestions.length) { showTestResults(); return; }
+    testWrittenState = null;
     var q = testQuestions[testIndex];
     var area = document.getElementById('testContentArea');
     document.getElementById('testProgressText').textContent = (testIndex + 1) + ' / ' + testQuestions.length;
@@ -1219,14 +1502,13 @@ function renderTestQuestion() {
         ];
         var keysHtml = keyboardRows.map(function(row, rowIndex) {
             var rowHtml = row.map(function(ch) {
-                return '<button class="key-btn" onclick="document.getElementById(\'testWrittenInput\').value += \'' + ch + '\'">' + ch + '</button>';
+                return '<button type="button" class="key-btn" data-key="' + ch.toLowerCase() + '">' + ch + '</button>';
             }).join('');
             if (rowIndex === 2) {
-                rowHtml += '<button class="key-btn backspace" onclick="var el=document.getElementById(\'testWrittenInput\'); el.value=el.value.slice(0, -1);">⌫</button>';
+                rowHtml += '<button type="button" class="key-btn backspace" data-key="backspace">⌫</button>';
             }
             return '<div class="keyboard-row keyboard-row-' + (rowIndex + 1) + '">' + rowHtml + '</div>';
         }).join('');
-
         var promptHtml = '';
         if (q.type === 'fillin') {
             var exStr = writtenWord.example || writtenWord.definition || '';
@@ -1237,23 +1519,33 @@ function renderTestQuestion() {
             promptHtml = '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' +
                          '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + blanked + '</p>';
         } else {
-            promptHtml = '<p class="test-definition">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
+            promptHtml = '<p class="test-definition test-definition-centered">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
+            testWrittenState = createWrittenPromptState(writtenWord.word);
         }
 
         html = '<div class="test-question-area">' +
             promptHtml +
             '<p class="test-label mt-6">Your answer</p>' +
             '<div class="test-written-input-wrap">' +
-                '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">' +
+                (q.type === 'written'
+                    ? '<input type="text" class="test-written-input-hidden" id="testWrittenInputHidden" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">' +
+                      '<div id="testWrittenBoxes" class="test-written-boxes" role="textbox" aria-label="Type the answer"></div>' +
+                      '<p class="test-written-help">Gray letters are hints. Fill the other tiles with your keyboard.</p>' +
+                      '<div class="visual-keyboard">' + keysHtml + '</div>'
+                    : '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">') +
             '</div>' +
-            '<div class="visual-keyboard">' + keysHtml + '</div>' +
-            '<button class="primary-btn mt-4 mx-auto" id="testWrittenSubmitBtn" onclick="answerTestWritten(document.getElementById(\'testWrittenInput\').value)" style="width:200px">Submit</button>' +
+            '<button class="primary-btn mt-4 mx-auto" id="testWrittenSubmitBtn" onclick="answerTestWritten()" style="width:200px">Submit</button>' +
             renderTestContinueArea() +
         '</div>';
     }
     area.innerHTML = html;
-    var writtenInput = document.getElementById('testWrittenInput');
-    if (writtenInput) writtenInput.focus();
+    if (q.type === 'written' && testWrittenState) {
+        renderWrittenPromptUI();
+        attachWrittenPromptHandlers();
+    } else {
+        var writtenInput = document.getElementById('testWrittenInput');
+        if (writtenInput) writtenInput.focus();
+    }
 }
 
 function answerTest(val, btn) {
@@ -1296,17 +1588,28 @@ function answerTest(val, btn) {
     handleAnsweredTestQuestion();
 }
 
-function answerTestWritten(value) {
+function answerTestWritten() {
     var q = testQuestions[testIndex];
     var w = getWordData(q.wordId);
-    var isCorrect = value !== null && value.trim().toLowerCase() === w.word.toLowerCase();
+    if (testConfig.noTimeout && testWrittenState && testWrittenState.showSolution) {
+        advanceToNextTestQuestion();
+        return;
+    }
     var input = document.getElementById('testWrittenInput');
+    var hiddenInput = document.getElementById('testWrittenInputHidden');
+    if (q.type === 'written' && testWrittenState && !testWrittenState.showSolution && !isWrittenComplete(testWrittenState)) return;
+    var value = q.type === 'written'
+        ? buildWrittenUserAnswer(testWrittenState || createWrittenPromptState(w.word))
+        : (input ? input.value : '');
+    var isCorrect = value !== null && value.trim().toLowerCase() === w.word.toLowerCase();
     var submitBtn = document.getElementById('testWrittenSubmitBtn');
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
     if (input) input.blur();
+    if (hiddenInput) hiddenInput.blur();
     if (submitBtn) submitBtn.blur();
     if (input) input.disabled = true;
+    if (hiddenInput) hiddenInput.disabled = true;
     if (submitBtn) submitBtn.disabled = true;
 
     if (testConfig.speak) { speak(w.word, 1.0); }
@@ -1316,20 +1619,24 @@ function answerTestWritten(value) {
             fillAnswerSlot.textContent = w.word;
             fillAnswerSlot.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
         }
+    } else if (q.type === 'written' && testWrittenState) {
+        testWrittenState.showSolution = true;
+        testWrittenState.solvedCorrectly = isCorrect;
+        renderWrittenPromptUI();
     } else if (input) {
         input.value = w.word;
         input.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
     }
 
-    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type });
+    testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type, userAnswer: value });
     handleAnsweredTestQuestion();
 }
 
 function showTestResults() {
     clearTestAdvanceTimer();
+    stopTestTimer();
     var area = document.getElementById('testContentArea');
     var pct = Math.round((testScore / testQuestions.length) * 100);
-    var emoji = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '😅';
     if (currentTestSession && currentTestSession.source === 'set' && currentCourse && currentSet && !currentSet.isLearningBook) {
         saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
         renderSets();
@@ -1338,38 +1645,44 @@ function showTestResults() {
     testAnswers.forEach(function(answer) {
         recordTestOutcome(answer);
     });
-    var wrongMap = {};
-    var wrongWords = [];
-    testAnswers.forEach(function(answer) {
-        if (!answer.correct && !wrongMap[answer.wordId]) {
-            wrongMap[answer.wordId] = true;
-            wrongWords.push(answer.wordId);
-        }
+    var resultItems = testAnswers.map(function(answer) {
+        var resultWord = getWordData(answer.wordId);
+        return {
+            word: resultWord.word,
+            meaning: resultWord.vietnamese || '',
+            correct: answer.correct
+        };
     });
-    var wrongHtml = '';
-    if (wrongWords.length) {
-        wrongHtml = '<div class="test-results-wrong-list">' +
-            '<p class="test-results-label">Incorrect words</p>' +
-            wrongWords.map(function(wordId) {
-                var w = getWordData(wordId);
-                return '<div class="test-results-item">' +
-                    '<span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
-                    '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span>' +
-                '</div>';
-            }).join('') +
-        '</div>';
-    }
-    area.innerHTML = '<div class="flex flex-col items-center justify-center h-full">' +
-        '<div class="text-6xl mb-4">' + emoji + '</div>' +
-        '<h2 class="font-display text-2xl font-bold neon-text-green mb-2">Test Complete!</h2>' +
-        '<p class="text-3xl font-bold mb-2" style="color:var(--text)">' + testScore + ' / ' + testQuestions.length + '</p>' +
-        '<p class="text-sm mb-6" style="color:var(--text-muted)">' + pct + '% correct</p>' +
-        wrongHtml +
-        '<div class="flex flex-col gap-3 w-full" style="max-width:300px">' +
+    area.innerHTML = '<div class="flex flex-col h-full justify-center">' +
+        '<div class="result-shell">' +
+            '<div class="result-title-wrap">' +
+                '<p class="result-kicker">Test Results</p>' +
+                '<h2 class="font-display text-2xl font-bold">TEST COMPLETE!</h2>' +
+            '</div>' +
+            '<div class="result-ring-wrap">' +
+                '<div class="result-ring">' +
+                    '<svg width="160" height="160" viewBox="0 0 160 160" aria-hidden="true">' +
+                        '<circle class="result-ring-bg" cx="80" cy="80" r="68"></circle>' +
+                        '<circle class="result-ring-fg" id="testResultRing" cx="80" cy="80" r="68"></circle>' +
+                    '</svg>' +
+                    '<div class="result-ring-center"><span class="result-ring-percent" id="testResultPercent">0%</span></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="result-stat-row">' +
+                '<div class="result-stat-card"><span class="result-stat-label">Time</span><span class="result-stat-value">' + formatElapsedSeconds(testElapsedSeconds) + '</span></div>' +
+                '<div class="result-stat-card"><span class="result-stat-label">Right answers</span><span class="result-stat-value">' + testScore + ' / ' + testQuestions.length + '</span></div>' +
+            '</div>' +
+            '<div class="result-list-wrap">' +
+                '<p class="result-list-title">Word results</p>' +
+                '<div class="result-word-list">' + renderResultWordRows(resultItems) + '</div>' +
+            '</div>' +
+        '</div>' +
+        '<div class="flex flex-col gap-3 w-full mt-6" style="max-width:300px; margin-left:auto; margin-right:auto;">' +
             '<button class="primary-btn w-full" onclick="startTest()">Try Again</button>' +
             '<button class="nav-btn w-full" onclick="returnFromTest()">' + (currentTestSession ? currentTestSession.returnLabel : 'Back') + '</button>' +
         '</div>' +
     '</div>';
+    animateResultRing('testResultRing', 'testResultPercent', pct);
     playSound('win');
 }
 
@@ -1497,6 +1810,9 @@ function renderMatchGrid() {
             return;
         }
         var className = 'match-card';
+        if (card.type === 'en') className += ' is-english';
+        if (card.text.length > 18) className += ' text-fit-xs';
+        else if (card.text.length > 11) className += ' text-fit-sm';
         if (typeof matchSelected === 'number' && matchSelected === idx) className += ' selected';
         if (typeof card.enterDelay === 'number') className += ' match-card-entering';
         var style = typeof card.enterDelay === 'number' ? ' style="animation-delay:' + card.enterDelay + 'ms"' : '';
@@ -1611,26 +1927,22 @@ function showMatchResults() {
     clearMatchRefillTimeouts();
     var elapsed = getMatchElapsedSeconds().toFixed(1);
     var wrongWords = Object.keys(matchWrongWordMap);
-    var wrongContainer = document.getElementById('matchResultWrongWords');
+    var resultItems = matchSessionWords.map(function(wordId) {
+        var matchWord = getWordData(wordId);
+        return {
+            word: matchWord.word,
+            meaning: matchWord.vietnamese || '',
+            correct: !matchWrongWordMap[wordId]
+        };
+    });
+    var correctCount = resultItems.filter(function(item) { return item.correct; }).length;
+    var pct = resultItems.length ? Math.round((correctCount / resultItems.length) * 100) : 0;
     document.getElementById('matchResultTime').textContent = elapsed + 's';
-    document.getElementById('matchResultWrong').textContent = matchWrong;
-    if (wrongContainer) {
-        if (wrongWords.length) {
-            wrongContainer.innerHTML = '<p class="test-results-label">Wrong Words</p>' +
-                wrongWords.map(function(wordId) {
-                    var w = getWordData(wordId);
-                    return '<div class="test-results-item">' +
-                        '<span class="test-results-word">' + escapeHtml(w.word) + '</span>' +
-                        '<span class="test-results-meaning">' + escapeHtml(w.vietnamese || '') + '</span>' +
-                    '</div>';
-                }).join('');
-            wrongContainer.style.display = 'block';
-        } else {
-            wrongContainer.innerHTML = '';
-            wrongContainer.style.display = 'none';
-        }
-    }
+    document.getElementById('matchResultScore').textContent = correctCount + ' / ' + resultItems.length;
+    document.getElementById('matchResultTitle').textContent = wrongWords.length ? 'MATCH COMPLETE!' : 'PERFECT MATCH!';
+    document.getElementById('matchResultList').innerHTML = renderResultWordRows(resultItems);
     switchView(matchResultView);
+    animateResultRing('matchResultRing', 'matchResultPercent', pct);
 }
 // COMPACT LIST VIEW
 // ═══════════════════════════════════
