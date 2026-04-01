@@ -843,6 +843,12 @@ body {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
+.action-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 .action-btn-icon { font-size: 2rem; }
 .action-btn span:last-child { margin-top: 8px; }
 
@@ -867,12 +873,25 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.75rem;
+}
+.word-card-title {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 .word-card-term {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     color: var(--text);
+    word-break: break-word;
+}
+.word-card-meta {
+    margin-top: 0.2rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.35;
 }
 .word-card-actions { display: flex; gap: 8px; }
 .word-card-btn {
@@ -882,6 +901,24 @@ body {
 }
 .word-card-btn:hover { opacity: 1; color: var(--blue); transform: scale(1.1); }
 .word-card-btn.star-active { color: var(--yellow); opacity: 1; text-shadow: 0 0 4px var(--yellow-light); }
+.word-card-btn.remove-btn { color: var(--red); opacity: 0.8; }
+.word-card-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    padding: 1.25rem;
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: center;
+    background: rgba(127,127,127,0.05);
+}
+.card.is-disabled {
+    opacity: 0.65;
+    pointer-events: none;
+}
 .word-card-bottom {
     margin-top: 4px;
 }
@@ -2000,6 +2037,7 @@ input[type="text"]::placeholder { color: var(--text-light); letter-spacing: 1px;
 [data-theme="dark"] .action-btn:hover { background: rgba(0,245,255,0.08); border-color: #00f5ff; }
 [data-theme="dark"] .word-card { background: rgba(13,13,24,0.5); border-color: rgba(255,255,255,0.06); }
 [data-theme="dark"] .word-card.is-known { background: var(--green-dark); border-color: var(--green); }
+[data-theme="dark"] .word-card-meta { color: #a7b3c8; }
 [data-theme="dark"] .learning-book-panel {
     background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(0,255,136,0.08));
     border-color: rgba(0,245,255,0.2);

@@ -11,7 +11,7 @@ var learnStep = 1;
 var learnMistakes = 0;
 var learnIndex = 0;
 var isAnimating = false;
-var pendingExitCallback = null;
+var pendingConfirmAction = null;
 var isWordListSetMode = false;
 
 // Match state
@@ -29,6 +29,7 @@ var matchPenaltySeconds = 0;
 var matchWrongWordMap = {};
 var matchIsRefilling = false;
 var matchRefillTimeouts = [];
+var cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
 
 // Test state
 var testQuestions = [];
@@ -170,7 +171,6 @@ function buildWordSource(wordIds, title, opts) {
         parentTitle: opts && opts.parentTitle ? opts.parentTitle : 'SETS',
         isLearningBook: !!(opts && opts.isLearningBook)
     };
-    var cefrRank = { 'A1': 1, 'A2': 2, 'B1': 3, 'B2': 4, 'C1': 5, 'C2': 6, 'Uncategorized': 7 };
     source.sortedWords = source.words.slice().sort(function(a, b) {
         var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
         var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
@@ -250,6 +250,67 @@ function removeLearningBookMistake(wordId) {
         delete userProgress.learningBook.mistakeWords[wordId];
         saveAppState();
     }
+}
+
+function getWordFirstOrigin(wordId) {
+    for (var i = 0; i < coursesData.length; i++) {
+        var course = coursesData[i];
+        for (var j = 0; j < course.sets.length; j++) {
+            var set = course.sets[j];
+            if (set.words.indexOf(wordId) !== -1) {
+                return course.title + ' - ' + set.title;
+            }
+        }
+    }
+    return 'Unknown - Unknown';
+}
+
+function removeWordFromLearningBook(wordId) {
+    removeLearningBookMistake(wordId);
+    syncCurrentLearningBookSource();
+    refreshCurrentSetActiveWords();
+    if (currentSet && currentSet.isLearningBook && isWordListSetMode) {
+        renderWordListView();
+    } else {
+        renderWordCards();
+        updateWLFlashcard();
+    }
+    updateWordListActionState();
+    renderLearningBookPanel();
+    playSound('slide');
+}
+
+function syncCurrentLearningBookSource() {
+    if (!currentSet || !currentSet.isLearningBook) return;
+    currentSet.words = getLearningBookWords();
+    currentSet.sortedWords = currentSet.words.slice().sort(function(a, b) {
+        var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
+        var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
+        return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
+    });
+    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    if (currentCardIndex >= currentSet.activeWords.length) {
+        currentCardIndex = currentSet.activeWords.length ? (currentSet.activeWords.length - 1) : 0;
+    }
+}
+
+function confirmLearningBookKnown(wordId) {
+    openConfirmPanel(
+        'Mark this Learning Book word as known? It will be removed from your Learning Book.',
+        'MARK KNOWN',
+        function() { toggleWordKnown(wordId); },
+        'CANCEL'
+    );
+}
+
+function confirmRemoveFromLearningBook(wordId) {
+    openConfirmPanel(
+        'Remove this word from Learning Book? It will stay in your vocabulary data but leave this review list.',
+        'REMOVE',
+        function() { removeWordFromLearningBook(wordId); },
+        'CANCEL'
+    );
 }
 
 function refreshCurrentSetActiveWords() {
@@ -412,6 +473,10 @@ function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
+function escapeJsString(str) {
+    return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
 function formatElapsedSeconds(seconds) {
     return (Math.round(seconds * 10) / 10).toFixed(1) + ' seconds';
 }
@@ -572,8 +637,9 @@ function renderWrittenPromptUI() {
         (testWrittenState.showSolution ? (testWrittenState.solvedCorrectly ? ' is-correct' : ' is-wrong') : '');
     boxWrap.innerHTML = renderWrittenAnswerBoxes(testWrittenState);
     if (submitBtn) {
-        submitBtn.disabled = testWrittenState.showSolution ? !testConfig.noTimeout : !isWrittenComplete(testWrittenState);
-        submitBtn.textContent = testWrittenState.showSolution && testConfig.noTimeout ? 'Continue' : 'Submit';
+        submitBtn.style.display = testWrittenState.showSolution ? 'none' : '';
+        submitBtn.disabled = !isWrittenComplete(testWrittenState);
+        submitBtn.textContent = 'Submit';
     }
 }
 
@@ -873,31 +939,58 @@ function selectSet(setId) {
 // WORD LIST VIEW (View 3)
 // ═══════════════════════════════════
 function renderWordListView() {
+    var cardsContainer = document.getElementById('wordCardsContainer');
+    var previousScrollTop = cardsContainer ? cardsContainer.scrollTop : 0;
+    if (currentSet && currentSet.isLearningBook) syncCurrentLearningBookSource();
     document.getElementById('wordListTitle').textContent = getCurrentWordSourceTitle();
     document.getElementById('wlSetName').textContent = currentSet.title;
     document.getElementById('wlTermCount').textContent = currentSet.words.length + ' terms';
     document.getElementById('backToSetsBtn').lastChild.textContent = ' ' + (currentSet.parentTitle || 'SETS');
     updateWLFlashcard();
     renderWordCards();
+    updateWordListActionState();
+    if (cardsContainer) {
+        var maxScrollTop = Math.max(0, cardsContainer.scrollHeight - cardsContainer.clientHeight);
+        cardsContainer.scrollTop = Math.min(previousScrollTop, maxScrollTop);
+    }
 }
 
 function updateWLFlashcard() {
-    if (!currentSet || !currentSet.activeWords.length) return;
-    var wData = getWordData(currentSet.activeWords[currentCardIndex]);
-    document.getElementById('wlWordFront').textContent = wData.word;
-    document.getElementById('wlWordBack').textContent = wData.word;
-    document.getElementById('wlPronBack').textContent = wData.pron || '';
-    document.getElementById('wlTransBack').textContent = (wData.vietnamese || '') + ' (' + (wData.pos || '') + ')';
-
+    if (!currentSet) return;
+    var wordFront = document.getElementById('wlWordFront');
+    var wordBack = document.getElementById('wlWordBack');
+    var pronBack = document.getElementById('wlPronBack');
+    var transBack = document.getElementById('wlTransBack');
     var learnedIcon = document.getElementById('wlStatusLearned');
+    var starBtn = document.getElementById('wlStarBtn');
+    var dotsContainer = document.getElementById('carouselDots');
+    var flashcard = document.getElementById('wlFlashcard');
+    if (!currentSet.activeWords.length) {
+        if (wordFront) wordFront.textContent = currentSet.isLearningBook ? 'Learning Book is empty' : 'No words available';
+        if (wordBack) wordBack.textContent = 'Add more words to continue';
+        if (pronBack) pronBack.textContent = '';
+        if (transBack) transBack.textContent = currentSet.isLearningBook ? 'Removed words disappear here immediately.' : '';
+        if (learnedIcon) learnedIcon.classList.remove('active');
+        if (starBtn) {
+            starBtn.textContent = '☆';
+            starBtn.classList.remove('active');
+        }
+        if (dotsContainer) dotsContainer.innerHTML = '';
+        if (flashcard) flashcard.classList.remove('flipped');
+        return;
+    }
+    var wData = getWordData(currentSet.activeWords[currentCardIndex]);
+    wordFront.textContent = wData.word;
+    wordBack.textContent = wData.word;
+    pronBack.textContent = wData.pron || '';
+    transBack.textContent = (wData.vietnamese || '') + ' (' + (wData.pos || '') + ')';
+
     learnedIcon.classList.toggle('active', !!wData.learned);
 
-    var starBtn = document.getElementById('wlStarBtn');
     starBtn.textContent = wData.isFavorite ? '★' : '☆';
     starBtn.classList.toggle('active', !!wData.isFavorite);
 
     // Update carousel dots
-    var dotsContainer = document.getElementById('carouselDots');
     var totalCards = currentSet.activeWords.length;
     var dotsHtml = '';
     if (totalCards <= 5) {
@@ -920,6 +1013,16 @@ function updateWLFlashcard() {
     dotsContainer.innerHTML = dotsHtml;
 }
 
+function updateWordListActionState() {
+    var hasWords = !!(currentSet && currentSet.activeWords && currentSet.activeWords.length);
+    ['btnFlashcard', 'btnLearn', 'btnTest', 'btnMatch'].forEach(function(id) {
+        var btn = document.getElementById(id);
+        if (btn) btn.disabled = !hasWords;
+    });
+    var flashcard = document.getElementById('wlFlashcard');
+    if (flashcard) flashcard.classList.toggle('is-disabled', !hasWords);
+}
+
 function renderWordCards() {
     var container = document.getElementById('wordCardsContainer');
     var html = '';
@@ -933,24 +1036,35 @@ function renderWordCards() {
         });
     }
 
+    if (!wordsToRender.length) {
+        container.innerHTML = '<div class="word-card-empty-state">Learning Book is empty.</div>';
+        return;
+    }
+
     wordsToRender.forEach(function(wordId) {
         var wData = getWordData(wordId);
         var isFav = wData.isFavorite;
         var favIcon = isFav ? '★' : '☆';
         var starClass = isFav ? 'word-card-btn star-active' : 'word-card-btn';
-        var safeWordStr = escapeHtml(wData.word).replace(/'/g, "\\'");
+        var safeWordStr = escapeJsString(wData.word);
+        var safeWordId = escapeJsString(wordId);
+        var isLearningBookSetMode = !!(currentSet && currentSet.isLearningBook && isWordListSetMode);
+        var masteryText = typeof wData.masteryScore === 'number' ? wData.masteryScore : 0;
         
         if (isWordListSetMode) {
             var cardClass = wData.isKnown ? 'word-card is-known' : 'word-card';
             var toggleMeaningStr = 'onclick="var el=this.querySelector(\'.word-card-meaning\'); el.style.display=el.style.display===\'none\'?\'block\':\'none\'"';
             html += '<div class="' + cardClass + '" style="cursor:pointer;" ' + toggleMeaningStr + '>' +
                 '<div class="word-card-top">' +
-                    '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
+                    '<div class="word-card-title">' +
+                        '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
+                        (isLearningBookSetMode ? '<span class="word-card-meta">(' + escapeHtml(getWordFirstOrigin(wordId)) + '): ' + masteryText + '</span>' : '') +
+                    '</div>' +
                     '<div class="word-card-actions">' +
                         '<button class="word-card-btn" onclick="event.stopPropagation(); speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
                         '<div style="display:flex; flex-direction:column; gap:4px;">' +
                             '<button class="' + starClass + '" onclick="event.stopPropagation(); toggleFavoriteWord(\'' + safeWordStr + '\', this)">' + favIcon + '</button>' +
-                            '<button class="word-card-btn" onclick="event.stopPropagation(); toggleWordKnown(\'' + safeWordStr + '\')">🎓</button>' +
+                            '<button class="word-card-btn" data-known-btn="true" onclick="event.stopPropagation(); toggleWordKnown(\'' + safeWordId + '\')">🎓</button>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -975,6 +1089,26 @@ function renderWordCards() {
         }
     });
     container.innerHTML = html;
+    if (currentSet && currentSet.isLearningBook && isWordListSetMode) {
+        Array.prototype.forEach.call(container.children, function(cardEl, idx) {
+            var wordId = wordsToRender[idx];
+            var actionsColumn = cardEl.querySelector('.word-card-actions > div');
+            if (!actionsColumn) return;
+
+            var knownBtn = actionsColumn.querySelector('[data-known-btn="true"]');
+            if (knownBtn) {
+                knownBtn.setAttribute('onclick', 'event.stopPropagation(); confirmLearningBookKnown(\'' + escapeJsString(wordId) + '\')');
+            }
+
+            if (!actionsColumn.querySelector('.remove-btn')) {
+                var removeBtn = document.createElement('button');
+                removeBtn.className = 'word-card-btn remove-btn';
+                removeBtn.textContent = '✕';
+                removeBtn.setAttribute('onclick', 'event.stopPropagation(); confirmRemoveFromLearningBook(\'' + escapeJsString(wordId) + '\')');
+                actionsColumn.appendChild(removeBtn);
+            }
+        });
+    }
 }
 
 function toggleWordKnown(wordId) {
@@ -982,9 +1116,15 @@ function toggleWordKnown(wordId) {
     var newState = !wData.isKnown;
     saveProgress(wordId, { isKnown: newState, masteryScore: newState ? 8 : 0 });
     if (newState) removeLearningBookMistake(wordId);
+    syncCurrentLearningBookSource();
     refreshCurrentSetActiveWords();
-    renderWordCards();
-    updateWLFlashcard();
+    if (currentSet && currentSet.isLearningBook && isWordListSetMode) {
+        renderWordListView();
+    } else {
+        renderWordCards();
+        updateWLFlashcard();
+    }
+    updateWordListActionState();
     renderLearningBookPanel();
     playSound('flip');
 }
@@ -1024,6 +1164,7 @@ function toggleFavorite() {
 
 
 function openFlashcardView() {
+    if (!currentSet || !currentSet.activeWords.length) return;
     currentCardIndex = 0;
     document.getElementById('fcTopicTitle').textContent = currentSet.title.toUpperCase();
     updateFlashcard();
@@ -1267,7 +1408,7 @@ function showLearnComplete() {
         speakerAction: '',
         snailAction: '',
         primaryLabel: 'BACK',
-        primaryAction: 'exitConfirmed(function(){ switchView(wordListView); })'
+        primaryAction: 'switchView(wordListView)'
     });
     playSound('win');
 }
@@ -1347,6 +1488,15 @@ function openCurrentTestSettings() {
     switchView(testSettingsView);
 }
 
+function buildTestOptions(wordPool, correctWordId) {
+    var options = [correctWordId];
+    while (options.length < 4 && options.length < wordPool.length) {
+        var randId = wordPool[Math.floor(Math.random() * wordPool.length)];
+        if (options.indexOf(randId) === -1) options.push(randId);
+    }
+    return shuffle(options);
+}
+
 function startTest() {
     var wordPool = shuffle(getActiveTestWordPool());
     if (!wordPool.length) {
@@ -1389,13 +1539,8 @@ function startTest() {
         if (q.type === 'tf') {
             var dists = wordPool.filter(function(id) { return id !== q.wordId; });
             q.distractorId = dists[Math.floor(Math.random() * dists.length)];
-        } else if (q.type === 'mc') {
-            var options = [q.wordId];
-            while (options.length < 4 && options.length < wordPool.length) {
-                var randId = wordPool[Math.floor(Math.random() * wordPool.length)];
-                if (options.indexOf(randId) === -1) options.push(randId);
-            }
-            q.options = shuffle(options);
+        } else if (q.type === 'mc' || q.type === 'fillin') {
+            q.options = buildTestOptions(wordPool, q.wordId);
             q._isEngPrompt = Math.random() > 0.5;
         }
         testQuestions.push(q);
@@ -1431,15 +1576,25 @@ function renderTestContinueArea() {
 
 function handleAnsweredTestQuestion() {
     clearTestAdvanceTimer();
-    var q = testQuestions[testIndex];
-    if (testConfig.noTimeout && q && q.type !== 'written') {
+    var continueArea = document.getElementById('testContinueArea');
+    var lastAnswer = testAnswers.length ? testAnswers[testAnswers.length - 1] : null;
+    var wasCorrect = !!(lastAnswer && lastAnswer.correct);
+    if (continueArea) {
+        continueArea.innerHTML = '';
+        continueArea.style.display = 'none';
+    }
+    if (testConfig.noTimeout) {
+        testAdvanceTimer = setTimeout(function() {
+            advanceToNextTestQuestion();
+        }, 100);
+        return;
+    }
+    if (wasCorrect) {
         testAdvanceTimer = setTimeout(function() {
             advanceToNextTestQuestion();
         }, 500);
         return;
     }
-    if (testConfig.noTimeout && q && q.type === 'written') return;
-    var continueArea = document.getElementById('testContinueArea');
     if (continueArea) {
         continueArea.innerHTML = '<button class="primary-btn test-continue-btn" id="testContinueBtn" onclick="advanceToNextTestQuestion()">Continue</button>';
         continueArea.style.display = 'flex';
@@ -1475,25 +1630,38 @@ function renderTestQuestion() {
             '<div id="testTfReveal" class="test-inline-reveal" style="display:none;"></div>' +
             renderTestContinueArea() +
         '</div>';
-    } else if (q.type === 'mc') {
+    } else if (q.type === 'mc' || q.type === 'fillin') {
         var mcWord = getWordData(q.wordId);
         var optsHtml = '';
         q.options.forEach(function(optId, idx) {
             var optW = getWordData(optId);
-            var optText = q._isEngPrompt ? (escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word);
+            var optText = q.type === 'fillin' ? escapeHtml(optW.word) : (q._isEngPrompt ? (escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word));
             optsHtml += '<button class="test-option-btn text-left" onclick="answerTest(' + idx + ', this)">' + optText + '</button>';
         });
 
-        var promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : (escapeHtml(mcWord.vietnamese || ''));
-        if (q._isEngPrompt && testConfig.speak) { speak(mcWord.word, 1.0); }
+        var promptText = '';
+        var promptClass = '';
+        if (q.type === 'fillin') {
+            var exStr = mcWord.example || mcWord.definition || '';
+            var re = new RegExp(mcWord.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+            var blanked = exStr.replace(re, '______');
+            if (blanked === exStr && mcWord.example) blanked = exStr + ' (______)';
+            promptText = escapeHtml(blanked);
+            promptClass = 'test-term text-xl mb-6 font-bold truncate text-wrap';
+        } else {
+            promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : (escapeHtml(mcWord.vietnamese || ''));
+            promptClass = q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4';
+        }
+        if ((q._isEngPrompt || q.type === 'fillin') && testConfig.speak) { speak(mcWord.word, 1.0); }
 
         html = '<div class="test-question-area">' +
-            '<p class="' + (q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4') + '">' + promptText + '</p>' +
-            '<p class="test-label mt-4">Select the correct matching term</p>' +
+            (q.type === 'fillin' ? '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' : '') +
+            '<p class="' + promptClass + '">' + promptText + '</p>' +
+            '<p class="test-label mt-4">' + (q.type === 'fillin' ? 'Select the correct word' : 'Select the correct matching term') + '</p>' +
             '<div class="test-options-col">' + optsHtml + '</div>' +
             renderTestContinueArea() +
         '</div>';
-    } else if (q.type === 'written' || q.type === 'fillin') {
+    } else if (q.type === 'written') {
         var writtenWord = getWordData(q.wordId);
         var keyboardRows = [
             ['Q','W','E','R','T','Y','U','I','O','P'],
@@ -1509,30 +1677,17 @@ function renderTestQuestion() {
             }
             return '<div class="keyboard-row keyboard-row-' + (rowIndex + 1) + '">' + rowHtml + '</div>';
         }).join('');
-        var promptHtml = '';
-        if (q.type === 'fillin') {
-            var exStr = writtenWord.example || writtenWord.definition || '';
-            var re = new RegExp(writtenWord.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-            var blanked = exStr.replace(re, '______');
-            if (blanked === exStr && writtenWord.example) blanked = exStr + ' (______)';
-            blanked = escapeHtml(blanked.replace('______', '___FILL_ANSWER___')).replace('___FILL_ANSWER___', '<span id="testFillAnswerSlot" class="test-fill-answer-slot">______</span>');
-            promptHtml = '<p class="test-label mt-2 mb-2 text-md italic" style="color:var(--blue)">Fill in the blank:</p>' +
-                         '<p class="test-term text-xl mb-6 font-bold truncate text-wrap">' + blanked + '</p>';
-        } else {
-            promptHtml = '<p class="test-definition test-definition-centered">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
-            testWrittenState = createWrittenPromptState(writtenWord.word);
-        }
+        var promptHtml = '<p class="test-definition test-definition-centered">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
+        testWrittenState = createWrittenPromptState(writtenWord.word);
 
         html = '<div class="test-question-area">' +
             promptHtml +
             '<p class="test-label mt-6">Your answer</p>' +
             '<div class="test-written-input-wrap">' +
-                (q.type === 'written'
-                    ? '<input type="text" class="test-written-input-hidden" id="testWrittenInputHidden" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">' +
-                      '<div id="testWrittenBoxes" class="test-written-boxes" role="textbox" aria-label="Type the answer"></div>' +
-                      '<p class="test-written-help">Gray letters are hints. Fill the other tiles with your keyboard.</p>' +
-                      '<div class="visual-keyboard">' + keysHtml + '</div>'
-                    : '<input type="text" class="test-written-input" id="testWrittenInput" placeholder="Type the answer">') +
+                '<input type="text" class="test-written-input-hidden" id="testWrittenInputHidden" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">' +
+                '<div id="testWrittenBoxes" class="test-written-boxes" role="textbox" aria-label="Type the answer"></div>' +
+                '<p class="test-written-help">Gray letters are hints. Fill the other tiles with your keyboard.</p>' +
+                '<div class="visual-keyboard">' + keysHtml + '</div>' +
             '</div>' +
             '<button class="primary-btn mt-4 mx-auto" id="testWrittenSubmitBtn" onclick="answerTestWritten()" style="width:200px">Submit</button>' +
             renderTestContinueArea() +
@@ -1542,9 +1697,6 @@ function renderTestQuestion() {
     if (q.type === 'written' && testWrittenState) {
         renderWrittenPromptUI();
         attachWrittenPromptHandlers();
-    } else {
-        var writtenInput = document.getElementById('testWrittenInput');
-        if (writtenInput) writtenInput.focus();
     }
 }
 
@@ -1553,7 +1705,7 @@ function answerTest(val, btn) {
     var isCorrect = false;
     if (q.type === 'tf') {
         isCorrect = (val === q._isTrue);
-    } else if (q.type === 'mc') {
+    } else if (q.type === 'mc' || q.type === 'fillin') {
         isCorrect = (q.options[val] === q.wordId);
     }
 
@@ -1566,7 +1718,7 @@ function answerTest(val, btn) {
         b.disabled = true;
         if (q.type === 'tf') {
             if ((i === 0 ? true : false) === q._isTrue) b.classList.add('correct');
-        } else if (q.type === 'mc') {
+        } else if (q.type === 'mc' || q.type === 'fillin') {
             if (q.options[i] === q.wordId) b.classList.add('correct');
         }
     });
@@ -1591,41 +1743,23 @@ function answerTest(val, btn) {
 function answerTestWritten() {
     var q = testQuestions[testIndex];
     var w = getWordData(q.wordId);
-    if (testConfig.noTimeout && testWrittenState && testWrittenState.showSolution) {
-        advanceToNextTestQuestion();
-        return;
-    }
-    var input = document.getElementById('testWrittenInput');
     var hiddenInput = document.getElementById('testWrittenInputHidden');
     if (q.type === 'written' && testWrittenState && !testWrittenState.showSolution && !isWrittenComplete(testWrittenState)) return;
-    var value = q.type === 'written'
-        ? buildWrittenUserAnswer(testWrittenState || createWrittenPromptState(w.word))
-        : (input ? input.value : '');
+    var value = buildWrittenUserAnswer(testWrittenState || createWrittenPromptState(w.word));
     var isCorrect = value !== null && value.trim().toLowerCase() === w.word.toLowerCase();
     var submitBtn = document.getElementById('testWrittenSubmitBtn');
     if (isCorrect) { playSound('correct'); testScore++; }
     else { playSound('wrong'); }
-    if (input) input.blur();
     if (hiddenInput) hiddenInput.blur();
     if (submitBtn) submitBtn.blur();
-    if (input) input.disabled = true;
     if (hiddenInput) hiddenInput.disabled = true;
     if (submitBtn) submitBtn.disabled = true;
 
     if (testConfig.speak) { speak(w.word, 1.0); }
-    if (q.type === 'fillin') {
-        var fillAnswerSlot = document.getElementById('testFillAnswerSlot');
-        if (fillAnswerSlot) {
-            fillAnswerSlot.textContent = w.word;
-            fillAnswerSlot.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
-        }
-    } else if (q.type === 'written' && testWrittenState) {
+    if (q.type === 'written' && testWrittenState) {
         testWrittenState.showSolution = true;
         testWrittenState.solvedCorrectly = isCorrect;
         renderWrittenPromptUI();
-    } else if (input) {
-        input.value = w.word;
-        input.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
     }
 
     testAnswers.push({ wordId: q.wordId, correct: isCorrect, type: q.type, userAnswer: value });
@@ -1707,6 +1841,16 @@ function openMatchSettings() {
         countInput.value = Math.min(Math.max(matchConfig.count || 6, 2), maxWords);
     }
     switchView(matchSettingsView);
+}
+
+function syncMatchRefillSettings() {
+    if (!currentSet) return;
+    var refillToggle = document.getElementById('matchRefill');
+    var countInput = document.getElementById('matchWordCount');
+    if (!refillToggle || !countInput) return;
+    if (refillToggle.checked) {
+        countInput.value = getMatchWordPool().length;
+    }
 }
 
 function createMatchCards(wordIds) {
@@ -1811,8 +1955,8 @@ function renderMatchGrid() {
         }
         var className = 'match-card';
         if (card.type === 'en') className += ' is-english';
-        if (card.text.length > 18) className += ' text-fit-xs';
-        else if (card.text.length > 11) className += ' text-fit-sm';
+        if (card.type === 'en' && card.text.length > 18) className += ' text-fit-xs';
+        else if (card.type === 'en' && card.text.length > 11) className += ' text-fit-sm';
         if (typeof matchSelected === 'number' && matchSelected === idx) className += ' selected';
         if (typeof card.enterDelay === 'number') className += ' match-card-entering';
         var style = typeof card.enterDelay === 'number' ? ' style="animation-delay:' + card.enterDelay + 'ms"' : '';
@@ -2004,9 +2148,34 @@ function toggleKnown(wordId, btn) {
 // ═══════════════════════════════════
 // EXIT LOGIC
 // ═══════════════════════════════════
-function requestExit(callback) { playSound('alert'); pendingExitCallback = callback; confirmPanel.classList.add('show'); }
-function exitConfirmed(callback) { playSound('slide'); confirmPanel.classList.remove('show'); closeResultPanel(); if (callback) callback(); }
-function cancelExit() { playSound('slide'); confirmPanel.classList.remove('show'); pendingExitCallback = null; }
+function openConfirmPanel(message, confirmLabel, onConfirm, cancelLabel) {
+    var messageEl = document.getElementById('confirmPanelMessage');
+    var cancelBtn = document.getElementById('cancelExitBtn');
+    var confirmBtn = document.getElementById('confirmExitBtn');
+    if (messageEl) messageEl.textContent = message;
+    if (cancelBtn) cancelBtn.textContent = cancelLabel || 'CANCEL';
+    if (confirmBtn) confirmBtn.textContent = confirmLabel || 'CONFIRM';
+    pendingConfirmAction = onConfirm || null;
+    confirmPanel.classList.add('show');
+}
+function requestExit(callback) {
+    playSound('alert');
+    openConfirmPanel(
+        'Don\'t go yet~ Finish it first or your progress will disappear 😭',
+        'EXIT',
+        callback,
+        'STAY'
+    );
+}
+function confirmPendingAction() {
+    playSound('slide');
+    confirmPanel.classList.remove('show');
+    closeResultPanel();
+    var next = pendingConfirmAction;
+    pendingConfirmAction = null;
+    if (next) next();
+}
+function cancelExit() { playSound('slide'); confirmPanel.classList.remove('show'); pendingConfirmAction = null; }
 
 // ═══════════════════════════════════
 // SETTINGS & THEME
@@ -2199,6 +2368,7 @@ function setupEventListeners() {
     // Match
     document.getElementById('closeMatchSettingsBtn').addEventListener('click', function() { playSound('slide'); switchView(wordListView); });
     document.getElementById('startMatchBtn').addEventListener('click', startMatch);
+    document.getElementById('matchRefill').addEventListener('change', syncMatchRefillSettings);
     document.querySelectorAll('.exit-match-btn').forEach(function(b) { b.addEventListener('click', function() {
         clearMatchRefillTimeouts();
         clearInterval(matchTimerInterval);
@@ -2209,7 +2379,7 @@ function setupEventListeners() {
 
     // Result & Confirm panels
     document.getElementById('resultContinueBtn').addEventListener('click', function() { closeResultPanel(); nextLearnStep(); });
-    document.getElementById('confirmExitBtn').addEventListener('click', function() { if (pendingExitCallback) exitConfirmed(pendingExitCallback); });
+    document.getElementById('confirmExitBtn').addEventListener('click', confirmPendingAction);
     document.getElementById('cancelExitBtn').addEventListener('click', cancelExit);
 
     // Settings
