@@ -1850,7 +1850,7 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˌsperɪˈmentl/",
         "example": "The school's experimental teaching methods include letting the children decide what to study.",
-        "vietnamese": "thực nghiệm",
+        "vietnamese": "thử nghiệm",
         "vietnamese_example": "Phương pháp giảng dạy thử nghiệm của trường bao gồm việc để trẻ quyết định sẽ học gì.",
         "cefr": "C1"
     },
@@ -1894,9 +1894,9 @@ var dictionary = {
         "definition": "the tools or other pieces of equipment that are needed for a particular activity or task",
         "pos": "noun",
         "pron": "/ˌæpəˈreɪtəs/",
-        "example": "a piece of laboratory apparatus",
-        "vietnamese": "bộ máy",
-        "vietnamese_example": "một bộ máy thí nghiệm",
+        "example": "The experiment requires special apparatus.",
+        "vietnamese": "thiết bị (khoa học, kỹ thuật)",
+        "vietnamese_example": "Thí nghiệm này cần thiết bị đặc biệt.",
         "cefr": "C1"
     },
     "aspire": {
@@ -2011,9 +2011,9 @@ var dictionary = {
         "definition": "connected with the ideas and principles on which a particular subject is based, rather than with practice and experiment",
         "pos": "adj",
         "pron": "/ˌθɪəˈretɪkl/",
-        "example": "a theoretical approach",
+        "example": "The plan is still theoretical.",
         "vietnamese": "lý thuyết",
-        "vietnamese_example": "một cách tiếp cận lý thuyết",
+        "vietnamese_example": "Kế hoạch này vẫn chỉ là trên lý thuyết.",
         "cefr": "C1"
     },
     "toxic": {
@@ -11113,69 +11113,6 @@ var coursesData = [
         ]
     },
     {
-        "id": "topic",
-        "title": "Topic",
-        "icon": "📚",
-        "sets": [
-            {
-                "id": "logistics",
-                "title": "Logistics",
-                "words": [
-                    "air freight",
-                    "airway bill",
-                    "backorder",
-                    "bill of lading",
-                    "carrier",
-                    "consignment",
-                    "container",
-                    "courier",
-                    "customs clearance",
-                    "delivery",
-                    "demurrage",
-                    "forwarder",
-                    "freight",
-                    "freight forwarder",
-                    "fulfillment",
-                    "incoterms",
-                    "land freight",
-                    "last mile",
-                    "lead time",
-                    "letter of credit",
-                    "ocean freight",
-                    "pallet",
-                    "procurement",
-                    "routing",
-                    "shipping",
-                    "third-party logistics",
-                    "tracking",
-                    "train freight"
-                ]
-            },
-            {
-                "id": "business",
-                "title": "Business",
-                "words": [
-                    "amortization",
-                    "collateral",
-                    "diversification",
-                    "liquidity",
-                    "merger"
-                ]
-            },
-            {
-                "id": "environment",
-                "title": "Nature",
-                "words": [
-                    "biodegradable",
-                    "conservation",
-                    "ecosystem",
-                    "renewable",
-                    "sustainability"
-                ]
-            }
-        ]
-    },
-    {
         "id": "ielts-c1",
         "title": "IELTS-C1",
         "icon": "📖",
@@ -12612,6 +12549,69 @@ var coursesData = [
                     "play a key role",
                     "stand to reason",
                     "take centre stage"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "topic",
+        "title": "Topic",
+        "icon": "📚",
+        "sets": [
+            {
+                "id": "logistics",
+                "title": "Logistics",
+                "words": [
+                    "air freight",
+                    "airway bill",
+                    "backorder",
+                    "bill of lading",
+                    "carrier",
+                    "consignment",
+                    "container",
+                    "courier",
+                    "customs clearance",
+                    "delivery",
+                    "demurrage",
+                    "forwarder",
+                    "freight",
+                    "freight forwarder",
+                    "fulfillment",
+                    "incoterms",
+                    "land freight",
+                    "last mile",
+                    "lead time",
+                    "letter of credit",
+                    "ocean freight",
+                    "pallet",
+                    "procurement",
+                    "routing",
+                    "shipping",
+                    "third-party logistics",
+                    "tracking",
+                    "train freight"
+                ]
+            },
+            {
+                "id": "business",
+                "title": "Business",
+                "words": [
+                    "amortization",
+                    "collateral",
+                    "diversification",
+                    "liquidity",
+                    "merger"
+                ]
+            },
+            {
+                "id": "environment",
+                "title": "Nature",
+                "words": [
+                    "biodegradable",
+                    "conservation",
+                    "ecosystem",
+                    "renewable",
+                    "sustainability"
                 ]
             }
         ]

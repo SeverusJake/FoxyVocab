@@ -33,8 +33,12 @@ from models import (
 
 class FoxyVocabAdminApp:
     ICON_CHOICES = [
-        "🎓", "📘", "📚", "📝", "💼", "🏢", "🌍", "🌿", "💻", "🔬",
-        "🚚", "📈", "⚖️", "🧠", "🗣️", "🎯", "🛠️", "🏦", "🌎", "📖",
+        "🎓", "📘", "📚", "📖", "📝", "✍️", "🗣️", "🧠",
+        "💼", "🏢", "🏦", "📈", "📊", "⚖️", "🛠️", "🔧",
+        "💻", "⌨️", "🔬", "🧪", "⚙️", "🌐", "📡", "🤖",
+        "🚚", "🚢", "✈️", "🚆", "📦", "🧾", "🏷️", "📬",
+        "🌍", "🌎", "🌏", "🌿", "🍀", "🌱", "🌊", "🔥",
+        "💡", "🎯", "⭐", "🏆", "🎵", "🎨", "📷", "🎬",
     ]
 
     def __init__(self, root):
@@ -232,6 +236,7 @@ class FoxyVocabAdminApp:
         self.word_set_scroll.pack(side="right", fill="y")
         self.word_set_tree.bind("<Button-1>", self.on_word_set_tree_click)
         self.word_set_tree.bind("<<TreeviewSelect>>", self.on_word_set_tree_select)
+        self.word_set_tree.bind("<Double-1>", self.on_word_set_tree_double_click)
         self.word_set_tree.bind("<MouseWheel>", self.on_word_set_mousewheel)
         self.word_set_tree.bind("<Button-4>", self.on_word_set_mousewheel)
         self.word_set_tree.bind("<Button-5>", self.on_word_set_mousewheel)
@@ -292,6 +297,7 @@ class FoxyVocabAdminApp:
         self.set_word_scroll.pack(side="right", fill="y")
         self.set_word_tree.bind("<Button-1>", self.on_set_word_tree_click)
         self.set_word_tree.bind("<<TreeviewSelect>>", self.on_set_word_tree_select)
+        self.set_word_tree.bind("<Double-1>", self.on_set_word_tree_double_click)
         self.set_word_tree.bind("<MouseWheel>", self.on_set_word_tree_mousewheel)
         self.set_word_tree.bind("<Button-4>", self.on_set_word_tree_mousewheel)
         self.set_word_tree.bind("<Button-5>", self.on_set_word_tree_mousewheel)
@@ -352,6 +358,7 @@ class FoxyVocabAdminApp:
         self.course_set_scroll = ttk.Scrollbar(course_sets_list_frame, orient="vertical", command=self.course_set_tree.yview)
         self.course_set_scroll.pack(side="right", fill="y")
         self.course_set_tree.configure(yscrollcommand=self.course_set_scroll.set)
+        self.course_set_tree.bind("<Double-1>", self.on_course_set_tree_double_click)
         self.course_set_tree.bind("<MouseWheel>", self.on_course_set_mousewheel)
         self.course_set_tree.bind("<Button-4>", self.on_course_set_mousewheel)
         self.course_set_tree.bind("<Button-5>", self.on_course_set_mousewheel)
@@ -720,7 +727,7 @@ class FoxyVocabAdminApp:
         dialog.title("Choose Icon")
         dialog.transient(self.root)
         dialog.grab_set()
-        dialog.resizable(False, False)
+        dialog.resizable(True, True)
 
         frame = ttk.Frame(dialog, padding=12)
         frame.pack(fill="both", expand=True)
@@ -728,35 +735,51 @@ class FoxyVocabAdminApp:
         ttk.Label(
             frame,
             text="Pick an icon or keep typing manually in the field.",
-        ).grid(row=0, column=0, columnspan=4, sticky="w", pady=(0, 8))
+        ).grid(row=0, column=0, columnspan=2, pady=(0, 8))
 
         icon_var = tk.StringVar(value=self.course_vars["icon"].get())
-        ttk.Label(frame, textvariable=icon_var, font=("Segoe UI Emoji", 18)).grid(
-            row=1, column=0, columnspan=4, sticky="w", pady=(0, 8)
+        ttk.Label(frame, textvariable=icon_var, font=("Segoe UI Emoji", 50)).grid(
+            row=1, column=0, columnspan=2, pady=(0, 8)
         )
 
-        def choose_icon(icon):
-            icon_var.set(icon)
+        list_frame = ttk.Frame(frame)
+        list_frame.grid(row=2, column=0, columnspan=2, sticky="nsew")
 
-        for index, icon in enumerate(self.ICON_CHOICES):
-            ttk.Button(
-                frame,
-                text=icon,
-                width=4,
-                command=lambda value=icon: choose_icon(value),
-            ).grid(row=2 + (index // 4), column=index % 4, padx=4, pady=4, sticky="ew")
+        icon_listbox = tk.Listbox(list_frame, height=14, font=("Segoe UI Emoji", 12), justify="center")
+        icon_listbox.pack(side="left", fill="both", expand=True)
+        icon_scroll = ttk.Scrollbar(list_frame, orient="vertical", command=icon_listbox.yview)
+        icon_scroll.pack(side="right", fill="y")
+        icon_listbox.configure(yscrollcommand=icon_scroll.set)
+
+        for icon in self.ICON_CHOICES:
+            icon_listbox.insert("end", f"{icon}")
+
+        current_icon = self.course_vars["icon"].get()
+        if current_icon in self.ICON_CHOICES:
+            current_index = self.ICON_CHOICES.index(current_icon)
+            icon_listbox.selection_set(current_index)
+            icon_listbox.see(current_index)
+
+        def update_preview(_event=None):
+            selection = icon_listbox.curselection()
+            if selection:
+                icon_var.set(self.ICON_CHOICES[selection[0]])
+
+        icon_listbox.bind("<<ListboxSelect>>", update_preview)
+        icon_listbox.bind("<Double-1>", lambda _event: apply_icon())
 
         def apply_icon():
             self.course_vars["icon"].set(icon_var.get())
             dialog.destroy()
 
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=8, column=0, columnspan=4, sticky="e", pady=(10, 0))
+        button_frame.grid(row=3, column=0, columnspan=2, sticky="e", pady=(10, 0))
         ttk.Button(button_frame, text="Cancel", command=dialog.destroy).pack(side="left", padx=(0, 6))
         ttk.Button(button_frame, text="Use Icon", command=apply_icon).pack(side="left")
 
-        for column_index in range(4):
-            frame.columnconfigure(column_index, weight=1)
+        frame.columnconfigure(0, weight=1)
+        frame.columnconfigure(1, weight=0)
+        frame.rowconfigure(2, weight=1)
 
         self.center_toplevel(dialog, width=520, height=420)
 
@@ -872,6 +895,19 @@ class FoxyVocabAdminApp:
         if selection:
             self.word_set_tree.focus(selection[0])
 
+    def on_word_set_tree_double_click(self, event):
+        row_id = self.word_set_tree.identify_row(event.y)
+        if not row_id:
+            return
+
+        if row_id in self.set_list_ids:
+            index = self.set_list_ids.index(row_id)
+            self.set_listbox.selection_clear(0, "end")
+            self.set_listbox.selection_set(index)
+            self.set_listbox.see(index)
+        self.finish_set_selection(row_id)
+        return "break"
+
     def on_set_word_tree_click(self, event):
         row_id = self.set_word_tree.identify_row(event.y)
         column_id = self.set_word_tree.identify_column(event.x)
@@ -891,6 +927,32 @@ class FoxyVocabAdminApp:
         selection = self.set_word_tree.selection()
         if selection:
             self.set_word_tree.focus(selection[0])
+
+    def on_set_word_tree_double_click(self, event):
+        row_id = self.set_word_tree.identify_row(event.y)
+        if not row_id:
+            return
+
+        if row_id in self.word_list_keys:
+            index = self.word_list_keys.index(row_id)
+            self.word_listbox.selection_clear(0, "end")
+            self.word_listbox.selection_set(index)
+            self.word_listbox.see(index)
+        self.on_word_select_from_key(row_id)
+        return "break"
+
+    def on_course_set_tree_double_click(self, event):
+        row_id = self.course_set_tree.identify_row(event.y)
+        if not row_id:
+            return
+
+        if row_id in self.set_list_ids:
+            index = self.set_list_ids.index(row_id)
+            self.set_listbox.selection_clear(0, "end")
+            self.set_listbox.selection_set(index)
+            self.set_listbox.see(index)
+        self.finish_set_selection(row_id)
+        return "break"
 
     def on_set_word_tree_mousewheel(self, event):
         if hasattr(event, "delta") and event.delta:
@@ -912,6 +974,9 @@ class FoxyVocabAdminApp:
             return
 
         word_key = self.word_list_keys[selection[0]]
+        self.on_word_select_from_key(word_key)
+
+    def on_word_select_from_key(self, word_key):
         payload = self.dictionary.get(word_key, {})
         self.current_word_key = word_key
         self.center_notebook.select(self.word_tab)
