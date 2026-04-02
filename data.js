@@ -716,7 +716,7 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prəˈvɪʒ.ən/",
         "example": "The contract includes a provision for early termination.",
-        "vietnamese": "điều khoản",
+        "vietnamese": "điều khoản, quy định",
         "vietnamese_example": "Hợp đồng bao gồm một điều khoản chấm dứt sớm.",
         "cefr": "C1"
     },
@@ -734,7 +734,7 @@ var dictionary = {
         "pos": "noun",
         "pron": "/klɔːz/",
         "example": "The cancellation clause protects both parties.",
-        "vietnamese": "điều khoản",
+        "vietnamese": "điều khoản (cụ thể)",
         "vietnamese_example": "Điều khoản hủy bỏ bảo vệ cả hai bên.",
         "cefr": "B2"
     },
@@ -1576,12 +1576,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "explosive": {
-        "definition": "easily able or likely to explode",
+        "definition": "easily able or likely to explode/ Rapid and dramatic growth",
         "pos": "adj",
         "pron": "/ɪkˈspləʊsɪv/",
-        "example": "an explosive device (= a bomb)",
-        "vietnamese": "chất nổ",
-        "vietnamese_example": "một thiết bị nổ (= một quả bom)",
+        "example": "The factory stores explosive materials.",
+        "vietnamese": "dễ nổ, bùng nổ",
+        "vietnamese_example": "Nhà máy lưu trữ các chất dễ nổ.",
         "cefr": "C1"
     },
     "filter": {
@@ -11178,7 +11178,7 @@ var coursesData = [
     {
         "id": "ielts-c1",
         "title": "IELTS-C1",
-        "icon": "??",
+        "icon": "📖",
         "sets": [
             {
                 "id": "technology-1",
@@ -12485,32 +12485,6 @@ var coursesData = [
                 ]
             },
             {
-                "id": "idioms-1",
-                "title": "Idioms-1",
-                "words": [
-                    "a double-edged sword",
-                    "the tip of the iceberg",
-                    "in the long run",
-                    "on the right track",
-                    "a wake-up call",
-                    "back to square one",
-                    "a matter of time",
-                    "food for thought",
-                    "in the same boat",
-                    "at the heart of",
-                    "a far cry from",
-                    "under pressure",
-                    "a stepping stone",
-                    "in light of",
-                    "by and large",
-                    "an uphill battle",
-                    "a vicious circle",
-                    "a turning point",
-                    "in the face of",
-                    "beyond doubt"
-                ]
-            },
-            {
                 "id": "phrasal-verbs-2",
                 "title": "Phrasal Verbs-2",
                 "words": [
@@ -12560,6 +12534,32 @@ var coursesData = [
                     "sit down",
                     "take off",
                     "work out"
+                ]
+            },
+            {
+                "id": "idioms-1",
+                "title": "Idioms-1",
+                "words": [
+                    "a double-edged sword",
+                    "the tip of the iceberg",
+                    "in the long run",
+                    "on the right track",
+                    "a wake-up call",
+                    "back to square one",
+                    "a matter of time",
+                    "food for thought",
+                    "in the same boat",
+                    "at the heart of",
+                    "a far cry from",
+                    "under pressure",
+                    "a stepping stone",
+                    "in light of",
+                    "by and large",
+                    "an uphill battle",
+                    "a vicious circle",
+                    "a turning point",
+                    "in the face of",
+                    "beyond doubt"
                 ]
             },
             {

@@ -5,7 +5,6 @@ from typing import Dict, List, Tuple, Optional
 WORD_REQUIRED_FIELDS = [
     "definition",
     "pos",
-    "pron",
     "example",
     "vietnamese",
     "vietnamese_example",
@@ -269,6 +268,23 @@ def delete_course(courses: List[dict], course_id: str) -> None:
     del courses[index]
 
 
+def move_course(courses: List[dict], course_id: str, direction: int) -> None:
+    index = None
+    for i, course in enumerate(courses):
+        if course.get("id") == course_id:
+            index = i
+            break
+
+    if index is None:
+        raise ValueError(f"Course '{course_id}' does not exist.")
+
+    target_index = index + direction
+    if target_index < 0 or target_index >= len(courses):
+        return
+
+    courses[index], courses[target_index] = courses[target_index], courses[index]
+
+
 def create_set(courses: List[dict], set_id: str, title: str, course_id: str, words: Optional[List[str]] = None) -> None:
     if not set_id.strip():
         raise ValueError("Set id cannot be empty.")
@@ -331,6 +347,28 @@ def delete_set(courses: List[dict], set_id: str) -> None:
         raise ValueError(f"Set '{set_id}' does not exist.")
 
     course["sets"] = [item for item in course["sets"] if item.get("id") != set_id]
+
+
+def move_set(courses: List[dict], set_id: str, direction: int) -> None:
+    _, course = find_set(courses, set_id)
+    if not course:
+        raise ValueError(f"Set '{set_id}' does not exist.")
+
+    sets = course.get("sets", [])
+    index = None
+    for i, item in enumerate(sets):
+        if item.get("id") == set_id:
+            index = i
+            break
+
+    if index is None:
+        raise ValueError(f"Set '{set_id}' does not exist.")
+
+    target_index = index + direction
+    if target_index < 0 or target_index >= len(sets):
+        return
+
+    sets[index], sets[target_index] = sets[target_index], sets[index]
 
 
 def detect_bulk_conflicts(dictionary: Dict[str, dict], incoming_words: Dict[str, dict]) -> List[str]:
