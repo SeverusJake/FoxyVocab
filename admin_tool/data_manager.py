@@ -174,13 +174,15 @@ def parse_bulk_words(paste_text: str) -> dict:
     if not cleaned:
         raise ValueError("Paste text is empty.")
 
-    cleaned = cleaned.rstrip(",")
-    wrapped = "{\n" + cleaned + "\n}"
-
     try:
-        parsed = json.loads(wrapped)
+        parsed = json.loads(cleaned)
     except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid bulk word format:\n{e}")
+        cleaned = cleaned.rstrip(",")
+        wrapped = "{\n" + cleaned + "\n}"
+        try:
+            parsed = json.loads(wrapped)
+        except json.JSONDecodeError:
+            raise ValueError(f"Invalid bulk word format:\n{e}")
 
     if not isinstance(parsed, dict):
         raise ValueError("Bulk paste content must parse into an object.")

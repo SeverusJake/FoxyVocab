@@ -16,4 +16,3 @@ python foxyvocab_admin.py
 
 echo.
 echo App closed.
-pause

@@ -123,6 +123,17 @@ function getWordData(wordId) {
     return Object.assign({ word: wordId }, staticData, progress);
 }
 
+function getMeaningText(wordData) {
+    if (!wordData) return '';
+    return wordData.vietnamese || wordData.definition || '';
+}
+
+function getMeaningWithPosText(wordData) {
+    var meaning = getMeaningText(wordData);
+    var pos = wordData && wordData.pos ? ' (' + wordData.pos + ')' : '';
+    return meaning + pos;
+}
+
 function saveProgress(wordId, updates) {
     if (!userProgress.words[wordId]) userProgress.words[wordId] = createWordProgressState();
     Object.assign(userProgress.words[wordId], updates);
@@ -983,7 +994,7 @@ function updateWLFlashcard() {
     wordFront.textContent = wData.word;
     wordBack.textContent = wData.word;
     pronBack.textContent = wData.pron || '';
-    transBack.textContent = (wData.vietnamese || '') + ' (' + (wData.pos || '') + ')';
+    transBack.textContent = getMeaningWithPosText(wData);
 
     learnedIcon.classList.toggle('active', !!wData.learned);
 
@@ -1069,7 +1080,7 @@ function renderWordCards() {
                     '</div>' +
                 '</div>' +
                 '<div class="word-card-bottom">' +
-                    '<span class="word-card-meaning" style="display:none;">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
+                    '<span class="word-card-meaning" style="display:none;">' + escapeHtml(getMeaningWithPosText(wData)) + '</span>' +
                 '</div>' +
             '</div>';
         } else {
@@ -1083,7 +1094,7 @@ function renderWordCards() {
                     '</div>' +
                 '</div>' +
                 '<div class="word-card-bottom">' +
-                    '<span class="word-card-meaning">(' + (wData.pos || '') + ') ' + escapeHtml(wData.vietnamese || '') + '</span>' +
+                    '<span class="word-card-meaning">' + escapeHtml(getMeaningWithPosText(wData)) + '</span>' +
                 '</div>' +
             '</div>';
         }
@@ -1179,7 +1190,7 @@ function updateFlashcard() {
     document.getElementById('wordFront').textContent = cardData.word;
     document.getElementById('wordBack').textContent = cardData.word;
     document.getElementById('pronBack').textContent = cardData.pron || '';
-    document.getElementById('transBack').textContent = (cardData.vietnamese || '') + ' (' + (cardData.pos || '') + ')';
+    document.getElementById('transBack').textContent = getMeaningWithPosText(cardData);
 
     var hintText = document.getElementById('hintText');
     var transBtn = document.getElementById('transBtn');
@@ -1320,7 +1331,7 @@ function renderLearnStep() {
                     '<div class="card-face card-back flex flex-col justify-center">' +
                         '<h2 class="font-display text-2xl font-bold neon-text-magenta text-center mb-2">' + escapeHtml(w.word) + '</h2>' +
                         '<p class="text-xs mb-4" style="color: var(--blue)">' + escapeHtml(w.pron || '') + '</p>' +
-                        '<p class="text-sm neon-text-green mb-4">' + escapeHtml(w.vietnamese || '') + ' (' + (w.pos || '') + ')</p>' +
+                        '<p class="text-sm neon-text-green mb-4">' + escapeHtml(getMeaningWithPosText(w)) + '</p>' +
                         '<p class="text-base text-center">' + escapeHtml(w.definition || '') + '</p>' +
                     '</div>' +
                 '</div>' +
@@ -1368,7 +1379,7 @@ function renderLearnStep() {
                 '<button class="border-btn speaker" onclick="' + speakNormalAction + '">🔊</button>' +
                 '<button class="border-btn snail" onclick="' + speakSlowAction + '">🐌</button>' +
             '</div>' +
-            '<p class="text-lg text-center mb-4 neon-text-green">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<p class="text-lg text-center mb-4 neon-text-green">' + escapeHtml(getMeaningText(w)) + '</p>' +
             '<div class="hint-display mb-6">' + displayHtml + '</div>' +
             '<input type="text" id="learnInput" class="mb-6" placeholder="Type the word" style="max-width:300px">' +
             '<div class="learn-input-spacer"></div>';
@@ -1434,7 +1445,7 @@ function showResultPanel(success, wordData) {
     else { playSound('wrong'); icon.textContent = '❌'; icon.className = 'text-2xl mb-2 neon-text-red'; }
     term.textContent = wordData.word;
     pron.textContent = wordData.pron || '';
-    trans.textContent = (wordData.vietnamese || '') + ' (' + (wordData.pos || '') + ')';
+    trans.textContent = getMeaningWithPosText(wordData);
     def.textContent = wordData.definition || '';
     panel.style.transform = 'translateY(0)';
 }
@@ -1622,7 +1633,7 @@ function renderTestQuestion() {
 
         html = '<div class="test-question-area text-center">' +
             '<p class="test-term text-3xl mb-4 text-[var(--blue)] font-bold">' + escapeHtml(shownTerm) + '</p>' +
-            '<p class="test-definition mb-6 text-lg">' + escapeHtml(w.vietnamese || '') + '</p>' +
+            '<p class="test-definition mb-6 text-lg">' + escapeHtml(getMeaningText(w)) + '</p>' +
             '<div class="test-options-col">' +
                 '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(true, this)">True</button>' +
                 '<button class="test-option-btn text-center font-bold text-lg py-4" onclick="answerTest(false, this)">False</button>' +
@@ -1635,7 +1646,7 @@ function renderTestQuestion() {
         var optsHtml = '';
         q.options.forEach(function(optId, idx) {
             var optW = getWordData(optId);
-            var optText = q.type === 'fillin' ? escapeHtml(optW.word) : (q._isEngPrompt ? (escapeHtml(optW.vietnamese || '')) : escapeHtml(optW.word));
+            var optText = q.type === 'fillin' ? escapeHtml(optW.word) : (q._isEngPrompt ? escapeHtml(getMeaningText(optW)) : escapeHtml(optW.word));
             optsHtml += '<button class="test-option-btn text-left" onclick="answerTest(' + idx + ', this)">' + optText + '</button>';
         });
 
@@ -1649,7 +1660,7 @@ function renderTestQuestion() {
             promptText = escapeHtml(blanked);
             promptClass = 'test-term text-xl mb-6 font-bold truncate text-wrap';
         } else {
-            promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : (escapeHtml(mcWord.vietnamese || ''));
+            promptText = q._isEngPrompt ? escapeHtml(mcWord.word) : escapeHtml(getMeaningText(mcWord));
             promptClass = q._isEngPrompt ? 'test-term text-3xl mb-4 text-[var(--blue)] font-bold' : 'test-definition text-xl mb-4';
         }
         if ((q._isEngPrompt || q.type === 'fillin') && testConfig.speak) { speak(mcWord.word, 1.0); }
@@ -1677,7 +1688,7 @@ function renderTestQuestion() {
             }
             return '<div class="keyboard-row keyboard-row-' + (rowIndex + 1) + '">' + rowHtml + '</div>';
         }).join('');
-        var promptHtml = '<p class="test-definition test-definition-centered">' + escapeHtml(writtenWord.vietnamese || '') + '</p>';
+        var promptHtml = '<p class="test-definition test-definition-centered">' + escapeHtml(getMeaningText(writtenWord)) + '</p>';
         testWrittenState = createWrittenPromptState(writtenWord.word);
 
         html = '<div class="test-question-area">' +
@@ -1731,7 +1742,7 @@ function answerTest(val, btn) {
             var shownWord = getWordData(q.distractorId);
             reveal.innerHTML = '<p class="test-results-label">Correct Answer</p>' +
                 '<div class="test-results-item"><span class="test-results-word">' + escapeHtml(shownWord.word) + '</span>' +
-                '<span class="test-results-meaning">' + escapeHtml(shownWord.vietnamese || '') + '</span></div>';
+                '<span class="test-results-meaning">' + escapeHtml(getMeaningText(shownWord)) + '</span></div>';
             reveal.style.display = 'block';
         }
     }
@@ -1783,7 +1794,7 @@ function showTestResults() {
         var resultWord = getWordData(answer.wordId);
         return {
             word: resultWord.word,
-            meaning: resultWord.vietnamese || '',
+            meaning: getMeaningText(resultWord),
             correct: answer.correct
         };
     });
@@ -1858,7 +1869,7 @@ function createMatchCards(wordIds) {
     wordIds.forEach(function(wordId) {
         var w = getWordData(wordId);
         cards.push({ id: wordId + '_en_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.word, type: 'en' });
-        cards.push({ id: wordId + '_vi_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: w.vietnamese || '', type: 'vi' });
+        cards.push({ id: wordId + '_vi_' + Math.random().toString(36).slice(2, 7), pairId: wordId, text: getMeaningText(w), type: 'vi' });
     });
     return shuffle(cards);
 }
@@ -2075,7 +2086,7 @@ function showMatchResults() {
         var matchWord = getWordData(wordId);
         return {
             word: matchWord.word,
-            meaning: matchWord.vietnamese || '',
+            meaning: getMeaningText(matchWord),
             correct: !matchWrongWordMap[wordId]
         };
     });
@@ -2107,7 +2118,7 @@ function renderCompactList() {
                         '<span class="font-display font-bold neon-text-magenta text-lg">' + escapeHtml(wData.word) + '</span>' +
                         '<span class="text-xs text-[var(--text-muted)] opacity-70">' + escapeHtml(wData.pron || '') + '</span>' +
                     '</div>' +
-                    '<p class="text-sm neon-text-green max-h-0 overflow-hidden transition-all duration-300 opacity-0" id="listTrans_' + index + '" style="margin-top:0px">' + escapeHtml(wData.vietnamese || '') + '</p>' +
+                    '<p class="text-sm neon-text-green max-h-0 overflow-hidden transition-all duration-300 opacity-0" id="listTrans_' + index + '" style="margin-top:0px">' + escapeHtml(getMeaningText(wData)) + '</p>' +
                 '</div>' +
             '</div>' +
             '<div class="flex gap-4 text-2xl items-center justify-center min-w-[60px]">' +
