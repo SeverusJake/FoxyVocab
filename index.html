@@ -104,8 +104,23 @@
                     </div>
                     <button class="primary-btn w-full mt-3" id="learningBookReviewBtn">Review Learning Book</button>
                 </div>
+                <div id="favoriteBookSection" class="learning-book-panel favorite-book-panel mt-6">
+                    <div class="learning-book-panel-head">
+                        <div>
+                            <p class="learning-book-kicker favorite-book-kicker">Favourite Book</p>
+                            <h2 class="font-display text-xl font-bold" style="color: var(--text);">Starred Words</h2>
+                        </div>
+                        <span id="favoriteBookCountBadge" class="learning-book-count favorite-book-count">0 words</span>
+                    </div>
+                    <p id="favoriteBookSummary" class="learning-book-summary">Your starred words will appear here for quick review.</p>
+                    <div id="favoriteBookPreview" class="learning-book-preview">
+                        <!-- Favourite Book words injected via JS -->
+                    </div>
+                    <button class="primary-btn w-full mt-3" id="favoriteBookReviewBtn">Review Favourite Book</button>
+                </div>
             </div>
             <button class="nav-btn w-full mt-6" id="courseReviewShortcutBtn">REVIEW LEARNING BOOK</button>
+            <button class="nav-btn w-full mt-3" id="courseFavoriteShortcutBtn">REVIEW FAVOURITE BOOK</button>
         </div>
     </div>
 
@@ -137,6 +152,7 @@
                 </div>
             </div>
             <button class="nav-btn w-full mt-6" id="setReviewShortcutBtn">REVIEW LEARNING BOOK</button>
+            <button class="nav-btn w-full mt-3" id="setFavoriteShortcutBtn">REVIEW FAVOURITE BOOK</button>
         </div>
     </div>
 

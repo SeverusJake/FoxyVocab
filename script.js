@@ -148,6 +148,7 @@ function getCurrentWordPool() {
 function getCurrentWordSourceTitle() {
     if (!currentSet) return '';
     if (currentSet.isLearningBook) return 'LEARNING BOOK';
+    if (currentSet.isFavoriteBook) return 'FAVOURITE BOOK';
     return currentCourse ? currentCourse.title.toUpperCase() : currentSet.title.toUpperCase();
 }
 
@@ -180,15 +181,15 @@ function buildWordSource(wordIds, title, opts) {
         words: wordIds.slice(),
         parentView: opts && opts.parentView ? opts.parentView : setView,
         parentTitle: opts && opts.parentTitle ? opts.parentTitle : 'SETS',
-        isLearningBook: !!(opts && opts.isLearningBook)
+        isLearningBook: !!(opts && opts.isLearningBook),
+        isFavoriteBook: !!(opts && opts.isFavoriteBook)
     };
     source.sortedWords = source.words.slice().sort(function(a, b) {
         var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
         var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
         return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
     });
-    source.activeWords = source.sortedWords.filter(function(wordId) { return !getWordData(wordId).isKnown; });
-    if (source.activeWords.length === 0) source.activeWords = source.sortedWords.slice();
+    syncWordSourceActiveWords(source);
     return source;
 }
 
@@ -208,6 +209,20 @@ function openLearningBookList() {
     openWordSource(buildWordSource(words, 'Learning Book', {
         id: 'learning-book',
         isLearningBook: true,
+        parentView: courseView,
+        parentTitle: 'COURSES'
+    }), wordListView);
+}
+
+function openFavoriteBookList() {
+    var words = getFavoriteBookWords();
+    if (!words.length) {
+        window.alert('Favourite Book is empty.');
+        return;
+    }
+    openWordSource(buildWordSource(words, 'Favourite Book', {
+        id: 'favorite-book',
+        isFavoriteBook: true,
         parentView: courseView,
         parentTitle: 'COURSES'
     }), wordListView);
@@ -249,6 +264,12 @@ function getLearningBookWords() {
     });
 
     return words;
+}
+
+function getFavoriteBookWords() {
+    return Object.keys(userProgress.words || {}).filter(function(wordId) {
+        return !!(userProgress.words[wordId] && userProgress.words[wordId].isFavorite);
+    });
 }
 
 function addLearningBookMistake(wordId) {
@@ -299,8 +320,21 @@ function syncCurrentLearningBookSource() {
         var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
         return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
     });
-    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
-    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    syncWordSourceActiveWords(currentSet);
+    if (currentCardIndex >= currentSet.activeWords.length) {
+        currentCardIndex = currentSet.activeWords.length ? (currentSet.activeWords.length - 1) : 0;
+    }
+}
+
+function syncCurrentFavoriteBookSource() {
+    if (!currentSet || !currentSet.isFavoriteBook) return;
+    currentSet.words = getFavoriteBookWords();
+    currentSet.sortedWords = currentSet.words.slice().sort(function(a, b) {
+        var ca = (dictionary[a] && dictionary[a].cefr) || 'Uncategorized';
+        var cb = (dictionary[b] && dictionary[b].cefr) || 'Uncategorized';
+        return (cefrRank[ca] || 7) - (cefrRank[cb] || 7);
+    });
+    syncWordSourceActiveWords(currentSet);
     if (currentCardIndex >= currentSet.activeWords.length) {
         currentCardIndex = currentSet.activeWords.length ? (currentSet.activeWords.length - 1) : 0;
     }
@@ -326,9 +360,18 @@ function confirmRemoveFromLearningBook(wordId) {
 
 function refreshCurrentSetActiveWords() {
     if (!currentSet || !currentSet.sortedWords) return;
-    currentSet.activeWords = currentSet.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
-    if (currentSet.activeWords.length === 0) currentSet.activeWords = currentSet.sortedWords.slice();
+    syncWordSourceActiveWords(currentSet);
     if (currentCardIndex >= currentSet.activeWords.length) currentCardIndex = 0;
+}
+
+function syncWordSourceActiveWords(source) {
+    if (!source || !source.sortedWords) return;
+    if (source.isFavoriteBook) {
+        source.activeWords = source.sortedWords.slice();
+        return;
+    }
+    source.activeWords = source.sortedWords.filter(function(wId) { return !getWordData(wId).isKnown; });
+    if (source.activeWords.length === 0) source.activeWords = source.sortedWords.slice();
 }
 
 function renderLearningBookPanel() {
@@ -369,10 +412,46 @@ function renderLearningBookPanel() {
     }
 }
 
+function renderFavoriteBookPanel() {
+    var words = getFavoriteBookWords();
+    var preview = document.getElementById('favoriteBookPreview');
+    var summary = document.getElementById('favoriteBookSummary');
+    var badge = document.getElementById('favoriteBookCountBadge');
+    var reviewBtn = document.getElementById('favoriteBookReviewBtn');
+    var courseShortcut = document.getElementById('courseFavoriteShortcutBtn');
+    var setShortcut = document.getElementById('setFavoriteShortcutBtn');
+    if (!preview || !summary || !badge || !reviewBtn) return;
+
+    var hasWords = words.length > 0;
+    badge.textContent = words.length + ' word' + (words.length === 1 ? '' : 's');
+    if (hasWords) {
+        summary.textContent = 'Your starred words stay here for quick review, even when they are marked known.';
+        preview.innerHTML = words.slice(0, 12).map(function(wordId) {
+            var w = getWordData(wordId);
+            return '<span class="learning-book-chip favorite-book-chip">' + escapeHtml(w.word) + '</span>';
+        }).join('');
+        if (words.length > 12) preview.innerHTML += '<span class="learning-book-chip favorite-book-chip muted">+' + (words.length - 12) + ' more</span>';
+    } else {
+        summary.textContent = 'Star words anywhere in the app to collect them in Favourite Book.';
+        preview.innerHTML = '<div class="learning-book-empty favorite-book-empty">Favourite Book is empty.</div>';
+    }
+
+    reviewBtn.disabled = !hasWords;
+    if (courseShortcut) {
+        courseShortcut.disabled = !hasWords;
+        courseShortcut.textContent = hasWords ? 'REVIEW FAVOURITE BOOK (' + words.length + ')' : 'REVIEW FAVOURITE BOOK';
+    }
+    if (setShortcut) {
+        setShortcut.disabled = !hasWords;
+        setShortcut.textContent = hasWords ? 'REVIEW FAVOURITE BOOK (' + words.length + ')' : 'REVIEW FAVOURITE BOOK';
+    }
+}
+
 function recordTestOutcome(answer) {
     applyWordScoreDelta(answer.wordId, getTestScoreDelta(answer), { addMistake: !answer.correct });
     refreshCurrentSetActiveWords();
     renderLearningBookPanel();
+    renderFavoriteBookPanel();
 }
 
 function returnFromTest() {
@@ -493,13 +572,13 @@ function formatElapsedSeconds(seconds) {
 }
 
 function shouldAutoLearnCurrentSet(totalCount, correctCount) {
-    if (!currentCourse || !currentSet || currentSet.isLearningBook) return false;
+    if (!currentCourse || !currentSet || currentSet.isLearningBook || currentSet.isFavoriteBook) return false;
     if (!totalCount || correctCount !== totalCount) return false;
     return totalCount === currentSet.words.length;
 }
 
 function markCurrentSetLearned() {
-    if (!currentCourse || !currentSet || currentSet.isLearningBook) return;
+    if (!currentCourse || !currentSet || currentSet.isLearningBook || currentSet.isFavoriteBook) return;
     saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
     renderSets();
     renderCourses();
@@ -925,6 +1004,7 @@ function renderCourses() {
         el.addEventListener('click', function() { selectCourse(el.dataset.courseId); });
     });
     renderLearningBookPanel();
+    renderFavoriteBookPanel();
 }
 
 function selectCourse(courseId) {
@@ -1020,10 +1100,10 @@ function updateWLFlashcard() {
     var dotsContainer = document.getElementById('carouselDots');
     var flashcard = document.getElementById('wlFlashcard');
     if (!currentSet.activeWords.length) {
-        if (wordFront) wordFront.textContent = currentSet.isLearningBook ? 'Learning Book is empty' : 'No words available';
+        if (wordFront) wordFront.textContent = currentSet.isLearningBook ? 'Learning Book is empty' : (currentSet.isFavoriteBook ? 'Favourite Book is empty' : 'No words available');
         if (wordBack) wordBack.textContent = 'Add more words to continue';
         if (pronBack) pronBack.textContent = '';
-        if (transBack) transBack.textContent = currentSet.isLearningBook ? 'Removed words disappear here immediately.' : '';
+        if (transBack) transBack.textContent = currentSet.isLearningBook ? 'Removed words disappear here immediately.' : (currentSet.isFavoriteBook ? 'Unstar a word and it disappears here immediately.' : '');
         if (learnedIcon) learnedIcon.classList.remove('active');
         if (starBtn) {
             starBtn.textContent = '☆';
@@ -1091,7 +1171,7 @@ function renderWordCards() {
     }
 
     if (!wordsToRender.length) {
-        container.innerHTML = '<div class="word-card-empty-state">Learning Book is empty.</div>';
+        container.innerHTML = '<div class="word-card-empty-state">' + (currentSet && currentSet.isFavoriteBook ? 'Favourite Book is empty.' : 'Learning Book is empty.') + '</div>';
         return;
     }
 
@@ -1103,6 +1183,8 @@ function renderWordCards() {
         var safeWordStr = escapeJsString(wData.word);
         var safeWordId = escapeJsString(wordId);
         var isLearningBookSetMode = !!(currentSet && currentSet.isLearningBook && isWordListSetMode);
+        var isFavoriteBookSetMode = !!(currentSet && currentSet.isFavoriteBook && isWordListSetMode);
+        var isSpecialBookSetMode = isLearningBookSetMode || isFavoriteBookSetMode;
         var masteryText = typeof wData.masteryScore === 'number' ? wData.masteryScore : 0;
         
         if (isWordListSetMode) {
@@ -1112,7 +1194,7 @@ function renderWordCards() {
                 '<div class="word-card-top">' +
                     '<div class="word-card-title">' +
                         '<span class="word-card-term">' + escapeHtml(wData.word) + '</span>' +
-                        (isLearningBookSetMode ? '<span class="word-card-meta">(' + escapeHtml(getWordFirstOrigin(wordId)) + '): ' + masteryText + '</span>' : '') +
+                        (isSpecialBookSetMode ? '<span class="word-card-meta">(' + escapeHtml(getWordFirstOrigin(wordId)) + ')' + (isLearningBookSetMode ? ': ' + masteryText : '') + '</span>' : '') +
                     '</div>' +
                     '<div class="word-card-actions">' +
                         '<button class="word-card-btn" onclick="event.stopPropagation(); speak(\'' + safeWordStr + '\', 1.0)">🔊</button>' +
@@ -1171,8 +1253,9 @@ function toggleWordKnown(wordId) {
     saveProgress(wordId, { isKnown: newState, masteryScore: newState ? 8 : 0 });
     if (newState) removeLearningBookMistake(wordId);
     syncCurrentLearningBookSource();
+    syncCurrentFavoriteBookSource();
     refreshCurrentSetActiveWords();
-    if (currentSet && currentSet.isLearningBook && isWordListSetMode) {
+    if (currentSet && (currentSet.isLearningBook || currentSet.isFavoriteBook) && isWordListSetMode) {
         renderWordListView();
     } else {
         renderWordCards();
@@ -1180,6 +1263,7 @@ function toggleWordKnown(wordId) {
     }
     updateWordListActionState();
     renderLearningBookPanel();
+    renderFavoriteBookPanel();
     playSound('flip');
 }
 
@@ -1191,12 +1275,18 @@ function toggleFavoriteWord(wordId, btn) {
     var wData = getWordData(wordId);
     var isFav = !wData.isFavorite;
     saveProgress(wordId, { isFavorite: isFav });
+    syncCurrentFavoriteBookSource();
     if (currentSet) {
         refreshCurrentSetActiveWords();
-        updateWLFlashcard();
-        updateFlashcard();
-        renderWordCards();
+        if (currentSet.isFavoriteBook && isWordListSetMode) {
+            renderWordListView();
+        } else {
+            updateWLFlashcard();
+            updateFlashcard();
+            renderWordCards();
+        }
     }
+    renderFavoriteBookPanel();
     if (btn) {
         btn.textContent = isFav ? '★' : '☆';
         btn.classList.toggle('star-active', isFav);
@@ -1210,10 +1300,20 @@ function toggleFavorite() {
     var wordId = currentSet.activeWords[currentCardIndex];
     var wData = getWordData(wordId);
     saveProgress(wordId, { isFavorite: !wData.isFavorite });
+    syncCurrentFavoriteBookSource();
     refreshCurrentSetActiveWords();
-    updateFlashcard();
-    updateWLFlashcard();
-    renderWordCards();
+    if (currentSet.isFavoriteBook) {
+        if (flashcardView && !flashcardView.classList.contains('hidden-view')) {
+            switchView(wordListView);
+        } else {
+            renderWordListView();
+        }
+    } else {
+        updateFlashcard();
+        updateWLFlashcard();
+        renderWordCards();
+    }
+    renderFavoriteBookPanel();
 }
 
 
@@ -1500,13 +1600,14 @@ function closeResultPanel() { document.getElementById('resultPanel').style.trans
 function getActiveTestWordPool() {
     if (!currentTestSession) return [];
     if (currentTestSession.source === 'learning-book') return getLearningBookWords();
+    if (currentTestSession.source === 'favorite-book') return getFavoriteBookWords();
     return currentTestSession.wordIds.slice();
 }
 
 function openTestSettings() {
     if (!currentSet) return;
     currentTestSession = {
-        source: currentSet.isLearningBook ? 'learning-book' : 'set',
+        source: currentSet.isLearningBook ? 'learning-book' : (currentSet.isFavoriteBook ? 'favorite-book' : 'set'),
         title: currentSet.title,
         wordIds: currentSet.words.slice(),
         returnView: wordListView,
@@ -1524,6 +1625,22 @@ function openLearningBookReview(originView) {
     currentTestSession = {
         source: 'learning-book',
         title: 'Learning Book',
+        wordIds: words,
+        returnView: originView || courseView,
+        returnLabel: originView === setView ? 'Back to Set' : 'Back to Courses'
+    };
+    openCurrentTestSettings();
+}
+
+function openFavoriteBookReview(originView) {
+    var words = getFavoriteBookWords();
+    if (!words.length) {
+        window.alert('Favourite Book is empty.');
+        return;
+    }
+    currentTestSession = {
+        source: 'favorite-book',
+        title: 'Favourite Book',
         wordIds: words,
         returnView: originView || courseView,
         returnLabel: originView === setView ? 'Back to Set' : 'Back to Courses'
@@ -2193,12 +2310,14 @@ function toggleKnown(wordId, btn) {
     var newState = !wData.isKnown;
     saveProgress(wordId, { isKnown: newState, masteryScore: newState ? 8 : 0 });
     if (newState) removeLearningBookMistake(wordId);
+    syncCurrentFavoriteBookSource();
     refreshCurrentSetActiveWords();
     renderWordCards();
     updateWLFlashcard();
     updateFlashcard();
     if (btn) { if (newState) btn.classList.add('active'); else btn.classList.remove('active'); }
     renderLearningBookPanel();
+    renderFavoriteBookPanel();
 }
 
 // ═══════════════════════════════════
@@ -2292,6 +2411,7 @@ function init() {
     renderCourses();
     setupEventListeners();
     renderLearningBookPanel();
+    renderFavoriteBookPanel();
     updateSpeechMuteButtons();
     updateFullscreenButton();
 
@@ -2319,8 +2439,12 @@ function setupEventListeners() {
     document.getElementById('btnMatch').addEventListener('click', openMatchSettings);
     document.getElementById('learningBookSection').addEventListener('click', openLearningBookList);
     document.getElementById('learningBookReviewBtn').addEventListener('click', function(e) { e.stopPropagation(); openLearningBookReview(courseView); });
+    document.getElementById('favoriteBookSection').addEventListener('click', openFavoriteBookList);
+    document.getElementById('favoriteBookReviewBtn').addEventListener('click', function(e) { e.stopPropagation(); openFavoriteBookReview(courseView); });
     document.getElementById('courseReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(courseView); });
+    document.getElementById('courseFavoriteShortcutBtn').addEventListener('click', function() { openFavoriteBookReview(courseView); });
     document.getElementById('setReviewShortcutBtn').addEventListener('click', function() { openLearningBookReview(setView); });
+    document.getElementById('setFavoriteShortcutBtn').addEventListener('click', function() { openFavoriteBookReview(setView); });
 
     // WL flashcard interactions
     document.getElementById('wlFlashcard').addEventListener('click', function() {
@@ -2331,12 +2455,7 @@ function setupEventListeners() {
         e.stopPropagation();
         if (!currentSet || !currentSet.activeWords.length) return;
         var wordId = currentSet.activeWords[currentCardIndex];
-        var wData = getWordData(wordId);
-        saveProgress(wordId, { isFavorite: !wData.isFavorite });
-        updateWLFlashcard();
-        updateFlashcard();
-        renderWordCards();
-        playSound('flip');
+        toggleFavoriteWord(wordId, this);
     });
     document.getElementById('wlSpeakerBtn').addEventListener('click', function(e) {
         e.stopPropagation();
