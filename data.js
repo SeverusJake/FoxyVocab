@@ -1481,8 +1481,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhɑːdweə(r)/",
         "example": "We supply computer hardware to businesses.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phần cứng",
+        "vietnamese_example": "Chúng tôi cung cấp phần cứng máy tính cho doanh nghiệp.",
         "cefr": "C1"
     },
     "interactive": {
@@ -1490,8 +1490,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪntərˈæktɪv/",
         "example": "interactive displays/video",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tương tác",
+        "vietnamese_example": "màn hình/video tương tác",
         "cefr": "C1"
     },
     "simulate": {
@@ -1499,8 +1499,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈsɪmjuleɪt/",
         "example": "Computer software can be used to simulate conditions on the seabed.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mô phỏng",
+        "vietnamese_example": "Phần mềm máy tính có thể được sử dụng để mô phỏng các điều kiện dưới đáy biển.",
         "cefr": "C1"
     },
     "broadband": {
@@ -1508,8 +1508,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbrɔːdbænd/",
         "example": "plans to provide rural areas with fast broadband",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "băng thông rộng",
+        "vietnamese_example": "có kế hoạch cung cấp cho khu vực nông thôn băng thông rộng nhanh",
         "cefr": "C1"
     },
     "browser": {
@@ -1517,8 +1517,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbraʊzə(r)/",
         "example": "What do you use as your default browser?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trình duyệt",
+        "vietnamese_example": "Bạn sử dụng gì làm trình duyệt mặc định của mình?",
         "cefr": "C1"
     },
     "interface": {
@@ -1526,8 +1526,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪntəfeɪs/",
         "example": "the user interface",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giao diện",
+        "vietnamese_example": "giao diện người dùng",
         "cefr": "C1"
     },
     "upgrade": {
@@ -1535,8 +1535,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈʌpɡreɪd/",
         "example": "instructions for installing an upgrade to the existing system",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nâng cấp",
+        "vietnamese_example": "hướng dẫn cài đặt nâng cấp lên hệ thống hiện có",
         "cefr": "C1"
     },
     "activation": {
@@ -1544,8 +1544,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæktɪˈveɪʃn/",
         "example": "The activation of several target genes results in two major effects.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kích hoạt",
+        "vietnamese_example": "Việc kích hoạt một số gen mục tiêu dẫn đến hai tác động chính.",
         "cefr": "C1"
     },
     "default": {
@@ -1553,8 +1553,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈfɔːlt/",
         "example": "The default is fifty lines.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mặc định",
+        "vietnamese_example": "Mặc định là năm mươi dòng.",
         "cefr": "C1"
     },
     "desktop": {
@@ -1562,8 +1562,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdesktɒp/",
         "example": "desktop icons",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "máy tính để bàn",
+        "vietnamese_example": "biểu tượng máy tính để bàn",
         "cefr": "C1"
     },
     "directory": {
@@ -1571,8 +1571,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dəˈrektəri/",
         "example": "a telephone/trade directory",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thư mục",
+        "vietnamese_example": "danh bạ điện thoại/thương mại",
         "cefr": "C1"
     },
     "explosive": {
@@ -1580,8 +1580,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˈspləʊsɪv/",
         "example": "an explosive device (= a bomb)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chất nổ",
+        "vietnamese_example": "một thiết bị nổ (= một quả bom)",
         "cefr": "C1"
     },
     "filter": {
@@ -1589,8 +1589,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfɪltə(r)/",
         "example": "an air/oil filter",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lọc",
+        "vietnamese_example": "bộ lọc không khí/dầu",
         "cefr": "C1"
     },
     "gambling": {
@@ -1598,8 +1598,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡæmblɪŋ/",
         "example": "online/internet gambling",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cờ bạc",
+        "vietnamese_example": "cờ bạc trực tuyến/trên mạng",
         "cefr": "C1"
     },
     "laser": {
@@ -1607,8 +1607,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈleɪzə(r)/",
         "example": "a laser beam",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tia laze",
+        "vietnamese_example": "một chùm tia laser",
         "cefr": "C1"
     },
     "simulation": {
@@ -1616,8 +1616,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsɪmjuˈleɪʃn/",
         "example": "a computer simulation of how the planet functions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mô phỏng",
+        "vietnamese_example": "một mô phỏng máy tính về cách hành tinh này hoạt động",
         "cefr": "C1"
     },
     "spam": {
@@ -1625,8 +1625,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/spæm/",
         "example": "to send/block spam",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thư rác",
+        "vietnamese_example": "để gửi/chặn thư rác",
         "cefr": "C1"
     },
     "configuration": {
@@ -1634,8 +1634,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˌfɪɡəˈreɪʃn/",
         "example": "configuration of something, The design is based on four configurations of squares.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cấu hình",
+        "vietnamese_example": "cấu hình của một cái gì đó, Thiết kế dựa trên bốn cấu hình hình vuông.",
         "cefr": "C1"
     },
     "documentation": {
@@ -1643,8 +1643,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdɒkjumenˈteɪʃn/",
         "example": "I couldn't enter the country because I didn't have all the necessary documentation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tài liệu",
+        "vietnamese_example": "Tôi không thể nhập cảnh vì không có đủ giấy tờ cần thiết.",
         "cefr": "C1"
     },
     "functional": {
@@ -1652,8 +1652,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈfʌŋkʃənl/",
         "example": "Bathrooms don't have to be purely functional.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chức năng",
+        "vietnamese_example": "Phòng tắm không nhất thiết phải có chức năng thuần túy.",
         "cefr": "C1"
     },
     "operational": {
@@ -1661,8 +1661,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɒpəˈreɪʃənl/",
         "example": "operational activities/costs/difficulties",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hoạt động",
+        "vietnamese_example": "hoạt động/chi phí/khó khăn vận hành",
         "cefr": "C1"
     },
     "diplomat": {
@@ -1670,8 +1670,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdɪpləmæt/",
         "example": "Washington's top diplomat in Havana",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà ngoại giao",
+        "vietnamese_example": "Nhà ngoại giao hàng đầu của Washington ở Havana",
         "cefr": "C1"
     },
     "embassy": {
@@ -1679,8 +1679,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈembəsi/",
         "example": "embassy officials",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đại sứ quán",
+        "vietnamese_example": "quan chức đại sứ quán",
         "cefr": "C1"
     },
     "diplomatic": {
@@ -1688,8 +1688,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌdɪpləˈmætɪk/",
         "example": "a diplomatic crisis",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngoại giao",
+        "vietnamese_example": "một cuộc khủng hoảng ngoại giao",
         "cefr": "C1"
     },
     "foreigner": {
@@ -1697,8 +1697,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfɒrənə(r)/",
         "example": "The fact that I was a foreigner was a big disadvantage.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người nước ngoài",
+        "vietnamese_example": "Việc tôi là người nước ngoài là một bất lợi lớn.",
         "cefr": "C1"
     },
     "integration": {
@@ -1706,8 +1706,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪntɪˈɡreɪʃn/",
         "example": "The aim is to promote closer economic integration.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hội nhập",
+        "vietnamese_example": "Mục đích là để thúc đẩy hội nhập kinh tế chặt chẽ hơn.",
         "cefr": "C1"
     },
     "migration": {
@@ -1715,8 +1715,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/maɪˈɡreɪʃn/",
         "example": "the seasonal migration of blue whales",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "di cư",
+        "vietnamese_example": "sự di cư theo mùa của cá voi xanh",
         "cefr": "C1"
     },
     "trademark": {
@@ -1724,8 +1724,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtreɪdmɑːk/",
         "example": "‘Big Mac’ is McDonald's best-known trademark.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhãn hiệu",
+        "vietnamese_example": "‘Big Mac’ là nhãn hiệu nổi tiếng nhất của McDonald.",
         "cefr": "C1"
     },
     "sanction": {
@@ -1733,8 +1733,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsæŋkʃn/",
         "example": "Trade sanctions were imposed against any country that refused to sign the agreement.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự trừng phạt",
+        "vietnamese_example": "Các biện pháp trừng phạt thương mại được áp dụng đối với bất kỳ quốc gia nào từ chối ký thỏa thuận.",
         "cefr": "C1"
     },
     "ambassador": {
@@ -1742,8 +1742,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/æmˈbæsədə(r)/",
         "example": "the British Ambassador to Italy/in Rome",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đại sứ",
+        "vietnamese_example": "Đại sứ Anh tại Ý/ở Rome",
         "cefr": "C1"
     },
     "boom": {
@@ -1751,8 +1751,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/buːm/",
         "example": "Living standards improved rapidly during the post-war boom.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bùng nổ",
+        "vietnamese_example": "Mức sống được cải thiện nhanh chóng trong thời kỳ bùng nổ sau chiến tranh.",
         "cefr": "C1"
     },
     "commerce": {
@@ -1760,8 +1760,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒmɜːs/",
         "example": "Leaders of industry and commerce met at the summit in Paris.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thương mại",
+        "vietnamese_example": "Các nhà lãnh đạo công nghiệp và thương mại đã gặp nhau tại hội nghị thượng đỉnh ở Paris.",
         "cefr": "C1"
     },
     "counterpart": {
@@ -1769,8 +1769,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkaʊntəpɑːt/",
         "example": "The Foreign Minister held talks with his Chinese counterpart.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đối tác",
+        "vietnamese_example": "Bộ trưởng Ngoại giao hội đàm với người đồng cấp Trung Quốc.",
         "cefr": "C1"
     },
     "deficit": {
@@ -1778,8 +1778,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdefɪsɪt/",
         "example": "a budget/trade deficit",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thâm hụt",
+        "vietnamese_example": "thâm hụt ngân sách/thương mại",
         "cefr": "C1"
     },
     "donor": {
@@ -1787,8 +1787,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdəʊnə(r)/",
         "example": "international aid donors (= countries that give money, etc. to help other countries)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà tài trợ",
+        "vietnamese_example": "các nhà tài trợ viện trợ quốc tế (= các quốc gia cung cấp tiền, v.v. để giúp đỡ các quốc gia khác)",
         "cefr": "C1"
     },
     "establishment": {
@@ -1796,8 +1796,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪˈstæblɪʃmənt/",
         "example": "The visa is for foreign nationals wishing to study at a university, college or similar educational establishment.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thành lập",
+        "vietnamese_example": "Thị thực dành cho người nước ngoài muốn học tại một trường đại học, cao đẳng hoặc cơ sở giáo dục tương tự.",
         "cefr": "C1"
     },
     "facilitate": {
@@ -1805,8 +1805,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/fəˈsɪlɪteɪt/",
         "example": "The new trade agreement should facilitate more rapid economic growth.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tạo điều kiện",
+        "vietnamese_example": "Hiệp định thương mại mới sẽ tạo điều kiện cho tăng trưởng kinh tế nhanh hơn.",
         "cefr": "C1"
     },
     "interference": {
@@ -1814,8 +1814,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪntəˈfɪərəns/",
         "example": "interference (in something), They resent foreign interference in the internal affairs of their country.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự can thiệp",
+        "vietnamese_example": "can thiệp (vào việc gì đó), Họ phẫn nộ sự can thiệp của nước ngoài vào công việc nội bộ của đất nước họ.",
         "cefr": "C1"
     },
     "monopoly": {
@@ -1823,8 +1823,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˈnɒpəli/",
         "example": "In the past central government had a monopoly on television broadcasting.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự độc quyền",
+        "vietnamese_example": "Trước đây, chính quyền trung ương độc quyền phát sóng truyền hình.",
         "cefr": "C1"
     },
     "obsession": {
@@ -1832,8 +1832,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əbˈseʃn/",
         "example": "Her fear of flying is bordering on obsession.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nỗi ám ảnh",
+        "vietnamese_example": "Nỗi sợ bay của cô gần như là nỗi ám ảnh.",
         "cefr": "C1"
     },
     "refuge": {
@@ -1841,8 +1841,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈrefjuːdʒ/",
         "example": "A further 300 people have taken refuge in the US embassy.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nơi trú ẩn",
+        "vietnamese_example": "Hơn 300 người khác đã trú ẩn trong đại sứ quán Mỹ.",
         "cefr": "C1"
     },
     "experimental": {
@@ -1850,8 +1850,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˌsperɪˈmentl/",
         "example": "The school's experimental teaching methods include letting the children decide what to study.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thực nghiệm",
+        "vietnamese_example": "Phương pháp giảng dạy thử nghiệm của trường bao gồm việc để trẻ quyết định sẽ học gì.",
         "cefr": "C1"
     },
     "empirical": {
@@ -1859,8 +1859,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪmˈpɪrɪkl/",
         "example": "empirical evidence/knowledge/research",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thực nghiệm",
+        "vietnamese_example": "bằng chứng thực nghiệm/kiến thức/nghiên cứu",
         "cefr": "C1"
     },
     "conscience": {
@@ -1868,8 +1868,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒnʃəns/",
         "example": "to have a clear/guilty conscience (= to feel that you have done right/wrong)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lương tâm",
+        "vietnamese_example": "có lương tâm trong sáng/có tội (= cảm thấy rằng bạn đã làm đúng/sai)",
         "cefr": "C1"
     },
     "agricultural": {
@@ -1877,8 +1877,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌæɡrɪˈkʌltʃərəl/",
         "example": "agricultural policy/land/production/development",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nông nghiệp",
+        "vietnamese_example": "chính sách nông nghiệp/đất đai/sản xuất/phát triển",
         "cefr": "C1"
     },
     "aluminium": {
@@ -1886,8 +1886,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæljəˈmɪniəm/",
         "example": "aluminium saucepans/window frames",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhôm",
+        "vietnamese_example": "chảo nhôm/khung cửa sổ",
         "cefr": "C1"
     },
     "apparatus": {
@@ -1895,8 +1895,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæpəˈreɪtəs/",
         "example": "a piece of laboratory apparatus",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bộ máy",
+        "vietnamese_example": "một bộ máy thí nghiệm",
         "cefr": "C1"
     },
     "aspire": {
@@ -1904,8 +1904,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈspaɪə(r)/",
         "example": "aspire (to something), She aspired to a scientific career.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khao khát",
+        "vietnamese_example": "khao khát (điều gì đó), Cô khao khát sự nghiệp khoa học.",
         "cefr": "C1"
     },
     "clinical": {
@@ -1913,8 +1913,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈklɪnɪkl/",
         "example": "clinical research (= done on patients, not just considering theory)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lâm sàng",
+        "vietnamese_example": "nghiên cứu lâm sàng (= được thực hiện trên bệnh nhân, không chỉ xem xét lý thuyết)",
         "cefr": "C1"
     },
     "composition": {
@@ -1922,8 +1922,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒmpəˈzɪʃn/",
         "example": "the chemical composition of the soil",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thành phần",
+        "vietnamese_example": "thành phần hóa học của đất",
         "cefr": "C1"
     },
     "copper": {
@@ -1931,8 +1931,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒpə(r)/",
         "example": "a copper mine",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đồng",
+        "vietnamese_example": "một mỏ đồng",
         "cefr": "C1"
     },
     "endeavour": {
@@ -1940,8 +1940,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈdevə(r)/",
         "example": "There have been great advances in the field of scientific endeavour.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nỗ lực",
+        "vietnamese_example": "Đã có những tiến bộ to lớn trong lĩnh vực nỗ lực khoa học.",
         "cefr": "C1"
     },
     "enrich": {
@@ -1949,8 +1949,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈrɪtʃ/",
         "example": "The study of science has enriched all our lives.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "làm giàu",
+        "vietnamese_example": "Việc nghiên cứu khoa học đã làm phong phú thêm cuộc sống của chúng ta.",
         "cefr": "C1"
     },
     "evolutionary": {
@@ -1958,8 +1958,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌiːvəˈluːʃənri/",
         "example": "evolutionary theory",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiến hóa",
+        "vietnamese_example": "thuyết tiến hóa",
         "cefr": "C1"
     },
     "extract": {
@@ -1967,8 +1967,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪkˈstrækt/",
         "example": "a machine that extracts excess moisture from the air",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiết xuất",
+        "vietnamese_example": "một cỗ máy hút độ ẩm dư thừa từ không khí",
         "cefr": "C1"
     },
     "formulate": {
@@ -1976,8 +1976,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈfɔːmjuleɪt/",
         "example": "formulate something, to formulate a policy/theory/plan/proposal",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xây dựng",
+        "vietnamese_example": "hình thành một cái gì đó, hình thành một chính sách/lý thuyết/kế hoạch/đề xuất",
         "cefr": "C1"
     },
     "linear": {
@@ -1985,8 +1985,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlɪniə(r)/",
         "example": "In his art he broke the laws of scientific linear perspective.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuyến tính",
+        "vietnamese_example": "Trong nghệ thuật của mình, ông đã phá vỡ các quy luật về quan điểm tuyến tính khoa học.",
         "cefr": "C1"
     },
     "minute": {
@@ -1994,8 +1994,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/maɪˈnjuːt/",
         "example": "minute amounts of chemicals in the water",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phút",
+        "vietnamese_example": "lượng nhỏ hóa chất trong nước",
         "cefr": "C1"
     },
     "petition": {
@@ -2003,8 +2003,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/pəˈtɪʃn/",
         "example": "petition against something, Would you like to sign our petition against experiments on animals?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đơn kiến ​​nghị",
+        "vietnamese_example": "Kiến nghị chống lại điều gì đó, Bạn có muốn ký kiến ​​nghị phản đối thí nghiệm trên động vật của chúng tôi không?",
         "cefr": "C1"
     },
     "theoretical": {
@@ -2012,8 +2012,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌθɪəˈretɪkl/",
         "example": "a theoretical approach",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lý thuyết",
+        "vietnamese_example": "một cách tiếp cận lý thuyết",
         "cefr": "C1"
     },
     "toxic": {
@@ -2021,8 +2021,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈtɒksɪk/",
         "example": "toxic chemicals/fumes/gases/substances",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "độc hại",
+        "vietnamese_example": "hóa chất/khói/khí/chất độc hại",
         "cefr": "C1"
     },
     "methodology": {
@@ -2030,8 +2030,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌmeθəˈdɒlədʒi/",
         "example": "recent changes in the methodology of language teaching",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phương pháp luận",
+        "vietnamese_example": "Những thay đổi gần đây trong phương pháp giảng dạy ngôn ngữ",
         "cefr": "C1"
     },
     "statistical": {
@@ -2039,8 +2039,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/stəˈtɪstɪkl/",
         "example": "statistical analysis",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thống kê",
+        "vietnamese_example": "phân tích thống kê",
         "cefr": "C1"
     },
     "variable": {
@@ -2048,8 +2048,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈveəriəbl/",
         "example": "variable temperatures",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "biến",
+        "vietnamese_example": "nhiệt độ thay đổi",
         "cefr": "C1"
     },
     "collaborate": {
@@ -2057,8 +2057,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəˈlæbəreɪt/",
         "example": "Researchers around the world are collaborating to develop a new vaccine.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cộng tác",
+        "vietnamese_example": "Các nhà nghiên cứu trên khắp thế giới đang hợp tác để phát triển một loại vắc-xin mới.",
         "cefr": "C1"
     },
     "commissioner": {
@@ -2066,8 +2066,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˈmɪʃənə(r)/",
         "example": "the Church Commissioners (= the group of people responsible for controlling the financial affairs of the Church of England)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủy viên",
+        "vietnamese_example": "các Ủy viên Giáo hội (= nhóm người chịu trách nhiệm kiểm soát các vấn đề tài chính của Giáo hội Anh)",
         "cefr": "C1"
     },
     "conviction": {
@@ -2075,8 +2075,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈvɪkʃn/",
         "example": "He plans to appeal against his conviction.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "niềm tin",
+        "vietnamese_example": "Anh ta dự định sẽ kháng cáo bản án của mình.",
         "cefr": "C1"
     },
     "inherent": {
@@ -2084,8 +2084,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈherənt/",
         "example": "the difficulties inherent in a study of this type",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vốn có",
+        "vietnamese_example": "những khó khăn cố hữu trong việc nghiên cứu loại hình này",
         "cefr": "C1"
     },
     "overwhelming": {
@@ -2093,8 +2093,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌəʊvəˈwelmɪŋ/",
         "example": "The evidence against him was overwhelming.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "áp đảo",
+        "vietnamese_example": "Bằng chứng chống lại anh ta quá nhiều.",
         "cefr": "C1"
     },
     "pioneer": {
@@ -2102,8 +2102,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌpaɪəˈnɪə(r)/",
         "example": "a pioneer in the field of microsurgery",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người tiên phong",
+        "vietnamese_example": "người tiên phong trong lĩnh vực vi phẫu",
         "cefr": "C1"
     },
     "regime": {
@@ -2111,8 +2111,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/reɪˈʒiːm/",
         "example": "a fascist/totalitarian/military, etc. regime",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chế độ",
+        "vietnamese_example": "một chế độ phát xít/toàn trị/quân đội, v.v.",
         "cefr": "C1"
     },
     "supervisor": {
@@ -2120,8 +2120,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsuːpəvaɪzə(r)/",
         "example": "I have a meeting with my supervisor about my research topic.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người giám sát",
+        "vietnamese_example": "Tôi có một cuộc họp với người giám sát của tôi về chủ đề nghiên cứu của tôi.",
         "cefr": "C1"
     },
     "tactic": {
@@ -2129,8 +2129,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtæktɪk/",
         "example": "They tried all kinds of tactics to get us to go.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến thuật",
+        "vietnamese_example": "Họ đã tìm mọi cách để dụ chúng tôi đi.",
         "cefr": "C1"
     },
     "tactical": {
@@ -2138,8 +2138,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈtæktɪkl/",
         "example": "tactical planning",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến thuật",
+        "vietnamese_example": "hoạch định chiến thuật",
         "cefr": "C1"
     },
     "theology": {
@@ -2147,8 +2147,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/θiˈɒlədʒi/",
         "example": "a degree in theology",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thần học",
+        "vietnamese_example": "bằng cấp về thần học",
         "cefr": "C1"
     },
     "undergraduate": {
@@ -2156,8 +2156,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌʌndəˈɡrædʒuət/",
         "example": "a first-year undergraduate",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đại học",
+        "vietnamese_example": "sinh viên đại học năm thứ nhất",
         "cefr": "C1"
     },
     "warfare": {
@@ -2165,8 +2165,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwɔːfeə(r)/",
         "example": "air/naval/guerrilla warfare",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến tranh",
+        "vietnamese_example": "chiến tranh trên không/hải quân/du kích",
         "cefr": "C1"
     },
     "willingness": {
@@ -2174,8 +2174,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwɪlɪŋnəs/",
         "example": "Success in studying depends on a willingness to learn.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tự nguyện",
+        "vietnamese_example": "Thành công trong học tập phụ thuộc vào sự sẵn lòng học hỏi.",
         "cefr": "C1"
     },
     "columnist": {
@@ -2183,8 +2183,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒləmnɪst/",
         "example": "a newspaper columnist",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người viết chuyên mục",
+        "vietnamese_example": "một người phụ trách chuyên mục của tờ báo",
         "cefr": "C1"
     },
     "correspondent": {
@@ -2192,8 +2192,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒrəˈspɒndənt/",
         "example": "She's the BBC's political correspondent.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phóng viên",
+        "vietnamese_example": "Cô ấy là phóng viên chính trị của BBC.",
         "cefr": "C1"
     },
     "intermediate": {
@@ -2201,8 +2201,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪntəˈmiːdiət/",
         "example": "an intermediate stage/step in a process",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trung cấp",
+        "vietnamese_example": "một giai đoạn/bước trung gian trong một quy trình",
         "cefr": "C1"
     },
     "newsletter": {
@@ -2210,8 +2210,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈnjuːzletə(r)/",
         "example": "Our sailing club produces a monthly newsletter.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản tin",
+        "vietnamese_example": "Câu lạc bộ chèo thuyền của chúng tôi sản xuất một bản tin hàng tháng.",
         "cefr": "C1"
     },
     "suppress": {
@@ -2219,8 +2219,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/səˈpres/",
         "example": "The rebellion was brutally suppressed.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kìm nén",
+        "vietnamese_example": "Cuộc nổi dậy bị đàn áp dã man.",
         "cefr": "C1"
     },
     "commentary": {
@@ -2228,8 +2228,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒməntri/",
         "example": "a sports commentary",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bình luận",
+        "vietnamese_example": "bình luận thể thao",
         "cefr": "C1"
     },
     "commentator": {
@@ -2237,8 +2237,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒmənteɪtə(r)/",
         "example": "a television/sports commentator",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người bình luận",
+        "vietnamese_example": "bình luận viên truyền hình/thể thao",
         "cefr": "C1"
     },
     "contributor": {
@@ -2246,8 +2246,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈtrɪbjətə(r)/",
         "example": "a regular contributor to this magazine",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người đóng góp",
+        "vietnamese_example": "người đóng góp thường xuyên cho tạp chí này",
         "cefr": "C1"
     },
     "cutting": {
@@ -2255,8 +2255,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkʌtɪŋ/",
         "example": "newspaper/press cuttings",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cắt",
+        "vietnamese_example": "cắt báo/báo chí",
         "cefr": "C1"
     },
     "simultaneously": {
@@ -2264,8 +2264,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˌsɪmlˈteɪniəsli/",
         "example": "The game will be broadcast simultaneously on TV and radio.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đồng thời",
+        "vietnamese_example": "Trận đấu sẽ được phát sóng đồng thời trên TV và đài phát thanh.",
         "cefr": "C1"
     },
     "accomplishment": {
@@ -2273,8 +2273,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈkʌmplɪʃmənt/",
         "example": "It was one of the President's greatest accomplishments.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thành tựu",
+        "vietnamese_example": "Đó là một trong những thành tựu lớn nhất của Tổng thống.",
         "cefr": "C1"
     },
     "allegedly": {
@@ -2282,8 +2282,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/əˈledʒɪdli/",
         "example": "crimes allegedly committed during the war",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "được cho là",
+        "vietnamese_example": "tội ác được cho là đã xảy ra trong chiến tranh",
         "cefr": "C1"
     },
     "array": {
@@ -2291,8 +2291,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈreɪ/",
         "example": "a vast array of bottles of different shapes and sizes",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mảng",
+        "vietnamese_example": "một loạt các chai có hình dạng và kích cỡ khác nhau",
         "cefr": "C1"
     },
     "articulate": {
@@ -2300,8 +2300,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɑːˈtɪkjuleɪt/",
         "example": "She struggled to articulate her thoughts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nói rõ ràng",
+        "vietnamese_example": "Cô cố gắng diễn đạt suy nghĩ của mình.",
         "cefr": "C1"
     },
     "burst": {
@@ -2309,8 +2309,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/bɜːst/",
         "example": "That balloon will burst if you blow it up any more.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nổ tung",
+        "vietnamese_example": "Quả bóng đó sẽ nổ nếu bạn thổi nó lên nữa.",
         "cefr": "C1"
     },
     "clarity": {
@@ -2318,8 +2318,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈklærəti/",
         "example": "a lack of clarity in the law",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự rõ ràng",
+        "vietnamese_example": "sự thiếu rõ ràng trong luật pháp",
         "cefr": "C1"
     },
     "copyright": {
@@ -2327,8 +2327,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒpiraɪt/",
         "example": "Copyright expires seventy years after the death of the author.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản quyền",
+        "vietnamese_example": "Bản quyền hết hạn bảy mươi năm sau khi tác giả qua đời.",
         "cefr": "C1"
     },
     "crush": {
@@ -2336,8 +2336,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/krʌʃ/",
         "example": "The car was completely crushed under the truck.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người mình thích",
+        "vietnamese_example": "Chiếc xe máy bị bẹp dúm hoàn toàn dưới gầm xe tải.",
         "cefr": "C1"
     },
     "discard": {
@@ -2345,8 +2345,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈskɑːd/",
         "example": "discard somebody/something, The room was littered with discarded newspapers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vứt bỏ",
+        "vietnamese_example": "vứt bỏ ai/thứ gì đó, Căn phòng ngổn ngang những tờ báo bỏ đi.",
         "cefr": "C1"
     },
     "disclosure": {
@@ -2354,8 +2354,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪsˈkləʊʒə(r)/",
         "example": "the newspaper’s disclosure of defence secrets",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiết lộ",
+        "vietnamese_example": "báo chí làm lộ bí mật quốc phòng",
         "cefr": "C1"
     },
     "distress": {
@@ -2363,8 +2363,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈstres/",
         "example": "The newspaper article caused the actor considerable distress.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đau khổ",
+        "vietnamese_example": "Bài báo đã khiến nam diễn viên đau khổ đáng kể.",
         "cefr": "C1"
     },
     "disturbing": {
@@ -2372,8 +2372,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈstɜːbɪŋ/",
         "example": "a disturbing piece of news",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "làm phiền",
+        "vietnamese_example": "một tin tức đáng lo ngại",
         "cefr": "C1"
     },
     "dub": {
@@ -2381,8 +2381,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dʌb/",
         "example": "The media dubbed anorexia ‘the slimming disease’.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lồng tiếng",
+        "vietnamese_example": "Các phương tiện truyền thông gọi chứng biếng ăn là “căn bệnh giảm béo”.",
         "cefr": "C1"
     },
     "embody": {
@@ -2390,8 +2390,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪmˈbɒdi/",
         "example": "embody something, a politician who embodied the hopes of black youth",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hiện thân",
+        "vietnamese_example": "thể hiện điều gì đó, một chính trị gia thể hiện niềm hy vọng của thanh niên da đen",
         "cefr": "C1"
     },
     "favourable": {
@@ -2399,8 +2399,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈfeɪvərəbl/",
         "example": "She made a favourable impression on his parents.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thuận lợi",
+        "vietnamese_example": "Cô đã gây ấn tượng tốt với bố mẹ anh.",
         "cefr": "C1"
     },
     "glance": {
@@ -2408,8 +2408,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡlɑːns/",
         "example": "to take/have a glance at the newspaper headlines",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liếc nhìn",
+        "vietnamese_example": "nhìn/nhìn qua các tiêu đề của tờ báo",
         "cefr": "C1"
     },
     "grave": {
@@ -2417,8 +2417,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɡreɪv/",
         "example": "The police have expressed grave concern about the missing child's safety.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phần mộ",
+        "vietnamese_example": "Cảnh sát bày tỏ quan ngại sâu sắc về sự an toàn của đứa trẻ mất tích.",
         "cefr": "C1"
     },
     "grind": {
@@ -2426,8 +2426,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɡraɪnd/",
         "example": "to grind coffee/corn",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xay",
+        "vietnamese_example": "để xay cà phê/ngô",
         "cefr": "C1"
     },
     "hail": {
@@ -2435,8 +2435,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/heɪl/",
         "example": "be hailed (as) something, The conference was hailed as a great success.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kêu",
+        "vietnamese_example": "được ca ngợi (như) một cái gì đó, Hội nghị được ca ngợi là một thành công lớn.",
         "cefr": "C1"
     },
     "handling": {
@@ -2444,8 +2444,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhændlɪŋ/",
         "example": "I was impressed by his handling of the affair.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xử lý",
+        "vietnamese_example": "Tôi rất ấn tượng với cách xử lý vụ việc của anh ấy.",
         "cefr": "C1"
     },
     "harassment": {
@@ -2453,8 +2453,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhærəsmənt/",
         "example": "sexual/racial harassment",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quấy rối",
+        "vietnamese_example": "quấy rối tình dục/chủng tộc",
         "cefr": "C1"
     },
     "high-profile": {
@@ -2462,8 +2462,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌhaɪ ˈprəʊfaɪl/",
         "example": "a high-profile campaign",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cao cấp",
+        "vietnamese_example": "một chiến dịch nổi bật",
         "cefr": "C1"
     },
     "hostile": {
@@ -2471,8 +2471,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈhɒstaɪl/",
         "example": "The speaker got a hostile reception from the audience.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thù địch",
+        "vietnamese_example": "Diễn giả đã nhận được sự đón nhận thù địch từ khán giả.",
         "cefr": "C1"
     },
     "instruct": {
@@ -2480,8 +2480,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈstrʌkt/",
         "example": "instruct somebody to do something, The letter instructed him to report to headquarters immediately.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hướng dẫn",
+        "vietnamese_example": "chỉ thị ai đó làm việc gì, lá thư dặn anh phải báo cáo về trụ sở ngay.",
         "cefr": "C1"
     },
     "ironic": {
@@ -2489,8 +2489,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/aɪˈrɒnɪk/",
         "example": "an ironic comment",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mỉa mai",
+        "vietnamese_example": "một bình luận mỉa mai",
         "cefr": "C1"
     },
     "ironically": {
@@ -2498,8 +2498,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/aɪˈrɒnɪkli/",
         "example": "He smiled ironically.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trớ trêu thay",
+        "vietnamese_example": "Anh mỉm cười mỉa mai.",
         "cefr": "C1"
     },
     "line-up": {
@@ -2507,8 +2507,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlaɪn ʌp/",
         "example": "an impressive line-up of speakers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xếp hàng",
+        "vietnamese_example": "một dàn diễn giả ấn tượng",
         "cefr": "C1"
     },
     "manipulation": {
@@ -2516,8 +2516,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˌnɪpjuˈleɪʃn/",
         "example": "Advertising like this is a cynical manipulation of the elderly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thao tác",
+        "vietnamese_example": "Quảng cáo như thế này là một sự thao túng đầy hoài nghi của người già.",
         "cefr": "C1"
     },
     "march": {
@@ -2525,8 +2525,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mɑːtʃ/",
         "example": "protest marches",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bước đều",
+        "vietnamese_example": "tuần hành phản đối",
         "cefr": "C1"
     },
     "discourse": {
@@ -2534,8 +2534,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdɪskɔːs/",
         "example": "discourse on something, a discourse on issues of gender and sexuality",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "diễn ngôn",
+        "vietnamese_example": "diễn ngôn về điều gì đó, diễn ngôn về các vấn đề về giới tính và tình dục",
         "cefr": "C1"
     },
     "acquisition": {
@@ -2543,8 +2543,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌækwɪˈzɪʃn/",
         "example": "theories of child language acquisition",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự mua lại",
+        "vietnamese_example": "lý thuyết về việc tiếp thu ngôn ngữ của trẻ",
         "cefr": "C1"
     },
     "amid": {
@@ -2552,8 +2552,8 @@ var dictionary = {
         "pos": "prep",
         "pron": "/əˈmɪd/",
         "example": "He finished his speech amid tremendous applause.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ở giữa",
+        "vietnamese_example": "Ông kết thúc bài phát biểu của mình trong tiếng vỗ tay vang dội.",
         "cefr": "C1"
     },
     "banner": {
@@ -2561,8 +2561,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbænə(r)/",
         "example": "A huge banner over the street said ‘Welcome home’.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngọn cờ",
+        "vietnamese_example": "Một biểu ngữ lớn trên đường có dòng chữ “Chào mừng về nhà”.",
         "cefr": "C1"
     },
     "boast": {
@@ -2570,8 +2570,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/bəʊst/",
         "example": "I don't want to boast, but I can actually speak six languages.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khoe khoan",
+        "vietnamese_example": "Tôi không muốn khoe khoang nhưng tôi thực sự có thể nói được sáu thứ tiếng.",
         "cefr": "C1"
     },
     "complexity": {
@@ -2579,8 +2579,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəmˈpleksəti/",
         "example": "the increasing complexity of modern telecommunication systems",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phức tạp",
+        "vietnamese_example": "sự phức tạp ngày càng tăng của hệ thống viễn thông hiện đại",
         "cefr": "C1"
     },
     "concede": {
@@ -2588,8 +2588,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈsiːd/",
         "example": "+ speech, ‘Not bad,’ she conceded grudgingly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thừa nhận",
+        "vietnamese_example": "+ lời nói, ‘Không tệ,’ cô thừa nhận một cách miễn cưỡng.",
         "cefr": "C1"
     },
     "dispute": {
@@ -2597,8 +2597,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈspjuːt/",
         "example": "industrial/pay disputes",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tranh luận",
+        "vietnamese_example": "tranh chấp công nghiệp/tiền lương",
         "cefr": "C1"
     },
     "imagery": {
@@ -2606,8 +2606,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪmɪdʒəri/",
         "example": "poetic imagery",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hình ảnh",
+        "vietnamese_example": "hình ảnh thơ mộng",
         "cefr": "C1"
     },
     "inappropriate": {
@@ -2615,8 +2615,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪnəˈprəʊpriət/",
         "example": "inappropriate behaviour/language",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "không phù hợp",
+        "vietnamese_example": "hành vi/ngôn ngữ không phù hợp",
         "cefr": "C1"
     },
     "induce": {
@@ -2624,8 +2624,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈdjuːs/",
         "example": "Nothing would induce me to take the job.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xúi giục",
+        "vietnamese_example": "Không có gì có thể thuyết phục tôi nhận công việc này.",
         "cefr": "C1"
     },
     "intensive": {
@@ -2633,8 +2633,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈtensɪv/",
         "example": "an intensive language course",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "căng",
+        "vietnamese_example": "một khóa học ngôn ngữ chuyên sâu",
         "cefr": "C1"
     },
     "meaningful": {
@@ -2642,8 +2642,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmiːnɪŋfl/",
         "example": "a meaningful relationship/discussion/experience",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có ý nghĩa",
+        "vietnamese_example": "một mối quan hệ/cuộc thảo luận/trải nghiệm có ý nghĩa",
         "cefr": "C1"
     },
     "pronounced": {
@@ -2651,8 +2651,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/prəˈnaʊnst/",
         "example": "He walked with a pronounced limp.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phát âm",
+        "vietnamese_example": "Anh ta bước đi với giọng khập khiễng.",
         "cefr": "C1"
     },
     "query": {
@@ -2660,8 +2660,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkwɪəri/",
         "example": "Our assistants will be happy to answer your queries.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "truy vấn",
+        "vietnamese_example": "Trợ lý của chúng tôi sẽ sẵn lòng trả lời các câu hỏi của bạn.",
         "cefr": "C1"
     },
     "rhetoric": {
@@ -2669,8 +2669,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈretərɪk/",
         "example": "the rhetoric of political slogans",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hùng biện",
+        "vietnamese_example": "sự hùng biện của các khẩu hiệu chính trị",
         "cefr": "C1"
     },
     "enterprise": {
@@ -2678,8 +2678,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈentəpraɪz/",
         "example": "He is in charge of an enterprise with a turnover of $26 billion.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "doanh nghiệp",
+        "vietnamese_example": "Ông đang phụ trách một doanh nghiệp có doanh thu 26 tỷ USD.",
         "cefr": "C1"
     },
     "profitable": {
@@ -2687,8 +2687,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈprɒfɪtəbl/",
         "example": "a highly profitable business",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có lợi nhuận",
+        "vietnamese_example": "một doanh nghiệp có lợi nhuận cao",
         "cefr": "C1"
     },
     "capitalism": {
@@ -2696,8 +2696,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkæpɪtəlɪzəm/",
         "example": "the growth of industrial capitalism in the West",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chủ nghĩa tư bản",
+        "vietnamese_example": "sự phát triển của chủ nghĩa tư bản công nghiệp ở phương Tây",
         "cefr": "C1"
     },
     "marketplace": {
@@ -2705,8 +2705,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɑːkɪtpleɪs/",
         "example": "Companies must be able to survive in the marketplace.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thị trường",
+        "vietnamese_example": "Doanh nghiệp phải có khả năng tồn tại trên thị trường.",
         "cefr": "C1"
     },
     "non-profit": {
@@ -2714,8 +2714,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌnɒn ˈprɒfɪt/",
         "example": "an independent non-profit organization",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phi lợi nhuận",
+        "vietnamese_example": "một tổ chức phi lợi nhuận độc lập",
         "cefr": "C1"
     },
     "outlet": {
@@ -2723,8 +2723,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈaʊtlet/",
         "example": "The business has 34 retail outlets in this state alone.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỗ thoát",
+        "vietnamese_example": "Doanh nghiệp này có 34 cửa hàng bán lẻ chỉ riêng ở bang này.",
         "cefr": "C1"
     },
     "productive": {
@@ -2732,8 +2732,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/prəˈdʌktɪv/",
         "example": "highly productive farming land",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "năng suất",
+        "vietnamese_example": "đất nông nghiệp có năng suất cao",
         "cefr": "C1"
     },
     "reproduction": {
@@ -2741,8 +2741,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌriːprəˈdʌkʃn/",
         "example": "sexual reproduction",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sinh sản",
+        "vietnamese_example": "sinh sản hữu tính",
         "cefr": "C1"
     },
     "administrator": {
@@ -2750,8 +2750,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ədˈmɪnɪstreɪtə(r)/",
         "example": "Such organizational decisions are made by the hospital administrators.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quản trị viên",
+        "vietnamese_example": "Các quyết định tổ chức như vậy được đưa ra bởi các nhà quản lý bệnh viện.",
         "cefr": "C1"
     },
     "franchise": {
@@ -2759,8 +2759,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfræntʃaɪz/",
         "example": "a franchise agreement/company",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhượng quyền thương mại",
+        "vietnamese_example": "một thỏa thuận nhượng quyền thương mại/công ty",
         "cefr": "C1"
     },
     "governance": {
@@ -2768,8 +2768,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡʌvənəns/",
         "example": "He emphasized the company's commitment to high standards of corporate governance.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quản trị",
+        "vietnamese_example": "Ông nhấn mạnh cam kết của công ty đối với các tiêu chuẩn cao về quản trị doanh nghiệp.",
         "cefr": "C1"
     },
     "privatization": {
@@ -2777,8 +2777,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌpraɪvətaɪˈzeɪʃn/",
         "example": "There were fears that privatization would lead to job losses.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tư nhân hóa",
+        "vietnamese_example": "Đã có những lo ngại rằng tư nhân hóa sẽ dẫn đến mất việc làm.",
         "cefr": "C1"
     },
     "regulator": {
@@ -2786,8 +2786,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈreɡjuleɪtə(r)/",
         "example": "Ofgas, the gas industry regulator",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bộ điều chỉnh",
+        "vietnamese_example": "Ofgas, cơ quan quản lý ngành khí đốt",
         "cefr": "C1"
     },
     "regulatory": {
@@ -2795,8 +2795,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈreɡjələtəri/",
         "example": "regulatory bodies/authorities/agencies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quy định",
+        "vietnamese_example": "cơ quan quản lý/cơ quan/cơ quan",
         "cefr": "C1"
     },
     "shareholder": {
@@ -2804,8 +2804,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈʃeəhəʊldə(r)/",
         "example": "the major shareholders in the company",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cổ đông",
+        "vietnamese_example": "các cổ đông lớn trong công ty",
         "cefr": "C1"
     },
     "stake": {
@@ -2813,8 +2813,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/steɪk/",
         "example": "a 20 per cent stake in the business",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cổ phần",
+        "vietnamese_example": "20% cổ phần trong doanh nghiệp",
         "cefr": "C1"
     },
     "administer": {
@@ -2822,8 +2822,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ədˈmɪnɪstə(r)/",
         "example": "to administer a charity/fund/school",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quản lý",
+        "vietnamese_example": "quản lý một tổ chức từ thiện/quỹ/trường học",
         "cefr": "C1"
     },
     "administrative": {
@@ -2831,8 +2831,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ədˈmɪnɪstrətɪv/",
         "example": "an administrative job/assistant/error",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hành chính",
+        "vietnamese_example": "một công việc/trợ lý/lỗi hành chính",
         "cefr": "C1"
     },
     "audit": {
@@ -2840,8 +2840,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɔːdɪt/",
         "example": "an annual audit",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiểm toán",
+        "vietnamese_example": "kiểm toán hàng năm",
         "cefr": "C1"
     },
     "commodity": {
@@ -2849,8 +2849,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˈmɒdəti/",
         "example": "rice, flour and other basic commodities",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hàng hóa",
+        "vietnamese_example": "gạo, bột mì và các mặt hàng cơ bản khác",
         "cefr": "C1"
     },
     "contractor": {
@@ -2858,8 +2858,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈtræktə(r)/",
         "example": "a building/roofing/electrical contractor ",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "Nhà thầu",
+        "vietnamese_example": "một nhà thầu xây dựng/lợp mái/điện",
         "cefr": "C1"
     },
     "conversion": {
@@ -2867,8 +2867,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈvɜːʃn/",
         "example": "Their main business is the conversion of farm buildings into family homes.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chuyển đổi",
+        "vietnamese_example": "Hoạt động kinh doanh chính của họ là chuyển đổi các tòa nhà trang trại thành nhà ở gia đình.",
         "cefr": "C1"
     },
     "deputy": {
@@ -2876,8 +2876,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdepjuti/",
         "example": "I'm acting as deputy till the manager returns.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phó",
+        "vietnamese_example": "Tôi sẽ giữ chức phó cho đến khi người quản lý quay lại.",
         "cefr": "C1"
     },
     "forge": {
@@ -2885,8 +2885,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/fɔːdʒ/",
         "example": "a move to forge new links between management and workers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "rèn",
+        "vietnamese_example": "một động thái nhằm tạo mối liên kết mới giữa ban quản lý và người lao động",
         "cefr": "C1"
     },
     "intervention": {
@@ -2894,8 +2894,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪntəˈvenʃn/",
         "example": "calls for government intervention to save the steel industry",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự can thiệp",
+        "vietnamese_example": "kêu gọi chính phủ can thiệp để cứu ngành thép",
         "cefr": "C1"
     },
     "kidnap": {
@@ -2903,8 +2903,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɪdnæp/",
         "example": "Two businessmen have been kidnapped by terrorists.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bắt cóc",
+        "vietnamese_example": "Hai doanh nhân đã bị bọn khủng bố bắt cóc.",
         "cefr": "C1"
     },
     "landlord": {
@@ -2912,8 +2912,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlændlɔːd/",
         "example": "a buy-to-let landlord (= who buys houses and flats in order to rent them out)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chủ nhà",
+        "vietnamese_example": "chủ nhà mua để cho thuê (= người mua nhà và căn hộ để cho thuê)",
         "cefr": "C1"
     },
     "maximize": {
@@ -2921,8 +2921,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈmæksɪmaɪz/",
         "example": "to maximize efficiency/fitness/profits",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tối đa hóa",
+        "vietnamese_example": "để tối đa hóa hiệu quả/sự phù hợp/lợi nhuận",
         "cefr": "C1"
     },
     "mining": {
@@ -2930,8 +2930,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmaɪnɪŋ/",
         "example": "coal/diamond/gold/tin mining",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khai thác mỏ",
+        "vietnamese_example": "khai thác than/kim cương/vàng/thiếc",
         "cefr": "C1"
     },
     "net": {
@@ -2939,8 +2939,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/net/",
         "example": "a net profit of £500",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mạng lưới",
+        "vietnamese_example": "lợi nhuận ròng là £500",
         "cefr": "C1"
     },
     "patent": {
@@ -2948,8 +2948,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈpætnt/",
         "example": "patent on something, to apply for/obtain/take out a patent on an invention",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bằng sáng chế",
+        "vietnamese_example": "bằng sáng chế về cái gì đó, nộp đơn xin/có được/lấy bằng sáng chế cho một phát minh",
         "cefr": "C1"
     },
     "persistent": {
@@ -2957,8 +2957,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/pəˈsɪstənt/",
         "example": "How do you deal with persistent salesmen who won't take no for an answer?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiên trì",
+        "vietnamese_example": "Làm thế nào để bạn đối phó với những người bán hàng kiên trì không chấp nhận câu trả lời từ chối?",
         "cefr": "C1"
     },
     "probe": {
@@ -2966,8 +2966,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prəʊb/",
         "example": "a police probe into the financial affairs of the company",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thăm dò",
+        "vietnamese_example": "cảnh sát điều tra vấn đề tài chính của công ty",
         "cefr": "C1"
     },
     "proceeds": {
@@ -2975,8 +2975,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprəʊsiːdz/",
         "example": "She sold her car and bought a piano with the proceeds.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiền thu được",
+        "vietnamese_example": "Cô đã bán chiếc ô tô của mình và mua một cây đàn piano bằng số tiền thu được.",
         "cefr": "C1"
     },
     "processing": {
@@ -2984,8 +2984,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprəʊsesɪŋ/",
         "example": "the food processing industry",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xử lý",
+        "vietnamese_example": "ngành chế biến thực phẩm",
         "cefr": "C1"
     },
     "processor": {
@@ -2993,8 +2993,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprəʊsesə(r)/",
         "example": "The company is Ireland's largest dairy processor.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bộ xử lý",
+        "vietnamese_example": "Công ty này là nhà chế biến sữa lớn nhất Ireland.",
         "cefr": "C1"
     },
     "subsidy": {
@@ -3002,8 +3002,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsʌbsədi/",
         "example": "agricultural subsidies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trợ cấp",
+        "vietnamese_example": "trợ cấp nông nghiệp",
         "cefr": "C1"
     },
     "prosperity": {
@@ -3011,8 +3011,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prɒˈsperəti/",
         "example": "Our future prosperity depends on economic growth.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phồn vinh",
+        "vietnamese_example": "Sự thịnh vượng trong tương lai của chúng ta phụ thuộc vào tăng trưởng kinh tế.",
         "cefr": "C1"
     },
     "costly": {
@@ -3020,8 +3020,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkɒstli/",
         "example": "Buying new furniture may prove too costly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tốn kém",
+        "vietnamese_example": "Mua đồ nội thất mới có thể tỏ ra quá tốn kém.",
         "cefr": "C1"
     },
     "fundraising": {
@@ -3029,8 +3029,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfʌndreɪzɪŋ/",
         "example": "The hospice is planning a major fundraising event for June.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây quỹ",
+        "vietnamese_example": "Viện chăm sóc cuối đời đang lên kế hoạch tổ chức một sự kiện gây quỹ lớn vào tháng Sáu.",
         "cefr": "C1"
     },
     "taxpayer": {
@@ -3038,8 +3038,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtækspeɪə(r)/",
         "example": "Hundreds of thousands of pounds of taxpayers' money (= money paid in taxes) have been spent on the project.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người đóng thuế",
+        "vietnamese_example": "Hàng trăm ngàn bảng tiền của người nộp thuế (= tiền nộp thuế) đã được chi cho dự án.",
         "cefr": "C1"
     },
     "accountable": {
@@ -3047,8 +3047,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈkaʊntəbl/",
         "example": "The state spends taxpayers’ money and should be held accountable.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chịu trách nhiệm",
+        "vietnamese_example": "Nhà nước chi tiền của người nộp thuế và phải chịu trách nhiệm.",
         "cefr": "C1"
     },
     "beneficiary": {
@@ -3056,8 +3056,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌbenɪˈfɪʃəri/",
         "example": "Who will be the main beneficiary of the cuts in income tax?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người thụ hưởng",
+        "vietnamese_example": "Ai sẽ là người hưởng lợi chính từ việc cắt giảm thuế thu nhập?",
         "cefr": "C1"
     },
     "soar": {
@@ -3065,8 +3065,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/sɔː(r)/",
         "example": "soaring costs/prices/temperatures",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bay lên",
+        "vietnamese_example": "chi phí/giá cả/nhiệt độ tăng vọt",
         "cefr": "C1"
     },
     "abolish": {
@@ -3074,8 +3074,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈbɒlɪʃ/",
         "example": "This tax should be abolished.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bãi bỏ",
+        "vietnamese_example": "Thuế này nên được bãi bỏ.",
         "cefr": "C1"
     },
     "accelerate": {
@@ -3083,8 +3083,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əkˈseləreɪt/",
         "example": "Inflation continues to accelerate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tăng tốc",
+        "vietnamese_example": "Lạm phát tiếp tục tăng tốc.",
         "cefr": "C1"
     },
     "allocation": {
@@ -3092,8 +3092,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæləˈkeɪʃn/",
         "example": "We have spent our entire allocation for the year.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phân bổ",
+        "vietnamese_example": "Chúng tôi đã dành toàn bộ phân bổ của chúng tôi trong năm.",
         "cefr": "C1"
     },
     "allowance": {
@@ -3101,8 +3101,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈlaʊəns/",
         "example": "an allowance of $20 a day",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trợ cấp",
+        "vietnamese_example": "trợ cấp 20$ một ngày",
         "cefr": "C1"
     },
     "backing": {
@@ -3110,8 +3110,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbækɪŋ/",
         "example": "The police gave the proposals their full backing.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủng hộ",
+        "vietnamese_example": "Cảnh sát đã ủng hộ hoàn toàn các đề xuất của họ.",
         "cefr": "C1"
     },
     "bail": {
@@ -3119,8 +3119,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/beɪl/",
         "example": "Can anyone put up bail for you?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tại ngoại",
+        "vietnamese_example": "Có ai có thể bảo lãnh cho bạn được không?",
         "cefr": "C1"
     },
     "betray": {
@@ -3128,8 +3128,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/bɪˈtreɪ/",
         "example": "betray somebody/something, He was offered money to betray his colleagues.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phản bội",
+        "vietnamese_example": "phản bội ai/cái gì, Anh ta được cho tiền để phản bội đồng nghiệp của mình.",
         "cefr": "C1"
     },
     "bonus": {
@@ -3137,8 +3137,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbəʊnəs/",
         "example": "a £100 Christmas bonus",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thưởng",
+        "vietnamese_example": "tiền thưởng Giáng sinh £100",
         "cefr": "C1"
     },
     "capitalist": {
@@ -3146,8 +3146,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkæpɪtəlɪst/",
         "example": "a capitalist society/system/economy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà tư bản",
+        "vietnamese_example": "một xã hội/hệ thống/nền kinh tế tư bản chủ nghĩa",
         "cefr": "C1"
     },
     "chaos": {
@@ -3155,8 +3155,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkeɪɒs/",
         "example": "economic/political/domestic chaos",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự hỗn loạn",
+        "vietnamese_example": "sự hỗn loạn về kinh tế/chính trị/trong nước",
         "cefr": "C1"
     },
     "compensation": {
@@ -3164,8 +3164,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒmpenˈseɪʃn/",
         "example": "to claim/award/receive compensation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đền bù",
+        "vietnamese_example": "yêu cầu/trao thưởng/nhận tiền bồi thường",
         "cefr": "C1"
     },
     "confront": {
@@ -3173,8 +3173,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈfrʌnt/",
         "example": "What is to be done about the economic problems confronting the country?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đối đầu",
+        "vietnamese_example": "Phải làm gì trước những vấn đề kinh tế mà đất nước đang phải đối mặt?",
         "cefr": "C1"
     },
     "constituency": {
@@ -3182,8 +3182,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈstɪtʃuənsi/",
         "example": "Unemployment is high in her constituency.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khu vực bầu cử",
+        "vietnamese_example": "Tỷ lệ thất nghiệp ở khu vực bầu cử của cô ấy rất cao.",
         "cefr": "C1"
     },
     "constraint": {
@@ -3191,8 +3191,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈstreɪnt/",
         "example": "constraints of time/money/space",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hạn chế",
+        "vietnamese_example": "những hạn chế về thời gian/tiền bạc/không gian",
         "cefr": "C1"
     },
     "corresponding": {
@@ -3200,8 +3200,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌkɒrəˈspɒndɪŋ/",
         "example": "A change in the money supply brings a corresponding change in expenditure.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tương ứng",
+        "vietnamese_example": "Sự thay đổi trong cung tiền sẽ dẫn đến sự thay đổi tương ứng trong chi tiêu.",
         "cefr": "C1"
     },
     "corrupt": {
@@ -3209,8 +3209,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kəˈrʌpt/",
         "example": "It was seen as the only way to overthrow a corrupt regime.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tham nhũng",
+        "vietnamese_example": "Nó được coi là cách duy nhất để lật đổ một chế độ tham nhũng.",
         "cefr": "C1"
     },
     "counsellor": {
@@ -3218,8 +3218,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkaʊnsələ(r)/",
         "example": "I went to see a debt counsellor and she agreed to come to the bank with me.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cố vấn",
+        "vietnamese_example": "Tôi đến gặp chuyên gia tư vấn nợ và cô ấy đồng ý đến ngân hàng với tôi.",
         "cefr": "C1"
     },
     "deposit": {
@@ -3227,8 +3227,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈpɒzɪt/",
         "example": "Millions were deposited in Swiss bank accounts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiền gửi",
+        "vietnamese_example": "Hàng triệu người đã được gửi vào tài khoản ngân hàng Thụy Sĩ.",
         "cefr": "C1"
     },
     "domain": {
@@ -3236,8 +3236,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dəˈmeɪn/",
         "example": "Financial matters are her domain.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lãnh địa",
+        "vietnamese_example": "Vấn đề tài chính là lĩnh vực của cô ấy.",
         "cefr": "C1"
     },
     "earnings": {
@@ -3245,8 +3245,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɜːnɪŋz/",
         "example": "a rise in average earnings",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thu nhập",
+        "vietnamese_example": "sự gia tăng thu nhập trung bình",
         "cefr": "C1"
     },
     "encouraging": {
@@ -3254,8 +3254,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈkʌrɪdʒɪŋ/",
         "example": "This month's unemployment figures are not very encouraging.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đáng khích lệ",
+        "vietnamese_example": "Số liệu thất nghiệp trong tháng này không đáng khích lệ lắm.",
         "cefr": "C1"
     },
     "escalate": {
@@ -3263,8 +3263,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈeskəleɪt/",
         "example": "the escalating costs of healthcare",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "leo thang",
+        "vietnamese_example": "chi phí chăm sóc sức khỏe ngày càng tăng",
         "cefr": "C1"
     },
     "expenditure": {
@@ -3272,8 +3272,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪkˈspendɪtʃə(r)/",
         "example": "a reduction in public/government/military expenditure",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chi tiêu",
+        "vietnamese_example": "giảm chi tiêu công/chính phủ/quân sự",
         "cefr": "C1"
     },
     "exploitation": {
@@ -3281,8 +3281,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌeksplɔɪˈteɪʃn/",
         "example": "the exploitation of children",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bóc lột",
+        "vietnamese_example": "bóc lột trẻ em",
         "cefr": "C1"
     },
     "fine": {
@@ -3290,8 +3290,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/faɪn/",
         "example": "I got a parking fine for parking on double yellow lines.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khỏe",
+        "vietnamese_example": "Tôi bị phạt đậu xe vì đậu xe trên vạch đôi màu vàng.",
         "cefr": "C1"
     },
     "flaw": {
@@ -3299,8 +3299,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/flɔː/",
         "example": "The argument is full of fundamental flaws.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khiếm khuyết",
+        "vietnamese_example": "Lập luận này chứa đầy những sai sót cơ bản.",
         "cefr": "C1"
     },
     "flawed": {
@@ -3308,8 +3308,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/flɔːd/",
         "example": "seriously/fundamentally/fatally flawed",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thiếu sót",
+        "vietnamese_example": "thiếu sót nghiêm trọng/cơ bản/cực kỳ nghiêm trọng",
         "cefr": "C1"
     },
     "ideology": {
@@ -3317,8 +3317,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌaɪdiˈɒlədʒi/",
         "example": "Marxist/capitalist ideology",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hệ tư tưởng",
+        "vietnamese_example": "hệ tư tưởng Marxist/tư bản chủ nghĩa",
         "cefr": "C1"
     },
     "indicator": {
@@ -3326,8 +3326,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪndɪkeɪtə(r)/",
         "example": "The economic indicators are better than expected.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ báo",
+        "vietnamese_example": "Các chỉ số kinh tế tốt hơn mong đợi.",
         "cefr": "C1"
     },
     "personnel": {
@@ -3335,8 +3335,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌpɜːsəˈnel/",
         "example": "There is a severe shortage of skilled personnel.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhân viên",
+        "vietnamese_example": "Nhân lực có tay nghề đang thiếu trầm trọng.",
         "cefr": "C1"
     },
     "workout": {
@@ -3344,8 +3344,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwɜːkaʊt/",
         "example": "She does a 20-minute workout every morning.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tập luyện",
+        "vietnamese_example": "Cô ấy tập thể dục 20 phút mỗi sáng.",
         "cefr": "C1"
     },
     "counselling": {
@@ -3353,8 +3353,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkaʊnsəlɪŋ/",
         "example": "The couple decided to go for relationship counselling.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tư vấn",
+        "vietnamese_example": "Cặp đôi quyết định đi tư vấn mối quan hệ.",
         "cefr": "C1"
     },
     "feat": {
@@ -3362,8 +3362,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/fiːt/",
         "example": "The tunnel is a remarkable feat of engineering.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kỳ công",
+        "vietnamese_example": "Đường hầm là một kỳ công đáng chú ý của kỹ thuật.",
         "cefr": "C1"
     },
     "integrity": {
@@ -3371,8 +3371,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈteɡrəti/",
         "example": "personal/professional/artistic integrity",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chính trực",
+        "vietnamese_example": "tính toàn vẹn cá nhân/nghề nghiệp/nghệ thuật",
         "cefr": "C1"
     },
     "mobility": {
@@ -3380,8 +3380,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məʊˈbɪləti/",
         "example": "social/geographical/career mobility",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính di động",
+        "vietnamese_example": "sự di chuyển xã hội/địa lý/nghề nghiệp",
         "cefr": "C1"
     },
     "practitioner": {
@@ -3389,8 +3389,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prækˈtɪʃənə(r)/",
         "example": "dental practitioners",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người hành nghề",
+        "vietnamese_example": "bác sĩ nha khoa",
         "cefr": "C1"
     },
     "sack": {
@@ -3398,8 +3398,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/sæk/",
         "example": "She was sacked for refusing to work on Sundays.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bao",
+        "vietnamese_example": "Cô ấy bị sa thải vì từ chối làm việc vào ngày chủ nhật.",
         "cefr": "C1"
     },
     "verbal": {
@@ -3407,8 +3407,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈvɜːbl/",
         "example": "The job applicant must have good verbal skills.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bằng lời nói",
+        "vietnamese_example": "Người xin việc phải có kỹ năng nói tốt.",
         "cefr": "C1"
     },
     "whereby": {
@@ -3416,8 +3416,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/weəˈbaɪ/",
         "example": "They have introduced a new system whereby all employees must undergo regular training.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "theo đó",
+        "vietnamese_example": "Họ đã giới thiệu một hệ thống mới, theo đó tất cả nhân viên phải trải qua đào tạo thường xuyên.",
         "cefr": "C1"
     },
     "absent": {
@@ -3425,8 +3425,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈæbsənt/",
         "example": "He was absent from work for two weeks.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vắng mặt",
+        "vietnamese_example": "Anh ấy đã vắng mặt ở nơi làm việc trong hai tuần.",
         "cefr": "C1"
     },
     "academy": {
@@ -3434,8 +3434,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈkædəmi/",
         "example": "She trained at the Royal Academy of Music.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "học viện",
+        "vietnamese_example": "Cô được đào tạo tại Học viện Âm nhạc Hoàng gia.",
         "cefr": "C1"
     },
     "activist": {
@@ -3443,8 +3443,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈæktɪvɪst/",
         "example": "human/civil/animal rights activists",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà hoạt động",
+        "vietnamese_example": "nhà hoạt động nhân quyền/dân sự/động vật",
         "cefr": "C1"
     },
     "advocate": {
@@ -3452,8 +3452,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈædvəkət/",
         "example": "advocate for something/somebody, an advocate for hospital workers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người bào chữa",
+        "vietnamese_example": "biện hộ cho cái gì/ai đó, biện hộ cho nhân viên bệnh viện",
         "cefr": "C1"
     },
     "aide": {
@@ -3461,8 +3461,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/eɪd/",
         "example": "White House aides",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phụ tá",
+        "vietnamese_example": "trợ lý Nhà Trắng",
         "cefr": "C1"
     },
     "alliance": {
@@ -3470,8 +3470,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈlaɪəns/",
         "example": "to form/make an alliance",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liên minh",
+        "vietnamese_example": "thành lập/thành lập một liên minh",
         "cefr": "C1"
     },
     "amateur": {
@@ -3479,8 +3479,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈæmətə(r)/",
         "example": "an amateur photographer",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nghiệp dư",
+        "vietnamese_example": "một nhiếp ảnh gia nghiệp dư",
         "cefr": "C1"
     },
     "appoint": {
@@ -3488,8 +3488,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈpɔɪnt/",
         "example": "appoint somebody, They have appointed a new head teacher at my son's school.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bổ nhiệm",
+        "vietnamese_example": "bổ nhiệm ai đó, Họ đã bổ nhiệm một hiệu trưởng mới ở trường của con trai tôi.",
         "cefr": "C1"
     },
     "breakdown": {
@@ -3497,8 +3497,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbreɪkdaʊn/",
         "example": "a breakdown on the motorway",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự cố",
+        "vietnamese_example": "sự cố trên đường cao tốc",
         "cefr": "C1"
     },
     "burden": {
@@ -3506,8 +3506,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbɜːdn/",
         "example": "to bear/carry/ease/reduce/share the burden",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gánh nặng",
+        "vietnamese_example": "chịu/mang/dễ dàng/giảm bớt/chia sẻ gánh nặng",
         "cefr": "C1"
     },
     "cater": {
@@ -3515,8 +3515,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkeɪtə(r)/",
         "example": "(British English), cater for somebody/something, Most of our work now involves catering for weddings.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phục vụ",
+        "vietnamese_example": "(tiếng Anh Anh), phục vụ cho ai đó/thứ gì đó, Hầu hết công việc của chúng tôi hiện nay liên quan đến việc cung cấp dịch vụ ăn uống cho đám cưới.",
         "cefr": "C1"
     },
     "cease": {
@@ -3524,8 +3524,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/siːs/",
         "example": "Welfare payments cease as soon as an individual starts a job.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngưng",
+        "vietnamese_example": "Các khoản thanh toán phúc lợi chấm dứt ngay khi một cá nhân bắt đầu làm việc.",
         "cefr": "C1"
     },
     "charter": {
@@ -3533,8 +3533,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtʃɑːtə(r)/",
         "example": "the European Social Charter of workers’ rights",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điều lệ",
+        "vietnamese_example": "Hiến chương Xã hội Châu Âu về quyền của người lao động",
         "cefr": "C1"
     },
     "coalition": {
@@ -3542,8 +3542,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkəʊəˈlɪʃn/",
         "example": "The two parties have formed a coalition.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liên minh",
+        "vietnamese_example": "Hai bên đã thành lập một liên minh.",
         "cefr": "C1"
     },
     "collaboration": {
@@ -3551,8 +3551,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˌlæbəˈreɪʃn/",
         "example": "It was a collaboration that produced extremely useful results.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự hợp tác",
+        "vietnamese_example": "Đó là sự hợp tác mang lại kết quả cực kỳ hữu ích.",
         "cefr": "C1"
     },
     "compile": {
@@ -3560,8 +3560,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəmˈpaɪl/",
         "example": "We are trying to compile a list of suitable people for the job.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "biên soạn",
+        "vietnamese_example": "Chúng tôi đang cố gắng lập danh sách những người phù hợp cho công việc.",
         "cefr": "C1"
     },
     "confine": {
@@ -3569,8 +3569,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈfaɪn/",
         "example": "be confined to (doing) something, The work will not be confined to the Glasgow area.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hạn chế",
+        "vietnamese_example": "bị giới hạn (làm) điều gì đó, Công việc sẽ không bị giới hạn ở khu vực Glasgow.",
         "cefr": "C1"
     },
     "consensus": {
@@ -3578,8 +3578,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈsensəs/",
         "example": "consensus (about/on something), She is skilled at achieving consensus on sensitive issues.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự đồng thuận",
+        "vietnamese_example": "sự đồng thuận (về/về điều gì đó), Cô ấy có kỹ năng đạt được sự đồng thuận về các vấn đề nhạy cảm.",
         "cefr": "C1"
     },
     "cooperate": {
@@ -3587,8 +3587,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəʊˈɒpəreɪt/",
         "example": "The two groups agreed to cooperate with each other.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hợp tác",
+        "vietnamese_example": "Hai nhóm đã đồng ý hợp tác với nhau.",
         "cefr": "C1"
     },
     "cooperative": {
@@ -3596,8 +3596,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kəʊˈɒpərətɪv/",
         "example": "Cooperative activity is essential to effective community work.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hợp tác xã",
+        "vietnamese_example": "Hoạt động hợp tác là cần thiết để làm việc cộng đồng hiệu quả.",
         "cefr": "C1"
     },
     "coordinate": {
@@ -3605,8 +3605,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəʊˈɔːdɪneɪt/",
         "example": "coordinate something, They appointed a new manager to coordinate the work of the team.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điều phối",
+        "vietnamese_example": "phối hợp điều gì đó, Họ bổ nhiệm một người quản lý mới để điều phối công việc của nhóm.",
         "cefr": "C1"
     },
     "coordination": {
@@ -3614,8 +3614,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəʊˌɔːdɪˈneɪʃn/",
         "example": "The aim was to improve the coordination of services.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phối hợp",
+        "vietnamese_example": "Mục đích là để cải thiện sự phối hợp của các dịch vụ.",
         "cefr": "C1"
     },
     "coordinator": {
@@ -3623,8 +3623,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəʊˈɔːdɪneɪtə(r)/",
         "example": "The campaign needs an effective coordinator.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điều phối viên",
+        "vietnamese_example": "Chiến dịch cần một người điều phối hiệu quả.",
         "cefr": "C1"
     },
     "courtesy": {
@@ -3632,8 +3632,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɜːtəsi/",
         "example": "I was treated with the utmost courtesy by the staff.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lịch sự",
+        "vietnamese_example": "Tôi đã được nhân viên đối xử lịch sự nhất.",
         "cefr": "C1"
     },
     "craft": {
@@ -3641,8 +3641,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/krɑːft/",
         "example": "be crafted (from something), All the furniture is crafted from natural materials.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thủ công",
+        "vietnamese_example": "được chế tạo (từ thứ gì đó), Tất cả đồ nội thất đều được chế tác từ vật liệu tự nhiên.",
         "cefr": "C1"
     },
     "critique": {
@@ -3650,8 +3650,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/krɪˈtiːk/",
         "example": "She wrote a feminist critique of Freud's theories.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phê bình",
+        "vietnamese_example": "Cô đã viết một bài phê bình nữ quyền về lý thuyết của Freud.",
         "cefr": "C1"
     },
     "dawn": {
@@ -3659,8 +3659,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɔːn/",
         "example": "at dawn, They start work at dawn.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bình minh",
+        "vietnamese_example": "lúc bình minh, Họ bắt đầu công việc lúc bình minh.",
         "cefr": "C1"
     },
     "faculty": {
@@ -3668,8 +3668,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfæklti/",
         "example": "the Faculty of Law",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khoa",
+        "vietnamese_example": "Khoa Luật",
         "cefr": "C1"
     },
     "enrol": {
@@ -3677,8 +3677,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈrəʊl/",
         "example": "You need to enrol before the end of August.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tham gia",
+        "vietnamese_example": "Bạn cần đăng ký trước cuối tháng 8.",
         "cefr": "C1"
     },
     "ratio": {
@@ -3686,8 +3686,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈreɪʃiəʊ/",
         "example": "The school has a very high teacher-student ratio.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tỷ lệ",
+        "vietnamese_example": "Trường có tỷ lệ giáo viên-học sinh rất cao.",
         "cefr": "C1"
     },
     "attain": {
@@ -3695,8 +3695,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈteɪn/",
         "example": "Most of our students attained five ‘A’ grades in their exams.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đạt được",
+        "vietnamese_example": "Hầu hết học sinh của chúng tôi đều đạt được 5 điểm ‘A’ trong kỳ thi của mình.",
         "cefr": "C1"
     },
     "attendance": {
@@ -3704,8 +3704,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈtendəns/",
         "example": "Attendance at these lectures is not compulsory.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tham dự",
+        "vietnamese_example": "Việc tham dự các bài giảng này là không bắt buộc.",
         "cefr": "C1"
     },
     "institutional": {
@@ -3713,8 +3713,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪnstɪˈtjuːʃənl/",
         "example": "institutional investors",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thể chế",
+        "vietnamese_example": "nhà đầu tư tổ chức",
         "cefr": "C1"
     },
     "integral": {
@@ -3722,8 +3722,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪntɪɡrəl/",
         "example": "Music is an integral part of the school's curriculum.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tích phân",
+        "vietnamese_example": "Âm nhạc là một phần không thể thiếu trong chương trình giảng dạy của trường.",
         "cefr": "C1"
     },
     "principal": {
@@ -3731,8 +3731,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprɪnsəpl/",
         "example": "Peter Brown, principal of St John’s College",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hiệu trưởng",
+        "vietnamese_example": "Peter Brown, hiệu trưởng trường St John's College",
         "cefr": "C1"
     },
     "reconstruction": {
@@ -3740,8 +3740,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌriːkənˈstrʌkʃn/",
         "example": "the reconstruction of the educational system",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tái thiết",
+        "vietnamese_example": "tái thiết hệ thống giáo dục",
         "cefr": "C1"
     },
     "analogy": {
@@ -3749,8 +3749,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈnælədʒi/",
         "example": "analogy (between A and B), The teacher drew an analogy between the human heart and a pump.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tương tự",
+        "vietnamese_example": "tương tự (giữa A và B), Giáo viên vẽ sự tương tự giữa trái tim con người và một cái bơm.",
         "cefr": "C1"
     },
     "assemble": {
@@ -3758,8 +3758,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈsembl/",
         "example": "All the students were asked to assemble in the main hall.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tập hợp",
+        "vietnamese_example": "Tất cả học sinh được yêu cầu tập trung tại sảnh chính.",
         "cefr": "C1"
     },
     "attribute": {
@@ -3767,8 +3767,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈætrɪbjuːt/",
         "example": "Patience is one of the most important attributes in a teacher.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thuộc tính",
+        "vietnamese_example": "Kiên nhẫn là một trong những đức tính quan trọng nhất ở một giáo viên.",
         "cefr": "C1"
     },
     "benchmark": {
@@ -3776,8 +3776,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbentʃmɑːk/",
         "example": "Tests at the age of seven provide a benchmark against which the child's progress at school can be measured.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điểm chuẩn",
+        "vietnamese_example": "Các bài kiểm tra ở tuổi bảy cung cấp một tiêu chuẩn để đo lường sự tiến bộ của trẻ ở trường.",
         "cefr": "C1"
     },
     "buddy": {
@@ -3785,8 +3785,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbʌdi/",
         "example": "an old college buddy of mine",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bạn bè",
+        "vietnamese_example": "một người bạn đại học cũ của tôi",
         "cefr": "C1"
     },
     "catalogue": {
@@ -3794,8 +3794,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkætəlɒɡ/",
         "example": "a mail-order catalogue (= a book showing goods for sale to be sent to people’s homes)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "danh mục",
+        "vietnamese_example": "một danh mục đặt hàng qua thư (= một cuốn sách trưng bày hàng hóa để bán sẽ được gửi đến nhà của người dân)",
         "cefr": "C1"
     },
     "closure": {
@@ -3803,8 +3803,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkləʊʒə(r)/",
         "example": "factory closures",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đóng cửa",
+        "vietnamese_example": "đóng cửa nhà máy",
         "cefr": "C1"
     },
     "dedicated": {
@@ -3812,8 +3812,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈdedɪkeɪtɪd/",
         "example": "a dedicated teacher",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tận tụy",
+        "vietnamese_example": "một giáo viên tận tâm",
         "cefr": "C1"
     },
     "defy": {
@@ -3821,8 +3821,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈfaɪ/",
         "example": "I wouldn't have dared to defy my teachers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thách thức",
+        "vietnamese_example": "Tôi sẽ không dám thách thức thầy cô của mình.",
         "cefr": "C1"
     },
     "dimension": {
@@ -3830,8 +3830,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/daɪˈmenʃn/",
         "example": "We measured the dimensions of the kitchen.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kích thước",
+        "vietnamese_example": "Chúng tôi đo kích thước của nhà bếp.",
         "cefr": "C1"
     },
     "dismissal": {
@@ -3839,8 +3839,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪsˈmɪsl/",
         "example": "He still hopes to win his claim against unfair dismissal.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sa thải",
+        "vietnamese_example": "Anh ấy vẫn hy vọng giành được đơn kiện trước việc sa thải không công bằng.",
         "cefr": "C1"
     },
     "ease": {
@@ -3848,8 +3848,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/iːz/",
         "example": "with ease, He passed the exam with ease.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xoa dịu",
+        "vietnamese_example": "một cách dễ dàng, Anh ấy đã vượt qua kỳ thi một cách dễ dàng.",
         "cefr": "C1"
     },
     "equation": {
@@ -3857,8 +3857,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪˈkweɪʒn/",
         "example": "the numbers on the right-hand side of the equation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phương trình",
+        "vietnamese_example": "các số ở vế phải của phương trình",
         "cefr": "C1"
     },
     "excellence": {
@@ -3866,8 +3866,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈeksələns/",
         "example": "a reputation for academic excellence",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự xuất sắc",
+        "vietnamese_example": "danh tiếng về sự xuất sắc trong học tập",
         "cefr": "C1"
     },
     "fluid": {
@@ -3875,8 +3875,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfluːɪd/",
         "example": "body fluids (= for example, blood)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dịch",
+        "vietnamese_example": "chất lỏng cơ thể (= ví dụ, máu)",
         "cefr": "C1"
     },
     "guidance": {
@@ -3884,8 +3884,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡaɪdns/",
         "example": "guidance for teachers on how to use video in the classroom",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hướng dẫn",
+        "vietnamese_example": "hướng dẫn giáo viên cách sử dụng video trong lớp học",
         "cefr": "C1"
     },
     "ignorance": {
@@ -3893,8 +3893,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪɡnərəns/",
         "example": "They fought a long battle against prejudice and ignorance.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự thiếu hiểu biết",
+        "vietnamese_example": "Họ đã chiến đấu một cuộc chiến lâu dài chống lại thành kiến ​​và sự thiếu hiểu biết.",
         "cefr": "C1"
     },
     "injustice": {
@@ -3902,8 +3902,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈdʒʌstɪs/",
         "example": "We are committed to fighting against poverty and injustice.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự bất công",
+        "vietnamese_example": "Chúng tôi cam kết đấu tranh chống lại nghèo đói và bất công.",
         "cefr": "C1"
     },
     "insertion": {
@@ -3911,8 +3911,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈsɜːʃn/",
         "example": "An examination is carried out before the insertion of the tube.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chèn",
+        "vietnamese_example": "Việc kiểm tra được thực hiện trước khi đưa ống vào.",
         "cefr": "C1"
     },
     "inspect": {
@@ -3920,8 +3920,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈspekt/",
         "example": "inspect something/somebody, The teacher walked around inspecting their work.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thanh tra",
+        "vietnamese_example": "kiểm tra cái gì/ai đó, Giáo viên đi vòng quanh kiểm tra công việc của họ.",
         "cefr": "C1"
     },
     "inspection": {
@@ -3929,8 +3929,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈspekʃn/",
         "example": "Regular inspections are carried out at the prison.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điều tra",
+        "vietnamese_example": "Việc kiểm tra thường xuyên được thực hiện tại nhà tù.",
         "cefr": "C1"
     },
     "instinct": {
@@ -3938,8 +3938,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnstɪŋkt/",
         "example": "She did not seem to have any of the usual maternal instincts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản năng",
+        "vietnamese_example": "Cô ấy dường như không có bất kỳ bản năng làm mẹ thông thường nào.",
         "cefr": "C1"
     },
     "investigator": {
@@ -3947,8 +3947,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈvestɪɡeɪtə(r)/",
         "example": "air safety investigators",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người điều tra",
+        "vietnamese_example": "điều tra viên an toàn hàng không",
         "cefr": "C1"
     },
     "maintenance": {
@@ -3956,8 +3956,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmeɪntənəns/",
         "example": "The school pays for heating and the maintenance of the buildings.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "BẢO TRÌ",
+        "vietnamese_example": "Nhà trường trả tiền sưởi ấm và bảo trì các tòa nhà.",
         "cefr": "C1"
     },
     "moderate": {
@@ -3965,8 +3965,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmɒdərət/",
         "example": "students of moderate ability",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vừa phải",
+        "vietnamese_example": "học sinh có khả năng trung bình",
         "cefr": "C1"
     },
     "notable": {
@@ -3974,8 +3974,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈnəʊtəbl/",
         "example": "a notable success/achievement/example",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đáng chú ý",
+        "vietnamese_example": "một thành công/thành tựu/ví dụ đáng chú ý",
         "cefr": "C1"
     },
     "notably": {
@@ -3983,8 +3983,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈnəʊtəbli/",
         "example": "The house had many drawbacks, most notably its price.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đáng chú ý",
+        "vietnamese_example": "Ngôi nhà có nhiều nhược điểm, đáng chú ý nhất là giá của nó.",
         "cefr": "C1"
     },
     "nursery": {
@@ -3992,8 +3992,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈnɜːsəri/",
         "example": "at nursery, Her youngest child is at nursery now.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vườn ươm",
+        "vietnamese_example": "ở nhà trẻ, đứa con út của cô hiện đang ở nhà trẻ.",
         "cefr": "C1"
     },
     "oblige": {
@@ -4001,8 +4001,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈblaɪdʒ/",
         "example": "Parents are obliged by law to send their children to school.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bắt buộc",
+        "vietnamese_example": "Luật pháp buộc cha mẹ phải cho con đi học.",
         "cefr": "C1"
     },
     "pad": {
@@ -4010,8 +4010,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/pæd/",
         "example": "medicated cleansing pads for sensitive skin",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đệm",
+        "vietnamese_example": "miếng làm sạch thuốc dành cho da nhạy cảm",
         "cefr": "C1"
     },
     "syndrome": {
@@ -4019,8 +4019,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsɪndrəʊm/",
         "example": "PMS or premenstrual syndrome",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hội chứng",
+        "vietnamese_example": "PMS hoặc hội chứng tiền kinh nguyệt",
         "cefr": "C1"
     },
     "epidemic": {
@@ -4028,8 +4028,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌepɪˈdemɪk/",
         "example": "the outbreak of a flu epidemic",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bệnh dịch",
+        "vietnamese_example": "sự bùng phát của dịch cúm",
         "cefr": "C1"
     },
     "physician": {
@@ -4037,8 +4037,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/fɪˈzɪʃn/",
         "example": "Dr Dennett is a practicing family physician in Atlanta.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bác sĩ",
+        "vietnamese_example": "Bác sĩ Dennett là bác sĩ gia đình đang hành nghề ở Atlanta.",
         "cefr": "C1"
     },
     "diagnose": {
@@ -4046,8 +4046,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈdaɪəɡnəʊz/",
         "example": "diagnose something, The test is used to diagnose a variety of diseases.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chẩn đoán",
+        "vietnamese_example": "chẩn đoán điều gì đó, Xét nghiệm được sử dụng để chẩn đoán nhiều loại bệnh.",
         "cefr": "C1"
     },
     "misery": {
@@ -4055,8 +4055,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɪzəri/",
         "example": "Fame brought her nothing but misery.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khốn khổ",
+        "vietnamese_example": "Sự nổi tiếng không mang lại cho cô điều gì ngoài sự đau khổ.",
         "cefr": "C1"
     },
     "prescribe": {
@@ -4064,8 +4064,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/prɪˈskraɪb/",
         "example": "prescribe something, Valium is usually prescribed to treat anxiety.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quy định",
+        "vietnamese_example": "kê toa một cái gì đó, Valium thường được kê toa để điều trị chứng lo âu.",
         "cefr": "C1"
     },
     "prescription": {
@@ -4073,8 +4073,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prɪˈskrɪpʃn/",
         "example": "prescription for something, The doctor gave me a prescription for antibiotics.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "toa thuốc",
+        "vietnamese_example": "đơn thuốc cho một cái gì đó, Bác sĩ đã cho tôi một đơn thuốc kháng sinh.",
         "cefr": "C1"
     },
     "vulnerability": {
@@ -4082,8 +4082,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌvʌlnərəˈbɪləti/",
         "example": "the vulnerability of newborn babies to disease",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính dễ bị tổn thương",
+        "vietnamese_example": "tính dễ bị tổn thương của trẻ sơ sinh trước bệnh tật",
         "cefr": "C1"
     },
     "ward": {
@@ -4091,8 +4091,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/wɔːd/",
         "example": "a maternity/surgical/psychiatric/children’s ward",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phường",
+        "vietnamese_example": "khoa sản/phẫu thuật/tâm thần/trẻ em",
         "cefr": "C1"
     },
     "well-being": {
@@ -4100,8 +4100,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwel biːɪŋ/",
         "example": "emotional/physical/psychological well-being",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hạnh phúc",
+        "vietnamese_example": "tình trạng khỏe mạnh về cảm xúc/thể chất/tâm lý",
         "cefr": "C1"
     },
     "admission": {
@@ -4109,8 +4109,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ədˈmɪʃn/",
         "example": "Hospital admission is not necessary in most cases.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhập học",
+        "vietnamese_example": "Nhập viện là không cần thiết trong hầu hết các trường hợp.",
         "cefr": "C1"
     },
     "appetite": {
@@ -4118,8 +4118,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈæpɪtaɪt/",
         "example": "He suffered from headaches and loss of appetite.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thèm ăn",
+        "vietnamese_example": "Anh ấy bị đau đầu và chán ăn.",
         "cefr": "C1"
     },
     "assault": {
@@ -4127,8 +4127,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈsɔːlt/",
         "example": "Both men were charged with assault.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tấn công",
+        "vietnamese_example": "Cả hai người đàn ông đều bị buộc tội tấn công.",
         "cefr": "C1"
     },
     "cognitive": {
@@ -4136,8 +4136,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkɒɡnətɪv/",
         "example": "a child’s cognitive development",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhận thức",
+        "vietnamese_example": "sự phát triển nhận thức của trẻ",
         "cefr": "C1"
     },
     "consciousness": {
@@ -4145,8 +4145,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒnʃəsnəs/",
         "example": "I can't remember any more—I must have lost consciousness.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ý thức",
+        "vietnamese_example": "Tôi không thể nhớ được nữa - chắc là tôi đã bất tỉnh.",
         "cefr": "C1"
     },
     "detain": {
@@ -4154,8 +4154,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈteɪn/",
         "example": "One man has been detained for questioning.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giam",
+        "vietnamese_example": "Một người đàn ông đã bị bắt giữ để thẩm vấn.",
         "cefr": "C1"
     },
     "deteriorate": {
@@ -4163,8 +4163,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈtɪəriəreɪt/",
         "example": "Her health deteriorated rapidly, and she died shortly afterwards.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xấu đi",
+        "vietnamese_example": "Sức khỏe của bà suy giảm nhanh chóng và bà qua đời ngay sau đó.",
         "cefr": "C1"
     },
     "dose": {
@@ -4172,8 +4172,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dəʊs/",
         "example": "a high/low/lethal dose",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liều lượng",
+        "vietnamese_example": "liều cao/thấp/gây chết người",
         "cefr": "C1"
     },
     "fibre": {
@@ -4181,8 +4181,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfaɪbə(r)/",
         "example": "dietary fibre",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chất xơ",
+        "vietnamese_example": "chất xơ",
         "cefr": "C1"
     },
     "frustrated": {
@@ -4190,8 +4190,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/frʌˈstreɪtɪd/",
         "example": "It's very easy to get frustrated in this job.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bực bội",
+        "vietnamese_example": "Rất dễ nản lòng trong công việc này.",
         "cefr": "C1"
     },
     "frustrating": {
@@ -4199,8 +4199,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/frʌˈstreɪtɪŋ/",
         "example": "It's frustrating to have to wait so long.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "làm nản lòng",
+        "vietnamese_example": "Thật khó chịu khi phải chờ đợi lâu như vậy.",
         "cefr": "C1"
     },
     "infect": {
@@ -4208,8 +4208,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈfekt/",
         "example": "infect somebody/something (with something), It is not possible to infect another person through kissing.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lây nhiễm",
+        "vietnamese_example": "lây nhiễm cho ai đó/thứ gì đó (với thứ gì đó), Không thể lây nhiễm cho người khác qua hôn.",
         "cefr": "C1"
     },
     "inmate": {
@@ -4217,8 +4217,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnmeɪt/",
         "example": "The jail has 500 inmates.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tù nhân",
+        "vietnamese_example": "Nhà tù có 500 tù nhân.",
         "cefr": "C1"
     },
     "integrated": {
@@ -4226,8 +4226,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪntɪɡreɪtɪd/",
         "example": "an integrated programme of patient care",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tích hợp",
+        "vietnamese_example": "chương trình chăm sóc bệnh nhân tích hợp",
         "cefr": "C1"
     },
     "liver": {
@@ -4235,8 +4235,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɪvə(r)/",
         "example": "liver disease",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gan",
+        "vietnamese_example": "bệnh gan",
         "cefr": "C1"
     },
     "originate": {
@@ -4244,8 +4244,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈrɪdʒɪneɪt/",
         "example": "The disease is thought to have originated in the tropics.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bắt nguồn",
+        "vietnamese_example": "Căn bệnh này được cho là có nguồn gốc ở vùng nhiệt đới.",
         "cefr": "C1"
     },
     "outbreak": {
@@ -4253,8 +4253,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈaʊtbreɪk/",
         "example": "the outbreak of war",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự bùng phát",
+        "vietnamese_example": "chiến tranh bùng nổ",
         "cefr": "C1"
     },
     "psychiatric": {
@@ -4262,8 +4262,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌsaɪkiˈætrɪk/",
         "example": "psychiatric disorders",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tâm thần",
+        "vietnamese_example": "rối loạn tâm thần",
         "cefr": "C1"
     },
     "rehabilitation": {
@@ -4271,8 +4271,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌriːəˌbɪlɪˈteɪʃn/",
         "example": "a drug rehabilitation centre",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phục hồi chức năng",
+        "vietnamese_example": "một trung tâm cai nghiện ma túy",
         "cefr": "C1"
     },
     "revive": {
@@ -4280,8 +4280,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/rɪˈvaɪv/",
         "example": "The flowers soon revived in water.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hồi sinh",
+        "vietnamese_example": "Những bông hoa sớm hồi sinh trong nước.",
         "cefr": "C1"
     },
     "robust": {
@@ -4289,8 +4289,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/rəʊˈbʌst/",
         "example": "She was almost 90, but still very robust.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khỏe mạnh",
+        "vietnamese_example": "Bà đã gần 90 nhưng vẫn còn rất khỏe mạnh.",
         "cefr": "C1"
     },
     "stabilize": {
@@ -4298,8 +4298,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈsteɪbəlaɪz/",
         "example": "The patient's condition stabilized.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ổn định",
+        "vietnamese_example": "Tình trạng bệnh nhân ổn định.",
         "cefr": "C1"
     },
     "thrive": {
@@ -4307,8 +4307,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/θraɪv/",
         "example": "New businesses thrive in this area.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phát triển mạnh",
+        "vietnamese_example": "Các doanh nghiệp mới phát triển mạnh trong lĩnh vực này.",
         "cefr": "C1"
     },
     "transmission": {
@@ -4316,8 +4316,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/trænzˈmɪʃn/",
         "example": "the transmission of the disease",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quá trình lây truyền",
+        "vietnamese_example": "sự lây truyền của bệnh",
         "cefr": "C1"
     },
     "trauma": {
@@ -4325,8 +4325,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtrɔːmə/",
         "example": "the effects of trauma and stress on the body",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tổn thương",
+        "vietnamese_example": "ảnh hưởng của chấn thương và căng thẳng lên cơ thể",
         "cefr": "C1"
     },
     "unveil": {
@@ -4334,8 +4334,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌʌnˈveɪl/",
         "example": "The Queen unveiled a plaque to mark the official opening of the hospital.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiết lộ",
+        "vietnamese_example": "Nữ hoàng đã khánh thành tấm bảng đánh dấu ngày chính thức khai trương bệnh viện.",
         "cefr": "C1"
     },
     "vulnerable": {
@@ -4343,8 +4343,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈvʌlnərəbl/",
         "example": "These offices are highly vulnerable to terrorist attack.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dễ bị tổn thương",
+        "vietnamese_example": "Những văn phòng này rất dễ bị tấn công khủng bố.",
         "cefr": "C1"
     },
     "brutal": {
@@ -4352,8 +4352,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈbruːtl/",
         "example": "a brutal attack/murder/rape/killing",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tàn bạo",
+        "vietnamese_example": "một cuộc tấn công/giết người/hiếp dâm/giết người tàn bạo",
         "cefr": "C1"
     },
     "custody": {
@@ -4361,8 +4361,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkʌstədi/",
         "example": "Who will have custody of the children?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quyền giám hộ",
+        "vietnamese_example": "Ai sẽ có quyền nuôi con?",
         "cefr": "C1"
     },
     "imprison": {
@@ -4370,8 +4370,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪmˈprɪzn/",
         "example": "be imprisoned (for something), They were imprisoned for possession of drugs.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bỏ tù",
+        "vietnamese_example": "bị bỏ tù (vì điều gì đó), Họ bị bỏ tù vì tội tàng trữ ma túy.",
         "cefr": "C1"
     },
     "imprisonment": {
@@ -4379,8 +4379,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪmˈprɪznmənt/",
         "example": "to be sentenced to life imprisonment for murder",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bỏ tù",
+        "vietnamese_example": "phải lĩnh án chung thân về tội giết người",
         "cefr": "C1"
     },
     "prosecution": {
@@ -4388,8 +4388,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌprɒsɪˈkjuːʃn/",
         "example": "Prosecution for a first minor offence rarely leads to imprisonment.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "truy tố",
+        "vietnamese_example": "Việc truy tố một tội nhỏ lần đầu hiếm khi dẫn đến phạt tù.",
         "cefr": "C1"
     },
     "squad": {
@@ -4397,8 +4397,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/skwɒd/",
         "example": "the drugs/fraud/bomb/riot squad ",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đội hình",
+        "vietnamese_example": "đội ma túy/lừa đảo/đánh bom/bạo loạn",
         "cefr": "C1"
     },
     "confession": {
@@ -4406,8 +4406,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈfeʃn/",
         "example": "After hours of questioning by police, she made a full confession.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự xưng tội",
+        "vietnamese_example": "Sau nhiều giờ bị cảnh sát thẩm vấn, cô đã khai nhận toàn bộ hành vi của mình.",
         "cefr": "C1"
     },
     "constitute": {
@@ -4415,8 +4415,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒnstɪtjuːt/",
         "example": "Does such an activity constitute a criminal offence?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cấu thành",
+        "vietnamese_example": "Hoạt động như vậy có cấu thành tội phạm hình sự không?",
         "cefr": "C1"
     },
     "convict": {
@@ -4424,8 +4424,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈvɪkt/",
         "example": "be convicted (of something), He was convicted of fraud.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kết án",
+        "vietnamese_example": "bị kết án (về điều gì đó), Anh ta bị kết án về tội lừa đảo.",
         "cefr": "C1"
     },
     "coup": {
@@ -4433,8 +4433,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kuː/",
         "example": "He seized power in a military coup in 2008.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cuộc đảo chính",
+        "vietnamese_example": "Ông lên nắm quyền trong một cuộc đảo chính quân sự năm 2008.",
         "cefr": "C1"
     },
     "extremist": {
@@ -4442,8 +4442,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪkˈstriːmɪst/",
         "example": "left-wing/right-wing/political/religious extremists",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cực đoan",
+        "vietnamese_example": "những kẻ cực đoan cánh tả/cánh hữu/chính trị/tôn giáo",
         "cefr": "C1"
     },
     "presently": {
@@ -4451,8 +4451,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈprezntli/",
         "example": "The crime is presently being investigated by the police.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hiện tại",
+        "vietnamese_example": "Hiện vụ án đang được cảnh sát điều tra làm rõ.",
         "cefr": "C1"
     },
     "prosecute": {
@@ -4460,8 +4460,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈprɒsɪkjuːt/",
         "example": "The police decided not to prosecute.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "truy tố",
+        "vietnamese_example": "Cảnh sát quyết định không truy tố.",
         "cefr": "C1"
     },
     "riot": {
@@ -4469,8 +4469,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈraɪət/",
         "example": "One prison guard was killed when a riot broke out in the jail.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cuộc náo loạn",
+        "vietnamese_example": "Một cai ngục đã thiệt mạng khi bạo loạn nổ ra trong nhà tù.",
         "cefr": "C1"
     },
     "suspicious": {
@@ -4478,8 +4478,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/səˈspɪʃəs/",
         "example": "They became suspicious of his behaviour and contacted the police.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khả nghi",
+        "vietnamese_example": "Họ trở nên nghi ngờ về hành vi của anh ta và liên lạc với cảnh sát.",
         "cefr": "C1"
     },
     "accountability": {
@@ -4487,8 +4487,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˌkaʊntəˈbɪləti/",
         "example": "proposals for greater police accountability",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trách nhiệm giải trình",
+        "vietnamese_example": "Đề xuất nâng cao trách nhiệm của cảnh sát",
         "cefr": "C1"
     },
     "accusation": {
@@ -4496,8 +4496,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌækjuˈzeɪʃn/",
         "example": "I don't want to make an accusation until I have some proof.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lời buộc tội",
+        "vietnamese_example": "Tôi không muốn buộc tội cho đến khi tôi có bằng chứng.",
         "cefr": "C1"
     },
     "accused": {
@@ -4505,8 +4505,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ði əˈkjuːzd/",
         "example": "The accused was found innocent.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bị buộc tội",
+        "vietnamese_example": "Bị cáo được tuyên vô tội.",
         "cefr": "C1"
     },
     "allegation": {
@@ -4514,8 +4514,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæləˈɡeɪʃn/",
         "example": "to investigate/deny/withdraw an allegation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lời cáo buộc",
+        "vietnamese_example": "điều tra/phủ nhận/rút lại lời cáo buộc",
         "cefr": "C1"
     },
     "await": {
@@ -4523,8 +4523,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈweɪt/",
         "example": "He is in custody awaiting trial.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chờ đợi",
+        "vietnamese_example": "Anh ta đang bị giam chờ xét xử.",
         "cefr": "C1"
     },
     "backup": {
@@ -4532,8 +4532,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbækʌp/",
         "example": "The police had backup from the army.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hỗ trợ",
+        "vietnamese_example": "Cảnh sát đã có sự hỗ trợ từ quân đội.",
         "cefr": "C1"
     },
     "civilian": {
@@ -4541,8 +4541,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/səˈvɪliən/",
         "example": "He left the army and returned to civilian life.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dân sự",
+        "vietnamese_example": "Anh rời quân ngũ và trở lại cuộc sống dân sự.",
         "cefr": "C1"
     },
     "clash": {
@@ -4550,8 +4550,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/klæʃ/",
         "example": "Clashes broke out between police and demonstrators.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xung đột",
+        "vietnamese_example": "Đụng độ đã nổ ra giữa cảnh sát và người biểu tình.",
         "cefr": "C1"
     },
     "corruption": {
@@ -4559,8 +4559,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˈrʌpʃn/",
         "example": "allegations of bribery and corruption",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tham nhũng",
+        "vietnamese_example": "cáo buộc hối lộ và tham nhũng",
         "cefr": "C1"
     },
     "denial": {
@@ -4568,8 +4568,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈnaɪəl/",
         "example": "denial (of something), the prisoner’s repeated denials of the charges against him",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phủ nhận",
+        "vietnamese_example": "phủ nhận (về điều gì đó), việc tù nhân liên tục phủ nhận những cáo buộc chống lại anh ta",
         "cefr": "C1"
     },
     "denounce": {
@@ -4577,8 +4577,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈnaʊns/",
         "example": "denounce somebody/something, She publicly denounced the government's handling of the crisis.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tố cáo",
+        "vietnamese_example": "tố cáo ai/cái gì, Bà công khai tố cáo cách chính phủ xử lý khủng hoảng.",
         "cefr": "C1"
     },
     "detection": {
@@ -4586,8 +4586,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈtekʃn/",
         "example": "crime prevention and detection",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phát hiện",
+        "vietnamese_example": "phòng ngừa và phát hiện tội phạm",
         "cefr": "C1"
     },
     "detention": {
@@ -4595,8 +4595,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈtenʃn/",
         "example": "They were sentenced to 12 months' detention in a young offender institution.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giam giữ",
+        "vietnamese_example": "Họ bị kết án 12 tháng giam giữ trong trại giam dành cho phạm nhân trẻ tuổi.",
         "cefr": "C1"
     },
     "discharge": {
@@ -4604,8 +4604,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪsˈtʃɑːdʒ/",
         "example": "be discharged from something, He was discharged from the army following his injury.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phóng điện",
+        "vietnamese_example": "được giải ngũ khỏi một cái gì đó, Anh ấy đã được giải ngũ sau khi bị thương.",
         "cefr": "C1"
     },
     "empower": {
@@ -4613,8 +4613,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪmˈpaʊə(r)/",
         "example": "be empowered (to do something), The courts were empowered to impose the death sentence for certain crimes.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trao quyền",
+        "vietnamese_example": "được trao quyền (để làm điều gì đó), Tòa án được trao quyền để áp dụng hình phạt tử hình đối với một số tội phạm nhất định.",
         "cefr": "C1"
     },
     "enforce": {
@@ -4622,8 +4622,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈfɔːs/",
         "example": "enforce something, It's the job of the police to enforce the law.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thi hành",
+        "vietnamese_example": "thực thi điều gì đó, công việc của cảnh sát là thực thi pháp luật.",
         "cefr": "C1"
     },
     "evacuate": {
@@ -4631,8 +4631,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪˈvækjueɪt/",
         "example": "evacuate something, Police evacuated nearby buildings.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sơ tán",
+        "vietnamese_example": "sơ tán một cái gì đó, Cảnh sát sơ tán các tòa nhà gần đó.",
         "cefr": "C1"
     },
     "firearm": {
@@ -4640,8 +4640,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfaɪərɑːm/",
         "example": "The police were issued with firearms.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "súng cầm tay",
+        "vietnamese_example": "Cảnh sát đã được cấp súng.",
         "cefr": "C1"
     },
     "fit": {
@@ -4649,8 +4649,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/fɪt/",
         "example": "to have an epileptic fit",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phù hợp",
+        "vietnamese_example": "mắc chứng động kinh",
         "cefr": "C1"
     },
     "hostage": {
@@ -4658,8 +4658,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhɒstɪdʒ/",
         "example": "Three children were taken hostage during the bank robbery.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "con tin",
+        "vietnamese_example": "Ba đứa trẻ bị bắt làm con tin trong vụ cướp ngân hàng.",
         "cefr": "C1"
     },
     "humanity": {
@@ -4667,8 +4667,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/hjuːˈmænəti/",
         "example": "He was found guilty of crimes against humanity.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhân loại",
+        "vietnamese_example": "Anh ta bị kết tội chống lại loài người.",
         "cefr": "C1"
     },
     "identification": {
@@ -4676,8 +4676,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/aɪˌdentɪfɪˈkeɪʃn/",
         "example": "The identification of the crash victims was a long and difficult task.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhận dạng",
+        "vietnamese_example": "Việc xác định danh tính nạn nhân vụ tai nạn là một nhiệm vụ lâu dài và khó khăn.",
         "cefr": "C1"
     },
     "incidence": {
@@ -4685,8 +4685,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnsɪdəns/",
         "example": "an area with a high incidence of crime",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự xuất hiện",
+        "vietnamese_example": "khu vực có tỷ lệ tội phạm cao",
         "cefr": "C1"
     },
     "infamous": {
@@ -4694,8 +4694,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪnfəməs/",
         "example": "a general who was infamous for his brutality",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khét tiếng",
+        "vietnamese_example": "một vị tướng khét tiếng vì sự tàn bạo của mình",
         "cefr": "C1"
     },
     "compliance": {
@@ -4703,8 +4703,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəmˈplaɪəns/",
         "example": "compliance (with something), procedures that must be followed to ensure full compliance with the law",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "Tuân thủ",
+        "vietnamese_example": "tuân thủ (với cái gì đó), các thủ tục phải được tuân theo để đảm bảo tuân thủ đầy đủ pháp luật",
         "cefr": "C1"
     },
     "lawsuit": {
@@ -4712,8 +4712,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɔːsuːt/",
         "example": "He filed a lawsuit against his record label.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vụ kiện",
+        "vietnamese_example": "Anh ấy đã đệ đơn kiện hãng thu âm của mình.",
         "cefr": "C1"
     },
     "legislation": {
@@ -4721,17 +4721,17 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌledʒɪsˈleɪʃn/",
         "example": "an important piece of legislation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "pháp luật",
+        "vietnamese_example": "một văn bản luật quan trọng",
         "cefr": "C1"
     },
     "constitutional": {
-        "definition": "",
+        "definition": "Connected with the constitution of a country or organization.",
         "pos": "adj",
         "pron": "/ˌkɒnstɪˈtjuːʃənl/",
-        "example": "",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "example": "The court must protect citizens' constitutional rights.",
+        "vietnamese": "hiến pháp",
+        "vietnamese_example": "Tòa án phải bảo vệ các quyền hiến pháp của công dân.",
         "cefr": "C1"
     },
     "judicial": {
@@ -4739,8 +4739,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dʒuˈdɪʃl/",
         "example": "judicial powers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tư pháp",
+        "vietnamese_example": "quyền tư pháp",
         "cefr": "C1"
     },
     "magistrate": {
@@ -4748,8 +4748,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmædʒɪstreɪt/",
         "example": "to come up before the magistrates",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quan tòa",
+        "vietnamese_example": "đến trước các quan tòa",
         "cefr": "C1"
     },
     "solicitor": {
@@ -4757,8 +4757,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/səˈlɪsɪtə(r)/",
         "example": "Her first step was to contact a solicitor for advice.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "luật sư",
+        "vietnamese_example": "Bước đầu tiên của cô là liên hệ với luật sư để được tư vấn.",
         "cefr": "C1"
     },
     "attorney": {
@@ -4766,8 +4766,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈtɜːni/",
         "example": "The prosecuting attorney began with a short opening statement.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "luật sư",
+        "vietnamese_example": "Luật sư công tố bắt đầu bằng lời mở đầu ngắn gọn.",
         "cefr": "C1"
     },
     "enact": {
@@ -4775,8 +4775,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪˈnækt/",
         "example": "(be) enacted (by somebody/something), legislation enacted by parliament",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ban hành",
+        "vietnamese_example": "(được) ban hành (bởi ai/cái gì), đạo luật được quốc hội ban hành",
         "cefr": "C1"
     },
     "enforcement": {
@@ -4784,8 +4784,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈfɔːsmənt/",
         "example": "strict enforcement of regulations",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thực thi",
+        "vietnamese_example": "thực thi nghiêm ngặt các quy định",
         "cefr": "C1"
     },
     "jurisdiction": {
@@ -4793,8 +4793,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdʒʊərɪsˈdɪkʃn/",
         "example": "jurisdiction over somebody/something, The English court had no jurisdiction over the defendants.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thẩm quyền",
+        "vietnamese_example": "quyền tài phán đối với ai đó/cái gì đó, Tòa án Anh không có quyền tài phán đối với các bị cáo.",
         "cefr": "C1"
     },
     "proceeding": {
@@ -4802,8 +4802,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prəˈsiːdɪŋ/",
         "example": "court/legal/judicial proceedings",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiến hành",
+        "vietnamese_example": "thủ tục tố tụng tại tòa án/pháp lý/tư pháp",
         "cefr": "C1"
     },
     "ruling": {
@@ -4811,8 +4811,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈruːlɪŋ/",
         "example": "The court will make its ruling on the case next week.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cai trị",
+        "vietnamese_example": "Tòa án sẽ đưa ra phán quyết về vụ việc vào tuần tới.",
         "cefr": "C1"
     },
     "verdict": {
@@ -4820,8 +4820,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈvɜːdɪkt/",
         "example": "Has the jury reached a verdict?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phán quyết",
+        "vietnamese_example": "Bồi thẩm đoàn đã đưa ra phán quyết chưa?",
         "cefr": "C1"
     },
     "warrant": {
@@ -4829,8 +4829,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwɒrənt/",
         "example": "an arrest warrant",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lệnh bảo đảm",
+        "vietnamese_example": "lệnh bắt giữ",
         "cefr": "C1"
     },
     "accordance": {
@@ -4838,8 +4838,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈkɔːdns/",
         "example": "in accordance with legal requirements",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phù hợp",
+        "vietnamese_example": "phù hợp với yêu cầu pháp lý",
         "cefr": "C1"
     },
     "amend": {
@@ -4847,8 +4847,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈmend/",
         "example": "He asked to see the amended version.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sửa đổi",
+        "vietnamese_example": "Anh ấy yêu cầu được xem bản sửa đổi.",
         "cefr": "C1"
     },
     "amendment": {
@@ -4856,8 +4856,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈmendmənt/",
         "example": "to introduce/propose/table an amendment (= to suggest it)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sửa đổi",
+        "vietnamese_example": "giới thiệu/đề xuất/bàn một sửa đổi (= đề xuất nó)",
         "cefr": "C1"
     },
     "assembly": {
@@ -4865,8 +4865,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈsembli/",
         "example": "state/legislative/federal/local assemblies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cuộc họp",
+        "vietnamese_example": "hội đồng tiểu bang/lập pháp/liên bang/địa phương",
         "cefr": "C1"
     },
     "breach": {
@@ -4874,8 +4874,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/briːtʃ/",
         "example": "a breach of contract/copyright/warranty",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự vi phạm",
+        "vietnamese_example": "vi phạm hợp đồng/bản quyền/bảo hành",
         "cefr": "C1"
     },
     "citizenship": {
@@ -4883,8 +4883,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsɪtɪzənʃɪp/",
         "example": "They were granted full French citizenship.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quyền công dân",
+        "vietnamese_example": "Họ được cấp đầy đủ quyền công dân Pháp.",
         "cefr": "C1"
     },
     "compel": {
@@ -4892,8 +4892,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəmˈpel/",
         "example": "compel somebody to do something, The law can compel fathers to make regular payments for their children.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ép buộc",
+        "vietnamese_example": "buộc ai đó phải làm điều gì đó. Luật pháp có thể buộc các ông bố phải trả tiền thường xuyên cho con cái của họ.",
         "cefr": "C1"
     },
     "conception": {
@@ -4901,8 +4901,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈsepʃn/",
         "example": "conception of something, Marx’s conception of social justice",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quan niệm",
+        "vietnamese_example": "quan niệm về cái gì đó, quan niệm của Marx về công bằng xã hội",
         "cefr": "C1"
     },
     "conserve": {
@@ -4910,8 +4910,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈsɜːv/",
         "example": "new laws to conserve wildlife in the area",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bảo tồn",
+        "vietnamese_example": "luật mới để bảo tồn động vật hoang dã trong khu vực",
         "cefr": "C1"
     },
     "constitution": {
@@ -4919,8 +4919,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒnstɪˈtjuːʃn/",
         "example": "your right to vote under the constitution",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cấu tạo",
+        "vietnamese_example": "quyền bầu cử của bạn theo hiến pháp",
         "cefr": "C1"
     },
     "contend": {
@@ -4928,8 +4928,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈtend/",
         "example": "I would contend that the minister's thinking is flawed on this point.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tranh luận",
+        "vietnamese_example": "Tôi cho rằng suy nghĩ của Bộ trưởng là sai lầm về điểm này.",
         "cefr": "C1"
     },
     "divine": {
@@ -4937,8 +4937,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈvaɪn/",
         "example": "divine law/love/will",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thần thánh",
+        "vietnamese_example": "luật thiêng liêng/tình yêu/ý chí",
         "cefr": "C1"
     },
     "endure": {
@@ -4946,8 +4946,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈdjʊə(r)/",
         "example": "endure something, They had to endure a long wait before the case came to trial.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chịu đựng",
+        "vietnamese_example": "chịu đựng điều gì đó, họ đã phải chịu đựng rất lâu trước khi vụ án được đưa ra xét xử.",
         "cefr": "C1"
     },
     "equality": {
@@ -4955,8 +4955,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/iˈkwɒləti/",
         "example": "racial/social/gender equality",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bình đẳng",
+        "vietnamese_example": "bình đẳng chủng tộc/xã hội/giới tính",
         "cefr": "C1"
     },
     "excess": {
@@ -4964,8 +4964,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈekses/",
         "example": "Excess food is stored as fat.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thặng dư",
+        "vietnamese_example": "Thức ăn dư thừa được lưu trữ dưới dạng chất béo.",
         "cefr": "C1"
     },
     "execute": {
@@ -4973,8 +4973,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈeksɪkjuːt/",
         "example": "be executed (for something), He was executed for treason.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thi hành",
+        "vietnamese_example": "bị xử tử (vì điều gì), Ngài bị xử tử vì tội phản quốc.",
         "cefr": "C1"
     },
     "execution": {
@@ -4982,8 +4982,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌeksɪˈkjuːʃn/",
         "example": "He faced execution by hanging for murder.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thi hành án",
+        "vietnamese_example": "Anh ta phải đối mặt với việc bị xử tử bằng cách treo cổ vì tội giết người.",
         "cefr": "C1"
     },
     "expire": {
@@ -4991,8 +4991,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪkˈspaɪə(r)/",
         "example": "When does your driving licence expire?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hết hạn",
+        "vietnamese_example": "Giấy phép lái xe của bạn hết hạn khi nào?",
         "cefr": "C1"
     },
     "feminist": {
@@ -5000,8 +5000,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈfemənɪst/",
         "example": "feminist demands/ideas/theories",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà nữ quyền",
+        "vietnamese_example": "nhu cầu/ý tưởng/lý thuyết về nữ quyền",
         "cefr": "C1"
     },
     "formula": {
@@ -5009,8 +5009,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfɔːmjələ/",
         "example": "This formula is used to calculate the area of a circle.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "công thức",
+        "vietnamese_example": "Công thức này được sử dụng để tính diện tích hình tròn.",
         "cefr": "C1"
     },
     "gravity": {
@@ -5018,8 +5018,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡrævəti/",
         "example": "Newton’s law of gravity",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trọng lực",
+        "vietnamese_example": "Định luật hấp dẫn của Newton",
         "cefr": "C1"
     },
     "initiate": {
@@ -5027,8 +5027,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪˈnɪʃieɪt/",
         "example": "to initiate legal proceedings against somebody",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khởi xướng",
+        "vietnamese_example": "bắt đầu các thủ tục pháp lý chống lại ai đó",
         "cefr": "C1"
     },
     "invoke": {
@@ -5036,8 +5036,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈvəʊk/",
         "example": "It is unlikely that libel laws will be invoked.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gọi",
+        "vietnamese_example": "Khó có khả năng luật phỉ báng sẽ được áp dụng.",
         "cefr": "C1"
     },
     "just": {
@@ -5045,8 +5045,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dʒʌst/",
         "example": "a just decision/law/society",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ",
+        "vietnamese_example": "một quyết định/luật/xã hội công bằng",
         "cefr": "C1"
     },
     "bureaucracy": {
@@ -5054,8 +5054,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/bjʊəˈrɒkrəsi/",
         "example": "unnecessary/excessive bureaucracy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự quan liêu",
+        "vietnamese_example": "sự quan liêu không cần thiết/quá mức",
         "cefr": "C1"
     },
     "mandate": {
@@ -5063,8 +5063,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmændeɪt/",
         "example": "It is undemocratic to govern an area without an electoral mandate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủy quyền",
+        "vietnamese_example": "Việc quản lý một khu vực không có ủy quyền bầu cử là phi dân chủ.",
         "cefr": "C1"
     },
     "parliamentary": {
@@ -5072,8 +5072,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌpɑːləˈmentri/",
         "example": "parliamentary elections",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nghị viện",
+        "vietnamese_example": "bầu cử quốc hội",
         "cefr": "C1"
     },
     "republic": {
@@ -5081,8 +5081,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/rɪˈpʌblɪk/",
         "example": "newly independent republics",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nước cộng hòa",
+        "vietnamese_example": "các nước cộng hòa mới độc lập",
         "cefr": "C1"
     },
     "asylum": {
@@ -5090,8 +5090,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈsaɪləm/",
         "example": "to seek/apply for/be granted asylum",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tị nạn",
+        "vietnamese_example": "tìm kiếm/đăng ký/được cấp nơi tị nạn",
         "cefr": "C1"
     },
     "cabinet": {
@@ -5099,8 +5099,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkæbɪnət/",
         "example": "a cabinet meeting",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tủ",
+        "vietnamese_example": "một cuộc họp nội các",
         "cefr": "C1"
     },
     "condemn": {
@@ -5108,8 +5108,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈdem/",
         "example": "condemn somebody/something, The government issued a statement condemning the killings.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lên án",
+        "vietnamese_example": "lên án ai đó/cái gì đó, Chính phủ đã ban hành một tuyên bố lên án các vụ giết người.",
         "cefr": "C1"
     },
     "declaration": {
@@ -5117,8 +5117,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdekləˈreɪʃn/",
         "example": "to issue/sign a declaration",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuyên ngôn",
+        "vietnamese_example": "ban hành/ký một bản tuyên bố",
         "cefr": "C1"
     },
     "endorsement": {
@@ -5126,8 +5126,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈdɔːsmənt/",
         "example": "The election victory is a clear endorsement of their policies.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự chứng thực",
+        "vietnamese_example": "Chiến thắng trong cuộc bầu cử là sự chứng thực rõ ràng cho chính sách của họ.",
         "cefr": "C1"
     },
     "liberty": {
@@ -5135,8 +5135,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɪbəti/",
         "example": "the fight for justice and liberty",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tự do",
+        "vietnamese_example": "cuộc đấu tranh cho công lý và tự do",
         "cefr": "C1"
     },
     "ministry": {
@@ -5144,8 +5144,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɪnɪstri/",
         "example": "The Ministry of Defence has issued the following statement.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bộ",
+        "vietnamese_example": "Bộ Quốc phòng đã đưa ra tuyên bố sau đây.",
         "cefr": "C1"
     },
     "provincial": {
@@ -5153,8 +5153,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/prəˈvɪnʃl/",
         "example": "provincial assemblies/elections",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tỉnh",
+        "vietnamese_example": "hội đồng/bầu cử cấp tỉnh",
         "cefr": "C1"
     },
     "archive": {
@@ -5162,8 +5162,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɑːkaɪv/",
         "example": "the National Sound Archive",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lưu trữ",
+        "vietnamese_example": "Lưu trữ âm thanh quốc gia",
         "cefr": "C1"
     },
     "assertion": {
@@ -5171,8 +5171,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈsɜːʃn/",
         "example": "He was correct in his assertion that the minister had been lying.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khẳng định",
+        "vietnamese_example": "Ông đã đúng khi khẳng định rằng Bộ trưởng đã nói dối.",
         "cefr": "C1"
     },
     "cautious": {
@@ -5180,8 +5180,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkɔːʃəs/",
         "example": "The government has been cautious in its response to the report.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thận trọng",
+        "vietnamese_example": "Chính phủ đã thận trọng trong phản ứng với báo cáo.",
         "cefr": "C1"
     },
     "doctrine": {
@@ -5189,8 +5189,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdɒktrɪn/",
         "example": "the doctrine of parliamentary sovereignty",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "học thuyết",
+        "vietnamese_example": "học thuyết về chủ quyền của quốc hội",
         "cefr": "C1"
     },
     "elevate": {
@@ -5198,8 +5198,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈelɪveɪt/",
         "example": "elevate somebody/something (to something), He elevated many of his friends to powerful positions within the government.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nâng",
+        "vietnamese_example": "nâng cao ai đó/thứ gì đó (lên thứ gì đó), Anh ấy đã nâng nhiều bạn bè của mình lên những vị trí quyền lực trong chính phủ.",
         "cefr": "C1"
     },
     "endorse": {
@@ -5207,8 +5207,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈdɔːs/",
         "example": "I wholeheartedly endorse his remarks.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tán thành",
+        "vietnamese_example": "Tôi hoàn toàn tán thành nhận xét của anh ấy.",
         "cefr": "C1"
     },
     "exile": {
@@ -5216,8 +5216,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈeksaɪl/",
         "example": "a place of exile",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lưu đày",
+        "vietnamese_example": "nơi lưu đày",
         "cefr": "C1"
     },
     "inability": {
@@ -5225,8 +5225,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪnəˈbɪləti/",
         "example": "the government’s inability to provide basic services",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự bất lực",
+        "vietnamese_example": "chính phủ không có khả năng cung cấp các dịch vụ cơ bản",
         "cefr": "C1"
     },
     "interim": {
@@ -5234,8 +5234,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪntərɪm/",
         "example": "an interim government/measure/report",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tạm thời",
+        "vietnamese_example": "một chính phủ/biện pháp/báo cáo tạm thời",
         "cefr": "C1"
     },
     "proclaim": {
@@ -5243,8 +5243,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/prəˈkleɪm/",
         "example": "proclaim something, The president proclaimed a state of emergency.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuyên bố",
+        "vietnamese_example": "tuyên bố điều gì đó, Tổng thống tuyên bố tình trạng khẩn cấp.",
         "cefr": "C1"
     },
     "propaganda": {
@@ -5252,8 +5252,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌprɒpəˈɡændə/",
         "example": "enemy propaganda",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuyên truyền",
+        "vietnamese_example": "kẻ thù tuyên truyền",
         "cefr": "C1"
     },
     "prosecutor": {
@@ -5261,8 +5261,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprɒsɪkjuːtə(r)/",
         "example": "the public/state prosecutor",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "công tố viên",
+        "vietnamese_example": "công tố viên/công tố viên tiểu bang",
         "cefr": "C1"
     },
     "protocol": {
@@ -5270,8 +5270,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprəʊtəkɒl/",
         "example": "a breach of protocol",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giao thức",
+        "vietnamese_example": "vi phạm giao thức",
         "cefr": "C1"
     },
     "province": {
@@ -5279,8 +5279,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprɒvɪns/",
         "example": "the provinces of Canada",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tỉnh",
+        "vietnamese_example": "các tỉnh của Canada",
         "cefr": "C1"
     },
     "rally": {
@@ -5288,8 +5288,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈræli/",
         "example": "to attend/hold a rally",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tập hợp",
+        "vietnamese_example": "tham dự/tổ chức một cuộc biểu tình",
         "cefr": "C1"
     },
     "rebel": {
@@ -5297,8 +5297,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈrebl/",
         "example": "rebel forces",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nổi loạn",
+        "vietnamese_example": "lực lượng nổi dậy",
         "cefr": "C1"
     },
     "rebellion": {
@@ -5306,8 +5306,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/rɪˈbeljən/",
         "example": "in rebellion (against somebody/something), The north of the country rose in rebellion against the government.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nổi loạn",
+        "vietnamese_example": "trong cuộc nổi dậy (chống lại ai/cái gì), miền Bắc nổi dậy chống lại chính quyền.",
         "cefr": "C1"
     },
     "reform": {
@@ -5315,8 +5315,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/rɪˈfɔːm/",
         "example": "a government committed to reform",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cải cách",
+        "vietnamese_example": "một chính phủ cam kết cải cách",
         "cefr": "C1"
     },
     "restraint": {
@@ -5324,8 +5324,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/rɪˈstreɪnt/",
         "example": "The government has imposed export restraints on some products.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiềm chế",
+        "vietnamese_example": "Chính phủ đã áp đặt hạn chế xuất khẩu đối với một số sản phẩm.",
         "cefr": "C1"
     },
     "spy": {
@@ -5333,8 +5333,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/spaɪ/",
         "example": "He was denounced as a foreign spy.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điệp viên",
+        "vietnamese_example": "Ông bị tố cáo là gián điệp nước ngoài.",
         "cefr": "C1"
     },
     "stability": {
@@ -5342,8 +5342,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/stəˈbɪləti/",
         "example": "political/economic/social stability",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự ổn định",
+        "vietnamese_example": "ổn định chính trị/kinh tế/xã hội",
         "cefr": "C1"
     },
     "allege": {
@@ -5351,8 +5351,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈledʒ/",
         "example": "allege (that)…, The prosecution alleges (that) she was driving carelessly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cáo buộc",
+        "vietnamese_example": "cáo buộc (rằng)…, Bên công tố cáo buộc (rằng) cô ấy đã lái xe bất cẩn.",
         "cefr": "C1"
     },
     "anonymous": {
@@ -5360,8 +5360,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈnɒnɪməs/",
         "example": "an anonymous donor",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vô danh",
+        "vietnamese_example": "một nhà tài trợ ẩn danh",
         "cefr": "C1"
     },
     "aspiration": {
@@ -5369,8 +5369,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌæspəˈreɪʃn/",
         "example": "I didn't realize you had political aspirations.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khát vọng",
+        "vietnamese_example": "Tôi không nhận ra là anh có tham vọng chính trị.",
         "cefr": "C1"
     },
     "assassination": {
@@ -5378,8 +5378,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˌsæsɪˈneɪʃn/",
         "example": "The president survived a number of assassination attempts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vụ ám sát",
+        "vietnamese_example": "Tổng thống sống sót sau một số vụ ám sát.",
         "cefr": "C1"
     },
     "assert": {
@@ -5387,8 +5387,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈsɜːt/",
         "example": "assert that…, She continued to assert that she was innocent.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khẳng định",
+        "vietnamese_example": "khẳng định rằng…, Cô tiếp tục khẳng định mình vô tội.",
         "cefr": "C1"
     },
     "chamber": {
@@ -5396,8 +5396,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtʃeɪmbə(r)/",
         "example": "The members left the council chamber.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "buồng",
+        "vietnamese_example": "Các thành viên rời khỏi phòng hội đồng.",
         "cefr": "C1"
     },
     "collective": {
@@ -5405,8 +5405,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kəˈlektɪv/",
         "example": "collective leadership/decision-making/responsibility",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tập thể",
+        "vietnamese_example": "lãnh đạo tập thể/ra quyết định/trách nhiệm",
         "cefr": "C1"
     },
     "inequality": {
@@ -5414,8 +5414,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪnɪˈkwɒləti/",
         "example": "We need to tackle inequality of opportunity wherever we find it.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bất bình đẳng",
+        "vietnamese_example": "Chúng ta cần giải quyết sự bất bình đẳng về cơ hội ở bất cứ nơi nào chúng ta tìm thấy nó.",
         "cefr": "C1"
     },
     "socialist": {
@@ -5423,8 +5423,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈsəʊʃəlɪst/",
         "example": "socialist beliefs",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xã hội chủ nghĩa",
+        "vietnamese_example": "niềm tin xã hội chủ nghĩa",
         "cefr": "C1"
     },
     "gathering": {
@@ -5432,8 +5432,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡæðərɪŋ/",
         "example": "a social/family gathering",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tụ tập",
+        "vietnamese_example": "một buổi họp mặt xã hội/gia đình",
         "cefr": "C1"
     },
     "hierarchy": {
@@ -5441,8 +5441,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhaɪərɑːki/",
         "example": "the social/political hierarchy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thứ bậc",
+        "vietnamese_example": "thứ bậc xã hội/chính trị",
         "cefr": "C1"
     },
     "buffer": {
@@ -5450,8 +5450,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbʌfə(r)/",
         "example": "buffer against something, Support from family and friends acts as a buffer against stress.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đệm",
+        "vietnamese_example": "đệm chống lại điều gì đó. Sự hỗ trợ từ gia đình và bạn bè đóng vai trò như một lớp đệm chống lại căng thẳng.",
         "cefr": "C1"
     },
     "bulk": {
@@ -5459,8 +5459,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/bʌlk/",
         "example": "The bulk of the population lives in cities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "số lượng lớn",
+        "vietnamese_example": "Phần lớn dân số sống ở các thành phố.",
         "cefr": "C1"
     },
     "discrimination": {
@@ -5468,8 +5468,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˌskrɪmɪˈneɪʃn/",
         "example": "age/racial/gender/sex discrimination (= because of somebody’s age, race or sex)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phân biệt",
+        "vietnamese_example": "phân biệt tuổi tác/chủng tộc/giới tính/giới tính (= vì tuổi tác, chủng tộc hoặc giới tính của ai đó)",
         "cefr": "C1"
     },
     "elite": {
@@ -5477,8 +5477,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/eɪˈliːt/",
         "example": "a member of the ruling/intellectual elite",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ưu tú",
+        "vietnamese_example": "một thành viên của giới tinh hoa cai trị/trí thức",
         "cefr": "C1"
     },
     "exclusively": {
@@ -5486,8 +5486,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ɪkˈskluːsɪvli/",
         "example": "The resort caters almost exclusively for a high-society public.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "độc quyền",
+        "vietnamese_example": "Khu nghỉ dưỡng hầu như chỉ phục vụ cho tầng lớp thượng lưu.",
         "cefr": "C1"
     },
     "foster": {
@@ -5495,8 +5495,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈfɒstə(r)/",
         "example": "The club's aim is to foster better relations within the community.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nuôi dưỡng",
+        "vietnamese_example": "Mục đích của câu lạc bộ là thúc đẩy mối quan hệ tốt hơn trong cộng đồng.",
         "cefr": "C1"
     },
     "harmony": {
@@ -5504,8 +5504,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhɑːməni/",
         "example": "social/racial harmony",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hòa hợp",
+        "vietnamese_example": "sự hòa hợp xã hội/chủng tộc",
         "cefr": "C1"
     },
     "heritage": {
@@ -5513,8 +5513,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈherɪtɪdʒ/",
         "example": "Spain’s rich cultural heritage",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "di sản",
+        "vietnamese_example": "Di sản văn hóa phong phú của Tây Ban Nha",
         "cefr": "C1"
     },
     "indictment": {
@@ -5522,8 +5522,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈdaɪtmənt/",
         "example": "The poverty in our cities is a damning indictment of modern society.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản cáo trạng",
+        "vietnamese_example": "Sự nghèo đói ở các thành phố của chúng ta là một bản cáo trạng đáng nguyền rủa đối với xã hội hiện đại.",
         "cefr": "C1"
     },
     "lesbian": {
@@ -5531,8 +5531,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlezbiən/",
         "example": "the lesbian and gay community",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đồng tính nữ",
+        "vietnamese_example": "cộng đồng đồng tính nữ và đồng tính nam",
         "cefr": "C1"
     },
     "manifest": {
@@ -5540,8 +5540,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈmænɪfest/",
         "example": "Social tensions were manifested in the recent political crisis.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "biểu hiện",
+        "vietnamese_example": "Căng thẳng xã hội được biểu hiện trong cuộc khủng hoảng chính trị gần đây.",
         "cefr": "C1"
     },
     "militant": {
@@ -5549,8 +5549,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmɪlɪtənt/",
         "example": "militant groups/leaders",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dân quân",
+        "vietnamese_example": "các nhóm chiến binh/thủ lĩnh",
         "cefr": "C1"
     },
     "outsider": {
@@ -5558,8 +5558,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌaʊtˈsaɪdə(r)/",
         "example": "Here she felt she would always be an outsider.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người ngoài cuộc",
+        "vietnamese_example": "Ở đây cô cảm thấy mình sẽ luôn là người ngoài cuộc.",
         "cefr": "C1"
     },
     "projection": {
@@ -5567,8 +5567,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/prəˈdʒekʃn/",
         "example": "to make forward/backward projections of population figures",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phép chiếu",
+        "vietnamese_example": "để thực hiện các dự đoán tiến/lùi về số liệu dân số",
         "cefr": "C1"
     },
     "residence": {
@@ -5576,8 +5576,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈrezɪdəns/",
         "example": "a desirable family residence for sale (= for example, in an advertisement)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nơi cư trú",
+        "vietnamese_example": "một nơi cư trú gia đình mong muốn để bán (= ví dụ, trong một quảng cáo)",
         "cefr": "C1"
     },
     "sole": {
@@ -5585,8 +5585,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/səʊl/",
         "example": "the sole surviving member of the family",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "duy nhất",
+        "vietnamese_example": "thành viên duy nhất còn sống của gia đình",
         "cefr": "C1"
     },
     "solidarity": {
@@ -5594,8 +5594,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsɒlɪˈdærəti/",
         "example": "community solidarity",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự đoàn kết",
+        "vietnamese_example": "đoàn kết cộng đồng",
         "cefr": "C1"
     },
     "supportive": {
@@ -5603,8 +5603,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/səˈpɔːtɪv/",
         "example": "a supportive family",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hỗ trợ",
+        "vietnamese_example": "một gia đình hỗ trợ",
         "cefr": "C1"
     },
     "patron": {
@@ -5612,8 +5612,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈpeɪtrən/",
         "example": "Frederick the Great was the patron of many artists.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người bảo trợ",
+        "vietnamese_example": "Frederick Đại đế là người bảo trợ của nhiều nghệ sĩ.",
         "cefr": "C1"
     },
     "inspiration": {
@@ -5621,8 +5621,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪnspəˈreɪʃn/",
         "example": "Dreams can be a rich source of inspiration for an artist.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cảm hứng",
+        "vietnamese_example": "Những giấc mơ có thể là nguồn cảm hứng phong phú cho một nghệ sĩ.",
         "cefr": "C1"
     },
     "partial": {
@@ -5630,8 +5630,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈpɑːʃl/",
         "example": "It was only a partial solution to the problem.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một phần",
+        "vietnamese_example": "Đó chỉ là giải pháp một phần cho vấn đề.",
         "cefr": "C1"
     },
     "partially": {
@@ -5639,8 +5639,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈpɑːʃəli/",
         "example": "The road was partially blocked by a fallen tree.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một phần",
+        "vietnamese_example": "Con đường bị chặn một phần do cây đổ.",
         "cefr": "C1"
     },
     "bass": {
@@ -5648,8 +5648,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/beɪs/",
         "example": "He always plays his stereo with the bass turned right up.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "âm trầm",
+        "vietnamese_example": "Anh ấy luôn bật âm thanh nổi với âm trầm được bật lên.",
         "cefr": "C1"
     },
     "canvas": {
@@ -5657,8 +5657,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkænvəs/",
         "example": "tents made from heavy canvas",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vải vẽ",
+        "vietnamese_example": "lều làm từ vải bạt nặng",
         "cefr": "C1"
     },
     "entity": {
@@ -5666,8 +5666,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈentəti/",
         "example": "The unit has become part of a larger department and no longer exists as a separate entity.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thực thể",
+        "vietnamese_example": "Đơn vị này đã trở thành một phần của một bộ phận lớn hơn và không còn tồn tại như một thực thể riêng biệt nữa.",
         "cefr": "C1"
     },
     "merit": {
@@ -5675,8 +5675,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmerɪt/",
         "example": "a work of outstanding artistic merit",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "công lao",
+        "vietnamese_example": "một tác phẩm có giá trị nghệ thuật xuất sắc",
         "cefr": "C1"
     },
     "opt": {
@@ -5684,8 +5684,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɒpt/",
         "example": "opt for/against something, After graduating she opted for a career in music.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chọn",
+        "vietnamese_example": "lựa chọn ủng hộ/chống lại điều gì đó, Sau khi tốt nghiệp, cô ấy chọn sự nghiệp âm nhạc.",
         "cefr": "C1"
     },
     "sketch": {
@@ -5693,8 +5693,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/sketʃ/",
         "example": "The artist is making sketches for his next painting.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phác họa",
+        "vietnamese_example": "Người họa sĩ đang phác thảo cho bức tranh tiếp theo của mình.",
         "cefr": "C1"
     },
     "stereotype": {
@@ -5702,8 +5702,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsteriətaɪp/",
         "example": "cultural/gender/racial stereotypes",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khuôn mẫu",
+        "vietnamese_example": "định kiến ​​về văn hóa/giới tính/chủng tộc",
         "cefr": "C1"
     },
     "accordingly": {
@@ -5711,8 +5711,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/əˈkɔːdɪŋli/",
         "example": "We have to discover his plans and act accordingly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tương ứng",
+        "vietnamese_example": "Chúng ta phải khám phá kế hoạch của anh ta và hành động phù hợp.",
         "cefr": "C1"
     },
     "alignment": {
@@ -5720,8 +5720,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈlaɪnmənt/",
         "example": "the alignment of the sun, moon and earth at a particular time",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "căn chỉnh",
+        "vietnamese_example": "sự thẳng hàng của mặt trời, mặt trăng và trái đất tại một thời điểm cụ thể",
         "cefr": "C1"
     },
     "allocate": {
@@ -5729,8 +5729,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈæləkeɪt/",
         "example": "allocate something (for something), A large sum has been allocated for buying new books for the library.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phân bổ",
+        "vietnamese_example": "phân bổ cái gì đó (cho cái gì đó), Một khoản tiền lớn đã được phân bổ để mua sách mới cho thư viện.",
         "cefr": "C1"
     },
     "appealing": {
@@ -5738,8 +5738,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈpiːlɪŋ/",
         "example": "Spending the holidays in Britain wasn't a prospect that I found particularly appealing.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hấp dẫn",
+        "vietnamese_example": "Việc dành những ngày nghỉ ở Anh không phải là một viễn cảnh mà tôi thấy đặc biệt hấp dẫn.",
         "cefr": "C1"
     },
     "applaud": {
@@ -5747,8 +5747,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈplɔːd/",
         "example": "He started to applaud and the others joined in.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hoan hô",
+        "vietnamese_example": "Anh ấy bắt đầu vỗ tay và những người khác cũng tham gia.",
         "cefr": "C1"
     },
     "appreciation": {
@@ -5756,8 +5756,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˌpriːʃiˈeɪʃn/",
         "example": "She shows little appreciation of good music.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đánh giá cao",
+        "vietnamese_example": "Cô ấy ít thể hiện sự đánh giá cao về âm nhạc hay.",
         "cefr": "C1"
     },
     "breed": {
@@ -5765,8 +5765,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/briːd/",
         "example": "Labradors and other large breeds of dog",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giống",
+        "vietnamese_example": "Labradors và các giống chó lớn khác",
         "cefr": "C1"
     },
     "characterize": {
@@ -5774,8 +5774,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkærəktəraɪz/",
         "example": "the rolling hills that characterize this part of England",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mô tả đặc điểm",
+        "vietnamese_example": "những ngọn đồi nhấp nhô đặc trưng cho vùng này của nước Anh",
         "cefr": "C1"
     },
     "chronic": {
@@ -5783,8 +5783,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkrɒnɪk/",
         "example": "chronic bronchitis/arthritis/asthma",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mãn tính",
+        "vietnamese_example": "viêm phế quản mãn tính/viêm khớp/hen suyễn",
         "cefr": "C1"
     },
     "classification": {
@@ -5792,8 +5792,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌklæsɪfɪˈkeɪʃn/",
         "example": "a style of music that defies classification (= is like no other)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phân loại",
+        "vietnamese_example": "một phong cách âm nhạc bất chấp sự phân loại (= không giống ai)",
         "cefr": "C1"
     },
     "conceive": {
@@ -5801,8 +5801,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈsiːv/",
         "example": "He conceived the idea of transforming the old power station into an arts centre.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thụ thai",
+        "vietnamese_example": "Ông nảy ra ý tưởng biến nhà máy điện cũ thành một trung tâm nghệ thuật.",
         "cefr": "C1"
     },
     "crawl": {
@@ -5810,8 +5810,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/krɔːl/",
         "example": "Our baby is just starting to crawl.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thu thập thông tin",
+        "vietnamese_example": "Con của chúng tôi mới bắt đầu bò.",
         "cefr": "C1"
     },
     "creator": {
@@ -5819,8 +5819,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kriˈeɪtə(r)/",
         "example": "Walt Disney, the creator of Mickey Mouse",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người sáng tạo",
+        "vietnamese_example": "Walt Disney, cha đẻ của chuột Mickey",
         "cefr": "C1"
     },
     "cult": {
@@ -5828,8 +5828,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kʌlt/",
         "example": "a cult movie/book",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giáo phái",
+        "vietnamese_example": "một bộ phim/cuốn sách đình đám",
         "cefr": "C1"
     },
     "decisive": {
@@ -5837,8 +5837,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈsaɪsɪv/",
         "example": "a decisive factor/victory/battle",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quyết định",
+        "vietnamese_example": "yếu tố quyết định/chiến thắng/trận chiến",
         "cefr": "C1"
     },
     "deem": {
@@ -5846,8 +5846,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/diːm/",
         "example": "deem somebody/something + noun, The evening was deemed a great success.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cho là",
+        "vietnamese_example": "coi ai đó/cái gì đó + danh từ, Buổi tối được coi là một thành công lớn.",
         "cefr": "C1"
     },
     "designate": {
@@ -5855,8 +5855,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈdezɪɡneɪt/",
         "example": "be designated (as) something, This area has been designated (as) a National Park.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ định",
+        "vietnamese_example": "được chỉ định (là) một cái gì đó, Khu vực này đã được chỉ định (là) một Công viên Quốc gia.",
         "cefr": "C1"
     },
     "dissolve": {
@@ -5864,8 +5864,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈzɒlv/",
         "example": "Salt dissolves in water.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hòa tan",
+        "vietnamese_example": "Muối hòa tan trong nước.",
         "cefr": "C1"
     },
     "distinction": {
@@ -5873,8 +5873,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈstɪŋkʃn/",
         "example": "distinctions between traditional and modern societies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phân biệt",
+        "vietnamese_example": "sự khác biệt giữa xã hội truyền thống và xã hội hiện đại",
         "cefr": "C1"
     },
     "dual": {
@@ -5882,8 +5882,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈdjuːəl/",
         "example": "his dual role as composer and conductor",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hai",
+        "vietnamese_example": "vai trò kép của ông là nhà soạn nhạc và nhạc trưởng",
         "cefr": "C1"
     },
     "dynamic": {
@@ -5891,8 +5891,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/daɪˈnæmɪk/",
         "example": "the dynamics of political change",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "năng động",
+        "vietnamese_example": "động lực của sự thay đổi chính trị",
         "cefr": "C1"
     },
     "toll": {
@@ -5900,8 +5900,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/təʊl/",
         "example": "motorway tolls",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "số điện thoại",
+        "vietnamese_example": "phí đường cao tốc",
         "cefr": "C1"
     },
     "pipeline": {
@@ -5909,8 +5909,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈpaɪplaɪn/",
         "example": "There are plans to lay a gas pipeline through the region.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đường ống",
+        "vietnamese_example": "Có kế hoạch xây dựng một đường ống dẫn khí xuyên qua khu vực.",
         "cefr": "C1"
     },
     "trail": {
@@ -5918,8 +5918,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/treɪl/",
         "example": "a trail of blood",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dấu vết",
+        "vietnamese_example": "một vệt máu",
         "cefr": "C1"
     },
     "trailer": {
@@ -5927,8 +5927,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtreɪlə(r)/",
         "example": "a car towing a trailer with a boat on it",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đoạn phim giới thiệu",
+        "vietnamese_example": "một chiếc ô tô kéo một chiếc xe kéo có một chiếc thuyền trên đó",
         "cefr": "C1"
     },
     "adaptation": {
@@ -5936,8 +5936,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌædæpˈteɪʃn/",
         "example": "the adaptation of buildings for military purposes",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự thích ứng",
+        "vietnamese_example": "sự thích ứng của các tòa nhà cho mục đích quân sự",
         "cefr": "C1"
     },
     "aftermath": {
@@ -5945,8 +5945,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɑːftəmæθ/",
         "example": "in the aftermath of something, A lot of rebuilding took place in the aftermath of the war.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hậu quả",
+        "vietnamese_example": "sau một điều gì đó, Rất nhiều công trình xây dựng lại đã diễn ra sau hậu quả của chiến tranh.",
         "cefr": "C1"
     },
     "architectural": {
@@ -5954,8 +5954,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɑːkɪˈtektʃərəl/",
         "example": "architectural features",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiến trúc",
+        "vietnamese_example": "đặc điểm kiến ​​trúc",
         "cefr": "C1"
     },
     "carriage": {
@@ -5963,8 +5963,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkærɪdʒ/",
         "example": "a railway carriage",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xe",
+        "vietnamese_example": "toa xe lửa",
         "cefr": "C1"
     },
     "casualty": {
@@ -5972,8 +5972,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkæʒuəlti/",
         "example": "Our primary objective is reducing road casualties.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tai nạn",
+        "vietnamese_example": "Mục tiêu chính của chúng tôi là giảm thương vong trên đường.",
         "cefr": "C1"
     },
     "debris": {
@@ -5981,8 +5981,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdebriː/",
         "example": "Emergency teams are still clearing the debris from the plane crash.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mảnh vụn",
+        "vietnamese_example": "Các đội cứu hộ vẫn đang dọn dẹp các mảnh vỡ từ vụ tai nạn máy bay.",
         "cefr": "C1"
     },
     "exit": {
@@ -5990,8 +5990,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈeksɪt/",
         "example": "(+ adv./prep.), The bullet entered her back and exited through her chest.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra",
+        "vietnamese_example": "(+ adv./prep.), Viên đạn găm vào lưng và xuyên qua ngực cô.",
         "cefr": "C1"
     },
     "grin": {
@@ -5999,8 +5999,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡrɪn/",
         "example": "She gave a broad grin.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cười toe toét",
+        "vietnamese_example": "Cô ấy cười toe toét.",
         "cefr": "C1"
     },
     "hint": {
@@ -6008,8 +6008,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/hɪnt/",
         "example": "He gave a broad hint (= one that was obvious) that he was thinking of retiring.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gợi ý",
+        "vietnamese_example": "Anh ấy đã đưa ra một gợi ý rộng rãi (= một điều hiển nhiên) rằng anh ấy đang nghĩ đến việc nghỉ hưu.",
         "cefr": "C1"
     },
     "hook": {
@@ -6017,8 +6017,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/hʊk/",
         "example": "hook something + adv./prep., We hooked the trailer to the back of the car.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cái móc",
+        "vietnamese_example": "móc thứ gì đó + adv./prep., Chúng tôi móc rơ-moóc vào sau xe.",
         "cefr": "C1"
     },
     "landmark": {
@@ -6026,8 +6026,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlændmɑːk/",
         "example": "The Empire State Building is a familiar landmark on the New York skyline.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cột mốc",
+        "vietnamese_example": "Tòa nhà Empire State là một địa danh quen thuộc trên đường chân trời của New York.",
         "cefr": "C1"
     },
     "layout": {
@@ -6035,8 +6035,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈleɪaʊt/",
         "example": "the layout of streets",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cách trình bày",
+        "vietnamese_example": "cách bố trí đường phố",
         "cefr": "C1"
     },
     "loop": {
@@ -6044,8 +6044,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/luːp/",
         "example": "The road went in a huge loop around the lake.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vòng lặp",
+        "vietnamese_example": "Con đường đi thành một vòng lớn quanh hồ.",
         "cefr": "C1"
     },
     "mill": {
@@ -6053,8 +6053,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mɪl/",
         "example": "The old mill has been converted into apartments.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cối xay",
+        "vietnamese_example": "Nhà máy cũ đã được chuyển đổi thành căn hộ.",
         "cefr": "C1"
     },
     "neglect": {
@@ -6062,8 +6062,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/nɪˈɡlekt/",
         "example": "The buildings are crumbling from years of neglect.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sao nhãng",
+        "vietnamese_example": "Những tòa nhà đang đổ nát sau nhiều năm bị bỏ quên.",
         "cefr": "C1"
     },
     "nest": {
@@ -6071,8 +6071,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/nest/",
         "example": "sparrows building a nest of twigs and dry grass",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tổ",
+        "vietnamese_example": "chim sẻ làm tổ bằng cành cây và cỏ khô",
         "cefr": "C1"
     },
     "patrol": {
@@ -6080,8 +6080,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/pəˈtrəʊl/",
         "example": "Security guards make regular patrols at night.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuần tra",
+        "vietnamese_example": "Nhân viên bảo vệ thường xuyên tuần tra vào ban đêm.",
         "cefr": "C1"
     },
     "reside": {
@@ -6089,8 +6089,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/rɪˈzaɪd/",
         "example": "He returned to Britain in 1939, having resided abroad for many years.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cư trú",
+        "vietnamese_example": "Ông trở lại Anh vào năm 1939 và cư trú ở nước ngoài nhiều năm.",
         "cefr": "C1"
     },
     "restoration": {
@@ -6098,8 +6098,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌrestəˈreɪʃn/",
         "example": "restoration work",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phục hồi",
+        "vietnamese_example": "công việc phục hồi",
         "cefr": "C1"
     },
     "stem": {
@@ -6107,8 +6107,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/stem/",
         "example": "long, trailing stems of ivy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thân cây",
+        "vietnamese_example": "thân cây thường xuân dài và dài",
         "cefr": "C1"
     },
     "strain": {
@@ -6116,8 +6116,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/streɪn/",
         "example": "The transport service cannot cope with the strain of so many additional passengers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự căng thẳng",
+        "vietnamese_example": "Dịch vụ vận tải không thể đối phó với sự căng thẳng của quá nhiều hành khách bổ sung.",
         "cefr": "C1"
     },
     "supervise": {
@@ -6125,8 +6125,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈsuːpəvaɪz/",
         "example": "supervise (somebody/something), to supervise building work",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giám sát",
+        "vietnamese_example": "giám sát (ai/cái gì), giám sát công việc xây dựng",
         "cefr": "C1"
     },
     "tenant": {
@@ -6134,8 +6134,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtenənt/",
         "example": "They had evicted their tenants for non-payment of rent.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người thuê nhà",
+        "vietnamese_example": "Họ đã đuổi người thuê nhà vì không trả tiền thuê nhà.",
         "cefr": "C1"
     },
     "thankfully": {
@@ -6143,8 +6143,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈθæŋkfəli/",
         "example": "There was a fire in the building, but thankfully no one was hurt.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thật may mắn",
+        "vietnamese_example": "Đã xảy ra hỏa hoạn trong tòa nhà nhưng rất may không có ai bị thương.",
         "cefr": "C1"
     },
     "threshold": {
@@ -6152,8 +6152,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈθreʃhəʊld/",
         "example": "He stepped across the threshold.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngưỡng",
+        "vietnamese_example": "Anh bước qua ngưỡng cửa.",
         "cefr": "C1"
     },
     "timber": {
@@ -6161,8 +6161,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtɪmbə(r)/",
         "example": "the timber industry",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gỗ",
+        "vietnamese_example": "ngành công nghiệp gỗ",
         "cefr": "C1"
     },
     "utilize": {
@@ -6170,8 +6170,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈjuːtəlaɪz/",
         "example": "The Romans were the first to utilize concrete as a building material.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sử dụng",
+        "vietnamese_example": "Người La Mã là những người đầu tiên sử dụng bê tông làm vật liệu xây dựng.",
         "cefr": "C1"
     },
     "warehouse": {
@@ -6179,8 +6179,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈweəhaʊs/",
         "example": "Police are investigating a fire at a furniture warehouse.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kho",
+        "vietnamese_example": "Cảnh sát đang điều tra vụ cháy tại kho đồ nội thất.",
         "cefr": "C1"
     },
     "junction": {
@@ -6188,8 +6188,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdʒʌŋkʃn/",
         "example": "It was near the junction of City Road and Old Street.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngã ba",
+        "vietnamese_example": "Nó nằm gần ngã ba đường City và Old Street.",
         "cefr": "C1"
     },
     "morality": {
@@ -6197,8 +6197,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˈræləti/",
         "example": "matters of public/private morality",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đạo đức",
+        "vietnamese_example": "vấn đề đạo đức công/riêng",
         "cefr": "C1"
     },
     "fairness": {
@@ -6206,8 +6206,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfeənəs/",
         "example": "The fairness of the judicial system is being questioned.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự công bằng",
+        "vietnamese_example": "Sự công bằng của hệ thống tư pháp đang bị đặt dấu hỏi.",
         "cefr": "C1"
     },
     "cynical": {
@@ -6215,8 +6215,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈsɪnɪkl/",
         "example": "a cynical view/smile",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hoài nghi",
+        "vietnamese_example": "một cái nhìn/nụ cười hoài nghi",
         "cefr": "C1"
     },
     "decision-making": {
@@ -6224,8 +6224,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈsɪʒn meɪkɪŋ/",
         "example": "responsibility for decision-making",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra quyết định",
+        "vietnamese_example": "trách nhiệm đưa ra quyết định",
         "cefr": "C1"
     },
     "dilemma": {
@@ -6233,8 +6233,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈlemə/",
         "example": "I could see no way of resolving this moral dilemma.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vấn đề nan giải",
+        "vietnamese_example": "Tôi không thể tìm ra cách nào để giải quyết vấn đề nan giải về mặt đạo đức này.",
         "cefr": "C1"
     },
     "distort": {
@@ -6242,8 +6242,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈstɔːt/",
         "example": "a fairground mirror that distorts your shape",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bóp méo",
+        "vietnamese_example": "một tấm gương công bằng làm biến dạng hình dạng của bạn",
         "cefr": "C1"
     },
     "frankly": {
@@ -6251,8 +6251,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈfræŋkli/",
         "example": "He spoke frankly about the ordeal.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thẳng thắn",
+        "vietnamese_example": "Anh đã thẳng thắn nói về thử thách này.",
         "cefr": "C1"
     },
     "harsh": {
@@ -6260,8 +6260,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/hɑːʃ/",
         "example": "The punishment was harsh and unfair.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thô ráp",
+        "vietnamese_example": "Hình phạt thật khắc nghiệt và bất công.",
         "cefr": "C1"
     },
     "legitimate": {
@@ -6269,8 +6269,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/lɪˈdʒɪtɪmət/",
         "example": "a legitimate grievance",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hợp pháp",
+        "vietnamese_example": "khiếu nại chính đáng",
         "cefr": "C1"
     },
     "manipulate": {
@@ -6278,8 +6278,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/məˈnɪpjuleɪt/",
         "example": "manipulate somebody/something, She uses her charm to manipulate people.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thao túng",
+        "vietnamese_example": "thao túng ai/thứ gì đó, Cô ấy dùng sự quyến rũ của mình để thao túng mọi người.",
         "cefr": "C1"
     },
     "noble": {
@@ -6287,8 +6287,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈnəʊbl/",
         "example": "a noble leader",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cao quý",
+        "vietnamese_example": "một nhà lãnh đạo cao quý",
         "cefr": "C1"
     },
     "parental": {
@@ -6296,8 +6296,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/pəˈrentl/",
         "example": "parental responsibility/rights",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cha mẹ",
+        "vietnamese_example": "trách nhiệm/quyền của cha mẹ",
         "cefr": "C1"
     },
     "sin": {
@@ -6305,8 +6305,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/sɪn/",
         "example": "to commit a sin",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tội lỗi",
+        "vietnamese_example": "phạm tội",
         "cefr": "C1"
     },
     "suspicion": {
@@ -6314,8 +6314,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/səˈspɪʃn/",
         "example": "They drove away slowly to avoid arousing suspicion.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự nghi ngờ",
+        "vietnamese_example": "Họ lái xe đi từ từ để tránh gây nghi ngờ.",
         "cefr": "C1"
     },
     "uphold": {
@@ -6323,8 +6323,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ʌpˈhəʊld/",
         "example": "We have a duty to uphold the law.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủng hộ",
+        "vietnamese_example": "Chúng ta có nhiệm vụ phải tuân thủ luật pháp.",
         "cefr": "C1"
     },
     "virtue": {
@@ -6332,8 +6332,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈvɜːtʃuː/",
         "example": "He led a life of virtue.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đức hạnh",
+        "vietnamese_example": "Ông đã sống một cuộc đời đức hạnh.",
         "cefr": "C1"
     },
     "reasoning": {
@@ -6341,8 +6341,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈriːzənɪŋ/",
         "example": "What is the reasoning behind this decision?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lý luận",
+        "vietnamese_example": "Lý do đằng sau quyết định này là gì?",
         "cefr": "C1"
     },
     "contradiction": {
@@ -6350,8 +6350,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒntrəˈdɪkʃn/",
         "example": "contradiction (between A and B), There is a contradiction between the two sets of figures.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mâu thuẫn",
+        "vietnamese_example": "mâu thuẫn (giữa A và B), Có sự mâu thuẫn giữa hai tập hợp hình.",
         "cefr": "C1"
     },
     "ideological": {
@@ -6359,8 +6359,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌaɪdiəˈlɒdʒɪkl/",
         "example": "ideological differences",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tư tưởng",
+        "vietnamese_example": "sự khác biệt về ý thức hệ",
         "cefr": "C1"
     },
     "arguably": {
@@ -6368,8 +6368,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈɑːɡjuəbli/",
         "example": "He is arguably the best actor of his generation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có thể nói là",
+        "vietnamese_example": "Anh ấy được cho là diễn viên xuất sắc nhất trong thế hệ của mình.",
         "cefr": "C1"
     },
     "premise": {
@@ -6377,8 +6377,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈpremɪs/",
         "example": "the basic premise of her argument",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiền đề",
+        "vietnamese_example": "tiền đề cơ bản của lập luận của cô ấy",
         "cefr": "C1"
     },
     "rational": {
@@ -6386,8 +6386,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈræʃnəl/",
         "example": "a rational argument/choice/decision",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hợp lý",
+        "vietnamese_example": "một lập luận/lựa chọn/quyết định hợp lý",
         "cefr": "C1"
     },
     "absurd": {
@@ -6395,8 +6395,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əbˈsɜːd/",
         "example": "That uniform makes the guards look absurd.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vô lý",
+        "vietnamese_example": "Bộ đồng phục đó khiến lính canh trông thật lố bịch.",
         "cefr": "C1"
     },
     "authentic": {
@@ -6404,8 +6404,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɔːˈθentɪk/",
         "example": "I don't know if the painting is authentic.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thật",
+        "vietnamese_example": "Tôi không biết bức tranh có phải là thật không.",
         "cefr": "C1"
     },
     "concession": {
@@ -6413,8 +6413,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈseʃn/",
         "example": "The firm will be forced to make concessions if it wants to avoid a strike.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhượng bộ",
+        "vietnamese_example": "Công ty sẽ buộc phải nhượng bộ nếu muốn tránh một cuộc đình công.",
         "cefr": "C1"
     },
     "confer": {
@@ -6422,8 +6422,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈfɜː(r)/",
         "example": "He wanted to confer with his colleagues before reaching a decision.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trao",
+        "vietnamese_example": "Anh ấy muốn trao đổi với các đồng nghiệp trước khi đưa ra quyết định.",
         "cefr": "C1"
     },
     "confrontation": {
@@ -6431,8 +6431,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒnfrʌnˈteɪʃn/",
         "example": "confrontation (with somebody), She wanted to avoid another confrontation with her father.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự đối đầu",
+        "vietnamese_example": "đối đầu (với ai đó), Cô muốn tránh một cuộc đối đầu khác với cha mình.",
         "cefr": "C1"
     },
     "consistency": {
@@ -6440,8 +6440,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈsɪstənsi/",
         "example": "She has played with great consistency all season.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính nhất quán",
+        "vietnamese_example": "Cô ấy đã chơi rất ổn định trong suốt mùa giải.",
         "cefr": "C1"
     },
     "counter": {
@@ -6449,8 +6449,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkaʊntə(r)/",
         "example": "counter somebody/something, Such arguments are not easily countered.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quầy tính tiền",
+        "vietnamese_example": "phản đối ai/cái gì, Những lập luận như vậy không dễ dàng bị phản bác.",
         "cefr": "C1"
     },
     "dignity": {
@@ -6458,8 +6458,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdɪɡnəti/",
         "example": "She accepted the criticism with quiet dignity.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phẩm giá",
+        "vietnamese_example": "Cô chấp nhận những lời chỉ trích với thái độ nghiêm túc.",
         "cefr": "C1"
     },
     "ensue": {
@@ -6467,8 +6467,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈsjuː/",
         "example": "An argument ensued.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xảy ra sau đó",
+        "vietnamese_example": "Một cuộc tranh cãi xảy ra sau đó.",
         "cefr": "C1"
     },
     "justification": {
@@ -6476,8 +6476,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdʒʌstɪfɪˈkeɪʃn/",
         "example": "justification for doing something, I can see no possible justification for any further tax increases.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự biện minh",
+        "vietnamese_example": "biện minh cho việc làm điều gì đó, tôi không thấy có lý do biện minh nào cho việc tăng thuế thêm nữa.",
         "cefr": "C1"
     },
     "liberal": {
@@ -6485,8 +6485,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlɪbərəl/",
         "example": "liberal attitudes/views/opinions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tự do",
+        "vietnamese_example": "thái độ/quan điểm/ý kiến ​​tự do",
         "cefr": "C1"
     },
     "logic": {
@@ -6494,8 +6494,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɒdʒɪk/",
         "example": "I fail to see the logic behind his argument.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "logic",
+        "vietnamese_example": "Tôi không thấy logic đằng sau lập luận của anh ấy.",
         "cefr": "C1"
     },
     "meditation": {
@@ -6503,8 +6503,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌmedɪˈteɪʃn/",
         "example": "She found peace through yoga and meditation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thiền định",
+        "vietnamese_example": "Cô tìm thấy sự bình yên nhờ yoga và thiền định.",
         "cefr": "C1"
     },
     "motive": {
@@ -6512,8 +6512,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈməʊtɪv/",
         "example": "There seemed to be no motive for the murder.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "động cơ",
+        "vietnamese_example": "Dường như không có động cơ giết người.",
         "cefr": "C1"
     },
     "objection": {
@@ -6521,8 +6521,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əbˈdʒekʃn/",
         "example": "I'd like to come too, if you have no objection.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phản đối",
+        "vietnamese_example": "Tôi cũng muốn đi nếu bạn không phản đối.",
         "cefr": "C1"
     },
     "persist": {
@@ -6530,8 +6530,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/pəˈsɪst/",
         "example": "persist in doing something, Why do you persist in blaming yourself for what happened?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiên trì",
+        "vietnamese_example": "kiên trì làm điều gì đó, Tại sao bạn cứ cố chấp tự trách mình về những chuyện đã xảy ra?",
         "cefr": "C1"
     },
     "poll": {
@@ -6539,8 +6539,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/pəʊl/",
         "example": "to carry out/conduct a poll",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thăm dò ý kiến",
+        "vietnamese_example": "thực hiện/tiến hành một cuộc thăm dò ý kiến",
         "cefr": "C1"
     },
     "prejudice": {
@@ -6548,8 +6548,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈpredʒədɪs/",
         "example": "a victim of racial prejudice",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "định kiến",
+        "vietnamese_example": "nạn nhân của định kiến ​​chủng tộc",
         "cefr": "C1"
     },
     "say": {
@@ -6557,8 +6557,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/seɪ/",
         "example": "say (in something), We had no say in the decision to sell the company.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nói",
+        "vietnamese_example": "nói (trong điều gì đó), Chúng tôi không có tiếng nói gì trong quyết định bán công ty.",
         "cefr": "C1"
     },
     "sceptical": {
@@ -6566,8 +6566,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈskeptɪkl/",
         "example": "She looked highly sceptical.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hoài nghi",
+        "vietnamese_example": "Cô ấy trông rất hoài nghi.",
         "cefr": "C1"
     },
     "scrutiny": {
@@ -6575,8 +6575,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈskruːtəni/",
         "example": "Her argument doesn't really stand up to scrutiny.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự xem xét kỹ lưỡng",
+        "vietnamese_example": "Lập luận của cô ấy không thực sự đứng vững trước sự xem xét kỹ lưỡng.",
         "cefr": "C1"
     },
     "sentiment": {
@@ -6584,8 +6584,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsentɪmənt/",
         "example": "the spread of nationalist sentiments",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tình cảm",
+        "vietnamese_example": "sự lan rộng của tình cảm dân tộc",
         "cefr": "C1"
     },
     "sovereignty": {
@@ -6593,8 +6593,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsɒvrənti/",
         "example": "The country claimed sovereignty over the island.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chủ quyền",
+        "vietnamese_example": "Nước này tuyên bố chủ quyền đối với hòn đảo này.",
         "cefr": "C1"
     },
     "sue": {
@@ -6602,8 +6602,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/suː/",
         "example": "They threatened to sue if the work was not completed.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiện",
+        "vietnamese_example": "Họ dọa sẽ kiện nếu công việc không hoàn thành.",
         "cefr": "C1"
     },
     "tolerance": {
@@ -6611,8 +6611,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈtɒlərəns/",
         "example": "She had no tolerance for jokes of any kind.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sức chịu đựng",
+        "vietnamese_example": "Cô ấy không có lòng khoan dung với bất kỳ trò đùa nào.",
         "cefr": "C1"
     },
     "transparency": {
@@ -6620,8 +6620,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/trænsˈpærənsi/",
         "example": "a need for greater transparency in legal documents",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "minh bạch",
+        "vietnamese_example": "Cần minh bạch hơn nữa trong các văn bản pháp luật",
         "cefr": "C1"
     },
     "varied": {
@@ -6629,8 +6629,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈveərid/",
         "example": "varied opinions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đa dạng",
+        "vietnamese_example": "ý kiến ​​​​khác nhau",
         "cefr": "C1"
     },
     "transformation": {
@@ -6638,8 +6638,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌtrænsfəˈmeɪʃn/",
         "example": "The way in which we work has undergone a complete transformation in the past decade.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự biến đổi",
+        "vietnamese_example": "Cách chúng tôi làm việc đã trải qua một sự thay đổi hoàn toàn trong thập kỷ qua.",
         "cefr": "C1"
     },
     "effectiveness": {
@@ -6647,8 +6647,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪˈfektɪvnəs/",
         "example": "to check the effectiveness of the security system",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hiệu quả",
+        "vietnamese_example": "để kiểm tra tính hiệu quả của hệ thống an ninh",
         "cefr": "C1"
     },
     "revolutionary": {
@@ -6656,8 +6656,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌrevəˈluːʃənəri/",
         "example": "a revolutionary leader",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mang tính cách mạng",
+        "vietnamese_example": "một nhà lãnh đạo cách mạng",
         "cefr": "C1"
     },
     "damaging": {
@@ -6665,8 +6665,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈdæmɪdʒɪŋ/",
         "example": "damaging consequences/effects",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây tổn hại",
+        "vietnamese_example": "hậu quả/tác động tai hại",
         "cefr": "C1"
     },
     "heighten": {
@@ -6674,8 +6674,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈhaɪtn/",
         "example": "Tension has heightened after the recent bomb attack.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nâng cao",
+        "vietnamese_example": "Căng thẳng gia tăng sau vụ đánh bom gần đây.",
         "cefr": "C1"
     },
     "provoke": {
@@ -6683,8 +6683,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/prəˈvəʊk/",
         "example": "The announcement provoked a storm of protest.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khiêu khích",
+        "vietnamese_example": "Thông báo này đã gây ra một làn sóng phản đối.",
         "cefr": "C1"
     },
     "render": {
@@ -6692,8 +6692,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈrendə(r)/",
         "example": "to render something harmless/useless/ineffective",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kết xuất",
+        "vietnamese_example": "làm cho cái gì đó trở nên vô hại/vô dụng/không hiệu quả",
         "cefr": "C1"
     },
     "adjustment": {
@@ -6701,8 +6701,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈdʒʌstmənt/",
         "example": "I've made a few adjustments to the design.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "điều chỉnh",
+        "vietnamese_example": "Tôi đã thực hiện một số điều chỉnh trong thiết kế.",
         "cefr": "C1"
     },
     "adverse": {
@@ -6710,8 +6710,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈædvɜːs/",
         "example": "adverse change/circumstances/weather conditions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bất lợi",
+        "vietnamese_example": "thay đổi/hoàn cảnh/điều kiện thời tiết bất lợi",
         "cefr": "C1"
     },
     "blast": {
@@ -6719,8 +6719,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/blɑːst/",
         "example": "a bomb blast",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vụ nổ",
+        "vietnamese_example": "một vụ nổ bom",
         "cefr": "C1"
     },
     "breakthrough": {
@@ -6728,8 +6728,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbreɪkθruː/",
         "example": "to make/achieve a breakthrough",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đột phá",
+        "vietnamese_example": "tạo ra/đạt được bước đột phá",
         "cefr": "C1"
     },
     "cluster": {
@@ -6737,8 +6737,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈklʌstə(r)/",
         "example": "The telescope is focused on a dense cluster of stars at the edge of the galaxy.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cụm",
+        "vietnamese_example": "Kính viễn vọng tập trung vào một cụm sao dày đặc ở rìa thiên hà.",
         "cefr": "C1"
     },
     "compensate": {
@@ -6746,8 +6746,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒmpenseɪt/",
         "example": "Nothing can compensate for the loss of a loved one.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đền bù",
+        "vietnamese_example": "Không gì có thể bù đắp được sự mất mát của người thân.",
         "cefr": "C1"
     },
     "correction": {
@@ -6755,8 +6755,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˈrekʃn/",
         "example": "I've made a few small corrections to your report.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự sửa chữa",
+        "vietnamese_example": "Tôi đã thực hiện một số chỉnh sửa nhỏ trong báo cáo của bạn.",
         "cefr": "C1"
     },
     "correlation": {
@@ -6764,8 +6764,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒrəˈleɪʃn/",
         "example": "correlation between A and B, There is a direct correlation between exposure to sun and skin cancer.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tương quan",
+        "vietnamese_example": "mối tương quan giữa A và B, Có mối tương quan trực tiếp giữa việc tiếp xúc với ánh nắng mặt trời và ung thư da.",
         "cefr": "C1"
     },
     "creep": {
@@ -6773,8 +6773,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kriːp/",
         "example": "I crept up the stairs, trying not to wake my parents.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "leo",
+        "vietnamese_example": "Tôi rón rén lên cầu thang, cố gắng không đánh thức bố mẹ.",
         "cefr": "C1"
     },
     "cultivate": {
@@ -6782,8 +6782,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkʌltɪveɪt/",
         "example": "The land around here has never been cultivated.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trồng trọt",
+        "vietnamese_example": "Đất xung quanh đây chưa bao giờ được canh tác.",
         "cefr": "C1"
     },
     "dedication": {
@@ -6791,8 +6791,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdedɪˈkeɪʃn/",
         "example": "hard work and dedication",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự cống hiến",
+        "vietnamese_example": "làm việc chăm chỉ và cống hiến",
         "cefr": "C1"
     },
     "deficiency": {
@@ -6800,8 +6800,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈfɪʃnsi/",
         "example": "deficiency (in something), Vitamin deficiency in the diet can cause illness.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự thiếu hụt",
+        "vietnamese_example": "sự thiếu hụt (ở cái gì đó), sự thiếu hụt vitamin trong chế độ ăn uống có thể gây ra bệnh tật.",
         "cefr": "C1"
     },
     "diagnosis": {
@@ -6809,8 +6809,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdaɪəɡˈnəʊsɪs/",
         "example": "a diagnosis of lung cancer",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chẩn đoán",
+        "vietnamese_example": "chẩn đoán ung thư phổi",
         "cefr": "C1"
     },
     "divert": {
@@ -6818,8 +6818,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/daɪˈvɜːt/",
         "example": "be diverted, The course of the stream has now been diverted.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chuyển hướng",
+        "vietnamese_example": "được chuyển hướng, Dòng chảy hiện đã được chuyển hướng.",
         "cefr": "C1"
     },
     "drown": {
@@ -6827,8 +6827,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/draʊn/",
         "example": "Two children drowned after falling into the river.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chết đuối",
+        "vietnamese_example": "Hai trẻ em chết đuối sau khi rơi xuống sông.",
         "cefr": "C1"
     },
     "eligible": {
@@ -6836,8 +6836,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈelɪdʒəbl/",
         "example": "eligible (for something), Only those over 70 are eligible for the special payment.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đạt chuẩn",
+        "vietnamese_example": "đủ điều kiện (cho cái gì đó), Chỉ những người trên 70 tuổi mới đủ điều kiện nhận khoản thanh toán đặc biệt.",
         "cefr": "C1"
     },
     "flee": {
@@ -6845,8 +6845,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/fliː/",
         "example": "She burst into tears and fled.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chạy trốn",
+        "vietnamese_example": "Cô bật khóc và bỏ chạy.",
         "cefr": "C1"
     },
     "flexibility": {
@@ -6854,8 +6854,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌfleksəˈbɪləti/",
         "example": "The new system offers a much greater degree of flexibility in the way work is organized.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính linh hoạt",
+        "vietnamese_example": "Hệ thống mới mang lại mức độ linh hoạt cao hơn nhiều trong cách tổ chức công việc.",
         "cefr": "C1"
     },
     "gear": {
@@ -6863,8 +6863,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡɪə(r)/",
         "example": "Careless use of the clutch may damage the gears.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bánh răng",
+        "vietnamese_example": "Việc sử dụng ly hợp bất cẩn có thể làm hỏng bánh răng.",
         "cefr": "C1"
     },
     "guilt": {
@@ -6872,8 +6872,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡɪlt/",
         "example": "She had feelings of guilt about leaving her children and going to work.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cảm giác tội lỗi",
+        "vietnamese_example": "Cô có cảm giác tội lỗi khi bỏ con và đi làm.",
         "cefr": "C1"
     },
     "hazard": {
@@ -6881,8 +6881,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhæzəd/",
         "example": "a fire/safety hazard",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nguy hiểm",
+        "vietnamese_example": "nguy cơ hỏa hoạn/an toàn",
         "cefr": "C1"
     },
     "horn": {
@@ -6890,8 +6890,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/hɔːn/",
         "example": "a large bull with curved horns",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sừng",
+        "vietnamese_example": "một con bò đực lớn có sừng cong",
         "cefr": "C1"
     },
     "inhibit": {
@@ -6899,8 +6899,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈhɪbɪt/",
         "example": "A lack of oxygen may inhibit brain development in the unborn child.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ức chế",
+        "vietnamese_example": "Thiếu oxy có thể ức chế sự phát triển não bộ ở thai nhi.",
         "cefr": "C1"
     },
     "insider": {
@@ -6908,8 +6908,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈsaɪdə(r)/",
         "example": "The situation was described by one insider as ‘absolute chaos’.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người trong cuộc",
+        "vietnamese_example": "Tình hình được một người trong cuộc mô tả là “hoàn toàn hỗn loạn”.",
         "cefr": "C1"
     },
     "intensify": {
@@ -6917,8 +6917,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈtensɪfaɪ/",
         "example": "Violence intensified during the night.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tăng cường",
+        "vietnamese_example": "Bạo lực gia tăng trong đêm.",
         "cefr": "C1"
     },
     "intriguing": {
@@ -6926,8 +6926,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈtriːɡɪŋ/",
         "example": "These discoveries raise intriguing questions.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hấp dẫn",
+        "vietnamese_example": "Những khám phá này đặt ra những câu hỏi hấp dẫn.",
         "cefr": "C1"
     },
     "large-scale": {
@@ -6935,8 +6935,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌlɑːdʒ ˈskeɪl/",
         "example": "Large areas of the forest will be cleared for ranching as part of a large-scale development plan.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quy mô lớn",
+        "vietnamese_example": "Các khu rừng rộng lớn sẽ bị chặt phá để chăn nuôi như một phần của kế hoạch phát triển quy mô lớn.",
         "cefr": "C1"
     },
     "legislature": {
@@ -6944,8 +6944,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈledʒɪslətʃə(r)/",
         "example": "a democratically elected legislature",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cơ quan lập pháp",
+        "vietnamese_example": "một cơ quan lập pháp được bầu cử dân chủ",
         "cefr": "C1"
     },
     "lethal": {
@@ -6953,8 +6953,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈliːθl/",
         "example": "She had been given a lethal dose of poison.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây chết người",
+        "vietnamese_example": "Cô đã bị tiêm một liều thuốc độc chết người.",
         "cefr": "C1"
     },
     "mainstream": {
@@ -6962,8 +6962,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmeɪnstriːm/",
         "example": "mainstream culture/politics",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chủ đạo",
+        "vietnamese_example": "văn hóa/chính trị chủ đạo",
         "cefr": "C1"
     },
     "combat": {
@@ -6971,8 +6971,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒmbæt/",
         "example": "in combat, He was killed in combat.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến đấu",
+        "vietnamese_example": "trong chiến đấu, Anh ta đã bị giết trong trận chiến.",
         "cefr": "C1"
     },
     "ally": {
@@ -6980,8 +6980,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈælaɪ/",
         "example": "our European/NATO allies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đồng minh",
+        "vietnamese_example": "các đồng minh châu Âu/NATO của chúng ta",
         "cefr": "C1"
     },
     "post-war": {
@@ -6989,8 +6989,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌpəʊst ˈwɔː(r)/",
         "example": "the post-war years",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sau chiến tranh",
+        "vietnamese_example": "những năm sau chiến tranh",
         "cefr": "C1"
     },
     "warrior": {
@@ -6998,8 +6998,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈwɒriə(r)/",
         "example": "a warrior nation (= whose people are skilled in fighting)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến binh",
+        "vietnamese_example": "một quốc gia chiến binh (= có người có kỹ năng chiến đấu)",
         "cefr": "C1"
     },
     "straightforward": {
@@ -7007,8 +7007,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌstreɪtˈfɔːwəd/",
         "example": "It's a relatively straightforward process.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thẳng thắn",
+        "vietnamese_example": "Đó là một quá trình tương đối đơn giản.",
         "cefr": "C1"
     },
     "substantially": {
@@ -7016,8 +7016,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/səbˈstænʃəli/",
         "example": "The costs have increased substantially.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đáng kể",
+        "vietnamese_example": "Các chi phí đã tăng lên đáng kể.",
         "cefr": "C1"
     },
     "dictator": {
@@ -7025,8 +7025,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪkˈteɪtə(r)/",
         "example": "The country suffered at the hands of a series of military dictators.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà độc tài",
+        "vietnamese_example": "Đất nước phải chịu đựng dưới bàn tay của hàng loạt nhà độc tài quân phiệt.",
         "cefr": "C1"
     },
     "revelation": {
@@ -7034,8 +7034,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌrevəˈleɪʃn/",
         "example": "revelation about/concerning something, startling/sensational revelations about her private life",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự mặc khải",
+        "vietnamese_example": "tiết lộ về/liên quan đến điều gì đó, tiết lộ gây sửng sốt/giật gân về đời sống riêng tư của cô ấy",
         "cefr": "C1"
     },
     "absence": {
@@ -7043,8 +7043,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈæbsəns/",
         "example": "in somebody's absence, The decision was made in my absence (= while I was not there).",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự vắng mặt",
+        "vietnamese_example": "trong sự vắng mặt của ai đó, Quyết định được đưa ra khi tôi vắng mặt (= trong khi tôi không ở đó).",
         "cefr": "C1"
     },
     "accumulate": {
@@ -7052,8 +7052,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈkjuːmjəleɪt/",
         "example": "I seem to have accumulated a lot of books.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tích lũy",
+        "vietnamese_example": "Tôi dường như đã tích lũy được rất nhiều sách.",
         "cefr": "C1"
     },
     "accumulation": {
@@ -7061,8 +7061,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˌkjuːmjəˈleɪʃn/",
         "example": "the accumulation of wealth",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tích lũy",
+        "vietnamese_example": "sự tích lũy của cải",
         "cefr": "C1"
     },
     "albeit": {
@@ -7070,8 +7070,8 @@ var dictionary = {
         "pos": "conj",
         "pron": "/ˌɔːlˈbiːɪt/",
         "example": "He finally agreed, albeit reluctantly, to help us.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mặc dù",
+        "vietnamese_example": "Cuối cùng anh ấy đã đồng ý, mặc dù miễn cưỡng, để giúp chúng tôi.",
         "cefr": "C1"
     },
     "align": {
@@ -7079,8 +7079,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/əˈlaɪn/",
         "example": "Make sure the shelf is aligned with the top of the cupboard.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "căn chỉnh",
+        "vietnamese_example": "Hãy chắc chắn rằng kệ được căn chỉnh với mặt trên của tủ.",
         "cefr": "C1"
     },
     "arm": {
@@ -7088,8 +7088,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɑːm/",
         "example": "The country was arming against the enemy.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cánh tay",
+        "vietnamese_example": "Đất nước đang vũ trang chống lại kẻ thù.",
         "cefr": "C1"
     },
     "ballot": {
@@ -7097,8 +7097,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbælət/",
         "example": "The chairperson is chosen by secret ballot.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lá phiếu",
+        "vietnamese_example": "Chủ tịch được bầu bằng bỏ phiếu kín.",
         "cefr": "C1"
     },
     "barrel": {
@@ -7106,8 +7106,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbærəl/",
         "example": "a beer/wine barrel",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thùng",
+        "vietnamese_example": "một thùng bia/rượu",
         "cefr": "C1"
     },
     "bench": {
@@ -7115,8 +7115,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/bentʃ/",
         "example": "a park bench",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "băng ghế dự bị",
+        "vietnamese_example": "một băng ghế công viên",
         "cefr": "C1"
     },
     "bleed": {
@@ -7124,8 +7124,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/bliːd/",
         "example": "My finger's bleeding.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chảy máu",
+        "vietnamese_example": "Ngón tay tôi đang chảy máu.",
         "cefr": "C1"
     },
     "boundary": {
@@ -7133,8 +7133,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbaʊndri/",
         "example": "After the war the national boundaries were redrawn.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ranh giới",
+        "vietnamese_example": "Sau chiến tranh, biên giới quốc gia được vẽ lại.",
         "cefr": "C1"
     },
     "cemetery": {
@@ -7142,8 +7142,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈsemətri/",
         "example": "He was buried in a private cemetery.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nghĩa trang",
+        "vietnamese_example": "Ông được chôn cất tại một nghĩa trang tư nhân.",
         "cefr": "C1"
     },
     "cocktail": {
@@ -7151,8 +7151,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒkteɪl/",
         "example": "a cocktail bar/cabinet/lounge/shaker ",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cocktail",
+        "vietnamese_example": "quầy bar/tủ/phòng chờ/máy lắc cocktail",
         "cefr": "C1"
     },
     "compromise": {
@@ -7160,8 +7160,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒmprəmaɪz/",
         "example": "After lengthy talks the two sides finally reached a compromise.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thỏa hiệp",
+        "vietnamese_example": "Sau nhiều cuộc đàm phán kéo dài, cuối cùng hai bên đã đạt được thỏa thuận.",
         "cefr": "C1"
     },
     "countless": {
@@ -7169,8 +7169,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkaʊntləs/",
         "example": "I've warned her countless times.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vô số",
+        "vietnamese_example": "Tôi đã cảnh báo cô ấy không biết bao nhiêu lần.",
         "cefr": "C1"
     },
     "crown": {
@@ -7178,8 +7178,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kraʊn/",
         "example": "The crown was placed upon the new monarch's head.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vương miện",
+        "vietnamese_example": "Vương miện được đặt trên đầu của vị vua mới.",
         "cefr": "C1"
     },
     "crystal": {
@@ -7187,8 +7187,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkrɪstl/",
         "example": "ice/salt crystals",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "pha lê",
+        "vietnamese_example": "tinh thể nước đá/muối",
         "cefr": "C1"
     },
     "deed": {
@@ -7196,8 +7196,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/diːd/",
         "example": "It's a stirring tale of heroic deeds.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chứng thư",
+        "vietnamese_example": "Đó là câu chuyện cảm động về những hành động anh hùng.",
         "cefr": "C1"
     },
     "deploy": {
@@ -7205,8 +7205,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈplɔɪ/",
         "example": "2 000 troops were deployed in the area.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "triển khai",
+        "vietnamese_example": "2 000 quân đã được triển khai trong khu vực.",
         "cefr": "C1"
     },
     "deployment": {
@@ -7214,8 +7214,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈplɔɪmənt/",
         "example": "the deployment of peacekeeping forces",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "triển khai",
+        "vietnamese_example": "triển khai lực lượng gìn giữ hòa bình",
         "cefr": "C1"
     },
     "destructive": {
@@ -7223,8 +7223,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈstrʌktɪv/",
         "example": "The war demonstrated the destructive power of modern weapons.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phá hoại",
+        "vietnamese_example": "Cuộc chiến đã chứng tỏ sức mạnh hủy diệt của vũ khí hiện đại.",
         "cefr": "C1"
     },
     "dictate": {
@@ -7232,8 +7232,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪkˈteɪt/",
         "example": "dictate something (to somebody), They are in no position to dictate terms (= tell other people what to do).",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra lệnh",
+        "vietnamese_example": "ra lệnh điều gì đó (cho ai đó), Họ không có quyền ra lệnh cho các điều khoản (= nói cho người khác biết phải làm gì).",
         "cefr": "C1"
     },
     "displace": {
@@ -7241,8 +7241,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪsˈpleɪs/",
         "example": "be displaced (by somebody/something), Gradually factory workers have been displaced by machines.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thay thế",
+        "vietnamese_example": "bị thay thế (bởi ai đó / cái gì đó), Dần dần công nhân nhà máy đã bị máy móc thay thế.",
         "cefr": "C1"
     },
     "exceptional": {
@@ -7250,8 +7250,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˈsepʃənl/",
         "example": "At the age of five he showed exceptional talent as a musician.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đặc biệt",
+        "vietnamese_example": "Khi mới 5 tuổi, anh đã bộc lộ tài năng đặc biệt của một nhạc sĩ.",
         "cefr": "C1"
     },
     "fate": {
@@ -7259,8 +7259,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/feɪt/",
         "example": "The fate of the three men is unknown.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "định mệnh",
+        "vietnamese_example": "Số phận của ba người đàn ông vẫn chưa rõ.",
         "cefr": "C1"
     },
     "fleet": {
@@ -7268,8 +7268,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/fliːt/",
         "example": "a fleet of destroyers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hạm đội",
+        "vietnamese_example": "một hạm đội tàu khu trục",
         "cefr": "C1"
     },
     "grid": {
@@ -7277,8 +7277,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡrɪd/",
         "example": "New York’s grid of streets",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lưới",
+        "vietnamese_example": "Mạng lưới đường phố của New York",
         "cefr": "C1"
     },
     "humanitarian": {
@@ -7286,8 +7286,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/hjuːˌmænɪˈteəriən/",
         "example": "to provide humanitarian aid to the war zone",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhân đạo",
+        "vietnamese_example": "cung cấp viện trợ nhân đạo cho vùng chiến sự",
         "cefr": "C1"
     },
     "implementation": {
@@ -7295,8 +7295,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪmplɪmenˈteɪʃn/",
         "example": "the implementation of the new system",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thực hiện",
+        "vietnamese_example": "việc triển khai hệ thống mới",
         "cefr": "C1"
     },
     "compassion": {
@@ -7304,8 +7304,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəmˈpæʃn/",
         "example": "to feel/show compassion",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lòng trắc ẩn",
+        "vietnamese_example": "cảm nhận/thể hiện lòng trắc ẩn",
         "cefr": "C1"
     },
     "frustration": {
@@ -7313,8 +7313,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/frʌˈstreɪʃn/",
         "example": "in frustration, Dave thumped the table in frustration.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự thất vọng",
+        "vietnamese_example": "trong cơn bực bội, Dave bực bội đập bàn.",
         "cefr": "C1"
     },
     "hostility": {
@@ -7322,8 +7322,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/hɒˈstɪləti/",
         "example": "There was a barely veiled hostility in her tone.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự thù địch",
+        "vietnamese_example": "Có một sự thù địch gần như không được che đậy trong giọng điệu của cô ấy.",
         "cefr": "C1"
     },
     "overwhelm": {
@@ -7331,8 +7331,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌəʊvəˈwelm/",
         "example": "She was overwhelmed by feelings of guilt.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "áp đảo",
+        "vietnamese_example": "Cô bị choáng ngợp bởi cảm giác tội lỗi.",
         "cefr": "C1"
     },
     "acid": {
@@ -7340,8 +7340,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈæsɪd/",
         "example": "Rye is tolerant of poor, acid soils.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "axit",
+        "vietnamese_example": "Lúa mạch đen có khả năng chịu được đất nghèo axit.",
         "cefr": "C1"
     },
     "affection": {
@@ -7349,8 +7349,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈfekʃn/",
         "example": "Children need lots of love and affection.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự yêu mến",
+        "vietnamese_example": "Trẻ em cần rất nhiều tình yêu thương và tình cảm.",
         "cefr": "C1"
     },
     "contempt": {
@@ -7358,8 +7358,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈtempt/",
         "example": "with contempt, She looked at him with contempt.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khinh miệt",
+        "vietnamese_example": "với vẻ khinh thường, Cô nhìn anh với ánh mắt khinh thường.",
         "cefr": "C1"
     },
     "embarrassment": {
@@ -7367,8 +7367,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪmˈbærəsmənt/",
         "example": "I nearly died of embarrassment when he said that.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bối rối",
+        "vietnamese_example": "Tôi gần như chết vì xấu hổ khi anh ấy nói vậy.",
         "cefr": "C1"
     },
     "evoke": {
@@ -7376,8 +7376,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪˈvəʊk/",
         "example": "The music evoked memories of her youth.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gợi lên",
+        "vietnamese_example": "Âm nhạc gợi lên ký ức tuổi trẻ của cô.",
         "cefr": "C1"
     },
     "grief": {
@@ -7385,8 +7385,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡriːf/",
         "example": "She was overcome with grief when her husband died.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đau buồn",
+        "vietnamese_example": "Bà đau khổ tột cùng khi chồng qua đời.",
         "cefr": "C1"
     },
     "hatred": {
@@ -7394,8 +7394,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈheɪtrɪd/",
         "example": "He looked at me with intense hatred.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hận thù",
+        "vietnamese_example": "Anh ta nhìn tôi với ánh mắt căm thù mãnh liệt.",
         "cefr": "C1"
     },
     "mercy": {
@@ -7403,8 +7403,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɜːsi/",
         "example": "to ask/beg/plead for mercy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lòng thương xót",
+        "vietnamese_example": "cầu xin/cầu xin/cầu xin lòng thương xót",
         "cefr": "C1"
     },
     "mutual": {
@@ -7412,8 +7412,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmjuːtʃuəl/",
         "example": "mutual respect/understanding",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "qua lại",
+        "vietnamese_example": "tôn trọng/hiểu biết lẫn nhau",
         "cefr": "C1"
     },
     "optimism": {
@@ -7421,8 +7421,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɒptɪmɪzəm/",
         "example": "a mood of cautious optimism",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự lạc quan",
+        "vietnamese_example": "một tâm trạng lạc quan thận trọng",
         "cefr": "C1"
     },
     "orientation": {
@@ -7430,8 +7430,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɔːriənˈteɪʃn/",
         "example": "religious/political orientation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "định hướng",
+        "vietnamese_example": "định hướng tôn giáo/chính trị",
         "cefr": "C1"
     },
     "outrage": {
@@ -7439,8 +7439,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈaʊtreɪdʒ/",
         "example": "The judge's remarks caused public outrage.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phẫn nộ",
+        "vietnamese_example": "Phát biểu của thẩm phán khiến dư luận phẫn nộ.",
         "cefr": "C1"
     },
     "plea": {
@@ -7448,8 +7448,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/pliː/",
         "example": "plea for something, She made an impassioned plea for help.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lời thú tội",
+        "vietnamese_example": "cầu xin điều gì đó, Cô ấy đã khẩn thiết cầu xin sự giúp đỡ.",
         "cefr": "C1"
     },
     "rage": {
@@ -7457,8 +7457,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/reɪdʒ/",
         "example": "His face was dark with rage.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cơn thịnh nộ",
+        "vietnamese_example": "Mặt anh ta tối sầm vì giận dữ.",
         "cefr": "C1"
     },
     "regain": {
@@ -7466,8 +7466,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/rɪˈɡeɪn/",
         "example": "I struggled to regain some dignity.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lấy lại",
+        "vietnamese_example": "Tôi đấu tranh để lấy lại chút phẩm giá.",
         "cefr": "C1"
     },
     "sensation": {
@@ -7475,8 +7475,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/senˈseɪʃn/",
         "example": "a tingling/burning sensation ",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cảm giác",
+        "vietnamese_example": "cảm giác ngứa ran / nóng rát",
         "cefr": "C1"
     },
     "sensitivity": {
@@ -7484,8 +7484,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsensəˈtɪvəti/",
         "example": "sensitivity to the needs of children",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự nhạy cảm",
+        "vietnamese_example": "nhạy cảm với nhu cầu của trẻ em",
         "cefr": "C1"
     },
     "sexuality": {
@@ -7493,8 +7493,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsekʃuˈæləti/",
         "example": "He was confused about his sexuality.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tình dục",
+        "vietnamese_example": "Anh ấy bối rối về giới tính của mình.",
         "cefr": "C1"
     },
     "surge": {
@@ -7502,8 +7502,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/sɜːdʒ/",
         "example": "She felt a sudden surge of anger.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dâng trào",
+        "vietnamese_example": "Cô cảm thấy một cơn giận đột ngột trào dâng.",
         "cefr": "C1"
     },
     "wholly": {
@@ -7511,8 +7511,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈhəʊlli/",
         "example": "wholly inappropriate behaviour",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hoàn toàn",
+        "vietnamese_example": "hành vi hoàn toàn không phù hợp",
         "cefr": "C1"
     },
     "organizational": {
@@ -7520,8 +7520,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɔːɡənaɪˈzeɪʃənl/",
         "example": "organizational changes within the party",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tổ chức",
+        "vietnamese_example": "thay đổi tổ chức trong đảng",
         "cefr": "C1"
     },
     "seal": {
@@ -7529,8 +7529,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/siːl/",
         "example": "The letter bore the president's seal.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "niêm phong",
+        "vietnamese_example": "Bức thư có đóng dấu của tổng thống.",
         "cefr": "C1"
     },
     "congressional": {
@@ -7538,8 +7538,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kənˈɡreʃənl/",
         "example": "a congressional committee/bill",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quốc hội",
+        "vietnamese_example": "một ủy ban/dự luật của quốc hội",
         "cefr": "C1"
     },
     "consent": {
@@ -7547,8 +7547,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈsent/",
         "example": "The written consent of a parent is required.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bằng lòng",
+        "vietnamese_example": "Cần có sự đồng ý bằng văn bản của phụ huynh.",
         "cefr": "C1"
     },
     "delegation": {
@@ -7556,8 +7556,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌdelɪˈɡeɪʃn/",
         "example": "the Dutch delegation to the United Nations",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phái đoàn",
+        "vietnamese_example": "phái đoàn Hà Lan tại Liên hợp quốc",
         "cefr": "C1"
     },
     "exert": {
@@ -7565,8 +7565,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪɡˈzɜːt/",
         "example": "He exerted all his authority to make them accept the plan.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gắng sức",
+        "vietnamese_example": "Anh ta dùng mọi quyền hạn của mình để khiến họ chấp nhận kế hoạch.",
         "cefr": "C1"
     },
     "faction": {
@@ -7574,8 +7574,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfækʃn/",
         "example": "There are rival factions within the administration.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phe phái",
+        "vietnamese_example": "Có những phe phái đối địch trong chính quyền.",
         "cefr": "C1"
     },
     "memo": {
@@ -7583,8 +7583,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmeməʊ/",
         "example": "to write/send a memo",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản ghi nhớ",
+        "vietnamese_example": "để viết/gửi một bản ghi nhớ",
         "cefr": "C1"
     },
     "presidency": {
@@ -7592,8 +7592,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈprezɪdənsi/",
         "example": "the current holder of the EU presidency",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tổng thống",
+        "vietnamese_example": "người nắm giữ chức chủ tịch EU hiện tại",
         "cefr": "C1"
     },
     "tribunal": {
@@ -7601,8 +7601,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/traɪˈbjuːnl/",
         "example": "an international war crimes tribunal",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tòa án",
+        "vietnamese_example": "tòa án tội ác chiến tranh quốc tế",
         "cefr": "C1"
     },
     "trustee": {
@@ -7610,8 +7610,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/trʌˈstiː/",
         "example": "The bank will act as trustees for the estate until the child is 18.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người được ủy thác",
+        "vietnamese_example": "Ngân hàng sẽ đóng vai trò là người quản lý tài sản cho đến khi đứa trẻ đủ 18 tuổi.",
         "cefr": "C1"
     },
     "undermine": {
@@ -7619,8 +7619,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌʌndəˈmaɪn/",
         "example": "Our confidence in the team has been seriously undermined by their recent defeats.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "làm suy yếu",
+        "vietnamese_example": "Niềm tin của chúng tôi vào đội đã bị suy giảm nghiêm trọng bởi những thất bại gần đây của họ.",
         "cefr": "C1"
     },
     "abortion": {
@@ -7628,8 +7628,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈbɔːʃn/",
         "example": "to support/oppose abortion",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phá thai",
+        "vietnamese_example": "ủng hộ/phản đối việc phá thai",
         "cefr": "C1"
     },
     "abundance": {
@@ -7637,8 +7637,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈbʌndəns/",
         "example": "The brochure promised beautiful walks with an abundance of wildlife.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phong phú",
+        "vietnamese_example": "Tài liệu quảng cáo hứa hẹn những chuyến đi tuyệt đẹp với nhiều loài động vật hoang dã.",
         "cefr": "C1"
     },
     "abuse": {
@@ -7646,8 +7646,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈbjuːs/",
         "example": "alcohol/drug abuse",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lạm dụng",
+        "vietnamese_example": "lạm dụng rượu/ma túy",
         "cefr": "C1"
     },
     "acceptance": {
@@ -7655,8 +7655,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əkˈseptəns/",
         "example": "Please confirm your acceptance of this offer in writing.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự chấp nhận",
+        "vietnamese_example": "Vui lòng xác nhận việc bạn chấp nhận lời đề nghị này bằng văn bản.",
         "cefr": "C1"
     },
     "accessible": {
@@ -7664,8 +7664,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əkˈsesəbl/",
         "example": "The remote desert area is accessible only by helicopter.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có thể truy cập",
+        "vietnamese_example": "Khu vực sa mạc xa xôi chỉ có thể đến được bằng trực thăng.",
         "cefr": "C1"
     },
     "acre": {
@@ -7673,8 +7673,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈeɪkə(r)/",
         "example": "3 000 acres of parkland",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mẫu Anh",
+        "vietnamese_example": "3 000 mẫu đất công viên",
         "cefr": "C1"
     },
     "acute": {
@@ -7682,8 +7682,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈkjuːt/",
         "example": "There is an acute shortage of water.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cấp tính",
+        "vietnamese_example": "Đang có tình trạng thiếu nước trầm trọng.",
         "cefr": "C1"
     },
     "adhere": {
@@ -7691,8 +7691,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ədˈhɪə(r)/",
         "example": "Once in the bloodstream, the bacteria adhere to the surface of the red cells.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tuân theo",
+        "vietnamese_example": "Khi vào máu, vi khuẩn bám vào bề mặt hồng cầu.",
         "cefr": "C1"
     },
     "adjacent": {
@@ -7700,8 +7700,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈdʒeɪsnt/",
         "example": "The planes landed on adjacent runways.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liền kề",
+        "vietnamese_example": "Các máy bay hạ cánh trên đường băng liền kề.",
         "cefr": "C1"
     },
     "adolescent": {
@@ -7709,8 +7709,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌædəˈlesnt/",
         "example": "adolescents between the ages of 13 and 18 and the problems they face",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thanh niên",
+        "vietnamese_example": "thanh thiếu niên trong độ tuổi từ 13 đến 18 và những vấn đề họ gặp phải",
         "cefr": "C1"
     },
     "adoption": {
@@ -7718,8 +7718,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈdɒpʃn/",
         "example": "She put the baby up for adoption.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhận con nuôi",
+        "vietnamese_example": "Cô ấy đã đưa đứa bé đi làm con nuôi.",
         "cefr": "C1"
     },
     "alert": {
@@ -7727,8 +7727,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈlɜːt/",
         "example": "Suddenly he found himself awake and fully alert.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "báo động",
+        "vietnamese_example": "Đột nhiên anh thấy mình tỉnh táo và hoàn toàn tỉnh táo.",
         "cefr": "C1"
     },
     "alien": {
@@ -7736,8 +7736,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈeɪliən/",
         "example": "an alien environment",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người ngoài hành tinh",
+        "vietnamese_example": "môi trường xa lạ",
         "cefr": "C1"
     },
     "alike": {
@@ -7745,8 +7745,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈlaɪk/",
         "example": "My sister and I do not look alike.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "như nhau",
+        "vietnamese_example": "Tôi và chị tôi trông không giống nhau.",
         "cefr": "C1"
     },
     "anchor": {
@@ -7754,8 +7754,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈæŋkə(r)/",
         "example": "to drop anchor",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "neo",
+        "vietnamese_example": "thả neo",
         "cefr": "C1"
     },
     "applicable": {
@@ -7763,8 +7763,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/əˈplɪkəbl/",
         "example": "Give details of children where applicable (= if you have any).",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "áp dụng",
+        "vietnamese_example": "Cung cấp thông tin chi tiết về trẻ em nếu có (= nếu bạn có).",
         "cefr": "C1"
     },
     "arena": {
@@ -7772,8 +7772,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈriːnə/",
         "example": "a concert at Wembley Arena",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đấu trường",
+        "vietnamese_example": "buổi hòa nhạc tại Wembley Arena",
         "cefr": "C1"
     },
     "atrocity": {
@@ -7781,8 +7781,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˈtrɒsəti/",
         "example": "In the war, both sides committed atrocities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tàn ác",
+        "vietnamese_example": "Trong chiến tranh, cả hai bên đều phạm tội ác tàn bạo.",
         "cefr": "C1"
     },
     "authorize": {
@@ -7790,8 +7790,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈɔːθəraɪz/",
         "example": "authorize something, I can authorize payments up to £5 000.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủy quyền",
+        "vietnamese_example": "ủy quyền một cái gì đó, tôi có thể ủy quyền thanh toán lên tới £5 000.",
         "cefr": "C1"
     },
     "availability": {
@@ -7799,8 +7799,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/əˌveɪləˈbɪləti/",
         "example": "the availability of cheap flights",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sẵn có",
+        "vietnamese_example": "sự sẵn có của các chuyến bay giá rẻ",
         "cefr": "C1"
     },
     "backdrop": {
@@ -7808,8 +7808,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbækdrɒp/",
         "example": "The mountains provided a dramatic backdrop for our picnic.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bối cảnh",
+        "vietnamese_example": "Những ngọn núi đã tạo nên một khung cảnh ấn tượng cho chuyến dã ngoại của chúng tôi.",
         "cefr": "C1"
     },
     "bare": {
@@ -7817,8 +7817,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/beə(r)/",
         "example": "She likes to walk around in bare feet.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trần trụi",
+        "vietnamese_example": "Cô ấy thích đi lại bằng đôi chân trần.",
         "cefr": "C1"
     },
     "battlefield": {
@@ -7826,8 +7826,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbætlfiːld/",
         "example": "heavy casualties on the battlefield",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiến trường",
+        "vietnamese_example": "thương vong nặng nề trên chiến trường",
         "cefr": "C1"
     },
     "behalf": {
@@ -7835,8 +7835,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/bɪˈhɑːf/",
         "example": "He began a petition in behalf of the farmers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thay mặt",
+        "vietnamese_example": "Ông bắt đầu một bản kiến ​​​​nghị thay mặt cho nông dân.",
         "cefr": "C1"
     },
     "beloved": {
@@ -7844,8 +7844,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/bɪˈlʌvɪd/",
         "example": "in memory of our dearly beloved son, John",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người yêu dấu",
+        "vietnamese_example": "để tưởng nhớ đứa con trai yêu dấu của chúng tôi, John",
         "cefr": "C1"
     },
     "beneath": {
@@ -7853,8 +7853,8 @@ var dictionary = {
         "pos": "prep",
         "pron": "/bɪˈniːθ/",
         "example": "They found the body buried beneath a pile of leaves.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bên dưới",
+        "vietnamese_example": "Họ tìm thấy thi thể bị chôn vùi dưới đống lá.",
         "cefr": "C1"
     },
     "bind": {
@@ -7862,8 +7862,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/baɪnd/",
         "example": "bind somebody/something to something, She was bound to a chair.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ràng buộc",
+        "vietnamese_example": "trói ai/cái gì với cái gì, Cô ấy bị trói vào một cái ghế.",
         "cefr": "C1"
     },
     "biography": {
@@ -7871,8 +7871,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/baɪˈɒɡrəfi/",
         "example": "Boswell’s biography of Johnson",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiểu sử",
+        "vietnamese_example": "Tiểu sử của Boswell về Johnson",
         "cefr": "C1"
     },
     "bizarre": {
@@ -7880,8 +7880,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/bɪˈzɑː(r)/",
         "example": "a bizarre situation/incident/story",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kỳ quái",
+        "vietnamese_example": "một tình huống/sự cố/câu chuyện kỳ ​​lạ",
         "cefr": "C1"
     },
     "blend": {
@@ -7889,8 +7889,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/blend/",
         "example": "a blend of tea",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trộn",
+        "vietnamese_example": "sự pha trộn của trà",
         "cefr": "C1"
     },
     "bless": {
@@ -7898,8 +7898,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/bles/",
         "example": "They brought the children to Jesus and he blessed them.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ban phước",
+        "vietnamese_example": "Họ đem những đứa trẻ đến với Chúa Giê-su và ngài ban phước cho chúng.",
         "cefr": "C1"
     },
     "blessing": {
@@ -7907,8 +7907,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈblesɪŋ/",
         "example": "to pray for God’s blessing",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phước lành",
+        "vietnamese_example": "để cầu nguyện xin Chúa ban phước lành",
         "cefr": "C1"
     },
     "bounce": {
@@ -7916,8 +7916,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/baʊns/",
         "example": "The ball bounced twice before he could reach it.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tung lên",
+        "vietnamese_example": "Quả bóng nảy lên hai lần trước khi anh ấy có thể chạm tới nó.",
         "cefr": "C1"
     },
     "burial": {
@@ -7925,8 +7925,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈberiəl/",
         "example": "a burial place/mound/site",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chôn cất",
+        "vietnamese_example": "nơi chôn cất/gò đất/nơi chôn cất",
         "cefr": "C1"
     },
     "calculation": {
@@ -7934,8 +7934,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkælkjuˈleɪʃn/",
         "example": "Cathy did a rough calculation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính toán",
+        "vietnamese_example": "Cathy đã làm một phép tính sơ bộ.",
         "cefr": "C1"
     },
     "capability": {
@@ -7943,8 +7943,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkeɪpəˈbɪləti/",
         "example": "Age affects the range of a person's capabilities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khả năng",
+        "vietnamese_example": "Tuổi tác ảnh hưởng đến phạm vi khả năng của một người.",
         "cefr": "C1"
     },
     "cargo": {
@@ -7952,8 +7952,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɑːɡəʊ/",
         "example": "The tanker began to spill its cargo of oil.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hàng hóa",
+        "vietnamese_example": "Tàu chở dầu bắt đầu đổ dầu ra ngoài.",
         "cefr": "C1"
     },
     "carve": {
@@ -7961,8 +7961,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kɑːv/",
         "example": "carve something, a carved doorway",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khắc",
+        "vietnamese_example": "khắc cái gì đó, một ô cửa được chạm khắc",
         "cefr": "C1"
     },
     "cattle": {
@@ -7970,8 +7970,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkætl/",
         "example": "a herd of cattle",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gia súc",
+        "vietnamese_example": "một đàn gia súc",
         "cefr": "C1"
     },
     "caution": {
@@ -7979,8 +7979,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɔːʃn/",
         "example": "extreme/great caution",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thận trọng",
+        "vietnamese_example": "cực kỳ thận trọng/cực kỳ thận trọng",
         "cefr": "C1"
     },
     "charm": {
@@ -7988,8 +7988,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/tʃɑːm/",
         "example": "He was a man of great charm.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quyến rũ",
+        "vietnamese_example": "Anh ấy là một người đàn ông có sức quyến rũ tuyệt vời.",
         "cefr": "C1"
     },
     "chunk": {
@@ -7997,8 +7997,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/tʃʌŋk/",
         "example": "a chunk of cheese/masonry",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đoạn",
+        "vietnamese_example": "một miếng pho mát/khối gạch",
         "cefr": "C1"
     },
     "circulate": {
@@ -8006,8 +8006,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈsɜːkjəleɪt/",
         "example": "The condition prevents the blood from circulating freely.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lưu thông",
+        "vietnamese_example": "Tình trạng này ngăn cản máu lưu thông tự do.",
         "cefr": "C1"
     },
     "circulation": {
@@ -8015,8 +8015,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsɜːkjəˈleɪʃn/",
         "example": "Regular exercise will improve blood circulation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự lưu thông",
+        "vietnamese_example": "Tập thể dục thường xuyên sẽ cải thiện lưu thông máu.",
         "cefr": "C1"
     },
     "civic": {
@@ -8024,8 +8024,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈsɪvɪk/",
         "example": "civic buildings/leaders",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "công dân",
+        "vietnamese_example": "tòa nhà dân sự/lãnh đạo",
         "cefr": "C1"
     },
     "cling": {
@@ -8033,8 +8033,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/klɪŋ/",
         "example": "cling to somebody/something, survivors clinging to a raft",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bám vào",
+        "vietnamese_example": "bám vào ai/cái gì, những người sống sót bám vào một chiếc bè",
         "cefr": "C1"
     },
     "coastal": {
@@ -8042,8 +8042,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkəʊstl/",
         "example": "coastal waters/resorts/scenery",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ven biển",
+        "vietnamese_example": "vùng nước ven biển/khu nghỉ dưỡng/phong cảnh",
         "cefr": "C1"
     },
     "collision": {
@@ -8051,8 +8051,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəˈlɪʒn/",
         "example": "collision between A and B, a collision between two trains",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "va chạm",
+        "vietnamese_example": "va chạm giữa A và B, va chạm giữa hai đoàn tàu",
         "cefr": "C1"
     },
     "colonial": {
@@ -8060,8 +8060,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kəˈləʊniəl/",
         "example": "a colonial power",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thuộc địa",
+        "vietnamese_example": "một cường quốc thuộc địa",
         "cefr": "C1"
     },
     "communist": {
@@ -8069,8 +8069,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkɒmjənɪst/",
         "example": "communist ideology",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cộng sản",
+        "vietnamese_example": "hệ tư tưởng cộng sản",
         "cefr": "C1"
     },
     "companion": {
@@ -8078,8 +8078,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kəmˈpænjən/",
         "example": "travelling companions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bạn đồng hành",
+        "vietnamese_example": "bạn đồng hành",
         "cefr": "C1"
     },
     "comparable": {
@@ -8087,8 +8087,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkɒmpərəbl/",
         "example": "A comparable house in the south of the city would cost twice as much.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "so sánh được",
+        "vietnamese_example": "Một ngôi nhà tương đương ở phía nam thành phố sẽ có giá cao gấp đôi.",
         "cefr": "C1"
     },
     "competence": {
@@ -8096,8 +8096,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɒmpɪtəns/",
         "example": "to gain a high level of competence in English",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "năng lực",
+        "vietnamese_example": "để đạt được trình độ cao về tiếng Anh",
         "cefr": "C1"
     },
     "complement": {
@@ -8105,8 +8105,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒmplɪment/",
         "example": "The excellent menu is complemented by a good wine list.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bổ sung",
+        "vietnamese_example": "Thực đơn tuyệt vời được bổ sung bởi danh sách rượu vang ngon.",
         "cefr": "C1"
     },
     "complication": {
@@ -8114,8 +8114,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒmplɪˈkeɪʃn/",
         "example": "The bad weather added a further complication to our journey.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phức tạp",
+        "vietnamese_example": "Thời tiết xấu càng làm cho cuộc hành trình của chúng tôi trở nên phức tạp hơn.",
         "cefr": "C1"
     },
     "compute": {
@@ -8123,8 +8123,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kəmˈpjuːt/",
         "example": "The losses were computed at £5 million.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính toán",
+        "vietnamese_example": "Khoản lỗ được tính toán là 5 triệu bảng Anh.",
         "cefr": "C1"
     },
     "conceal": {
@@ -8132,8 +8132,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈsiːl/",
         "example": "conceal somebody/something, The paintings were concealed beneath a thick layer of plaster.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "che giấu",
+        "vietnamese_example": "che giấu ai/cái gì, Những bức tranh được giấu dưới một lớp thạch cao dày.",
         "cefr": "C1"
     },
     "confirmation": {
@@ -8141,8 +8141,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒnfəˈmeɪʃn/",
         "example": "I'm still waiting for confirmation of the test results.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xác nhận",
+        "vietnamese_example": "Tôi vẫn đang chờ xác nhận kết quả xét nghiệm.",
         "cefr": "C1"
     },
     "congratulate": {
@@ -8150,8 +8150,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈɡrætʃəleɪt/",
         "example": "I congratulated them all on their results.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chúc mừng",
+        "vietnamese_example": "Tôi chúc mừng tất cả họ về kết quả của họ.",
         "cefr": "C1"
     },
     "congregation": {
@@ -8159,8 +8159,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒŋɡrɪˈɡeɪʃn/",
         "example": "The congregation stood to sing the hymn.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hội chúng",
+        "vietnamese_example": "Cộng đoàn đứng dậy hát thánh ca.",
         "cefr": "C1"
     },
     "conquer": {
@@ -8168,8 +8168,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒŋkə(r)/",
         "example": "The Normans conquered England in 1066.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chinh phục",
+        "vietnamese_example": "Người Norman chinh phục nước Anh vào năm 1066.",
         "cefr": "C1"
     },
     "consecutive": {
@@ -8177,8 +8177,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kənˈsekjətɪv/",
         "example": "She was absent for nine consecutive days.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "liên tiếp",
+        "vietnamese_example": "Cô đã vắng mặt suốt 9 ngày liên tiếp.",
         "cefr": "C1"
     },
     "consolidate": {
@@ -8186,8 +8186,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/kənˈsɒlɪdeɪt/",
         "example": "With this new movie he has consolidated his position as the country's leading director.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "củng cố",
+        "vietnamese_example": "Với bộ phim mới này, ông đã củng cố vị trí đạo diễn hàng đầu đất nước của mình.",
         "cefr": "C1"
     },
     "consultation": {
@@ -8195,8 +8195,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒnslˈteɪʃn/",
         "example": "a consultation document/paper/period/process",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tư vấn",
+        "vietnamese_example": "một tài liệu/giấy/giai đoạn/quy trình tư vấn",
         "cefr": "C1"
     },
     "contemplate": {
@@ -8204,8 +8204,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒntəmpleɪt/",
         "example": "contemplate something, You're too young to be contemplating retirement.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "suy ngẫm",
+        "vietnamese_example": "suy ngẫm điều gì đó, Bạn còn quá trẻ để dự tính nghỉ hưu.",
         "cefr": "C1"
     },
     "contender": {
@@ -8213,8 +8213,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈtendə(r)/",
         "example": "contender (for something), a contender for a gold medal in the Olympics",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đối thủ",
+        "vietnamese_example": "ứng cử viên (cho cái gì), ứng cử viên cho huy chương vàng trong Thế vận hội",
         "cefr": "C1"
     },
     "content": {
@@ -8222,8 +8222,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kənˈtent/",
         "example": "He seemed more content, less bitter.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nội dung",
+        "vietnamese_example": "Anh có vẻ hài lòng hơn, bớt cay đắng hơn.",
         "cefr": "C1"
     },
     "contention": {
@@ -8231,17 +8231,17 @@ var dictionary = {
         "pos": "noun",
         "pron": "/kənˈtenʃn/",
         "example": "One area of contention is the availability of nursery care.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tranh chấp",
+        "vietnamese_example": "Một lĩnh vực gây tranh cãi là sự sẵn có của dịch vụ chăm sóc trẻ.",
         "cefr": "C1"
     },
     "contrary": {
-        "definition": "",
+        "definition": "Opposite in nature, direction, or meaning.",
         "pos": "adj",
         "pron": "/ˈkɒntrəri/",
-        "example": "",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "example": "Contrary views should still be discussed respectfully.",
+        "vietnamese": "trái ngược",
+        "vietnamese_example": "Những quan điểm trái ngược vẫn nên được thảo luận một cách tôn trọng.",
         "cefr": "C1"
     },
     "correlate": {
@@ -8249,8 +8249,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈkɒrəleɪt/",
         "example": "The figures do not seem to correlate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tương quan",
+        "vietnamese_example": "Các số liệu dường như không tương quan.",
         "cefr": "C1"
     },
     "correspond": {
@@ -8258,8 +8258,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌkɒrəˈspɒnd/",
         "example": "Your account and hers do not correspond.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tương ứng",
+        "vietnamese_example": "Tài khoản của bạn và của cô ấy không tương ứng.",
         "cefr": "C1"
     },
     "correspondence": {
@@ -8267,8 +8267,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkɒrəˈspɒndəns/",
         "example": "personal/private correspondence",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thư từ",
+        "vietnamese_example": "thư từ cá nhân/riêng tư",
         "cefr": "C1"
     },
     "councillor": {
@@ -8276,8 +8276,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkaʊnsələ(r)/",
         "example": "Councillor Ann Jones",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ủy viên hội đồng",
+        "vietnamese_example": "Ủy viên Hội đồng Ann Jones",
         "cefr": "C1"
     },
     "credibility": {
@@ -8285,8 +8285,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkredəˈbɪləti/",
         "example": "to gain/lack/lose credibility",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "độ tin cậy",
+        "vietnamese_example": "đạt được/thiếu/mất uy tín",
         "cefr": "C1"
     },
     "credible": {
@@ -8294,8 +8294,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈkredəbl/",
         "example": "a credible explanation/witness",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đáng tin cậy",
+        "vietnamese_example": "một lời giải thích/nhân chứng đáng tin cậy",
         "cefr": "C1"
     },
     "crude": {
@@ -8303,8 +8303,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/kruːd/",
         "example": "crude oil/metal",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thô",
+        "vietnamese_example": "dầu thô/kim loại",
         "cefr": "C1"
     },
     "curiosity": {
@@ -8312,8 +8312,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌkjʊəriˈɒsəti/",
         "example": "Children show curiosity about everything.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tò mò",
+        "vietnamese_example": "Trẻ em thể hiện sự tò mò về mọi thứ.",
         "cefr": "C1"
     },
     "dam": {
@@ -8321,8 +8321,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dæm/",
         "example": "the Narmada dam in India",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "con đập",
+        "vietnamese_example": "đập Narmada ở Ấn Độ",
         "cefr": "C1"
     },
     "debut": {
@@ -8330,8 +8330,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdeɪbjuː/",
         "example": "He will make his debut for the first team this week.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra mắt",
+        "vietnamese_example": "Anh ấy sẽ ra mắt đội một vào tuần này.",
         "cefr": "C1"
     },
     "defect": {
@@ -8339,8 +8339,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdiːfekt/",
         "example": "a defect in the glass",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khuyết điểm",
+        "vietnamese_example": "một khiếm khuyết trong kính",
         "cefr": "C1"
     },
     "defensive": {
@@ -8348,8 +8348,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈfensɪv/",
         "example": "As a defensive measure he built a series of coastal forts and watchtowers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phòng thủ",
+        "vietnamese_example": "Để phòng thủ, ông đã xây dựng một loạt pháo đài và tháp canh ven biển.",
         "cefr": "C1"
     },
     "delegate": {
@@ -8357,8 +8357,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdelɪɡət/",
         "example": "Congress delegates rejected the proposals.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đại biểu",
+        "vietnamese_example": "Các đại biểu Quốc hội đã bác bỏ các đề xuất.",
         "cefr": "C1"
     },
     "delicate": {
@@ -8366,8 +8366,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈdelɪkət/",
         "example": "delicate china teacups",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thanh tú",
+        "vietnamese_example": "tách trà trung quốc tinh tế",
         "cefr": "C1"
     },
     "dense": {
@@ -8375,8 +8375,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dens/",
         "example": "a dense crowd/forest",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dày đặc",
+        "vietnamese_example": "một đám đông/rừng dày đặc",
         "cefr": "C1"
     },
     "density": {
@@ -8384,8 +8384,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdensəti/",
         "example": "The population density in this city is very high.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "Tỉ trọng",
+        "vietnamese_example": "Mật độ dân số ở thành phố này rất cao.",
         "cefr": "C1"
     },
     "dependence": {
@@ -8393,8 +8393,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈpendəns/",
         "example": "Our relationship was based on mutual dependence.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự phụ thuộc",
+        "vietnamese_example": "Mối quan hệ của chúng tôi dựa trên sự phụ thuộc lẫn nhau.",
         "cefr": "C1"
     },
     "depict": {
@@ -8402,8 +8402,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈpɪkt/",
         "example": "depict somebody/something (as somebody/something), a painting depicting the Virgin and Child",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "miêu tả",
+        "vietnamese_example": "miêu tả ai đó/cái gì đó (như ai đó/cái gì đó), một bức tranh miêu tả Đức Trinh Nữ và Hài Nhi",
         "cefr": "C1"
     },
     "descend": {
@@ -8411,8 +8411,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈsend/",
         "example": "The plane began to descend.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi xuống",
+        "vietnamese_example": "Máy bay bắt đầu hạ xuống.",
         "cefr": "C1"
     },
     "descent": {
@@ -8420,8 +8420,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈsent/",
         "example": "The plane began its descent to Heathrow.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi xuống",
+        "vietnamese_example": "Máy bay bắt đầu hạ cánh xuống Heathrow.",
         "cefr": "C1"
     },
     "desirable": {
@@ -8429,8 +8429,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈzaɪərəbl/",
         "example": "She chatted for a few minutes about the qualities she considered desirable in a secretary.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mong muốn",
+        "vietnamese_example": "Cô trò chuyện vài phút về những phẩm chất mà cô cho là cần có ở một thư ký.",
         "cefr": "C1"
     },
     "devastate": {
@@ -8438,8 +8438,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈdevəsteɪt/",
         "example": "The bomb devastated much of the old part of the city.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tàn phá",
+        "vietnamese_example": "Quả bom đã tàn phá phần lớn khu vực cũ của thành phố.",
         "cefr": "C1"
     },
     "devise": {
@@ -8447,8 +8447,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈvaɪz/",
         "example": "A new system has been devised to control traffic in the city.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nghĩ ra",
+        "vietnamese_example": "Một hệ thống mới đã được nghĩ ra để kiểm soát giao thông trong thành phố.",
         "cefr": "C1"
     },
     "diminish": {
@@ -8456,8 +8456,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈmɪnɪʃ/",
         "example": "The world's resources are rapidly diminishing.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giảm bớt",
+        "vietnamese_example": "Nguồn tài nguyên của thế giới đang suy giảm nhanh chóng.",
         "cefr": "C1"
     },
     "dip": {
@@ -8465,8 +8465,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪp/",
         "example": "dip something (into something), He dipped the brush into the paint.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhúng",
+        "vietnamese_example": "nhúng cái gì đó (vào cái gì đó), Anh ấy nhúng cọ vào sơn.",
         "cefr": "C1"
     },
     "disastrous": {
@@ -8474,8 +8474,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dɪˈzɑːstrəs/",
         "example": "a disastrous harvest/fire/result",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thảm họa",
+        "vietnamese_example": "một vụ thu hoạch/cháy/kết quả thảm khốc",
         "cefr": "C1"
     },
     "disposal": {
@@ -8483,8 +8483,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪˈspəʊzl/",
         "example": "The council is responsible for waste disposal and street cleaning.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xử lý",
+        "vietnamese_example": "Hội đồng có trách nhiệm xử lý rác thải và làm sạch đường phố.",
         "cefr": "C1"
     },
     "dispose": {
@@ -8492,8 +8492,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dɪˈspəʊz/",
         "example": "The visitors disposed themselves in a circle round the statue.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vứt bỏ",
+        "vietnamese_example": "Các du khách xếp thành một vòng tròn quanh bức tượng.",
         "cefr": "C1"
     },
     "disruption": {
@@ -8501,8 +8501,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/dɪsˈrʌpʃn/",
         "example": "We aim to help you move house with minimum disruption to yourself.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự gián đoạn",
+        "vietnamese_example": "Chúng tôi mong muốn giúp bạn chuyển nhà với sự gián đoạn tối thiểu cho chính bạn.",
         "cefr": "C1"
     },
     "drain": {
@@ -8510,8 +8510,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/dreɪn/",
         "example": "Drain and rinse the pasta.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "làm khô hạn",
+        "vietnamese_example": "Xả và rửa sạch mì ống.",
         "cefr": "C1"
     },
     "drift": {
@@ -8519,8 +8519,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/drɪft/",
         "example": "Clouds drifted across the sky.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trôi dạt",
+        "vietnamese_example": "Những đám mây trôi khắp bầu trời.",
         "cefr": "C1"
     },
     "driving": {
@@ -8528,8 +8528,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈdraɪvɪŋ/",
         "example": "Who was the driving force (= the person with the strongest influence) in the band?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lái xe",
+        "vietnamese_example": "Ai là động lực (= người có ảnh hưởng mạnh nhất) trong ban nhạc?",
         "cefr": "C1"
     },
     "dumb": {
@@ -8537,8 +8537,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dʌm/",
         "example": "That was a pretty dumb thing to do.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "câm",
+        "vietnamese_example": "Đó là một điều khá ngu ngốc để làm.",
         "cefr": "C1"
     },
     "duo": {
@@ -8546,8 +8546,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdjuːəʊ/",
         "example": "the comedy duo Laurel and Hardy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cặp đôi",
+        "vietnamese_example": "bộ đôi hài kịch Laurel và Hardy",
         "cefr": "C1"
     },
     "eager": {
@@ -8555,8 +8555,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈiːɡə(r)/",
         "example": "eager crowds outside the stadium",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "háo hức",
+        "vietnamese_example": "đám đông háo hức bên ngoài sân vận động",
         "cefr": "C1"
     },
     "echo": {
@@ -8564,8 +8564,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈekəʊ/",
         "example": "There was an echo on the phone and I couldn't hear clearly.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếng vọng",
+        "vietnamese_example": "Có tiếng vọng trong điện thoại và tôi không thể nghe rõ.",
         "cefr": "C1"
     },
     "ecological": {
@@ -8573,8 +8573,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌiːkəˈlɒdʒɪkl/",
         "example": "We risk upsetting the ecological balance of the area.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sinh thái",
+        "vietnamese_example": "Chúng ta có nguy cơ làm đảo lộn sự cân bằng sinh thái của khu vực.",
         "cefr": "C1"
     },
     "educator": {
@@ -8582,8 +8582,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈedʒukeɪtə(r)/",
         "example": "adult educators (= who teach adults)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà giáo dục",
+        "vietnamese_example": "nhà giáo dục người lớn (= người dạy người lớn)",
         "cefr": "C1"
     },
     "efficiency": {
@@ -8591,8 +8591,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪˈfɪʃnsi/",
         "example": "improvements in efficiency at the factory",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hiệu quả",
+        "vietnamese_example": "nâng cao hiệu quả tại nhà máy",
         "cefr": "C1"
     },
     "ego": {
@@ -8600,8 +8600,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈiːɡəʊ/",
         "example": "He has the biggest ego of anyone I've ever met.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cái tôi",
+        "vietnamese_example": "Anh ấy có cái tôi lớn nhất trong số những người tôi từng gặp.",
         "cefr": "C1"
     },
     "elaborate": {
@@ -8609,8 +8609,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪˈlæbərət/",
         "example": "elaborate designs",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phức tạp",
+        "vietnamese_example": "thiết kế phức tạp",
         "cefr": "C1"
     },
     "electoral": {
@@ -8618,8 +8618,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪˈlektərəl/",
         "example": "electoral systems/reforms",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bầu cử",
+        "vietnamese_example": "hệ thống bầu cử/cải cách",
         "cefr": "C1"
     },
     "embark": {
@@ -8627,8 +8627,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪmˈbɑːk/",
         "example": "We stood on the pier and watched as they embarked.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tham gia",
+        "vietnamese_example": "Chúng tôi đứng trên bến tàu và quan sát khi họ lên đường.",
         "cefr": "C1"
     },
     "embed": {
@@ -8636,8 +8636,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪmˈbed/",
         "example": "be embedded in something, an operation to remove glass that was embedded in his leg",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhúng",
+        "vietnamese_example": "được nhúng vào một cái gì đó, một cuộc phẫu thuật để loại bỏ mảnh thủy tinh được gắn vào chân anh ấy",
         "cefr": "C1"
     },
     "emergence": {
@@ -8645,8 +8645,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪˈmɜːdʒəns/",
         "example": "the island’s emergence from the sea 3 000 years ago",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự xuất hiện",
+        "vietnamese_example": "hòn đảo nổi lên từ biển 3 000 năm trước",
         "cefr": "C1"
     },
     "encompass": {
@@ -8654,8 +8654,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈkʌmpəs/",
         "example": "The job encompasses a wide range of responsibilities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bao gồm",
+        "vietnamese_example": "Công việc bao gồm nhiều trách nhiệm.",
         "cefr": "C1"
     },
     "encouragement": {
@@ -8663,8 +8663,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈkʌrɪdʒmənt/",
         "example": "a few words of encouragement",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự khích lệ",
+        "vietnamese_example": "một vài lời động viên",
         "cefr": "C1"
     },
     "endless": {
@@ -8672,8 +8672,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈendləs/",
         "example": "endless patience",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vô tận",
+        "vietnamese_example": "kiên nhẫn vô tận",
         "cefr": "C1"
     },
     "engagement": {
@@ -8681,8 +8681,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈɡeɪdʒmənt/",
         "example": "Their engagement was announced in the local paper.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hôn ước",
+        "vietnamese_example": "Lễ đính hôn của họ đã được công bố trên tờ báo địa phương.",
         "cefr": "C1"
     },
     "engaging": {
@@ -8690,8 +8690,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈɡeɪdʒɪŋ/",
         "example": "an engaging smile",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hấp dẫn",
+        "vietnamese_example": "một nụ cười hấp dẫn",
         "cefr": "C1"
     },
     "enquire": {
@@ -8699,8 +8699,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈkwaɪə(r)/",
         "example": "enquire about somebody/something, I called the station to enquire about train times.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hỏi thăm",
+        "vietnamese_example": "hỏi về ai/cái gì, tôi gọi ra nhà ga để hỏi về giờ tàu.",
         "cefr": "C1"
     },
     "enthusiast": {
@@ -8708,8 +8708,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈθjuːziæst/",
         "example": "a football enthusiast",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người đam mê",
+        "vietnamese_example": "một người đam mê bóng đá",
         "cefr": "C1"
     },
     "entitle": {
@@ -8717,8 +8717,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈtaɪtl/",
         "example": "be entitled to something, You will be entitled to your pension when you reach 65.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quyền",
+        "vietnamese_example": "được hưởng một cái gì đó, Bạn sẽ được hưởng lương hưu khi bạn đạt 65 tuổi.",
         "cefr": "C1"
     },
     "erect": {
@@ -8726,8 +8726,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪˈrekt/",
         "example": "The church was erected in 1582.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dựng lên",
+        "vietnamese_example": "Nhà thờ được xây dựng vào năm 1582.",
         "cefr": "C1"
     },
     "essence": {
@@ -8735,8 +8735,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈesns/",
         "example": "His paintings capture the essence of France.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nước hoa",
+        "vietnamese_example": "Những bức tranh của ông nắm bắt được bản chất của nước Pháp.",
         "cefr": "C1"
     },
     "eternal": {
@@ -8744,8 +8744,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪˈtɜːnl/",
         "example": "the promise of eternal life in heaven",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vĩnh cửu",
+        "vietnamese_example": "lời hứa về cuộc sống vĩnh cửu trên thiên đàng",
         "cefr": "C1"
     },
     "exaggerate": {
@@ -8753,8 +8753,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪɡˈzædʒəreɪt/",
         "example": "The hotel was really filthy and I'm not exaggerating.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nói quá",
+        "vietnamese_example": "Khách sạn thực sự bẩn thỉu và tôi không hề phóng đại.",
         "cefr": "C1"
     },
     "exclusion": {
@@ -8762,8 +8762,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪkˈskluːʒn/",
         "example": "exclusion (of somebody/something) (from something), He was disappointed with his exclusion from the England squad.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "loại trừ",
+        "vietnamese_example": "sự loại trừ (của ai đó / cái gì đó) (khỏi cái gì đó), Anh ấy thất vọng với việc bị loại khỏi đội tuyển Anh.",
         "cefr": "C1"
     },
     "exclusive": {
@@ -8771,8 +8771,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˈskluːsɪv/",
         "example": "The hotel has exclusive access to the beach.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "loại trừ",
+        "vietnamese_example": "Khách sạn có quyền truy cập độc quyền vào bãi biển.",
         "cefr": "C1"
     },
     "explicit": {
@@ -8780,8 +8780,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪkˈsplɪsɪt/",
         "example": "He gave me very explicit directions on how to get there.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "rõ ràng",
+        "vietnamese_example": "Anh ấy đã hướng dẫn tôi rất rõ ràng về cách đến đó.",
         "cefr": "C1"
     },
     "explicitly": {
@@ -8789,8 +8789,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ɪkˈsplɪsɪtli/",
         "example": "The report states explicitly that the system was to blame.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "rõ ràng",
+        "vietnamese_example": "Báo cáo nêu rõ ràng rằng hệ thống là nguyên nhân.",
         "cefr": "C1"
     },
     "fade": {
@@ -8798,8 +8798,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/feɪd/",
         "example": "The curtains had faded in the sun.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phai",
+        "vietnamese_example": "Những tấm rèm đã phai màu dưới nắng.",
         "cefr": "C1"
     },
     "fatal": {
@@ -8807,8 +8807,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈfeɪtl/",
         "example": "a fatal accident/blow/illness",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây tử vong",
+        "vietnamese_example": "một tai nạn/đòn/bệnh chết người",
         "cefr": "C1"
     },
     "fierce": {
@@ -8816,17 +8816,17 @@ var dictionary = {
         "pos": "adj",
         "pron": "/fɪəs/",
         "example": "a fierce dog",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mạnh mẽ",
+        "vietnamese_example": "một con chó hung dữ",
         "cefr": "C1"
     },
     "film-maker": {
-        "definition": "",
+        "definition": "A person who directs, produces, or works on films.",
         "pos": "noun",
         "pron": "/ˈfɪlm meɪkə(r)/",
-        "example": "",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "example": "The young film-maker won an award at the festival.",
+        "vietnamese": "người làm phim",
+        "vietnamese_example": "Nhà làm phim trẻ đã giành một giải thưởng tại lễ hội.",
         "cefr": "C1"
     },
     "fixture": {
@@ -8834,8 +8834,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfɪkstʃə(r)/",
         "example": "There are plans to make the race an annual fixture.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vật cố định",
+        "vietnamese_example": "Có kế hoạch biến cuộc đua thành một trận đấu hàng năm.",
         "cefr": "C1"
     },
     "flesh": {
@@ -8843,8 +8843,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/fleʃ/",
         "example": "The trap had cut deeply into the rabbit's flesh.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thịt",
+        "vietnamese_example": "Cái bẫy đã cắt sâu vào thịt con thỏ.",
         "cefr": "C1"
     },
     "flourish": {
@@ -8852,8 +8852,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈflʌrɪʃ/",
         "example": "Few businesses are flourishing in the present economic climate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phát triển mạnh mẽ",
+        "vietnamese_example": "Rất ít doanh nghiệp đang phát triển mạnh mẽ trong môi trường kinh tế hiện nay.",
         "cefr": "C1"
     },
     "footage": {
@@ -8861,8 +8861,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfʊtɪdʒ/",
         "example": "old film footage of the moon landing",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cảnh quay",
+        "vietnamese_example": "cảnh phim cũ về cuộc đổ bộ lên mặt trăng",
         "cefr": "C1"
     },
     "forth": {
@@ -8870,8 +8870,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/fɔːθ/",
         "example": "They set forth at dawn.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra",
+        "vietnamese_example": "Họ khởi hành vào lúc bình minh.",
         "cefr": "C1"
     },
     "forthcoming": {
@@ -8879,8 +8879,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌfɔːθˈkʌmɪŋ/",
         "example": "the forthcoming elections",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sắp tới",
+        "vietnamese_example": "cuộc bầu cử sắp tới",
         "cefr": "C1"
     },
     "fragile": {
@@ -8888,8 +8888,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈfrædʒaɪl/",
         "example": "fragile china/glass/bones",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dễ vỡ",
+        "vietnamese_example": "đồ sứ/thủy tinh/xương dễ vỡ",
         "cefr": "C1"
     },
     "funeral": {
@@ -8897,8 +8897,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈfjuːnərəl/",
         "example": "Hundreds of people attended the funeral.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tang lễ",
+        "vietnamese_example": "Hàng trăm người đã đến dự tang lễ.",
         "cefr": "C1"
     },
     "gaze": {
@@ -8906,8 +8906,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡeɪz/",
         "example": "He met her gaze (= looked at her while she looked at him).",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn chằm chằm",
+        "vietnamese_example": "Anh ấy gặp ánh mắt của cô ấy (= nhìn cô ấy trong khi cô ấy nhìn anh ấy).",
         "cefr": "C1"
     },
     "generic": {
@@ -8915,8 +8915,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/dʒəˈnerɪk/",
         "example": "‘Vine fruit’ is the generic term for currants and raisins.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chung chung",
+        "vietnamese_example": "'Quả nho' là thuật ngữ chung cho quả lý chua và nho khô.",
         "cefr": "C1"
     },
     "genocide": {
@@ -8924,8 +8924,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈdʒenəsaɪd/",
         "example": "Refugees gave accounts of the mass genocide.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự diệt chủng",
+        "vietnamese_example": "Những người tị nạn kể lại cuộc diệt chủng hàng loạt.",
         "cefr": "C1"
     },
     "glimpse": {
@@ -8933,8 +8933,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡlɪmps/",
         "example": "glimpse (of somebody/something), He caught a glimpse of her in the crowd.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thoáng qua",
+        "vietnamese_example": "thoáng nhìn thấy (của ai đó / cái gì đó), Anh thoáng thấy cô ấy trong đám đông.",
         "cefr": "C1"
     },
     "glorious": {
@@ -8942,8 +8942,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɡlɔːriəs/",
         "example": "We congratulate you on this glorious victory.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "huy hoàng",
+        "vietnamese_example": "Chúng tôi xin chúc mừng các bạn về chiến thắng vẻ vang này.",
         "cefr": "C1"
     },
     "glory": {
@@ -8951,8 +8951,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɡlɔːri/",
         "example": "Olympic glory in the 100 metres",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vinh quang",
+        "vietnamese_example": "Vinh quang Olympic ở nội dung 100 mét",
         "cefr": "C1"
     },
     "grace": {
@@ -8960,8 +8960,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡreɪs/",
         "example": "She moves with the natural grace of a ballerina.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "duyên dáng",
+        "vietnamese_example": "Cô ấy di chuyển với vẻ duyên dáng tự nhiên của một diễn viên múa ba lê.",
         "cefr": "C1"
     },
     "grasp": {
@@ -8969,8 +8969,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡrɑːsp/",
         "example": "I grabbed him, but he slipped from my grasp.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nắm bắt",
+        "vietnamese_example": "Tôi tóm lấy anh ấy, nhưng anh ấy trượt khỏi vòng tay tôi.",
         "cefr": "C1"
     },
     "grip": {
@@ -8978,8 +8978,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡrɪp/",
         "example": "Keep a tight grip on the rope.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "va li",
+        "vietnamese_example": "Giữ chặt dây thừng.",
         "cefr": "C1"
     },
     "gross": {
@@ -8987,8 +8987,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɡrəʊs/",
         "example": "gross weight (= including the container or wrapping)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tổng",
+        "vietnamese_example": "tổng trọng lượng (= bao gồm thùng chứa hoặc gói)",
         "cefr": "C1"
     },
     "gut": {
@@ -8996,8 +8996,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɡʌt/",
         "example": "It can take up to 72 hours for food to pass through the gut.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ruột",
+        "vietnamese_example": "Có thể mất tới 72 giờ để thức ăn đi qua ruột.",
         "cefr": "C1"
     },
     "halfway": {
@@ -9005,8 +9005,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˌhɑːfˈweɪ/",
         "example": "It's about halfway between London and Bristol.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nửa chừng",
+        "vietnamese_example": "Đó là khoảng nửa đường giữa London và Bristol.",
         "cefr": "C1"
     },
     "halt": {
@@ -9014,8 +9014,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/hɔːlt/",
         "example": "Work came to a halt when the machine broke down.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dừng lại",
+        "vietnamese_example": "Công việc bị đình trệ khi máy bị hỏng.",
         "cefr": "C1"
     },
     "handful": {
@@ -9023,8 +9023,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhændfʊl/",
         "example": "a handful of rice",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một số ít",
+        "vietnamese_example": "một nắm cơm",
         "cefr": "C1"
     },
     "handy": {
@@ -9032,8 +9032,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈhændi/",
         "example": "a handy little tool",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiện dụng",
+        "vietnamese_example": "một công cụ nhỏ tiện dụng",
         "cefr": "C1"
     },
     "harvest": {
@@ -9041,8 +9041,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhɑːvɪst/",
         "example": "harvest time",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mùa gặt",
+        "vietnamese_example": "thời gian thu hoạch",
         "cefr": "C1"
     },
     "haunt": {
@@ -9050,8 +9050,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/hɔːnt/",
         "example": "A headless rider haunts the country lanes.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ám ảnh",
+        "vietnamese_example": "Một tay đua không đầu ám ảnh các con đường quê.",
         "cefr": "C1"
     },
     "homeland": {
@@ -9059,8 +9059,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈhəʊmlænd/",
         "example": "Many refugees have been forced to flee their homeland.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quê hương",
+        "vietnamese_example": "Nhiều người tị nạn đã buộc phải rời bỏ quê hương.",
         "cefr": "C1"
     },
     "hopeful": {
@@ -9068,8 +9068,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈhəʊpfl/",
         "example": "hopeful (that…), I feel hopeful that we'll find a suitable house very soon.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hy vọng",
+        "vietnamese_example": "hy vọng (that…), tôi cảm thấy hy vọng rằng chúng ta sẽ sớm tìm được một ngôi nhà phù hợp.",
         "cefr": "C1"
     },
     "horizon": {
@@ -9077,8 +9077,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/həˈraɪzn/",
         "example": "The sun sank below the horizon.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chân trời",
+        "vietnamese_example": "Mặt trời đã lặn xuống dưới đường chân trời.",
         "cefr": "C1"
     },
     "humble": {
@@ -9086,17 +9086,17 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈhʌmbl/",
         "example": "Be humble enough to learn from your mistakes.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khiêm tốn",
+        "vietnamese_example": "Hãy đủ khiêm tốn để học hỏi từ những sai lầm của bạn.",
         "cefr": "C1"
     },
     "hydrogen": {
-        "definition": "",
+        "definition": "A chemical element that is the lightest gas and is used in industry and energy production.",
         "pos": "noun",
         "pron": "/ˈhaɪdrədʒən/",
-        "example": "",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "example": "Hydrogen could become an important clean energy source.",
+        "vietnamese": "hyđrô",
+        "vietnamese_example": "Hyđrô có thể trở thành một nguồn năng lượng sạch quan trọng.",
         "cefr": "C1"
     },
     "immense": {
@@ -9104,8 +9104,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪˈmens/",
         "example": "There is still an immense amount of work to be done.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bao la",
+        "vietnamese_example": "Vẫn còn một khối lượng lớn công việc phải làm.",
         "cefr": "C1"
     },
     "imminent": {
@@ -9113,8 +9113,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪmɪnənt/",
         "example": "the imminent threat of invasion",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sắp xảy ra",
+        "vietnamese_example": "mối đe dọa xâm lược sắp xảy ra",
         "cefr": "C1"
     },
     "inadequate": {
@@ -9122,8 +9122,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈædɪkwət/",
         "example": "inadequate supplies",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "không đầy đủ",
+        "vietnamese_example": "nguồn cung cấp không đầy đủ",
         "cefr": "C1"
     },
     "inclined": {
@@ -9131,8 +9131,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈklaɪnd/",
         "example": "She was inclined to trust him.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nghiêng",
+        "vietnamese_example": "Cô có xu hướng tin tưởng anh.",
         "cefr": "C1"
     },
     "inclusion": {
@@ -9140,8 +9140,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈkluːʒn/",
         "example": "His inclusion in the team is in doubt.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bao gồm",
+        "vietnamese_example": "Sự tham gia của anh ấy vào đội đang bị nghi ngờ.",
         "cefr": "C1"
     },
     "incur": {
@@ -9149,8 +9149,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈkɜː(r)/",
         "example": "She had incurred the wrath of her father by marrying without his consent.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gánh chịu",
+        "vietnamese_example": "Cô đã phải gánh chịu cơn thịnh nộ của cha mình khi kết hôn mà không có sự đồng ý của ông.",
         "cefr": "C1"
     },
     "indulge": {
@@ -9158,8 +9158,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈdʌldʒ/",
         "example": "indulge in something, They went into town to indulge in some serious shopping.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thưởng thức",
+        "vietnamese_example": "đam mê điều gì đó, họ đi vào thị trấn để mua sắm nghiêm túc.",
         "cefr": "C1"
     },
     "infant": {
@@ -9167,8 +9167,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnfənt/",
         "example": "a nursery for infants under two",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trẻ sơ sinh",
+        "vietnamese_example": "nhà trẻ cho trẻ dưới hai tuổi",
         "cefr": "C1"
     },
     "inflict": {
@@ -9176,8 +9176,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈflɪkt/",
         "example": "inflict something on/upon somebody/something, They inflicted a humiliating defeat on the home team.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây ra",
+        "vietnamese_example": "gây ra điều gì đó lên/lên ai đó/cái gì đó, Họ đã gây ra một thất bại nhục nhã cho đội chủ nhà.",
         "cefr": "C1"
     },
     "influential": {
@@ -9185,8 +9185,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪnfluˈenʃl/",
         "example": "a highly influential book",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có ảnh hưởng",
+        "vietnamese_example": "một cuốn sách có ảnh hưởng lớn",
         "cefr": "C1"
     },
     "inject": {
@@ -9194,8 +9194,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ɪnˈdʒekt/",
         "example": "inject something (into yourself/somebody/something), Adrenaline was injected into the muscle.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiêm",
+        "vietnamese_example": "tiêm thứ gì đó (vào chính bạn/ai đó/thứ gì đó), Adrenaline được tiêm vào cơ.",
         "cefr": "C1"
     },
     "injection": {
@@ -9203,8 +9203,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈdʒekʃn/",
         "example": "to give somebody an injection",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiêm",
+        "vietnamese_example": "tiêm thuốc cho ai đó",
         "cefr": "C1"
     },
     "instrumental": {
@@ -9212,8 +9212,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪnstrəˈmentl/",
         "example": "The Conservation Trust performs an instrumental role in the protection of rural environments.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhạc cụ",
+        "vietnamese_example": "Quỹ Bảo tồn đóng vai trò quan trọng trong việc bảo vệ môi trường nông thôn.",
         "cefr": "C1"
     },
     "insufficient": {
@@ -9221,8 +9221,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌɪnsəˈfɪʃnt/",
         "example": "insufficient time",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "không đủ",
+        "vietnamese_example": "không đủ thời gian",
         "cefr": "C1"
     },
     "insult": {
@@ -9230,8 +9230,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnsʌlt/",
         "example": "The crowd were shouting insults at the police.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự sỉ nhục",
+        "vietnamese_example": "Đám đông la hét lăng mạ cảnh sát.",
         "cefr": "C1"
     },
     "intact": {
@@ -9239,8 +9239,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈtækt/",
         "example": "Most of the house remains intact even after two hundred years.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nguyên vẹn",
+        "vietnamese_example": "Hầu hết ngôi nhà vẫn còn nguyên vẹn sau hai trăm năm.",
         "cefr": "C1"
     },
     "intake": {
@@ -9248,8 +9248,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪnteɪk/",
         "example": "high fluid intake",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lượng tiêu thụ",
+        "vietnamese_example": "lượng chất lỏng cao",
         "cefr": "C1"
     },
     "intellectual": {
@@ -9257,8 +9257,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌɪntəˈlektʃuəl/",
         "example": "He was a leading intellectual of his day.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trí tuệ",
+        "vietnamese_example": "Ông là một trí thức hàng đầu vào thời đó.",
         "cefr": "C1"
     },
     "intent": {
@@ -9266,8 +9266,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈtent/",
         "example": "She denies possessing the drug with intent to supply.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ý định",
+        "vietnamese_example": "Cô phủ nhận việc sở hữu ma túy với ý định cung cấp.",
         "cefr": "C1"
     },
     "interfere": {
@@ -9275,8 +9275,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌɪntəˈfɪə(r)/",
         "example": "I wish my mother would stop interfering and let me make my own decisions.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "can thiệp",
+        "vietnamese_example": "Tôi ước gì mẹ tôi đừng can thiệp nữa và để tôi tự quyết định.",
         "cefr": "C1"
     },
     "interior": {
@@ -9284,8 +9284,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈtɪəriə(r)/",
         "example": "interior walls",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nội thất",
+        "vietnamese_example": "bức tường nội thất",
         "cefr": "C1"
     },
     "intervene": {
@@ -9293,8 +9293,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˌɪntəˈviːn/",
         "example": "She might have been killed if the neighbours hadn't intervened.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "can thiệp",
+        "vietnamese_example": "Cô ấy có thể đã bị giết nếu hàng xóm không can thiệp.",
         "cefr": "C1"
     },
     "intimate": {
@@ -9302,8 +9302,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈɪntɪmət/",
         "example": "intimate friends",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thân mật",
+        "vietnamese_example": "bạn bè thân thiết",
         "cefr": "C1"
     },
     "invisible": {
@@ -9311,8 +9311,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪnˈvɪzəbl/",
         "example": "a wizard who could make himself invisible",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vô hình",
+        "vietnamese_example": "một phù thủy có thể tàng hình",
         "cefr": "C1"
     },
     "involvement": {
@@ -9320,8 +9320,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ɪnˈvɒlvmənt/",
         "example": "involvement in something, US involvement in European wars",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự tham gia",
+        "vietnamese_example": "sự tham gia vào một cái gì đó, sự tham gia của Mỹ vào cuộc chiến tranh châu Âu",
         "cefr": "C1"
     },
     "irony": {
@@ -9329,8 +9329,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈaɪrəni/",
         "example": "It was one of life's little ironies.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự mỉa mai",
+        "vietnamese_example": "Đó là một trong những điều trớ trêu nhỏ của cuộc sống.",
         "cefr": "C1"
     },
     "irrelevant": {
@@ -9338,8 +9338,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ɪˈreləvənt/",
         "example": "totally/completely/largely irrelevant",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "không liên quan",
+        "vietnamese_example": "hoàn toàn/hoàn toàn/phần lớn không liên quan",
         "cefr": "C1"
     },
     "isolation": {
@@ -9347,8 +9347,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌaɪsəˈleɪʃn/",
         "example": "geographical isolation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự cách ly",
+        "vietnamese_example": "sự cách ly về mặt địa lý",
         "cefr": "C1"
     },
     "kingdom": {
@@ -9356,8 +9356,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkɪŋdəm/",
         "example": "the United Kingdom",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vương quốc",
+        "vietnamese_example": "Vương quốc Anh",
         "cefr": "C1"
     },
     "lap": {
@@ -9365,8 +9365,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/læp/",
         "example": "on somebody's lap, There's only one seat so you'll have to sit on my lap.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lòng",
+        "vietnamese_example": "trên đùi ai đó, Chỉ có một chỗ nên bạn sẽ phải ngồi trên đùi tôi.",
         "cefr": "C1"
     },
     "latter": {
@@ -9374,8 +9374,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlætə(r)/",
         "example": "He chose the latter option.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sau này",
+        "vietnamese_example": "Anh đã chọn phương án sau.",
         "cefr": "C1"
     },
     "leak": {
@@ -9383,8 +9383,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/liːk/",
         "example": "a leak in the roof",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hở",
+        "vietnamese_example": "một mái nhà bị rò rỉ",
         "cefr": "C1"
     },
     "leap": {
@@ -9392,8 +9392,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/liːp/",
         "example": "a leap of six metres",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bước nhảy vọt",
+        "vietnamese_example": "bước nhảy sáu mét",
         "cefr": "C1"
     },
     "legacy": {
@@ -9401,8 +9401,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈleɡəsi/",
         "example": "They each received a legacy of $5 000.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "di sản",
+        "vietnamese_example": "Mỗi người đều nhận được di sản trị giá 5 000 USD.",
         "cefr": "C1"
     },
     "legendary": {
@@ -9410,8 +9410,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈledʒəndri/",
         "example": "a legendary figure",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "huyền thoại",
+        "vietnamese_example": "một nhân vật huyền thoại",
         "cefr": "C1"
     },
     "legislative": {
@@ -9419,8 +9419,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈledʒɪslətɪv/",
         "example": "a legislative assembly/body/council",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lập pháp",
+        "vietnamese_example": "một hội đồng/cơ quan/hội đồng lập pháp",
         "cefr": "C1"
     },
     "lengthy": {
@@ -9428,8 +9428,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈleŋkθi/",
         "example": "lengthy delays",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dài dòng",
+        "vietnamese_example": "sự chậm trễ kéo dài",
         "cefr": "C1"
     },
     "lesser": {
@@ -9437,8 +9437,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlesə(r)/",
         "example": "people of lesser importance",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ít hơn",
+        "vietnamese_example": "người ít quan trọng hơn",
         "cefr": "C1"
     },
     "liberation": {
@@ -9446,8 +9446,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌlɪbəˈreɪʃn/",
         "example": "a war of liberation",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giải phóng",
+        "vietnamese_example": "một cuộc chiến tranh giải phóng",
         "cefr": "C1"
     },
     "license": {
@@ -9455,8 +9455,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈlaɪsns/",
         "example": "license something, The new drug has not yet been licensed in the US.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giấy phép",
+        "vietnamese_example": "cấp giấy phép gì đó, Loại thuốc mới này vẫn chưa được cấp phép ở Mỹ.",
         "cefr": "C1"
     },
     "lifelong": {
@@ -9464,8 +9464,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlaɪflɒŋ/",
         "example": "Paul became his lifelong friend.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "suốt đời",
+        "vietnamese_example": "Paul đã trở thành người bạn suốt đời của anh ấy.",
         "cefr": "C1"
     },
     "likelihood": {
@@ -9473,8 +9473,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlaɪklihʊd/",
         "example": "There is very little likelihood of that happening.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khả năng xảy ra",
+        "vietnamese_example": "Có rất ít khả năng điều đó xảy ra.",
         "cefr": "C1"
     },
     "limb": {
@@ -9482,8 +9482,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/lɪm/",
         "example": "an artificial limb",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chân tay",
+        "vietnamese_example": "một chi giả",
         "cefr": "C1"
     },
     "linger": {
@@ -9491,8 +9491,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈlɪŋɡə(r)/",
         "example": "The faint smell of her perfume lingered in the room.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nán lại",
+        "vietnamese_example": "Mùi nước hoa thoang thoảng của cô còn vương vấn trong phòng.",
         "cefr": "C1"
     },
     "listing": {
@@ -9500,8 +9500,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɪstɪŋ/",
         "example": "a comprehensive listing of all airlines",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "niêm yết",
+        "vietnamese_example": "một danh sách đầy đủ của tất cả các hãng hàng không",
         "cefr": "C1"
     },
     "literacy": {
@@ -9509,8 +9509,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɪtərəsi/",
         "example": "a campaign to promote adult literacy",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khả năng đọc viết",
+        "vietnamese_example": "một chiến dịch khuyến khích người lớn biết đọc biết viết",
         "cefr": "C1"
     },
     "lobby": {
@@ -9518,8 +9518,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɒbi/",
         "example": "a hotel lobby",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sảnh",
+        "vietnamese_example": "sảnh khách sạn",
         "cefr": "C1"
     },
     "log": {
@@ -9527,8 +9527,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/lɒɡ/",
         "example": "logs for the fire",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhật ký",
+        "vietnamese_example": "khúc gỗ để chữa cháy",
         "cefr": "C1"
     },
     "long-standing": {
@@ -9536,8 +9536,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌlɒŋ ˈstændɪŋ/",
         "example": "a long-standing relationship",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lâu đời",
+        "vietnamese_example": "một mối quan hệ lâu dài",
         "cefr": "C1"
     },
     "long-time": {
@@ -9545,8 +9545,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈlɒŋ taɪm/",
         "example": "his long-time colleague",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lâu năm",
+        "vietnamese_example": "đồng nghiệp lâu năm của anh ấy",
         "cefr": "C1"
     },
     "loom": {
@@ -9554,8 +9554,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/luːm/",
         "example": "A dark shape loomed up ahead of us.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khung cửi",
+        "vietnamese_example": "Một bóng đen hiện ra trước mắt chúng tôi.",
         "cefr": "C1"
     },
     "loyalty": {
@@ -9563,8 +9563,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈlɔɪəlti/",
         "example": "Can I count on your loyalty?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lòng trung thành",
+        "vietnamese_example": "Tôi có thể tin tưởng vào lòng trung thành của bạn không?",
         "cefr": "C1"
     },
     "machinery": {
@@ -9572,8 +9572,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˈʃiːnəri/",
         "example": "agricultural/industrial machinery",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "máy móc",
+        "vietnamese_example": "máy móc nông nghiệp/công nghiệp",
         "cefr": "C1"
     },
     "magical": {
@@ -9581,8 +9581,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmædʒɪkl/",
         "example": "magical powers",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "huyền diệu",
+        "vietnamese_example": "sức mạnh ma thuật",
         "cefr": "C1"
     },
     "magnetic": {
@@ -9590,8 +9590,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/mæɡˈnetɪk/",
         "example": "magnetic materials",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "từ tính",
+        "vietnamese_example": "vật liệu từ tính",
         "cefr": "C1"
     },
     "magnitude": {
@@ -9599,8 +9599,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmæɡnɪtjuːd/",
         "example": "We did not realize the magnitude of the problem.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kích cỡ",
+        "vietnamese_example": "Chúng tôi đã không nhận ra tầm quan trọng của vấn đề.",
         "cefr": "C1"
     },
     "mainland": {
@@ -9608,8 +9608,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ðə ˈmeɪnlənd/",
         "example": "to/from the mainland, a boat to/from the mainland ",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đất liền",
+        "vietnamese_example": "đến/từ đất liền, một chiếc thuyền đến/từ đất liền",
         "cefr": "C1"
     },
     "mandatory": {
@@ -9617,8 +9617,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmændətəri/",
         "example": "The offence carries a mandatory life sentence.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bắt buộc",
+        "vietnamese_example": "Hành vi phạm tội mang bản án chung thân bắt buộc.",
         "cefr": "C1"
     },
     "manuscript": {
@@ -9626,8 +9626,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmænjuskrɪpt/",
         "example": "an unpublished/original manuscript",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bản thảo",
+        "vietnamese_example": "một bản thảo gốc/chưa được xuất bản",
         "cefr": "C1"
     },
     "marginal": {
@@ -9635,8 +9635,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmɑːdʒɪnl/",
         "example": "a marginal improvement in weather conditions",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cận biên",
+        "vietnamese_example": "sự cải thiện nhỏ trong điều kiện thời tiết",
         "cefr": "C1"
     },
     "marine": {
@@ -9644,8 +9644,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/məˈriːn/",
         "example": "marine life",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hàng hải",
+        "vietnamese_example": "sinh vật biển",
         "cefr": "C1"
     },
     "mask": {
@@ -9653,8 +9653,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mɑːsk/",
         "example": "The robbers wore stocking masks.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mặt nạ",
+        "vietnamese_example": "Những tên cướp đeo mặt nạ bít tất.",
         "cefr": "C1"
     },
     "massacre": {
@@ -9662,8 +9662,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmæsəkə(r)/",
         "example": "the bloody massacre of innocent civilians",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thảm sát",
+        "vietnamese_example": "vụ thảm sát đẫm máu thường dân vô tội",
         "cefr": "C1"
     },
     "mathematical": {
@@ -9671,8 +9671,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌmæθəˈmætɪkl/",
         "example": "mathematical calculations/problems/models",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "toán học",
+        "vietnamese_example": "tính toán/vấn đề/mô hình toán học",
         "cefr": "C1"
     },
     "mature": {
@@ -9680,8 +9680,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/məˈtʃʊə(r)/",
         "example": "Jane is very mature for her age.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trưởng thành",
+        "vietnamese_example": "Jane rất trưởng thành so với tuổi của mình.",
         "cefr": "C1"
     },
     "meantime": {
@@ -9689,8 +9689,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmiːntaɪm/",
         "example": "I'm changing my email address but for the meantime you can use the old one.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trong lúc đó",
+        "vietnamese_example": "Tôi đang thay đổi địa chỉ email của mình nhưng trong thời gian chờ đợi, bạn có thể sử dụng địa chỉ cũ.",
         "cefr": "C1"
     },
     "medieval": {
@@ -9698,8 +9698,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌmediˈiːvl/",
         "example": "medieval architecture/castles/manuscripts",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thời trung cổ",
+        "vietnamese_example": "kiến trúc/lâu đài/bản viết tay thời trung cổ",
         "cefr": "C1"
     },
     "melody": {
@@ -9707,8 +9707,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmelədi/",
         "example": "a haunting melody",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giai điệu",
+        "vietnamese_example": "một giai điệu đầy ám ảnh",
         "cefr": "C1"
     },
     "memoir": {
@@ -9716,8 +9716,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmemwɑː(r)/",
         "example": "O'Connor published a childhood memoir.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hồi ký",
+        "vietnamese_example": "O'Connor đã xuất bản một cuốn hồi ký thời thơ ấu.",
         "cefr": "C1"
     },
     "memorial": {
@@ -9725,8 +9725,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˈmɔːriəl/",
         "example": "a war memorial (= in memory of soldiers who died in a war)",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đài tưởng niệm",
+        "vietnamese_example": "một đài tưởng niệm chiến tranh (= tưởng nhớ những người lính đã chết trong chiến tranh)",
         "cefr": "C1"
     },
     "mentor": {
@@ -9734,8 +9734,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmentɔː(r)/",
         "example": "She was a friend and mentor to many young actors.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người hướng dẫn",
+        "vietnamese_example": "Cô là bạn và là cố vấn của nhiều diễn viên trẻ.",
         "cefr": "C1"
     },
     "merchant": {
@@ -9743,8 +9743,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɜːtʃənt/",
         "example": "a coal/wine merchant",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thương gia",
+        "vietnamese_example": "một người buôn than/rượu",
         "cefr": "C1"
     },
     "mere": {
@@ -9752,8 +9752,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/mɪə(r)/",
         "example": "It took her a mere 20 minutes to win.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ",
+        "vietnamese_example": "Cô chỉ mất 20 phút để giành chiến thắng.",
         "cefr": "C1"
     },
     "merely": {
@@ -9761,8 +9761,8 @@ var dictionary = {
         "pos": "adv",
         "pron": "/ˈmɪəli/",
         "example": "It is not merely a job, but a way of life.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ đơn thuần là",
+        "vietnamese_example": "Đó không chỉ là một công việc mà còn là một lối sống.",
         "cefr": "C1"
     },
     "merge": {
@@ -9770,8 +9770,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/mɜːdʒ/",
         "example": "The banks are set to merge next year.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hợp nhất",
+        "vietnamese_example": "Hai ngân hàng này dự kiến ​​sẽ sáp nhập vào năm tới.",
         "cefr": "C1"
     },
     "midst": {
@@ -9779,8 +9779,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mɪdst/",
         "example": "in the midst of something, Such beauty was unexpected in the midst of the city.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ở giữa",
+        "vietnamese_example": "giữa một điều gì đó, Vẻ đẹp như vậy thật bất ngờ giữa lòng thành phố.",
         "cefr": "C1"
     },
     "minimal": {
@@ -9788,8 +9788,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˈmɪnɪml/",
         "example": "The work was carried out at minimal cost.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tối thiểu",
+        "vietnamese_example": "Công việc được thực hiện với chi phí tối thiểu.",
         "cefr": "C1"
     },
     "minimize": {
@@ -9797,8 +9797,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈmɪnɪmaɪz/",
         "example": "Good hygiene helps to minimize the risk of infection.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giảm thiểu",
+        "vietnamese_example": "Vệ sinh tốt giúp giảm thiểu nguy cơ nhiễm trùng.",
         "cefr": "C1"
     },
     "miracle": {
@@ -9806,8 +9806,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɪrəkl/",
         "example": "the miracle of rising from the grave",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phép lạ",
+        "vietnamese_example": "phép lạ sống lại từ nấm mồ",
         "cefr": "C1"
     },
     "misleading": {
@@ -9815,8 +9815,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/ˌmɪsˈliːdɪŋ/",
         "example": "misleading information/advertisements",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gây hiểu lầm",
+        "vietnamese_example": "thông tin/quảng cáo gây hiểu lầm",
         "cefr": "C1"
     },
     "missile": {
@@ -9824,8 +9824,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈmɪsaɪl/",
         "example": "nuclear missiles",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tên lửa",
+        "vietnamese_example": "tên lửa hạt nhân",
         "cefr": "C1"
     },
     "mob": {
@@ -9833,8 +9833,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mɒb/",
         "example": "an angry/unruly mob",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đám đông",
+        "vietnamese_example": "một đám đông giận dữ/ngỗ ngược",
         "cefr": "C1"
     },
     "mobilize": {
@@ -9842,8 +9842,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "/ˈməʊbəlaɪz/",
         "example": "The unions mobilized thousands of workers in a protest against the cuts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "huy động",
+        "vietnamese_example": "Các công đoàn đã huy động hàng nghìn công nhân phản đối việc cắt giảm.",
         "cefr": "C1"
     },
     "modification": {
@@ -9851,8 +9851,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌmɒdɪfɪˈkeɪʃn/",
         "example": "Considerable modification of the existing system is needed.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sửa đổi",
+        "vietnamese_example": "Cần phải sửa đổi đáng kể hệ thống hiện tại.",
         "cefr": "C1"
     },
     "momentum": {
@@ -9860,8 +9860,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/məˈmentəm/",
         "example": "The fight for his release gathers momentum each day.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đà",
+        "vietnamese_example": "Cuộc đấu tranh để trả tự do cho anh ấy đang thu thập động lực mỗi ngày.",
         "cefr": "C1"
     },
     "monk": {
@@ -9869,8 +9869,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/mʌŋk/",
         "example": "Benedictine/Buddhist monks",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhà sư",
+        "vietnamese_example": "tu sĩ Benedictine/Phật giáo",
         "cefr": "C1"
     },
     "motorist": {
@@ -9878,8 +9878,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈməʊtərɪst/",
         "example": "The accident was reported by a passing motorist.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "người lái xe ô tô",
+        "vietnamese_example": "Vụ tai nạn được một người lái xe đi ngang qua báo cáo.",
         "cefr": "C1"
     },
     "municipal": {
@@ -9887,8 +9887,8 @@ var dictionary = {
         "pos": "adj",
         "pron": "/mjuːˈnɪsɪpl/",
         "example": "municipal elections/councils",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thành phố",
+        "vietnamese_example": "bầu cử/hội đồng thành phố",
         "cefr": "C1"
     },
     "bring about": {
@@ -9896,8 +9896,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "The politician introduced new laws that might bring about some positive change.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mang lại",
+        "vietnamese_example": "Chính trị gia này đã đưa ra những luật mới có thể mang lại một số thay đổi tích cực.",
         "cefr": "C1"
     },
     "bring in": {
@@ -9905,8 +9905,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Fishermen always try to bring in a large catch.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mang vào",
+        "vietnamese_example": "Ngư dân luôn cố gắng đánh bắt được nhiều cá.",
         "cefr": "C1"
     },
     "carry out": {
@@ -9914,8 +9914,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "The secret agent carried out his orders exactly as planned.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiến hành",
+        "vietnamese_example": "Người mật vụ thực hiện mệnh lệnh của mình đúng như kế hoạch.",
         "cefr": "C1"
     },
     "come out with": {
@@ -9923,8 +9923,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Microsoft is coming out with a new video game system next month.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi ra với",
+        "vietnamese_example": "Microsoft sẽ ra mắt một hệ thống trò chơi điện tử mới vào tháng tới.",
         "cefr": "C1"
     },
     "find out": {
@@ -9932,8 +9932,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Vicky's parents are going to be so mad when they find out she got a tattoo.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tìm ra",
+        "vietnamese_example": "Cha mẹ của Vicky sẽ rất tức giận khi biết cô có hình xăm.",
         "cefr": "C1"
     },
     "give up": {
@@ -9941,8 +9941,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "If you smoke, make every effort to give up. If you don’t then it is probable you’ll get cancer.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bỏ cuộc",
+        "vietnamese_example": "Nếu bạn hút thuốc, hãy cố gắng bỏ thuốc. Nếu không thì rất có thể bạn sẽ bị ung thư.",
         "cefr": "C1"
     },
     "go into": {
@@ -9950,8 +9950,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I really don't want to go into that now.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi vào",
+        "vietnamese_example": "Tôi thực sự không muốn đi sâu vào vấn đề đó bây giờ.",
         "cefr": "C1"
     },
     "hold up": {
@@ -9959,8 +9959,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Can you hook up the fax machine for me?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chờ đã",
+        "vietnamese_example": "Bạn có thể nối máy fax giúp tôi được không?",
         "cefr": "C1"
     },
     "look back on": {
@@ -9968,8 +9968,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "When I look back on my childhood, I often feel angry.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn lại",
+        "vietnamese_example": "Khi nhìn lại tuổi thơ của mình, tôi thường cảm thấy tức giận.",
         "cefr": "C1"
     },
     "look down on": {
@@ -9977,8 +9977,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "She's so conceited. She looks down on everybody else.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn xuống",
+        "vietnamese_example": "Cô ấy thật tự phụ. Cô ấy coi thường mọi người khác.",
         "cefr": "C1"
     },
     "look up to": {
@@ -9986,8 +9986,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "He looks up to his father.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn lên",
+        "vietnamese_example": "Anh ngước nhìn cha mình.",
         "cefr": "C1"
     },
     "make up for": {
@@ -9995,8 +9995,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Allen made up for being late by getting me flowers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bù đắp cho",
+        "vietnamese_example": "Allen bù đắp cho việc đến muộn bằng cách mua hoa cho tôi.",
         "cefr": "C1"
     },
     "point out": {
@@ -10004,8 +10004,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I'd like to point out that figures in column two might be outdated.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chỉ ra",
+        "vietnamese_example": "Tôi muốn chỉ ra rằng những số liệu ở cột hai có thể đã lỗi thời.",
         "cefr": "C1"
     },
     "put up with": {
@@ -10013,8 +10013,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Sandy will not put up with smoking in her house.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chịu đựng",
+        "vietnamese_example": "Sandy sẽ không chịu đựng việc hút thuốc trong nhà mình.",
         "cefr": "C1"
     },
     "set up": {
@@ -10022,8 +10022,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I don't think he killed those men. Somebody set him up.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cài đặt",
+        "vietnamese_example": "Tôi không nghĩ anh ta đã giết những người đó. Ai đó đã gài bẫy anh ta.",
         "cefr": "C1"
     },
     "take on": {
@@ -10031,8 +10031,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "She has taken on too much responsibility in this project.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đảm nhận",
+        "vietnamese_example": "Cô ấy đã gánh quá nhiều trách nhiệm trong dự án này.",
         "cefr": "C1"
     },
     "take over": {
@@ -10040,8 +10040,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Who is going to take over the family business when Aretha's father dies?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếp quản",
+        "vietnamese_example": "Ai sẽ tiếp quản công việc kinh doanh của gia đình khi cha của Aretha qua đời?",
         "cefr": "C1"
     },
     "turn out": {
@@ -10049,8 +10049,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "She turned out to be the murderer after all.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hóa ra",
+        "vietnamese_example": "Rốt cuộc cô ấy chính là kẻ giết người.",
         "cefr": "C1"
     },
     "turn up": {
@@ -10058,8 +10058,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Turn up the TV. I can't hear what they're saying.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "xuất hiện",
+        "vietnamese_example": "Bật TV lên. Tôi không thể nghe được họ đang nói gì.",
         "cefr": "C1"
     },
     "work out": {
@@ -10067,8 +10067,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I hope you two can work out your problems.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tập thể dục",
+        "vietnamese_example": "Tôi hy vọng hai bạn có thể giải quyết được vấn đề của mình.",
         "cefr": "C1"
     },
     "a double-edged sword": {
@@ -10076,8 +10076,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Globalization can be a double-edged sword for local communities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một con dao hai lưỡi",
+        "vietnamese_example": "Toàn cầu hóa có thể là con dao hai lưỡi đối với cộng đồng địa phương.",
         "cefr": "C1"
     },
     "the tip of the iceberg": {
@@ -10085,8 +10085,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Traffic congestion is only the tip of the iceberg in modern cities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phần nổi của tảng băng trôi",
+        "vietnamese_example": "Ùn tắc giao thông chỉ là phần nổi của tảng băng trôi ở các thành phố hiện đại.",
         "cefr": "C1"
     },
     "in the long run": {
@@ -10094,8 +10094,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Investing in public transport saves money in the long run.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "về lâu dài",
+        "vietnamese_example": "Đầu tư vào giao thông công cộng sẽ tiết kiệm tiền về lâu dài.",
         "cefr": "C1"
     },
     "on the right track": {
@@ -10103,8 +10103,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The policy seems to be on the right track so far.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi đúng hướng",
+        "vietnamese_example": "Cho đến nay, chính sách này có vẻ đang đi đúng hướng.",
         "cefr": "C1"
     },
     "a wake-up call": {
@@ -10112,8 +10112,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The drought was a wake-up call for policymakers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một cuộc gọi đánh thức",
+        "vietnamese_example": "Hạn hán là hồi chuông cảnh tỉnh cho các nhà hoạch định chính sách.",
         "cefr": "C1"
     },
     "back to square one": {
@@ -10121,8 +10121,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "When the plan failed, the team went back to square one.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trở lại hình vuông một",
+        "vietnamese_example": "Khi kế hoạch thất bại, cả đội quay trở lại hình vuông.",
         "cefr": "C1"
     },
     "a matter of time": {
@@ -10130,8 +10130,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Without reform, it is only a matter of time before the system collapses.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vấn đề thời gian",
+        "vietnamese_example": "Nếu không cải cách, việc hệ thống sụp đổ chỉ là vấn đề thời gian.",
         "cefr": "C1"
     },
     "food for thought": {
@@ -10139,8 +10139,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The lecture gave students plenty of food for thought.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thức ăn cho sự suy nghĩ",
+        "vietnamese_example": "Bài giảng đã mang lại cho sinh viên nhiều điều đáng suy ngẫm.",
         "cefr": "C1"
     },
     "in the same boat": {
@@ -10148,8 +10148,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Small businesses are all in the same boat during a recession.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trong cùng một chiếc thuyền",
+        "vietnamese_example": "Các doanh nghiệp nhỏ đều ở trên cùng một con thuyền trong thời kỳ suy thoái.",
         "cefr": "C1"
     },
     "at the heart of": {
@@ -10157,8 +10157,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Trust is at the heart of every healthy community.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ở trung tâm của",
+        "vietnamese_example": "Niềm tin là trọng tâm của mọi cộng đồng lành mạnh.",
         "cefr": "C1"
     },
     "a far cry from": {
@@ -10166,8 +10166,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Online discussion is often a far cry from real face-to-face communication.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khác xa với",
+        "vietnamese_example": "Thảo luận trực tuyến thường khác xa với giao tiếp mặt đối mặt thực sự.",
         "cefr": "C1"
     },
     "under pressure": {
@@ -10175,8 +10175,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Healthcare systems are under pressure during epidemics.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chịu áp lực",
+        "vietnamese_example": "Hệ thống chăm sóc sức khỏe đang chịu áp lực trong thời kỳ dịch bệnh.",
         "cefr": "C1"
     },
     "a stepping stone": {
@@ -10184,8 +10184,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Volunteering can be a stepping stone to a professional career.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một bước đệm",
+        "vietnamese_example": "Tình nguyện có thể là một bước đệm cho sự nghiệp chuyên nghiệp.",
         "cefr": "C1"
     },
     "in light of": {
@@ -10193,8 +10193,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "In light of recent evidence, the proposal needs revision.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trong ánh sáng của",
+        "vietnamese_example": "Dựa trên những bằng chứng gần đây, đề xuất này cần được sửa đổi.",
         "cefr": "C1"
     },
     "by and large": {
@@ -10202,8 +10202,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "By and large, the public supports stricter safety rules.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn chung",
+        "vietnamese_example": "Nhìn chung, công chúng ủng hộ các quy định an toàn chặt chẽ hơn.",
         "cefr": "C1"
     },
     "an uphill battle": {
@@ -10211,8 +10211,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Reducing inequality remains an uphill battle in many countries.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một trận chiến khó khăn",
+        "vietnamese_example": "Giảm bất bình đẳng vẫn là một cuộc chiến khó khăn ở nhiều quốc gia.",
         "cefr": "C1"
     },
     "a vicious circle": {
@@ -10220,8 +10220,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Poverty and poor education often form a vicious circle.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một vòng luẩn quẩn",
+        "vietnamese_example": "Nghèo đói và trình độ học vấn kém thường tạo thành một vòng luẩn quẩn.",
         "cefr": "C1"
     },
     "a turning point": {
@@ -10229,8 +10229,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The invention marked a turning point in digital communication.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một bước ngoặt",
+        "vietnamese_example": "Phát minh này đánh dấu một bước ngoặt trong truyền thông kỹ thuật số.",
         "cefr": "C1"
     },
     "in the face of": {
@@ -10238,8 +10238,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Communities remained resilient in the face of repeated disasters.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đối mặt với",
+        "vietnamese_example": "Cộng đồng vẫn kiên cường khi đối mặt với thảm họa lặp đi lặp lại.",
         "cefr": "C1"
     },
     "beyond doubt": {
@@ -10247,8 +10247,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The benefits of clean water are beyond doubt.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "không còn nghi ngờ gì nữa",
+        "vietnamese_example": "Những lợi ích của nước sạch là không thể nghi ngờ.",
         "cefr": "C1"
     },
     "break down": {
@@ -10256,8 +10256,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "She broke down after her husband died.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phá vỡ",
+        "vietnamese_example": "Cô suy sụp sau khi chồng qua đời.",
         "cefr": "C1"
     },
     "bring back": {
@@ -10265,8 +10265,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Sometimes when people die they are able to be brought back to life.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mang về",
+        "vietnamese_example": "Đôi khi người ta chết đi họ có thể được sống lại.",
         "cefr": "C1"
     },
     "bring up": {
@@ -10274,8 +10274,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Sam was brought up in South Carolina.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nuôi dưỡng",
+        "vietnamese_example": "Sam lớn lên ở Nam Carolina.",
         "cefr": "C1"
     },
     "call back": {
@@ -10283,8 +10283,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Mrs Bottone is in a meeting. Can you call back this afternoon, please?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gọi lại",
+        "vietnamese_example": "Bà Bottone đang họp. Chiều nay bạn có thể gọi lại được không?",
         "cefr": "C1"
     },
     "call round": {
@@ -10292,8 +10292,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I think I'll call round and see if my grandmother needs anything.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gọi vòng",
+        "vietnamese_example": "Tôi nghĩ tôi sẽ gọi lại xem bà tôi có cần gì không.",
         "cefr": "C1"
     },
     "carry on with": {
@@ -10301,8 +10301,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I want you to carry on with the project while I am out of town.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếp tục với",
+        "vietnamese_example": "Tôi muốn bạn tiếp tục dự án khi tôi đi vắng.",
         "cefr": "C1"
     },
     "check into": {
@@ -10310,8 +10310,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "We are checking into discount flights to London.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiểm tra",
+        "vietnamese_example": "Chúng tôi đang kiểm tra các chuyến bay giảm giá đến London.",
         "cefr": "C1"
     },
     "cheer up": {
@@ -10319,8 +10319,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Cheer up. Everything will be all right.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "Vui lên",
+        "vietnamese_example": "Vui lên. Mọi chuyện sẽ ổn thôi.",
         "cefr": "C1"
     },
     "come back": {
@@ -10328,8 +10328,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "What time are you coming back?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự trở lại",
+        "vietnamese_example": "Mấy giờ bạn về?",
         "cefr": "C1"
     },
     "come down with": {
@@ -10337,8 +10337,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "He came down with the flu.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi xuống với",
+        "vietnamese_example": "Anh ấy bị cúm.",
         "cefr": "C1"
     },
     "come up": {
@@ -10346,8 +10346,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I planned on visiting you last night, but something came up and I was unable to visit.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi lên",
+        "vietnamese_example": "Tối qua tôi định đến thăm bạn nhưng có chuyện đột xuất nên tôi không thể đến thăm được.",
         "cefr": "C1"
     },
     "get back": {
@@ -10355,8 +10355,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Brandon pranked me last Halloween, so this year I am going to get him back.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "quay lại",
+        "vietnamese_example": "Brandon đã chơi khăm tôi vào dịp Halloween năm ngoái nên năm nay tôi sẽ giành lại anh ấy.",
         "cefr": "C1"
     },
     "get on with": {
@@ -10364,8 +10364,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Natasha doesn't get on with her co-workers.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếp tục với",
+        "vietnamese_example": "Natasha không hòa hợp với đồng nghiệp của mình.",
         "cefr": "C1"
     },
     "get out of": {
@@ -10373,8 +10373,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I fell into the water when I tried to get out of the canoe.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thoát ra khỏi",
+        "vietnamese_example": "Tôi bị rơi xuống nước khi cố gắng thoát ra khỏi ca nô.",
         "cefr": "C1"
     },
     "go in for": {
@@ -10382,8 +10382,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Are you going to go in for soccer this year at school?",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi vào cho",
+        "vietnamese_example": "Năm nay bạn có định tham gia bóng đá ở trường không?",
         "cefr": "C1"
     },
     "go on with": {
@@ -10391,8 +10391,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I think we should go on with the meeting and stop wasting time.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếp tục với",
+        "vietnamese_example": "Tôi nghĩ chúng ta nên tiếp tục cuộc họp và ngừng lãng phí thời gian.",
         "cefr": "C1"
     },
     "look up": {
@@ -10400,8 +10400,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Sometimes when I reminisce I look up old friends on the Internet.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tra cứu",
+        "vietnamese_example": "Đôi khi hồi tưởng lại, tôi tìm kiếm những người bạn cũ trên Internet.",
         "cefr": "C1"
     },
     "make up": {
@@ -10409,8 +10409,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I takes me 10 minutes to make my face up.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trang điểm",
+        "vietnamese_example": "Tôi mất 10 phút để trang điểm.",
         "cefr": "C1"
     },
     "pick up": {
@@ -10418,8 +10418,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Some weird guy tried to pick Patricia up at the bar.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhặt lên",
+        "vietnamese_example": "Một gã kỳ lạ nào đó đã cố đón Patricia ở quán bar.",
         "cefr": "C1"
     },
     "put down": {
@@ -10427,8 +10427,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "She always puts down people who don't share her opinions.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đặt xuống",
+        "vietnamese_example": "Cô ấy luôn coi thường những người không chia sẻ quan điểm của mình.",
         "cefr": "C1"
     },
     "put out": {
@@ -10436,8 +10436,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I don't want to put you out, but could you pick me up at the airport.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "dập tắt",
+        "vietnamese_example": "Tôi không muốn đuổi bạn ra ngoài, nhưng bạn có thể đón tôi ở sân bay được không?",
         "cefr": "C1"
     },
     "set off": {
@@ -10445,8 +10445,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "When setting off fireworks you must be very careful not to get injured.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "khởi hành",
+        "vietnamese_example": "Khi đốt pháo hoa bạn phải hết sức cẩn thận để không bị thương.",
         "cefr": "C1"
     },
     "take back": {
@@ -10454,8 +10454,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "The dress my grandmother bought for me didn't fit, so I took it back and exchanged it for a pair of pants.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lấy lại",
+        "vietnamese_example": "Chiếc váy bà ngoại mua cho tôi không vừa nên tôi lấy lại và đổi lấy một chiếc quần.",
         "cefr": "C1"
     },
     "take off": {
@@ -10463,8 +10463,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I was sick last week, so I took a few days off of work.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "cởi",
+        "vietnamese_example": "Tuần trước tôi bị ốm nên tôi đã nghỉ làm vài ngày.",
         "cefr": "C1"
     },
     "take up": {
@@ -10472,8 +10472,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "This dress is too long, I am going to take it up.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiếm lấy",
+        "vietnamese_example": "Chiếc váy này dài quá, tôi sẽ lấy nó lên.",
         "cefr": "C1"
     },
     "blow up": {
@@ -10481,8 +10481,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "When Joan heard the news, she blew up and rushed out of the room.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nổ tung",
+        "vietnamese_example": "Khi Joan biết tin, cô ấy nổi giận và lao ra khỏi phòng.",
         "cefr": "C1"
     },
     "call off": {
@@ -10490,8 +10490,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "He called off the dogs when he saw it was his neighbor.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "gọi tắt",
+        "vietnamese_example": "Anh ta gọi lũ chó đi khi thấy đó là hàng xóm của mình.",
         "cefr": "C1"
     },
     "carry on": {
@@ -10499,8 +10499,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Please, carry on. I didn't mean to interrupt you.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tiếp tục",
+        "vietnamese_example": "Xin vui lòng, tiếp tục. Tôi không có ý làm phiền bạn.",
         "cefr": "C1"
     },
     "come out": {
@@ -10508,8 +10508,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "The pictures came out great.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi ra ngoài",
+        "vietnamese_example": "Những hình ảnh xuất hiện tuyệt vời.",
         "cefr": "C1"
     },
     "get out": {
@@ -10517,8 +10517,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "I must get this work out before the deadline comes!",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ra khỏi",
+        "vietnamese_example": "Tôi phải hoàn thành công việc này trước khi thời hạn đến!",
         "cefr": "C1"
     },
     "go off": {
@@ -10526,8 +10526,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "The surprise party went off without any problems.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "rời đi",
+        "vietnamese_example": "Bữa tiệc bất ngờ đã diễn ra mà không gặp bất kỳ trở ngại nào.",
         "cefr": "C1"
     },
     "go out": {
@@ -10535,8 +10535,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "They love to go out every Saturday night.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi ra ngoài",
+        "vietnamese_example": "Họ thích đi chơi vào mỗi tối thứ bảy.",
         "cefr": "C1"
     },
     "go up": {
@@ -10544,8 +10544,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Several new KNUE buildings are going up in 2007 and 2008.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi lên",
+        "vietnamese_example": "Một số tòa nhà KNUE mới sẽ được xây dựng vào năm 2007 và 2008.",
         "cefr": "C1"
     },
     "look out": {
@@ -10553,8 +10553,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Look out, there's a black widow spider on the wall.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nhìn ra ngoài",
+        "vietnamese_example": "Hãy coi chừng, có một con nhện góa phụ đen trên tường.",
         "cefr": "C1"
     },
     "sit down": {
@@ -10562,8 +10562,8 @@ var dictionary = {
         "pos": "verb",
         "pron": "",
         "example": "Sit down and stop your noise!",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "ngồi xuống",
+        "vietnamese_example": "Hãy ngồi xuống và ngừng ồn ào!",
         "cefr": "C1"
     },
     "a grey area": {
@@ -10571,8 +10571,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Online privacy remains a grey area in many legal systems.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một khu vực màu xám",
+        "vietnamese_example": "Quyền riêng tư trực tuyến vẫn là một vùng xám trong nhiều hệ thống pháp luật.",
         "cefr": "C1"
     },
     "a hot potato": {
@@ -10580,8 +10580,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Immigration has become a hot potato in public debate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một củ khoai tây nóng",
+        "vietnamese_example": "Nhập cư đã trở thành một vấn đề nóng hổi trong các cuộc tranh luận công khai.",
         "cefr": "C1"
     },
     "a level playing field": {
@@ -10589,8 +10589,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Transparent regulation helps create a level playing field for businesses.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một sân chơi bình đẳng",
+        "vietnamese_example": "Quy định minh bạch giúp tạo sân chơi bình đẳng cho doanh nghiệp.",
         "cefr": "C1"
     },
     "a means to an end": {
@@ -10598,8 +10598,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "For some students, a degree is simply a means to an end.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một phương tiện để kết thúc",
+        "vietnamese_example": "Đối với một số sinh viên, bằng cấp chỉ đơn giản là một phương tiện để đạt được mục đích.",
         "cefr": "C1"
     },
     "a sharp rise": {
@@ -10607,8 +10607,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The city has seen a sharp rise in housing costs.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "sự gia tăng mạnh mẽ",
+        "vietnamese_example": "Thành phố đã chứng kiến ​​sự gia tăng mạnh về chi phí nhà ở.",
         "cefr": "C1"
     },
     "bear in mind": {
@@ -10616,8 +10616,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Policymakers should bear in mind the needs of rural communities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "hãy ghi nhớ",
+        "vietnamese_example": "Các nhà hoạch định chính sách nên lưu ý đến nhu cầu của cộng đồng nông thôn.",
         "cefr": "C1"
     },
     "break new ground": {
@@ -10625,8 +10625,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The study breaks new ground in climate research.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phá vỡ nền tảng mới",
+        "vietnamese_example": "Nghiên cứu này tạo ra nền tảng mới trong nghiên cứu khí hậu.",
         "cefr": "C1"
     },
     "draw the line at": {
@@ -10634,8 +10634,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Most consumers draw the line at misleading advertising.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vẽ đường tại",
+        "vietnamese_example": "Hầu hết người tiêu dùng đều vạch ra ranh giới cho những quảng cáo gây hiểu lầm.",
         "cefr": "C1"
     },
     "fall into place": {
@@ -10643,8 +10643,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Once the data was analyzed, the main pattern fell into place.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "rơi vào vị trí",
+        "vietnamese_example": "Sau khi dữ liệu được phân tích, mô hình chính đã được đưa ra.",
         "cefr": "C1"
     },
     "from scratch": {
@@ -10652,8 +10652,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The committee had to redesign the policy from scratch.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "từ đầu",
+        "vietnamese_example": "Ủy ban đã phải thiết kế lại chính sách từ đầu.",
         "cefr": "C1"
     },
     "gain momentum": {
@@ -10661,8 +10661,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The campaign gained momentum after the debate.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "lấy đà",
+        "vietnamese_example": "Chiến dịch đã đạt được động lực sau cuộc tranh luận.",
         "cefr": "C1"
     },
     "have far-reaching effects": {
@@ -10670,8 +10670,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Urban planning decisions can have far-reaching effects.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có ảnh hưởng sâu rộng",
+        "vietnamese_example": "Các quyết định quy hoạch đô thị có thể có tác động sâu rộng.",
         "cefr": "C1"
     },
     "in high demand": {
@@ -10679,8 +10679,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Skilled engineers are in high demand worldwide.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "có nhu cầu cao",
+        "vietnamese_example": "Các kỹ sư lành nghề đang có nhu cầu cao trên toàn thế giới.",
         "cefr": "C1"
     },
     "in short supply": {
@@ -10688,8 +10688,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Affordable housing is in short supply in big cities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thiếu hụt nguồn cung",
+        "vietnamese_example": "Nhà ở giá rẻ đang khan hiếm ở các thành phố lớn",
         "cefr": "C1"
     },
     "leave a lot to be desired": {
@@ -10697,8 +10697,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The current transport system leaves a lot to be desired.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "để lại nhiều điều mong muốn",
+        "vietnamese_example": "Hệ thống giao thông hiện tại còn nhiều điều đáng mong đợi.",
         "cefr": "C1"
     },
     "make ends meet": {
@@ -10706,8 +10706,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Many families struggle to make ends meet during inflation.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "kiếm sống",
+        "vietnamese_example": "Nhiều gia đình phải vật lộn để kiếm sống trong thời kỳ lạm phát.",
         "cefr": "C1"
     },
     "on a large scale": {
@@ -10715,8 +10715,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Deforestation is occurring on a large scale.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "trên quy mô lớn",
+        "vietnamese_example": "Nạn phá rừng đang diễn ra trên quy mô lớn.",
         "cefr": "C1"
     },
     "raise awareness": {
@@ -10724,8 +10724,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Schools should raise awareness of mental health.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "nâng cao nhận thức",
+        "vietnamese_example": "Các trường học nên nâng cao nhận thức về sức khỏe tâm thần.",
         "cefr": "C1"
     },
     "serve a purpose": {
@@ -10733,8 +10733,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Standardized tests may still serve a purpose in some contexts.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "phục vụ một mục đích",
+        "vietnamese_example": "Các bài kiểm tra tiêu chuẩn hóa vẫn có thể phục vụ một mục đích nào đó trong một số bối cảnh.",
         "cefr": "C1"
     },
     "take into account": {
@@ -10742,8 +10742,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Any reform must take regional differences into account.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "tính đến",
+        "vietnamese_example": "Bất kỳ cải cách nào cũng phải tính đến sự khác biệt giữa các khu vực.",
         "cefr": "C1"
     },
     "a chain reaction": {
@@ -10751,8 +10751,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "One factory closure triggered a chain reaction across the region.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một phản ứng dây chuyền",
+        "vietnamese_example": "Một lần đóng cửa nhà máy đã gây ra phản ứng dây chuyền trên toàn khu vực.",
         "cefr": "C1"
     },
     "a growing concern": {
@@ -10760,8 +10760,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Plastic waste is a growing concern for coastal communities.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mối quan tâm ngày càng tăng",
+        "vietnamese_example": "Rác thải nhựa đang là mối lo ngại ngày càng tăng đối với cộng đồng ven biển.",
         "cefr": "C1"
     },
     "a landmark decision": {
@@ -10769,8 +10769,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The court made a landmark decision on digital privacy.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một quyết định mang tính bước ngoặt",
+        "vietnamese_example": "Tòa án đã đưa ra một quyết định mang tính bước ngoặt về quyền riêng tư kỹ thuật số.",
         "cefr": "C1"
     },
     "a mixed blessing": {
@@ -10778,8 +10778,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Remote work has been a mixed blessing for many employees.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một phước lành hỗn hợp",
+        "vietnamese_example": "Làm việc từ xa là một điều may mắn lẫn lộn đối với nhiều nhân viên.",
         "cefr": "C1"
     },
     "a short-term fix": {
@@ -10787,8 +10787,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Borrowing more money is only a short-term fix.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "một sự sửa chữa ngắn hạn",
+        "vietnamese_example": "Vay thêm tiền chỉ là giải pháp ngắn hạn.",
         "cefr": "C1"
     },
     "add fuel to the fire": {
@@ -10796,8 +10796,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Sensational headlines can add fuel to the fire during a crisis.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "thêm dầu vào lửa",
+        "vietnamese_example": "Những tiêu đề giật gân có thể đổ thêm dầu vào lửa trong thời kỳ khủng hoảng.",
         "cefr": "C1"
     },
     "at stake": {
@@ -10805,8 +10805,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Public trust is at stake when officials hide information.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "bị đe dọa",
+        "vietnamese_example": "Niềm tin của công chúng bị đe dọa khi quan chức che giấu thông tin.",
         "cefr": "C1"
     },
     "be in the spotlight": {
@@ -10814,8 +10814,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Social media companies are in the spotlight again.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "được chú ý",
+        "vietnamese_example": "Các công ty truyền thông xã hội lại được chú ý.",
         "cefr": "C1"
     },
     "bring to light": {
@@ -10823,8 +10823,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The report brought several weaknesses to light.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đưa ra ánh sáng",
+        "vietnamese_example": "Báo cáo đã chỉ ra một số điểm yếu.",
         "cefr": "C1"
     },
     "for the greater good": {
@@ -10832,8 +10832,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Taxes are often justified as necessary for the greater good.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "vì lợi ích lớn hơn",
+        "vietnamese_example": "Thuế thường được biện minh là cần thiết vì lợi ích lớn hơn.",
         "cefr": "C1"
     },
     "from all walks of life": {
@@ -10841,8 +10841,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The protest attracted people from all walks of life.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "từ mọi tầng lớp xã hội",
+        "vietnamese_example": "Cuộc biểu tình đã thu hút người dân từ mọi tầng lớp xã hội.",
         "cefr": "C1"
     },
     "go hand in hand": {
@@ -10850,8 +10850,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Economic growth should go hand in hand with sustainability.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đi tay trong tay",
+        "vietnamese_example": "Tăng trưởng kinh tế phải đi đôi với bền vững.",
         "cefr": "C1"
     },
     "hold true": {
@@ -10859,8 +10859,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "The theory holds true in most urban settings.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "giữ đúng",
+        "vietnamese_example": "Lý thuyết này đúng ở hầu hết các môi trường đô thị.",
         "cefr": "C1"
     },
     "in real terms": {
@@ -10868,8 +10868,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Wages have fallen in real terms over the last decade.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "về mặt thực tế",
+        "vietnamese_example": "Tiền lương thực tế đã giảm trong thập kỷ qua.",
         "cefr": "C1"
     },
     "keep pace with": {
@@ -10877,8 +10877,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Education systems must keep pace with technology.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "theo kịp với",
+        "vietnamese_example": "Hệ thống giáo dục phải bắt kịp với công nghệ.",
         "cefr": "C1"
     },
     "lose ground": {
@@ -10886,8 +10886,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Traditional media has lost ground to digital platforms.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mất đất",
+        "vietnamese_example": "Phương tiện truyền thông truyền thống đã mất chỗ đứng trước các nền tảng kỹ thuật số.",
         "cefr": "C1"
     },
     "open the door to": {
@@ -10895,8 +10895,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "New funding could open the door to major reforms.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "mở cửa để",
+        "vietnamese_example": "Nguồn tài trợ mới có thể mở ra cánh cửa cho những cải cách lớn.",
         "cefr": "C1"
     },
     "play a key role": {
@@ -10904,8 +10904,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Parents play a key role in early education.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đóng một vai trò quan trọng",
+        "vietnamese_example": "Cha mẹ đóng một vai trò quan trọng trong giáo dục sớm.",
         "cefr": "C1"
     },
     "stand to reason": {
@@ -10913,8 +10913,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "It stands to reason that cleaner air improves public health.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "đứng lên lý luận",
+        "vietnamese_example": "Lý do là không khí sạch hơn sẽ cải thiện sức khỏe cộng đồng.",
         "cefr": "C1"
     },
     "take centre stage": {
@@ -10922,8 +10922,8 @@ var dictionary = {
         "pos": "idiom",
         "pron": "",
         "example": "Energy security has taken centre stage this year.",
-        "vietnamese": "",
-        "vietnamese_example": "",
+        "vietnamese": "chiếm vị trí trung tâm",
+        "vietnamese_example": "An ninh năng lượng đã chiếm vị trí trung tâm trong năm nay.",
         "cefr": "C1"
     }
 };
