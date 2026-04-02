@@ -492,6 +492,25 @@ function formatElapsedSeconds(seconds) {
     return (Math.round(seconds * 10) / 10).toFixed(1) + ' seconds';
 }
 
+function shouldAutoLearnCurrentSet(totalCount, correctCount) {
+    if (!currentCourse || !currentSet || currentSet.isLearningBook) return false;
+    if (!totalCount || correctCount !== totalCount) return false;
+    return totalCount === currentSet.words.length;
+}
+
+function markCurrentSetLearned() {
+    if (!currentCourse || !currentSet || currentSet.isLearningBook) return;
+    saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
+    renderSets();
+    renderCourses();
+}
+
+function getResultSoundType(pct) {
+    if (pct === 100) return 'result-perfect';
+    if (pct >= 50) return 'result-good';
+    return 'result-poor';
+}
+
 function setTestTimerLabel(seconds) {
     var timerEl = document.getElementById('testTimer');
     if (timerEl) timerEl.textContent = formatElapsedSeconds(seconds);
@@ -803,6 +822,30 @@ function playSound(type) {
             osc.type = 'square'; osc.frequency.setValueAtTime(220, now); osc.frequency.setValueAtTime(180, now + 0.1); osc.frequency.setValueAtTime(220, now + 0.2);
             gainNode.gain.setValueAtTime(0.1, now); gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
             osc.start(now); osc.stop(now + 0.3);
+        } else if (type === 'result-perfect') {
+            osc.type = 'triangle';
+            [523.25, 659.25, 783.99, 1046.5, 1318.51].forEach(function(freq, i) {
+                osc.frequency.setValueAtTime(freq, now + (i * 0.08));
+            });
+            gainNode.gain.setValueAtTime(0.12, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+            osc.start(now); osc.stop(now + 0.55);
+        } else if (type === 'result-good') {
+            osc.type = 'sine';
+            [392.0, 493.88, 587.33].forEach(function(freq, i) {
+                osc.frequency.setValueAtTime(freq, now + (i * 0.12));
+            });
+            gainNode.gain.setValueAtTime(0.1, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+            osc.start(now); osc.stop(now + 0.4);
+        } else if (type === 'result-poor') {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, now);
+            osc.frequency.linearRampToValueAtTime(164.81, now + 0.18);
+            osc.frequency.linearRampToValueAtTime(130.81, now + 0.36);
+            gainNode.gain.setValueAtTime(0.08, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+            osc.start(now); osc.stop(now + 0.45);
         }
     } catch(e) { /* audio failure is non-critical */ }
 }
@@ -1782,10 +1825,8 @@ function showTestResults() {
     stopTestTimer();
     var area = document.getElementById('testContentArea');
     var pct = Math.round((testScore / testQuestions.length) * 100);
-    if (currentTestSession && currentTestSession.source === 'set' && currentCourse && currentSet && !currentSet.isLearningBook) {
-        saveSetLearningStatus(currentCourse.id, currentSet.id, 'learned');
-        renderSets();
-        renderCourses();
+    if (currentTestSession && currentTestSession.source === 'set' && shouldAutoLearnCurrentSet(testQuestions.length, testScore)) {
+        markCurrentSetLearned();
     }
     testAnswers.forEach(function(answer) {
         recordTestOutcome(answer);
@@ -1828,7 +1869,7 @@ function showTestResults() {
         '</div>' +
     '</div>';
     animateResultRing('testResultRing', 'testResultPercent', pct);
-    playSound('win');
+    playSound(getResultSoundType(pct));
 }
 
 function getMatchWordPool() {
@@ -2092,12 +2133,16 @@ function showMatchResults() {
     });
     var correctCount = resultItems.filter(function(item) { return item.correct; }).length;
     var pct = resultItems.length ? Math.round((correctCount / resultItems.length) * 100) : 0;
+    if (shouldAutoLearnCurrentSet(resultItems.length, correctCount)) {
+        markCurrentSetLearned();
+    }
     document.getElementById('matchResultTime').textContent = elapsed + 's';
     document.getElementById('matchResultScore').textContent = correctCount + ' / ' + resultItems.length;
     document.getElementById('matchResultTitle').textContent = wrongWords.length ? 'MATCH COMPLETE!' : 'PERFECT MATCH!';
     document.getElementById('matchResultList').innerHTML = renderResultWordRows(resultItems);
     switchView(matchResultView);
     animateResultRing('matchResultRing', 'matchResultPercent', pct);
+    playSound(getResultSoundType(pct));
 }
 // COMPACT LIST VIEW
 // ═══════════════════════════════════
