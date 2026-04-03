@@ -781,7 +781,7 @@ class FoxyVocabAdminApp:
         frame.columnconfigure(1, weight=0)
         frame.rowconfigure(2, weight=1)
 
-        self.center_toplevel(dialog, width=520, height=420)
+        self.center_toplevel(dialog, width=320, height=420)
 
     def refresh_set_checkboxes(self):
         self.word_set_states = {}

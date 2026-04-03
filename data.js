@@ -1,11 +1,11 @@
-// data.js — FoxyVocab Data Layer
+// data.js - FoxyVocab Data Layer
 // Diagnostic logging for old iPad compatibility
 console.log('[FoxyVocab] data.js: loading started');
 
 /**
  * @typedef {Object} VocabularyWord
  * @property {string} definition - English definition
- * @property {'noun'|'verb'|'adj'|'adv'|'prep'|'conj'|'pron'} pos - Part of speech
+ * @property {'noun'|'verb'|'adj'|'adv'|'prep'|'conj'|'pron'|'idiom'|'phrase'} pos - Part of speech
  * @property {string} pron - IPA pronunciation
  * @property {string} example - English example sentence
  * @property {string} vietnamese - Vietnamese translation
@@ -59,8 +59,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈbækˌɔː.dər/",
         "example": "It is currently on backorder.",
-        "vietnamese": "Đơn hàng nợ",
-        "vietnamese_example": "Nó hiện đang trong đơn hàng nợ.",
+        "vietnamese": "đơn hàng chờ cung ứng",
+        "vietnamese_example": "Mặt hàng này hiện đang ở tình trạng chờ cung ứng.",
         "cefr": "C1"
     },
     "amortization": {
@@ -106,7 +106,7 @@ var dictionary = {
         "example": "The merger was announced.",
         "vietnamese": "Sự sáp nhập",
         "vietnamese_example": "Việc sáp nhập đã được công bố.",
-        "cefr": "B2"
+        "cefr": "C1"
     },
     "biodegradable": {
         "definition": "Capable of being decomposed.",
@@ -127,12 +127,12 @@ var dictionary = {
         "cefr": "B2"
     },
     "renewable": {
-        "definition": "Energy from a source not depleted.",
+        "definition": "Able to be replaced naturally and used again.",
         "pos": "adj",
         "pron": "/rɪˈnjuː.ə.bəl/",
-        "example": "Renewable energy sources.",
-        "vietnamese": "Tái tạo",
-        "vietnamese_example": "Nguồn năng lượng tái tạo.",
+        "example": "Solar power is a renewable energy source.",
+        "vietnamese": "có thể tái tạo",
+        "vietnamese_example": "Năng lượng mặt trời là một nguồn năng lượng có thể tái tạo.",
         "cefr": "B2"
     },
     "sustainability": {
@@ -158,8 +158,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/freɪt/",
         "example": "The freight arrives by ship tomorrow.",
-        "vietnamese": "Hàng hóa vận chuyển",
-        "vietnamese_example": "Hàng hóa vận chuyển sẽ đến bằng tàu vào ngày mai.",
+        "vietnamese": "hàng vận chuyển",
+        "vietnamese_example": "Lô hàng vận chuyển sẽ đến bằng tàu vào ngày mai.",
         "cefr": "B2"
     },
     "air freight": {
@@ -185,7 +185,7 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈer.weɪ bɪl/",
         "example": "Please sign the airway bill.",
-        "vietnamese": "Văn bản vận chuyển hàng không",
+        "vietnamese": "vận đơn hàng không",
         "vietnamese_example": "Vui lòng ký tên vào văn bản vận chuyển.",
         "cefr": "C1"
     },
@@ -230,8 +230,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkʌs.təmz ˈklɪr.əns/",
         "example": "The goods are delayed at customs clearance.",
-        "vietnamese": "Thủ tục hải quan",
-        "vietnamese_example": "Hàng hóa bị trễ ở khâu thủ tục hải quan.",
+        "vietnamese": "thông quan hải quan",
+        "vietnamese_example": "Hàng hóa bị trễ ở khâu thông quan hải quan.",
         "cefr": "C1"
     },
     "incoterms": {
@@ -239,8 +239,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈɪn.koʊ.tɜːrmz/",
         "example": "Make sure you understand the Incoterms before signing.",
-        "vietnamese": "Các điều khoản giao hàng quốc tế",
-        "vietnamese_example": "Hãy đảm bảo bạn hiểu rõ các điều khoản giao hàng quốc tế trước khi ký kết.",
+        "vietnamese": "bộ quy tắc thương mại quốc tế",
+        "vietnamese_example": "Hãy đảm bảo bạn hiểu rõ các điều khoản thương mại quốc tế trước khi ký kết.",
         "cefr": "C2"
     },
     "bill of lading": {
@@ -293,8 +293,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˈkær.i.ər/",
         "example": "The airline is our primary carrier.",
-        "vietnamese": "Hãng vận chuyển",
-        "vietnamese_example": "Hãng hàng không là hãng vận chuyển chính của chúng tôi.",
+        "vietnamese": "đơn vị vận chuyển",
+        "vietnamese_example": "Hãng hàng không là đơn vị vận chuyển chính của chúng tôi.",
         "cefr": "B2"
     },
     "shipping": {
@@ -304,7 +304,7 @@ var dictionary = {
         "example": "The shipping cost is calculated by weight.",
         "vietnamese": "Giao hàng",
         "vietnamese_example": "Chi phí giao hàng được tính theo trọng lượng.",
-        "cefr": "A2"
+        "cefr": "B2"
     },
     "delivery": {
         "definition": "The carrying and turning over of letters, goods, or services.",
@@ -313,7 +313,7 @@ var dictionary = {
         "example": "We guarantee fast delivery.",
         "vietnamese": "Giao hàng",
         "vietnamese_example": "Chúng tôi đảm bảo giao hàng nhanh.",
-        "cefr": "A2"
+        "cefr": "B2"
     },
     "routing": {
         "definition": "The process of selecting a path for traffic or transport.",
@@ -338,16 +338,16 @@ var dictionary = {
         "pos": "noun",
         "pron": "/freɪt ˈfɔːr.wər.dər/",
         "example": "The freight forwarder consolidated our shipments.",
-        "vietnamese": "Nhà xuất khẩu hàng hóa",
-        "vietnamese_example": "Nhà xuất khẩu hàng hóa đã gom các lô hàng của chúng tôi.",
+        "vietnamese": "công ty giao nhận vận tải",
+        "vietnamese_example": "Công ty giao nhận vận tải đã gom các lô hàng của chúng tôi.",
         "cefr": "C1"
     },
     "third-party logistics": {
-        "definition": "The use of third-party businesses to outsource elements of distribution.",
+        "definition": " (3PL) The use of third-party businesses to outsource elements of distribution.",
         "pos": "noun",
         "pron": "/θɜːrd ˈpɑːr.ti ləˈdʒɪs.tɪks/",
         "example": "Many companies use third-party logistics to reduce costs.",
-        "vietnamese": "Dịch vụ logistics của bên thứ ba",
+        "vietnamese": "dịch vụ logistics bên thứ ba",
         "vietnamese_example": "Nhiều công ty sử dụng dịch vụ logistics của bên thứ ba để giảm chi phí.",
         "cefr": "C2"
     },
@@ -356,8 +356,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/læst maɪl/",
         "example": "The last mile is often the most expensive part of delivery.",
-        "vietnamese": "Cận cảng",
-        "vietnamese_example": "Khâu cận cảng thường là phần đắt đỏ nhất của việc giao hàng.",
+        "vietnamese": "chặng cuối",
+        "vietnamese_example": "Chặng cuối cùng thường là phần đắt đỏ nhất của việc giao hàng.",
         "cefr": "C1"
     },
     "combustion": {
@@ -375,7 +375,7 @@ var dictionary = {
         "pron": "/ˈɡriːn.haʊs ˌɡæs.ɪz/",
         "example": "We must reduce emissions of greenhouse gases.",
         "vietnamese": "Khí nhà kính",
-        "vietnamese_example": "Chúng ta phải giảm lượng khí thải của khí nhà kính.",
+        "vietnamese_example": "Chúng ta phải giảm lượng phát thải khí nhà kính.",
         "cefr": "B2"
     },
     "exacerbate": {
@@ -796,9 +796,9 @@ var dictionary = {
         "definition": "To decide or discover something.",
         "pos": "verb",
         "pron": "/dɪˈtɜː.mɪn/",
-        "example": "The test will determine the results.",
-        "vietnamese": "xác định",
-        "vietnamese_example": "Bài kiểm tra sẽ xác định kết quả.",
+        "example": "Price is determined by demand.",
+        "vietnamese": "quyết định",
+        "vietnamese_example": "Giá cả được quyết định bởi nhu cầu.",
         "cefr": "C1"
     },
     "establish": {
@@ -826,7 +826,7 @@ var dictionary = {
         "example": "The company decided to terminate the contract.",
         "vietnamese": "chấm dứt",
         "vietnamese_example": "Công ty quyết định chấm dứt hợp đồng.",
-        "cefr": "B2"
+        "cefr": "C1"
     },
     "representative": {
         "definition": "A person who acts on behalf of others.",
@@ -844,7 +844,7 @@ var dictionary = {
         "example": "She gave her assurance that the work would be done.",
         "vietnamese": "sự đảm bảo",
         "vietnamese_example": "Cô ấy đảm bảo rằng công việc sẽ được hoàn thành.",
-        "cefr": "B2"
+        "cefr": "C1"
     },
     "resolve": {
         "definition": "To solve a problem or deal with a situation successfully.",
@@ -898,7 +898,7 @@ var dictionary = {
         "example": "The executive made an important decision.",
         "vietnamese": "giám đốc / lãnh đạo",
         "vietnamese_example": "Vị lãnh đạo đã đưa ra một quyết định quan trọng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "comprehension": {
         "definition": "The ability to understand something.",
@@ -916,7 +916,7 @@ var dictionary = {
         "example": "Innovation drives business growth.",
         "vietnamese": "sự đổi mới",
         "vietnamese_example": "Sự đổi mới thúc đẩy tăng trưởng kinh doanh.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "analysis": {
         "definition": "A detailed examination of something.",
@@ -943,7 +943,7 @@ var dictionary = {
         "example": "Energy consumption has risen this year.",
         "vietnamese": "sự tiêu thụ",
         "vietnamese_example": "Mức tiêu thụ năng lượng đã tăng năm nay.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "advertising": {
         "definition": "The activity of promoting products or services.",
@@ -952,7 +952,7 @@ var dictionary = {
         "example": "Advertising helps attract customers.",
         "vietnamese": "quảng cáo",
         "vietnamese_example": "Quảng cáo giúp thu hút khách hàng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "strategies": {
         "definition": "Plans designed to achieve a goal.",
@@ -979,7 +979,7 @@ var dictionary = {
         "example": "There was a significant increase in sales.",
         "vietnamese": "đáng kể / quan trọng",
         "vietnamese_example": "Có sự tăng trưởng đáng kể về doanh số.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "convey": {
         "definition": "To communicate or express something.",
@@ -988,7 +988,7 @@ var dictionary = {
         "example": "The message was clearly conveyed.",
         "vietnamese": "truyền đạt",
         "vietnamese_example": "Thông điệp đã được truyền đạt rõ ràng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "recommend": {
         "definition": "To suggest something as good or suitable.",
@@ -997,7 +997,7 @@ var dictionary = {
         "example": "I recommend this product to customers.",
         "vietnamese": "đề xuất",
         "vietnamese_example": "Tôi đề xuất sản phẩm này cho khách hàng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "established": {
         "definition": "Having existed for a long time and recognized.",
@@ -1051,7 +1051,7 @@ var dictionary = {
         "example": "They conducted extensive research.",
         "vietnamese": "rộng lớn / toàn diện",
         "vietnamese_example": "Họ đã tiến hành nghiên cứu toàn diện.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "features": {
         "definition": "Important parts or characteristics of something.",
@@ -1069,7 +1069,7 @@ var dictionary = {
         "example": "Safety is our top priority.",
         "vietnamese": "ưu tiên",
         "vietnamese_example": "An toàn là ưu tiên hàng đầu.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "characteristic": {
         "definition": "A typical feature or quality that something has.",
@@ -1078,7 +1078,7 @@ var dictionary = {
         "example": "One characteristic of the brand is its durability.",
         "vietnamese": "đặc điểm",
         "vietnamese_example": "Một đặc điểm của thương hiệu là độ bền.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "consequence": {
         "definition": "A result or effect of an action.",
@@ -1087,7 +1087,7 @@ var dictionary = {
         "example": "Failure to follow instructions may have serious consequences.",
         "vietnamese": "hậu quả",
         "vietnamese_example": "Không làm theo hướng dẫn có thể gây hậu quả nghiêm trọng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "consideration": {
         "definition": "Careful thought about something before making a decision.",
@@ -1096,7 +1096,7 @@ var dictionary = {
         "example": "After careful consideration, she accepted the offer.",
         "vietnamese": "sự cân nhắc",
         "vietnamese_example": "Sau khi cân nhắc kỹ, cô ấy đã chấp nhận lời đề nghị.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "expiration": {
         "definition": "The end of a period of validity.",
@@ -1123,7 +1123,7 @@ var dictionary = {
         "example": "His words imply that the product is unreliable.",
         "vietnamese": "ám chỉ",
         "vietnamese_example": "Lời nói của anh ấy ám chỉ sản phẩm không đáng tin cậy.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "implication": {
         "definition": "A possible effect or meaning that is suggested.",
@@ -1132,7 +1132,7 @@ var dictionary = {
         "example": "The implication of the report is serious.",
         "vietnamese": "hàm ý / hệ quả",
         "vietnamese_example": "Hàm ý của báo cáo là nghiêm trọng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "implicit": {
         "definition": "Suggested but not directly stated.",
@@ -1168,7 +1168,7 @@ var dictionary = {
         "example": "The company has a strong reputation.",
         "vietnamese": "danh tiếng",
         "vietnamese_example": "Công ty có danh tiếng tốt.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "reputable": {
         "definition": "Having a good reputation.",
@@ -1195,7 +1195,7 @@ var dictionary = {
         "example": "This is a legal requirement.",
         "vietnamese": "yêu cầu",
         "vietnamese_example": "Đây là một yêu cầu pháp lý.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "requisite": {
         "definition": "Officially required or necessary.",
@@ -1213,7 +1213,7 @@ var dictionary = {
         "example": "The warranty offers full coverage.",
         "vietnamese": "phạm vi bảo hiểm",
         "vietnamese_example": "Bảo hành cung cấp phạm vi bảo vệ đầy đủ.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "invalidate": {
         "definition": "To make something no longer valid.",
@@ -1276,7 +1276,7 @@ var dictionary = {
         "example": "The product failed; consequently, it was recalled.",
         "vietnamese": "do đó",
         "vietnamese_example": "Sản phẩm bị lỗi; do đó, nó đã bị thu hồi.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "arrangement": {
         "definition": "A plan or agreement.",
@@ -1307,7 +1307,7 @@ var dictionary = {
     },
     "arbitrary": {
         "definition": "Based on random choice rather than reason or system.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/ˈɑː.bɪ.trər.i/",
         "example": "The decision seemed arbitrary and unfair.",
         "vietnamese": "tùy ý",
@@ -1325,7 +1325,7 @@ var dictionary = {
     },
     "blatant": {
         "definition": "Very obvious and intentional, often in a bad way.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/ˈbleɪ.tənt/",
         "example": "It was a blatant lie.",
         "vietnamese": "trắng trợn",
@@ -1334,7 +1334,7 @@ var dictionary = {
     },
     "coherent": {
         "definition": "Logical and well-organized; easy to understand.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/kəʊˈhɪə.rənt/",
         "example": "She gave a coherent explanation.",
         "vietnamese": "mạch lạc",
@@ -1361,7 +1361,7 @@ var dictionary = {
     },
     "compelling": {
         "definition": "Very interesting or persuasive.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/kəmˈpel.ɪŋ/",
         "example": "The argument was compelling.",
         "vietnamese": "thuyết phục",
@@ -1379,16 +1379,16 @@ var dictionary = {
     },
     "comprehensive": {
         "definition": "Including everything that is needed.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/ˌkɒm.prɪˈhen.sɪv/",
         "example": "He wrote a comprehensive report.",
         "vietnamese": "toàn diện",
         "vietnamese_example": "Anh ấy viết một báo cáo toàn diện.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "conceivable": {
         "definition": "Possible to imagine or believe.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/kənˈsiː.və.bəl/",
         "example": "It is conceivable that prices will rise.",
         "vietnamese": "có thể tưởng tượng",
@@ -1415,21 +1415,21 @@ var dictionary = {
     },
     "crucial": {
         "definition": "Extremely important.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/ˈkruː.ʃəl/",
         "example": "Education is crucial for success.",
         "vietnamese": "quan trọng",
         "vietnamese_example": "Giáo dục rất quan trọng cho thành công.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "deliberate": {
         "definition": "Done intentionally.",
-        "pos": "adjective",
+        "pos": "adj",
         "pron": "/dɪˈlɪb.ər.ət/",
         "example": "It was a deliberate attempt.",
         "vietnamese": "có chủ ý",
         "vietnamese_example": "Đó là một nỗ lực có chủ ý.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "denote": {
         "definition": "To represent or indicate something.",
@@ -1912,9 +1912,9 @@ var dictionary = {
         "definition": "relating to the examination and treatment of patients and their illnesses",
         "pos": "adj",
         "pron": "/ˈklɪnɪkl/",
-        "example": "clinical research (= done on patients, not just considering theory)",
+        "example": "The hospital is conducting clinical research.",
         "vietnamese": "lâm sàng",
-        "vietnamese_example": "nghiên cứu lâm sàng (= được thực hiện trên bệnh nhân, không chỉ xem xét lý thuyết)",
+        "vietnamese_example": "Bệnh viện đang tiến hành nghiên cứu lâm sàng.",
         "cefr": "C1"
     },
     "composition": {
@@ -2002,9 +2002,9 @@ var dictionary = {
         "definition": "a written document signed by a large number of people that asks somebody in a position of authority to do or change something",
         "pos": "noun",
         "pron": "/pəˈtɪʃn/",
-        "example": "petition against something, Would you like to sign our petition against experiments on animals?",
+        "example": "Would you like to sign our petition against animal testing?",
         "vietnamese": "đơn kiến ​​nghị",
-        "vietnamese_example": "Kiến nghị chống lại điều gì đó, Bạn có muốn ký kiến ​​nghị phản đối thí nghiệm trên động vật của chúng tôi không?",
+        "vietnamese_example": "Bạn có muốn ký vào đơn kiến nghị phản đối việc thử nghiệm trên động vật của chúng tôi không?",
         "cefr": "C1"
     },
     "theoretical": {
@@ -2071,12 +2071,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "conviction": {
-        "definition": "the act of finding somebody guilty of a crime in court; the fact of having been found guilty",
+        "definition": "Strong belief or persuasive force",
         "pos": "noun",
         "pron": "/kənˈvɪkʃn/",
-        "example": "He plans to appeal against his conviction.",
-        "vietnamese": "niềm tin",
-        "vietnamese_example": "Anh ta dự định sẽ kháng cáo bản án của mình.",
+        "example": "She spoke with conviction.",
+        "vietnamese": "niềm tin mạnh mẽ, sự thuyết phục",
+        "vietnamese_example": "Cô ấy nói với niềm tin mạnh mẽ.",
         "cefr": "C1"
     },
     "inherent": {
@@ -2107,12 +2107,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "regime": {
-        "definition": "a method or system of government, especially one that has not been elected in a fair way",
+        "definition": "political system or system or set of rules",
         "pos": "noun",
         "pron": "/reɪˈʒiːm/",
-        "example": "a fascist/totalitarian/military, etc. regime",
+        "example": "The new tax regime affects businesses.",
         "vietnamese": "chế độ",
-        "vietnamese_example": "một chế độ phát xít/toàn trị/quân đội, v.v.",
+        "vietnamese_example": "Hệ thống thuế mới ảnh hưởng đến doanh nghiệp.",
         "cefr": "C1"
     },
     "supervisor": {
@@ -2152,12 +2152,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "undergraduate": {
-        "definition": "a university or college student who is studying for their first degree",
+        "definition": "a university or college student",
         "pos": "noun",
         "pron": "/ˌʌndəˈɡrædʒuət/",
-        "example": "a first-year undergraduate",
-        "vietnamese": "đại học",
-        "vietnamese_example": "sinh viên đại học năm thứ nhất",
+        "example": "She is an undergraduate at Oxford.",
+        "vietnamese": "sinh viên đại học",
+        "vietnamese_example": "Cô ấy là sinh viên đại học tại Oxford.",
         "cefr": "C1"
     },
     "warfare": {
@@ -7313,8 +7313,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/frʌˈstreɪʃn/",
         "example": "in frustration, Dave thumped the table in frustration.",
-        "vietnamese": "sự thất vọng",
-        "vietnamese_example": "trong cơn bực bội, Dave bực bội đập bàn.",
+        "vietnamese": "sự bực bội",
+        "vietnamese_example": "Trong cơn bực bội, Dave đập mạnh xuống bàn.",
         "cefr": "C1"
     },
     "hostility": {
@@ -7402,9 +7402,9 @@ var dictionary = {
         "definition": "a kind or forgiving attitude towards somebody that you have the power to harm or right to punish",
         "pos": "noun",
         "pron": "/ˈmɜːsi/",
-        "example": "to ask/beg/plead for mercy",
+        "example": "The prisoner begged for mercy.",
         "vietnamese": "lòng thương xót",
-        "vietnamese_example": "cầu xin/cầu xin/cầu xin lòng thương xót",
+        "vietnamese_example": "Người tù cầu xin lòng thương xót.",
         "cefr": "C1"
     },
     "mutual": {
@@ -7493,8 +7493,8 @@ var dictionary = {
         "pos": "noun",
         "pron": "/ˌsekʃuˈæləti/",
         "example": "He was confused about his sexuality.",
-        "vietnamese": "tình dục",
-        "vietnamese_example": "Anh ấy bối rối về giới tính của mình.",
+        "vietnamese": "xu hướng tính dục",
+        "vietnamese_example": "Anh ấy bối rối về xu hướng tính dục của mình.",
         "cefr": "C1"
     },
     "surge": {
@@ -7582,9 +7582,9 @@ var dictionary = {
         "definition": "an official note from one person to another in the same organization",
         "pos": "noun",
         "pron": "/ˈmeməʊ/",
-        "example": "to write/send a memo",
+        "example": "She sent a memo to the whole team.",
         "vietnamese": "bản ghi nhớ",
-        "vietnamese_example": "để viết/gửi một bản ghi nhớ",
+        "vietnamese_example": "Cô ấy đã gửi một bản ghi nhớ cho cả nhóm.",
         "cefr": "C1"
     },
     "presidency": {
@@ -9898,7 +9898,7 @@ var dictionary = {
         "example": "The politician introduced new laws that might bring about some positive change.",
         "vietnamese": "mang lại",
         "vietnamese_example": "Chính trị gia này đã đưa ra những luật mới có thể mang lại một số thay đổi tích cực.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "bring in": {
         "definition": "Yield as profit or income.",
@@ -9907,7 +9907,7 @@ var dictionary = {
         "example": "Fishermen always try to bring in a large catch.",
         "vietnamese": "mang vào",
         "vietnamese_example": "Ngư dân luôn cố gắng đánh bắt được nhiều cá.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "carry out": {
         "definition": "Complete and/or accomplish something.",
@@ -9916,7 +9916,7 @@ var dictionary = {
         "example": "The secret agent carried out his orders exactly as planned.",
         "vietnamese": "tiến hành",
         "vietnamese_example": "Người mật vụ thực hiện mệnh lệnh của mình đúng như kế hoạch.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "come out with": {
         "definition": "Produce and distribute a product.",
@@ -9925,7 +9925,7 @@ var dictionary = {
         "example": "Microsoft is coming out with a new video game system next month.",
         "vietnamese": "đi ra với",
         "vietnamese_example": "Microsoft sẽ ra mắt một hệ thống trò chơi điện tử mới vào tháng tới.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "find out": {
         "definition": "Discover.",
@@ -9934,7 +9934,7 @@ var dictionary = {
         "example": "Vicky's parents are going to be so mad when they find out she got a tattoo.",
         "vietnamese": "tìm ra",
         "vietnamese_example": "Cha mẹ của Vicky sẽ rất tức giận khi biết cô có hình xăm.",
-        "cefr": "C1"
+        "cefr": "B1"
     },
     "give up": {
         "definition": "Quit.",
@@ -9943,7 +9943,7 @@ var dictionary = {
         "example": "If you smoke, make every effort to give up. If you don’t then it is probable you’ll get cancer.",
         "vietnamese": "bỏ cuộc",
         "vietnamese_example": "Nếu bạn hút thuốc, hãy cố gắng bỏ thuốc. Nếu không thì rất có thể bạn sẽ bị ung thư.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "go into": {
         "definition": "Discuss in detail.",
@@ -9952,16 +9952,16 @@ var dictionary = {
         "example": "I really don't want to go into that now.",
         "vietnamese": "đi vào",
         "vietnamese_example": "Tôi thực sự không muốn đi sâu vào vấn đề đó bây giờ.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "hold up": {
-        "definition": "Make the electrical connections required for a machine or information service.",
+        "definition": "Delay or stop progress.",
         "pos": "verb",
         "pron": "",
-        "example": "Can you hook up the fax machine for me?",
-        "vietnamese": "chờ đã",
-        "vietnamese_example": "Bạn có thể nối máy fax giúp tôi được không?",
-        "cefr": "C1"
+        "example": "Heavy traffic held us up for nearly an hour.",
+        "vietnamese": "làm chậm lại",
+        "vietnamese_example": "Giao thông đông đúc đã làm chúng tôi chậm gần một giờ.",
+        "cefr": "B2"
     },
     "look back on": {
         "definition": "To remember nostalgically.",
@@ -9970,25 +9970,25 @@ var dictionary = {
         "example": "When I look back on my childhood, I often feel angry.",
         "vietnamese": "nhìn lại",
         "vietnamese_example": "Khi nhìn lại tuổi thơ của mình, tôi thường cảm thấy tức giận.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "look down on": {
         "definition": "See as inferior.",
         "pos": "verb",
         "pron": "",
         "example": "She's so conceited. She looks down on everybody else.",
-        "vietnamese": "nhìn xuống",
-        "vietnamese_example": "Cô ấy thật tự phụ. Cô ấy coi thường mọi người khác.",
-        "cefr": "C1"
+        "vietnamese": "coi thường",
+        "vietnamese_example": "Cô ấy quá kiêu ngạo. Cô ấy coi thường mọi người khác.",
+        "cefr": "B2"
     },
     "look up to": {
         "definition": "Respect, admire someone.",
         "pos": "verb",
         "pron": "",
         "example": "He looks up to his father.",
-        "vietnamese": "nhìn lên",
-        "vietnamese_example": "Anh ngước nhìn cha mình.",
-        "cefr": "C1"
+        "vietnamese": "ngưỡng mộ",
+        "vietnamese_example": "Cậu ấy rất ngưỡng mộ bố mình.",
+        "cefr": "B2"
     },
     "make up for": {
         "definition": "Compensate for.",
@@ -9997,7 +9997,7 @@ var dictionary = {
         "example": "Allen made up for being late by getting me flowers.",
         "vietnamese": "bù đắp cho",
         "vietnamese_example": "Allen bù đắp cho việc đến muộn bằng cách mua hoa cho tôi.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "point out": {
         "definition": "Indicate.",
@@ -10006,7 +10006,7 @@ var dictionary = {
         "example": "I'd like to point out that figures in column two might be outdated.",
         "vietnamese": "chỉ ra",
         "vietnamese_example": "Tôi muốn chỉ ra rằng những số liệu ở cột hai có thể đã lỗi thời.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "put up with": {
         "definition": "Tolerate.",
@@ -10015,16 +10015,16 @@ var dictionary = {
         "example": "Sandy will not put up with smoking in her house.",
         "vietnamese": "chịu đựng",
         "vietnamese_example": "Sandy sẽ không chịu đựng việc hút thuốc trong nhà mình.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "set up": {
         "definition": "Falsely incriminate a person.",
         "pos": "verb",
         "pron": "",
         "example": "I don't think he killed those men. Somebody set him up.",
-        "vietnamese": "cài đặt",
-        "vietnamese_example": "Tôi không nghĩ anh ta đã giết những người đó. Ai đó đã gài bẫy anh ta.",
-        "cefr": "C1"
+        "vietnamese": "gài bẫy",
+        "vietnamese_example": "Tôi không nghĩ anh ấy đã giết những người đó. Có ai đó đã gài bẫy anh ấy.",
+        "cefr": "B2"
     },
     "take on": {
         "definition": "Accept (responsibilities, work).",
@@ -10033,7 +10033,7 @@ var dictionary = {
         "example": "She has taken on too much responsibility in this project.",
         "vietnamese": "đảm nhận",
         "vietnamese_example": "Cô ấy đã gánh quá nhiều trách nhiệm trong dự án này.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "take over": {
         "definition": "Take control of.",
@@ -10042,7 +10042,7 @@ var dictionary = {
         "example": "Who is going to take over the family business when Aretha's father dies?",
         "vietnamese": "tiếp quản",
         "vietnamese_example": "Ai sẽ tiếp quản công việc kinh doanh của gia đình khi cha của Aretha qua đời?",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "turn out": {
         "definition": "End up being.",
@@ -10051,25 +10051,25 @@ var dictionary = {
         "example": "She turned out to be the murderer after all.",
         "vietnamese": "hóa ra",
         "vietnamese_example": "Rốt cuộc cô ấy chính là kẻ giết người.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "turn up": {
         "definition": "Increase the volume or intensity of a TV, radio, or other machine.",
         "pos": "verb",
         "pron": "",
         "example": "Turn up the TV. I can't hear what they're saying.",
-        "vietnamese": "xuất hiện",
-        "vietnamese_example": "Bật TV lên. Tôi không thể nghe được họ đang nói gì.",
-        "cefr": "C1"
+        "vietnamese": "vặn to",
+        "vietnamese_example": "Vặn to TV lên đi. Tôi không nghe được họ đang nói gì.",
+        "cefr": "B2"
     },
     "work out": {
         "definition": "Solve.",
         "pos": "verb",
         "pron": "",
         "example": "I hope you two can work out your problems.",
-        "vietnamese": "tập thể dục",
-        "vietnamese_example": "Tôi hy vọng hai bạn có thể giải quyết được vấn đề của mình.",
-        "cefr": "C1"
+        "vietnamese": "giải quyết",
+        "vietnamese_example": "Tôi hy vọng hai bạn có thể giải quyết những vấn đề của mình.",
+        "cefr": "B2"
     },
     "a double-edged sword": {
         "definition": "Something that has both advantages and disadvantages.",
@@ -10258,16 +10258,16 @@ var dictionary = {
         "example": "She broke down after her husband died.",
         "vietnamese": "phá vỡ",
         "vietnamese_example": "Cô suy sụp sau khi chồng qua đời.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "bring back": {
-        "definition": "Return to consciousness.",
+        "definition": "Restore somebody to consciousness or life.",
         "pos": "verb",
         "pron": "",
         "example": "Sometimes when people die they are able to be brought back to life.",
-        "vietnamese": "mang về",
-        "vietnamese_example": "Đôi khi người ta chết đi họ có thể được sống lại.",
-        "cefr": "C1"
+        "vietnamese": "hồi sinh",
+        "vietnamese_example": "Đôi khi người ta có thể được cứu sống và đưa trở lại từ cõi chết.",
+        "cefr": "B2"
     },
     "bring up": {
         "definition": "Raise (a child).",
@@ -10276,7 +10276,7 @@ var dictionary = {
         "example": "Sam was brought up in South Carolina.",
         "vietnamese": "nuôi dưỡng",
         "vietnamese_example": "Sam lớn lên ở Nam Carolina.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "call back": {
         "definition": "Return to a place to see somebody again.",
@@ -10285,16 +10285,16 @@ var dictionary = {
         "example": "Mrs Bottone is in a meeting. Can you call back this afternoon, please?",
         "vietnamese": "gọi lại",
         "vietnamese_example": "Bà Bottone đang họp. Chiều nay bạn có thể gọi lại được không?",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "call round": {
         "definition": "Visit someone, usually for a short period of time.",
         "pos": "verb",
         "pron": "",
         "example": "I think I'll call round and see if my grandmother needs anything.",
-        "vietnamese": "gọi vòng",
-        "vietnamese_example": "Tôi nghĩ tôi sẽ gọi lại xem bà tôi có cần gì không.",
-        "cefr": "C1"
+        "vietnamese": "ghé thăm",
+        "vietnamese_example": "Tôi nghĩ tôi sẽ ghé thăm bà để xem bà có cần gì không.",
+        "cefr": "B2"
     },
     "carry on with": {
         "definition": "Continue.",
@@ -10303,7 +10303,7 @@ var dictionary = {
         "example": "I want you to carry on with the project while I am out of town.",
         "vietnamese": "tiếp tục với",
         "vietnamese_example": "Tôi muốn bạn tiếp tục dự án khi tôi đi vắng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "check into": {
         "definition": "Investigate, look for (often through a service).",
@@ -10312,7 +10312,7 @@ var dictionary = {
         "example": "We are checking into discount flights to London.",
         "vietnamese": "kiểm tra",
         "vietnamese_example": "Chúng tôi đang kiểm tra các chuyến bay giảm giá đến London.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "cheer up": {
         "definition": "Become cheerful.",
@@ -10321,52 +10321,52 @@ var dictionary = {
         "example": "Cheer up. Everything will be all right.",
         "vietnamese": "Vui lên",
         "vietnamese_example": "Vui lên. Mọi chuyện sẽ ổn thôi.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "come back": {
         "definition": "Return.",
         "pos": "verb",
         "pron": "",
         "example": "What time are you coming back?",
-        "vietnamese": "sự trở lại",
-        "vietnamese_example": "Mấy giờ bạn về?",
-        "cefr": "C1"
+        "vietnamese": "trở lại",
+        "vietnamese_example": "Mấy giờ bạn sẽ quay lại?",
+        "cefr": "B2"
     },
     "come down with": {
         "definition": "Become sick with.",
         "pos": "verb",
         "pron": "",
         "example": "He came down with the flu.",
-        "vietnamese": "đi xuống với",
+        "vietnamese": "mắc bệnh",
         "vietnamese_example": "Anh ấy bị cúm.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "come up": {
         "definition": "Happen unexpectedly.",
         "pos": "verb",
         "pron": "",
         "example": "I planned on visiting you last night, but something came up and I was unable to visit.",
-        "vietnamese": "đi lên",
-        "vietnamese_example": "Tối qua tôi định đến thăm bạn nhưng có chuyện đột xuất nên tôi không thể đến thăm được.",
-        "cefr": "C1"
+        "vietnamese": "phát sinh",
+        "vietnamese_example": "Tôi định ghé thăm bạn tối qua, nhưng có việc phát sinh nên tôi không thể đến.",
+        "cefr": "B2"
     },
     "get back": {
-        "definition": "Return.",
+        "definition": "Take revenge on someone.",
         "pos": "verb",
         "pron": "",
         "example": "Brandon pranked me last Halloween, so this year I am going to get him back.",
-        "vietnamese": "quay lại",
-        "vietnamese_example": "Brandon đã chơi khăm tôi vào dịp Halloween năm ngoái nên năm nay tôi sẽ giành lại anh ấy.",
-        "cefr": "C1"
+        "vietnamese": "trả đũa",
+        "vietnamese_example": "Brandon đã chơi khăm tôi vào dịp Halloween năm ngoái, nên năm nay tôi sẽ trả đũa cậu ấy.",
+        "cefr": "B2"
     },
     "get on with": {
         "definition": "Have a good relationship.",
         "pos": "verb",
         "pron": "",
         "example": "Natasha doesn't get on with her co-workers.",
-        "vietnamese": "tiếp tục với",
+        "vietnamese": "hòa hợp với",
         "vietnamese_example": "Natasha không hòa hợp với đồng nghiệp của mình.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "get out of": {
         "definition": "Exit (a small boat, car, an enclosed area).",
@@ -10375,7 +10375,7 @@ var dictionary = {
         "example": "I fell into the water when I tried to get out of the canoe.",
         "vietnamese": "thoát ra khỏi",
         "vietnamese_example": "Tôi bị rơi xuống nước khi cố gắng thoát ra khỏi ca nô.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "go in for": {
         "definition": "Participate ( inf.).",
@@ -10384,7 +10384,7 @@ var dictionary = {
         "example": "Are you going to go in for soccer this year at school?",
         "vietnamese": "đi vào cho",
         "vietnamese_example": "Năm nay bạn có định tham gia bóng đá ở trường không?",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "go on with": {
         "definition": "Continue (a plan, a conversation).",
@@ -10393,7 +10393,7 @@ var dictionary = {
         "example": "I think we should go on with the meeting and stop wasting time.",
         "vietnamese": "tiếp tục với",
         "vietnamese_example": "Tôi nghĩ chúng ta nên tiếp tục cuộc họp và ngừng lãng phí thời gian.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "look up": {
         "definition": "Search for information.",
@@ -10402,43 +10402,43 @@ var dictionary = {
         "example": "Sometimes when I reminisce I look up old friends on the Internet.",
         "vietnamese": "tra cứu",
         "vietnamese_example": "Đôi khi hồi tưởng lại, tôi tìm kiếm những người bạn cũ trên Internet.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "make up": {
         "definition": "Put on cosmetics.",
         "pos": "verb",
         "pron": "",
-        "example": "I takes me 10 minutes to make my face up.",
+        "example": "She spent an hour making herself up for the party.",
         "vietnamese": "trang điểm",
-        "vietnamese_example": "Tôi mất 10 phút để trang điểm.",
-        "cefr": "C1"
+        "vietnamese_example": "Cô ấy dành một tiếng để trang điểm cho bữa tiệc.",
+        "cefr": "B2"
     },
     "pick up": {
         "definition": "Try to initiate a relationship with someone (often in a bar).",
         "pos": "verb",
         "pron": "",
         "example": "Some weird guy tried to pick Patricia up at the bar.",
-        "vietnamese": "nhặt lên",
-        "vietnamese_example": "Một gã kỳ lạ nào đó đã cố đón Patricia ở quán bar.",
-        "cefr": "C1"
+        "vietnamese": "tán tỉnh",
+        "vietnamese_example": "Một gã kỳ quặc đã cố tán tỉnh Patricia ở quán bar.",
+        "cefr": "B2"
     },
     "put down": {
         "definition": "Insult, say bad things about.",
         "pos": "verb",
         "pron": "",
         "example": "She always puts down people who don't share her opinions.",
-        "vietnamese": "đặt xuống",
-        "vietnamese_example": "Cô ấy luôn coi thường những người không chia sẻ quan điểm của mình.",
-        "cefr": "C1"
+        "vietnamese": "hạ thấp",
+        "vietnamese_example": "Cô ấy luôn hạ thấp những người không chia sẻ quan điểm của mình.",
+        "cefr": "B2"
     },
     "put out": {
         "definition": "Inconvenience someone.",
         "pos": "verb",
         "pron": "",
         "example": "I don't want to put you out, but could you pick me up at the airport.",
-        "vietnamese": "dập tắt",
-        "vietnamese_example": "Tôi không muốn đuổi bạn ra ngoài, nhưng bạn có thể đón tôi ở sân bay được không?",
-        "cefr": "C1"
+        "vietnamese": "làm phiền",
+        "vietnamese_example": "Tôi không muốn làm phiền bạn, nhưng bạn có thể đón tôi ở sân bay được không?",
+        "cefr": "B2"
     },
     "set off": {
         "definition": "Cause to be ignited/exploded.",
@@ -10447,7 +10447,7 @@ var dictionary = {
         "example": "When setting off fireworks you must be very careful not to get injured.",
         "vietnamese": "khởi hành",
         "vietnamese_example": "Khi đốt pháo hoa bạn phải hết sức cẩn thận để không bị thương.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "take back": {
         "definition": "Return an item to a store.",
@@ -10456,25 +10456,25 @@ var dictionary = {
         "example": "The dress my grandmother bought for me didn't fit, so I took it back and exchanged it for a pair of pants.",
         "vietnamese": "lấy lại",
         "vietnamese_example": "Chiếc váy bà ngoại mua cho tôi không vừa nên tôi lấy lại và đổi lấy một chiếc quần.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "take off": {
         "definition": "Leave work or school for a period of time.",
         "pos": "verb",
         "pron": "",
         "example": "I was sick last week, so I took a few days off of work.",
-        "vietnamese": "cởi",
-        "vietnamese_example": "Tuần trước tôi bị ốm nên tôi đã nghỉ làm vài ngày.",
-        "cefr": "C1"
+        "vietnamese": "nghỉ",
+        "vietnamese_example": "Tuần trước tôi bị ốm nên đã nghỉ làm vài ngày.",
+        "cefr": "B2"
     },
     "take up": {
         "definition": "Shorten a garment when sewing.",
         "pos": "verb",
         "pron": "",
         "example": "This dress is too long, I am going to take it up.",
-        "vietnamese": "chiếm lấy",
-        "vietnamese_example": "Chiếc váy này dài quá, tôi sẽ lấy nó lên.",
-        "cefr": "C1"
+        "vietnamese": "lên gấu",
+        "vietnamese_example": "Chiếc váy này quá dài, tôi sẽ lên gấu nó.",
+        "cefr": "B2"
     },
     "blow up": {
         "definition": "Suddenly become very angry.",
@@ -10483,16 +10483,16 @@ var dictionary = {
         "example": "When Joan heard the news, she blew up and rushed out of the room.",
         "vietnamese": "nổ tung",
         "vietnamese_example": "Khi Joan biết tin, cô ấy nổi giận và lao ra khỏi phòng.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "call off": {
         "definition": "Order to stop (an invasion, guard dogs).",
         "pos": "verb",
         "pron": "",
         "example": "He called off the dogs when he saw it was his neighbor.",
-        "vietnamese": "gọi tắt",
-        "vietnamese_example": "Anh ta gọi lũ chó đi khi thấy đó là hàng xóm của mình.",
-        "cefr": "C1"
+        "vietnamese": "ra lệnh dừng lại",
+        "vietnamese_example": "Anh ấy đã ra lệnh dừng lũ chó lại khi thấy đó là hàng xóm của mình.",
+        "cefr": "B2"
     },
     "carry on": {
         "definition": "Continue (a conversation, a game).",
@@ -10501,25 +10501,25 @@ var dictionary = {
         "example": "Please, carry on. I didn't mean to interrupt you.",
         "vietnamese": "tiếp tục",
         "vietnamese_example": "Xin vui lòng, tiếp tục. Tôi không có ý làm phiền bạn.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "come out": {
         "definition": "Turn out, end up.",
         "pos": "verb",
         "pron": "",
-        "example": "The pictures came out great.",
-        "vietnamese": "đi ra ngoài",
-        "vietnamese_example": "Những hình ảnh xuất hiện tuyệt vời.",
-        "cefr": "C1"
+        "example": "The truth finally came out.",
+        "vietnamese": "xuất hiện, ra mắt, được phơi bày",
+        "vietnamese_example": "Sự thật cuối cùng đã được phơi bày.",
+        "cefr": "B2"
     },
     "get out": {
         "definition": "Produce or complete.",
         "pos": "verb",
         "pron": "",
         "example": "I must get this work out before the deadline comes!",
-        "vietnamese": "ra khỏi",
-        "vietnamese_example": "Tôi phải hoàn thành công việc này trước khi thời hạn đến!",
-        "cefr": "C1"
+        "vietnamese": "hoàn thành",
+        "vietnamese_example": "Tôi phải hoàn thành chỗ việc này trước khi đến hạn!",
+        "cefr": "B2"
     },
     "go off": {
         "definition": "Happen (as planned).",
@@ -10528,7 +10528,7 @@ var dictionary = {
         "example": "The surprise party went off without any problems.",
         "vietnamese": "rời đi",
         "vietnamese_example": "Bữa tiệc bất ngờ đã diễn ra mà không gặp bất kỳ trở ngại nào.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "go out": {
         "definition": "Take part in social activities (usually at night).",
@@ -10537,34 +10537,34 @@ var dictionary = {
         "example": "They love to go out every Saturday night.",
         "vietnamese": "đi ra ngoài",
         "vietnamese_example": "Họ thích đi chơi vào mỗi tối thứ bảy.",
-        "cefr": "C1"
+        "cefr": "B2"
     },
     "go up": {
         "definition": "Be in the process of construction.",
         "pos": "verb",
         "pron": "",
         "example": "Several new KNUE buildings are going up in 2007 and 2008.",
-        "vietnamese": "đi lên",
-        "vietnamese_example": "Một số tòa nhà KNUE mới sẽ được xây dựng vào năm 2007 và 2008.",
-        "cefr": "C1"
+        "vietnamese": "được xây lên",
+        "vietnamese_example": "Một số tòa nhà mới của KNUE đang được xây lên trong năm 2007 và 2008.",
+        "cefr": "B2"
     },
     "look out": {
         "definition": "Be careful, pay attention, heed a certain danger.",
         "pos": "verb",
         "pron": "",
         "example": "Look out, there's a black widow spider on the wall.",
-        "vietnamese": "nhìn ra ngoài",
-        "vietnamese_example": "Hãy coi chừng, có một con nhện góa phụ đen trên tường.",
-        "cefr": "C1"
+        "vietnamese": "coi chừng",
+        "vietnamese_example": "Coi chừng, có một con nhện góa phụ đen trên tường.",
+        "cefr": "B2"
     },
     "sit down": {
-        "definition": "Encamp or besiege.",
+        "definition": "Take a seat.",
         "pos": "verb",
         "pron": "",
         "example": "Sit down and stop your noise!",
         "vietnamese": "ngồi xuống",
-        "vietnamese_example": "Hãy ngồi xuống và ngừng ồn ào!",
-        "cefr": "C1"
+        "vietnamese_example": "Ngồi xuống và đừng làm ồn nữa!",
+        "cefr": "B2"
     },
     "a grey area": {
         "definition": "A situation that is unclear or not easily judged.",
@@ -10929,7 +10929,7 @@ var dictionary = {
 };
 
 /**
- * Course → Set hierarchy.
+ * Course -> Set hierarchy.
  * Each course contains sets, each set references word IDs from the dictionary.
  * @type {Array.<{id: string, title: string, icon: string, sets: Array.<{id: string, title: string, words: string[]}>}>}
  */
