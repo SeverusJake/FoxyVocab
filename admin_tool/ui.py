@@ -174,6 +174,7 @@ class FoxyVocabAdminApp:
         notebook.add(self.set_tab, text="Set View")
         notebook.add(self.course_tab, text="Course View")
         notebook.add(self.bulk_tab, text="Bulk Add")
+        self._bind_tab_shortcuts()
 
         form = ttk.LabelFrame(self.word_tab, text="Word Editor", style="Section.TLabelframe")
         form.pack(fill="both", expand=True, padx=8, pady=8)
@@ -249,6 +250,20 @@ class FoxyVocabAdminApp:
         ttk.Button(btn_frame, text="Update Word", command=self.update_word_ui).pack(side="left", padx=4)
         ttk.Button(btn_frame, text="Delete Word", command=self.delete_word_ui).pack(side="left", padx=4)
         ttk.Button(btn_frame, text="Validate All", command=self.validate_all_ui).pack(side="right", padx=4)
+
+    def _bind_tab_shortcuts(self):
+        shortcuts = {
+            "<Control-Key-1>": self.word_tab,
+            "<Control-Key-2>": self.set_tab,
+            "<Control-Key-3>": self.course_tab,
+            "<Control-Key-4>": self.bulk_tab,
+        }
+        for sequence, tab in shortcuts.items():
+            self.root.bind_all(sequence, lambda _event, selected_tab=tab: self.select_center_tab(selected_tab))
+
+    def select_center_tab(self, tab):
+        self.center_notebook.select(tab)
+        return "break"
 
     def _build_set_tab(self):
         form = ttk.LabelFrame(self.set_tab, text="Set Editor", style="Section.TLabelframe")

@@ -2188,21 +2188,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "correspondent": {
-        "definition": "a person who reports news from a particular country or on a particular subject for a newspaper or a television or radio station",
+        "definition": "A journalist reporting from a specific place or on a specific topic.",
         "pos": "noun",
         "pron": "/ˌkɒrəˈspɒndənt/",
-        "example": "She's the BBC's political correspondent.",
-        "vietnamese": "phóng viên",
-        "vietnamese_example": "Cô ấy là phóng viên chính trị của BBC.",
-        "cefr": "C1"
-    },
-    "intermediate": {
-        "definition": "located between two places, things, states, etc.",
-        "pos": "adj",
-        "pron": "/ˌɪntəˈmiːdiət/",
-        "example": "an intermediate stage/step in a process",
-        "vietnamese": "trung cấp",
-        "vietnamese_example": "một giai đoạn/bước trung gian trong một quy trình",
+        "example": "He is a foreign correspondent in Tokyo.",
+        "vietnamese": "phóng viên thường trú",
+        "vietnamese_example": "Anh ấy là phóng viên thường trú ở Tokyo.",
         "cefr": "C1"
     },
     "newsletter": {
@@ -2215,12 +2206,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "suppress": {
-        "definition": "to put an end, often by force, to a group or an activity that is believed to threaten authority",
+        "definition": "to prevent information from being known.",
         "pos": "verb",
         "pron": "/səˈpres/",
-        "example": "The rebellion was brutally suppressed.",
-        "vietnamese": "kìm nén",
-        "vietnamese_example": "Cuộc nổi dậy bị đàn áp dã man.",
+        "example": "The report was suppressed by officials.",
+        "vietnamese": "che giấu / kiểm duyệt",
+        "vietnamese_example": "Báo cáo đã bị che giấu / kiểm duyệt bởi quan chức.",
         "cefr": "C1"
     },
     "commentary": {
@@ -2230,33 +2221,6 @@ var dictionary = {
         "example": "a sports commentary",
         "vietnamese": "bình luận",
         "vietnamese_example": "bình luận thể thao",
-        "cefr": "C1"
-    },
-    "commentator": {
-        "definition": "a person who describes an event while it is happening, especially on television or radio",
-        "pos": "noun",
-        "pron": "/ˈkɒmənteɪtə(r)/",
-        "example": "a television/sports commentator",
-        "vietnamese": "người bình luận",
-        "vietnamese_example": "bình luận viên truyền hình/thể thao",
-        "cefr": "C1"
-    },
-    "contributor": {
-        "definition": "a person who writes articles for a magazine, book or website, or who talks on a radio or television programme or at a meeting",
-        "pos": "noun",
-        "pron": "/kənˈtrɪbjətə(r)/",
-        "example": "a regular contributor to this magazine",
-        "vietnamese": "người đóng góp",
-        "vietnamese_example": "người đóng góp thường xuyên cho tạp chí này",
-        "cefr": "C1"
-    },
-    "cutting": {
-        "definition": "an article or a story that you cut from a newspaper or magazine and keep",
-        "pos": "noun",
-        "pron": "/ˈkʌtɪŋ/",
-        "example": "newspaper/press cuttings",
-        "vietnamese": "cắt",
-        "vietnamese_example": "cắt báo/báo chí",
         "cefr": "C1"
     },
     "simultaneously": {
@@ -2329,15 +2293,6 @@ var dictionary = {
         "example": "Copyright expires seventy years after the death of the author.",
         "vietnamese": "bản quyền",
         "vietnamese_example": "Bản quyền hết hạn bảy mươi năm sau khi tác giả qua đời.",
-        "cefr": "C1"
-    },
-    "crush": {
-        "definition": "to press something so hard that it is damaged or injured, or loses its shape",
-        "pos": "verb",
-        "pron": "/krʌʃ/",
-        "example": "The car was completely crushed under the truck.",
-        "vietnamese": "người mình thích",
-        "vietnamese_example": "Chiếc xe máy bị bẹp dúm hoàn toàn dưới gầm xe tải.",
         "cefr": "C1"
     },
     "discard": {
@@ -2491,15 +2446,6 @@ var dictionary = {
         "example": "an ironic comment",
         "vietnamese": "mỉa mai",
         "vietnamese_example": "một bình luận mỉa mai",
-        "cefr": "C1"
-    },
-    "ironically": {
-        "definition": "in a way that shows that you really mean the opposite of what you are saying; in a way that expresses irony",
-        "pos": "adv",
-        "pron": "/aɪˈrɒnɪkli/",
-        "example": "He smiled ironically.",
-        "vietnamese": "trớ trêu thay",
-        "vietnamese_example": "Anh mỉm cười mỉa mai.",
         "cefr": "C1"
     },
     "line-up": {
@@ -10925,6 +10871,195 @@ var dictionary = {
         "vietnamese": "chiếm vị trí trung tâm",
         "vietnamese_example": "An ninh năng lượng đã chiếm vị trí trung tâm trong năm nay.",
         "cefr": "C1"
+    },
+    "dissemination": {
+        "definition": "The act of spreading information widely to many people.",
+        "pos": "noun",
+        "pron": "/dɪˌsem.əˈneɪ.ʃən/",
+        "example": "The internet allows rapid dissemination of information.",
+        "vietnamese": "sự lan truyền thông tin, kiến thức",
+        "vietnamese_example": "Internet cho phép sự lan truyền thông tin nhanh chóng.",
+        "cefr": "C1"
+    },
+    "editorial": {
+        "definition": "Related to editing, publishing, or content decisions.",
+        "pos": "adj",
+        "pron": "/ˌed.ɪˈtɔːr.i.əl/",
+        "example": "She is responsible for editorial decisions.",
+        "vietnamese": "thuộc về biên tập",
+        "vietnamese_example": "Cô ấy chịu trách nhiệm về các quyết định biên tập.",
+        "cefr": "C1"
+    },
+    "syndication": {
+        "definition": "Selling or distributing content to multiple broadcasters.",
+        "pos": "noun",
+        "pron": "/ˌsɪn.dəˈkeɪ.ʃən/",
+        "example": "The show became popular through international syndication.",
+        "vietnamese": "hợp tác phát hành",
+        "vietnamese_example": "Chương trình trở nên nổi tiếng nhờ việc phân phối đến nhiều đài quốc tế.",
+        "cefr": "C1"
+    },
+    "publication": {
+        "definition": "The act of making something available to the public.",
+        "pos": "noun",
+        "pron": "/ˌpʌb.ləˈkeɪ.ʃən/",
+        "example": "The publication of the report caused a lot of debate.",
+        "vietnamese": "sự xuất bản",
+        "vietnamese_example": "Việc công bố / xuất bản báo cáo đã gây ra nhiều tranh luận.",
+        "cefr": "C1"
+    },
+    "broadcast": {
+        "definition": "To send out programs, signals, or information to many people.",
+        "pos": "verb",
+        "pron": "/ˈbrɑːd.kæst/",
+        "example": "The game will be broadcast live tonight.",
+        "vietnamese": "phát sóng",
+        "vietnamese_example": "Trận đấu sẽ được phát sóng trực tiếp tối nay.",
+        "cefr": "B2"
+    },
+    "sensationalized": {
+        "definition": "to exaggerate something for dramatic effect.",
+        "pos": "verb",
+        "pron": "/senˈseɪ.ʃən.əl.aɪzd/",
+        "example": "The story was sensationalized to attract more readers.",
+        "vietnamese": "phóng đại, làm quá",
+        "vietnamese_example": "Câu chuyện đã bị phóng đại, làm quá để thu hút thêm độc giả.",
+        "cefr": "C1"
+    },
+    "privacy": {
+        "definition": "The state of being free from public attention or unwanted observation.",
+        "pos": "noun",
+        "pron": "/ˈprɪvəsi/",
+        "example": "Online privacy is important when using new apps.",
+        "vietnamese": "Sự riêng tư",
+        "vietnamese_example": "Quyền riêng tư trực tuyến rất quan trọng khi dùng các ứng dụng mới.",
+        "cefr": "B2"
+    },
+    "ethical": {
+        "definition": "Connected with principles about what is right and wrong.",
+        "pos": "adj",
+        "pron": "/ˈeθɪkl/",
+        "example": "Companies must consider the ethical impact of new technology.",
+        "vietnamese": "Có đạo đức",
+        "vietnamese_example": "Các công ty phải xem xét tác động đạo đức của công nghệ mới.",
+        "cefr": "B2"
+    },
+    "regulation": {
+        "definition": "An official rule made by a government or authority.",
+        "pos": "noun",
+        "pron": "/ˌreɡjuˈleɪʃn/",
+        "example": "New regulation may change how companies collect data.",
+        "vietnamese": "Quy định",
+        "vietnamese_example": "Quy định mới có thể thay đổi cách các công ty thu thập dữ liệu.",
+        "cefr": "B2"
+    },
+    "dependency": {
+        "definition": "A situation in which someone or something relies on another thing.",
+        "pos": "noun",
+        "pron": "/dɪˈpendənsi/",
+        "example": "Heavy dependency on one platform can create risks.",
+        "vietnamese": "Sự phụ thuộc",
+        "vietnamese_example": "Sự phụ thuộc nhiều vào một nền tảng có thể tạo ra rủi ro.",
+        "cefr": "C1"
+    },
+    "security": {
+        "definition": "Protection against danger, attack, or unauthorized access.",
+        "pos": "noun",
+        "pron": "/sɪˈkjʊrəti/",
+        "example": "The team improved security after the data breach.",
+        "vietnamese": "An ninh; bảo mật",
+        "vietnamese_example": "Nhóm đã cải thiện bảo mật sau vụ rò rỉ dữ liệu.",
+        "cefr": "B1"
+    },
+    "digital divide": {
+        "definition": "The gap between people who have access to digital technology and those who do not.",
+        "pos": "noun",
+        "pron": "/ˌdɪdʒɪtl dɪˈvaɪd/",
+        "example": "Rural communities often face a wider digital divide.",
+        "vietnamese": "Khoảng cách số",
+        "vietnamese_example": "Các cộng đồng nông thôn thường đối mặt với khoảng cách số lớn hơn.",
+        "cefr": "C1"
+    },
+    "obsolescence": {
+        "definition": "The process of becoming old-fashioned or no longer useful.",
+        "pos": "noun",
+        "pron": "/ˌɒbsəˈlesns/",
+        "example": "Rapid innovation can lead to product obsolescence.",
+        "vietnamese": "Sự lỗi thời",
+        "vietnamese_example": "Đổi mới nhanh có thể dẫn đến sự lỗi thời của sản phẩm.",
+        "cefr": "C1"
+    },
+    "scalable": {
+        "definition": "Able to grow or handle more work without losing effectiveness.",
+        "pos": "adj",
+        "pron": "/ˈskeɪləbl/",
+        "example": "The startup built a scalable cloud service.",
+        "vietnamese": "Có khả năng mở rộng",
+        "vietnamese_example": "Công ty khởi nghiệp đã xây dựng một dịch vụ đám mây có khả năng mở rộng.",
+        "cefr": "C1"
+    },
+    "predictive": {
+        "definition": "Using information to predict what is likely to happen in the future.",
+        "pos": "adj",
+        "pron": "/prɪˈdɪktɪv/",
+        "example": "Predictive software can identify trends in customer behavior.",
+        "vietnamese": "Mang tính dự đoán",
+        "vietnamese_example": "Phần mềm dự đoán có thể xác định xu hướng trong hành vi khách hàng.",
+        "cefr": "C1"
+    },
+    "autonomous": {
+        "definition": "Able to operate or make decisions without direct human control.",
+        "pos": "adj",
+        "pron": "/ɔːˈtɒnəməs/",
+        "example": "Autonomous vehicles use sensors to navigate roads.",
+        "vietnamese": "Tự động; tự chủ",
+        "vietnamese_example": "Xe tự hành sử dụng cảm biến để di chuyển trên đường.",
+        "cefr": "C1"
+    },
+    "cybersecurity": {
+        "definition": "The practice of protecting computer systems and networks from digital attacks.",
+        "pos": "noun",
+        "pron": "/ˌsaɪbərsɪˈkjʊrəti/",
+        "example": "Cybersecurity training helps employees avoid phishing attacks.",
+        "vietnamese": "An ninh mạng",
+        "vietnamese_example": "Đào tạo an ninh mạng giúp nhân viên tránh các cuộc tấn công lừa đảo.",
+        "cefr": "C1"
+    },
+    "encryption": {
+        "definition": "The process of changing information into a code to keep it secure.",
+        "pos": "noun",
+        "pron": "/ɪnˈkrɪpʃn/",
+        "example": "Encryption protects messages from being read by strangers.",
+        "vietnamese": "Sự mã hóa",
+        "vietnamese_example": "Mã hóa bảo vệ tin nhắn khỏi bị người lạ đọc.",
+        "cefr": "C1"
+    },
+    "automation": {
+        "definition": "The use of machines or software to do tasks with little human effort.",
+        "pos": "noun",
+        "pron": "/ˌɔːtəˈmeɪʃn/",
+        "example": "Automation reduced the time needed to process orders.",
+        "vietnamese": "Sự tự động hóa",
+        "vietnamese_example": "Tự động hóa đã giảm thời gian cần để xử lý đơn hàng.",
+        "cefr": "B2"
+    },
+    "digitization": {
+        "definition": "The process of converting information into a digital form.",
+        "pos": "noun",
+        "pron": "/ˌdɪdʒɪtaɪˈzeɪʃn/",
+        "example": "Digitization made the archive easier to search.",
+        "vietnamese": "Sự số hóa",
+        "vietnamese_example": "Số hóa giúp kho lưu trữ dễ tìm kiếm hơn.",
+        "cefr": "C1"
+    },
+    "optimization": {
+        "definition": "The process of making something as effective or efficient as possible.",
+        "pos": "noun",
+        "pron": "/ˌɒptɪmaɪˈzeɪʃn/",
+        "example": "The update improved battery optimization on the device.",
+        "vietnamese": "Sự tối ưu hóa",
+        "vietnamese_example": "Bản cập nhật đã cải thiện việc tối ưu hóa pin trên thiết bị.",
+        "cefr": "C1"
     }
 };
 
@@ -11131,7 +11266,16 @@ var coursesData = [
                     "activation",
                     "default",
                     "desktop",
-                    "directory"
+                    "directory",
+                    "array",
+                    "privacy",
+                    "surveillance",
+                    "ethical",
+                    "regulation",
+                    "dependency",
+                    "security",
+                    "digital divide",
+                    "obsolescence"
                 ]
             },
             {
@@ -11148,7 +11292,16 @@ var coursesData = [
                     "configuration",
                     "documentation",
                     "functional",
-                    "operational"
+                    "operational",
+                    "scalable",
+                    "revolutionary",
+                    "predictive",
+                    "autonomous",
+                    "cybersecurity",
+                    "encryption",
+                    "automation",
+                    "digitization",
+                    "optimization"
                 ]
             },
             {
@@ -11232,22 +11385,20 @@ var coursesData = [
                 "words": [
                     "columnist",
                     "correspondent",
-                    "intermediate",
+                    "broadcast",
                     "newsletter",
                     "suppress",
                     "commentary",
-                    "commentator",
-                    "contributor",
-                    "cutting",
+                    "editorial",
+                    "dissemination",
+                    "publication",
                     "simultaneously",
                     "accomplishment",
                     "allegedly",
-                    "array",
                     "articulate",
-                    "burst",
                     "clarity",
                     "copyright",
-                    "crush",
+                    "syndication",
                     "discard",
                     "disclose"
                 ]
@@ -11272,7 +11423,7 @@ var coursesData = [
                     "hostile",
                     "instruct",
                     "ironic",
-                    "ironically",
+                    "sensationalized",
                     "line-up",
                     "manipulation",
                     "march"
@@ -11400,7 +11551,8 @@ var coursesData = [
                     "flaw",
                     "flawed",
                     "ideology",
-                    "indicator"
+                    "indicator",
+                    "burst"
                 ]
             },
             {
