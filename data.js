@@ -685,13 +685,13 @@ var dictionary = {
         "cefr": "C1"
     },
     "abide by": {
-        "definition": "To follow or obey a rule, decision, or agreement.",
-        "pos": "verb",
+        "definition": "To follow or obey rules, laws, or guidelines.",
+        "pos": "phrase",
         "pron": "/əˈbaɪd baɪ/",
-        "example": "All employees must abide by the company policies.",
+        "example": "All employees must abide by company policies.",
         "vietnamese": "tuân theo",
-        "vietnamese_example": "Tất cả nhân viên phải tuân theo chính sách của công ty.",
-        "cefr": "B2"
+        "vietnamese_example": "Tất cả nhân viên phải tuân theo các chính sách của công ty.",
+        "cefr": "C1"
     },
     "obligate": {
         "definition": "To require someone to do something by law or duty.",
@@ -712,12 +712,12 @@ var dictionary = {
         "cefr": "B2"
     },
     "provision": {
-        "definition": "A condition or requirement in a legal agreement.",
+        "definition": "The act of supplying something or a reserve set aside for future use.",
         "pos": "noun",
         "pron": "/prəˈvɪʒ.ən/",
-        "example": "The contract includes a provision for early termination.",
-        "vietnamese": "điều khoản, quy định",
-        "vietnamese_example": "Hợp đồng bao gồm một điều khoản chấm dứt sớm.",
+        "example": "The provision of resources ensured smooth progress.",
+        "vietnamese": "sự cung cấp; khoản dự trữ",
+        "vietnamese_example": "Việc cung cấp tài nguyên đảm bảo tiến độ suôn sẻ.",
         "cefr": "C1"
     },
     "stipulation": {
@@ -1216,21 +1216,21 @@ var dictionary = {
         "cefr": "B2"
     },
     "invalidate": {
-        "definition": "To make something no longer valid.",
+        "definition": "To make something no longer valid or acceptable.",
         "pos": "verb",
         "pron": "/ɪnˈvæl.ɪ.deɪt/",
-        "example": "Improper use can invalidate the warranty.",
+        "example": "The results were invalidated due to errors.",
         "vietnamese": "làm mất hiệu lực",
-        "vietnamese_example": "Sử dụng sai có thể làm mất hiệu lực bảo hành.",
+        "vietnamese_example": "Kết quả bị làm mất hiệu lực do lỗi.",
         "cefr": "C1"
     },
     "malfunction": {
-        "definition": "A failure to work properly.",
+        "definition": "A failure to function properly.",
         "pos": "noun",
         "pron": "/ˌmælˈfʌŋk.ʃən/",
-        "example": "The device stopped due to a malfunction.",
-        "vietnamese": "sự trục trặc",
-        "vietnamese_example": "Thiết bị ngừng hoạt động do trục trặc.",
+        "example": "The machine stopped due to a malfunction.",
+        "vietnamese": "trục trặc",
+        "vietnamese_example": "Máy đã dừng do trục trặc.",
         "cefr": "C1"
     },
     "defective": {
@@ -3034,12 +3034,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "allocation": {
-        "definition": "an amount of money, space, etc. that is given to somebody for a particular purpose",
+        "definition": "The process of distributing resources or duties.",
         "pos": "noun",
-        "pron": "/ˌæləˈkeɪʃn/",
-        "example": "We have spent our entire allocation for the year.",
-        "vietnamese": "phân bổ",
-        "vietnamese_example": "Chúng tôi đã dành toàn bộ phân bổ của chúng tôi trong năm.",
+        "pron": "/ˌæl.əˈkeɪ.ʃən/",
+        "example": "The allocation of funds was carefully planned.",
+        "vietnamese": "sự phân bổ",
+        "vietnamese_example": "Việc phân bổ ngân sách được lên kế hoạch cẩn thận.",
         "cefr": "C1"
     },
     "allowance": {
@@ -3835,12 +3835,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "ignorance": {
-        "definition": "a lack of knowledge or information about something",
+        "definition": "Lack of knowledge or information.",
         "pos": "noun",
-        "pron": "/ˈɪɡnərəns/",
-        "example": "They fought a long battle against prejudice and ignorance.",
+        "pron": "/ˈɪɡ.nər.əns/",
+        "example": "Ignorance of the law is not an excuse.",
         "vietnamese": "sự thiếu hiểu biết",
-        "vietnamese_example": "Họ đã chiến đấu một cuộc chiến lâu dài chống lại thành kiến ​​và sự thiếu hiểu biết.",
+        "vietnamese_example": "Sự thiếu hiểu biết về luật pháp không phải là lý do bào chữa.",
         "cefr": "C1"
     },
     "injustice": {
@@ -8137,12 +8137,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "consultation": {
-        "definition": "the act of discussing something with somebody or with a group of people before making a decision about it",
+        "definition": "The act of discussing something with someone to get advice or information.",
         "pos": "noun",
         "pron": "/ˌkɒnslˈteɪʃn/",
-        "example": "a consultation document/paper/period/process",
-        "vietnamese": "tư vấn",
-        "vietnamese_example": "một tài liệu/giấy/giai đoạn/quy trình tư vấn",
+        "example": "The decision was made after consultation with experts.",
+        "vietnamese": "sự tư vấn",
+        "vietnamese_example": "Quyết định được đưa ra sau khi tham khảo ý kiến chuyên gia.",
         "cefr": "C1"
     },
     "contemplate": {
@@ -8227,12 +8227,12 @@ var dictionary = {
         "cefr": "C1"
     },
     "credibility": {
-        "definition": "the quality that somebody/something has that makes people believe or trust them",
+        "definition": "The quality of being trusted and believed in.",
         "pos": "noun",
-        "pron": "/ˌkredəˈbɪləti/",
-        "example": "to gain/lack/lose credibility",
+        "pron": "/ˌkred.əˈbɪl.ə.ti/",
+        "example": "The report gained credibility after independent verification.",
         "vietnamese": "độ tin cậy",
-        "vietnamese_example": "đạt được/thiếu/mất uy tín",
+        "vietnamese_example": "Báo cáo trở nên đáng tin cậy sau khi được kiểm chứng độc lập.",
         "cefr": "C1"
     },
     "credible": {
@@ -9847,13 +9847,13 @@ var dictionary = {
         "cefr": "B2"
     },
     "bring in": {
-        "definition": "Yield as profit or income.",
-        "pos": "verb",
-        "pron": "",
-        "example": "Fishermen always try to bring in a large catch.",
-        "vietnamese": "mang vào",
-        "vietnamese_example": "Ngư dân luôn cố gắng đánh bắt được nhiều cá.",
-        "cefr": "B2"
+        "definition": "To introduce or recruit someone or something.",
+        "pos": "phrase",
+        "pron": "/brɪŋ ɪn/",
+        "example": "The company plans to bring in new talent.",
+        "vietnamese": "tuyển dụng; đưa vào",
+        "vietnamese_example": "Công ty dự định tuyển dụng nhân tài mới.",
+        "cefr": "B2+"
     },
     "carry out": {
         "definition": "Complete and/or accomplish something.",
@@ -11105,6 +11105,897 @@ var dictionary = {
         "vietnamese": "quá trình tìm hiểu / nghiên cứu",
         "vietnamese_example": "Quá trình tìm hiểu khoa học là rất quan trọng cho sự tiến bộ.",
         "cefr": "B2"
+    },
+    "steering committee": {
+        "definition": "A group of people responsible for directing and overseeing a project or organization.",
+        "pos": "noun",
+        "pron": "/ˈstɪə.rɪŋ kəˌmɪt.i/",
+        "example": "The steering committee approved the new strategic plan.",
+        "vietnamese": "ban chỉ đạo",
+        "vietnamese_example": "Ban chỉ đạo đã phê duyệt kế hoạch chiến lược mới.",
+        "cefr": "C1"
+    },
+    "lender": {
+        "definition": "A person or institution that lends money.",
+        "pos": "noun",
+        "pron": "/ˈlen.dər/",
+        "example": "The lender approved her loan application.",
+        "vietnamese": "người cho vay",
+        "vietnamese_example": "Người cho vay đã chấp thuận đơn vay của cô ấy.",
+        "cefr": "C1"
+    },
+    "national chain": {
+        "definition": "A group of stores or businesses operating across a whole country under the same brand.",
+        "pos": "noun",
+        "pron": "/ˈnæʃ.ən.əl tʃeɪn/",
+        "example": "The restaurant grew into a successful national chain.",
+        "vietnamese": "chuỗi cửa hàng toàn quốc",
+        "vietnamese_example": "Nhà hàng đã phát triển thành một chuỗi cửa hàng toàn quốc thành công.",
+        "cefr": "C1"
+    },
+    "satisfy a requirement": {
+        "definition": "To meet or fulfill a condition or need.",
+        "pos": "phrase",
+        "pron": "/ˈsæt.ɪs.faɪ ə rɪˈkwaɪə.mənt/",
+        "example": "Applicants must satisfy all requirements to qualify.",
+        "vietnamese": "đáp ứng yêu cầu",
+        "vietnamese_example": "Ứng viên phải đáp ứng tất cả các yêu cầu để đủ điều kiện.",
+        "cefr": "C1"
+    },
+    "board of directors": {
+        "definition": "A group of people managing or directing an organization or company.",
+        "pos": "noun",
+        "pron": "/bɔːd əv dəˈrek.təz/",
+        "example": "The board of directors approved the merger.",
+        "vietnamese": "hội đồng quản trị",
+        "vietnamese_example": "Hội đồng quản trị đã phê duyệt việc sáp nhập.",
+        "cefr": "C1"
+    },
+    "economically sound": {
+        "definition": "Financially stable and based on good economic principles.",
+        "pos": "phrase",
+        "pron": "/ˌiː.kəˈnɒm.ɪ.kəl.i saʊnd/",
+        "example": "The investment was considered economically sound.",
+        "vietnamese": "vững về kinh tế",
+        "vietnamese_example": "Khoản đầu tư được xem là vững về kinh tế.",
+        "cefr": "C1"
+    },
+    "financial climate": {
+        "definition": "The overall economic conditions affecting financial activities.",
+        "pos": "noun",
+        "pron": "/faɪˈnæn.ʃəl ˈklaɪ.mət/",
+        "example": "The financial climate has improved this year.",
+        "vietnamese": "môi trường tài chính",
+        "vietnamese_example": "Môi trường tài chính đã cải thiện trong năm nay.",
+        "cefr": "C1"
+    },
+    "substitution": {
+        "definition": "The act of replacing one thing with another.",
+        "pos": "noun",
+        "pron": "/ˌsʌb.stɪˈtʃuː.ʃən/",
+        "example": "The substitution of materials reduced costs.",
+        "vietnamese": "sự thay thế",
+        "vietnamese_example": "Việc thay thế nguyên liệu đã giảm chi phí.",
+        "cefr": "C1"
+    },
+    "on the strength of": {
+        "definition": "Based on or because of something.",
+        "pos": "phrase",
+        "pron": "/ɒn ðə streŋθ əv/",
+        "example": "She was hired on the strength of her experience.",
+        "vietnamese": "dựa vào",
+        "vietnamese_example": "Cô ấy được tuyển dụng dựa vào kinh nghiệm của mình.",
+        "cefr": "C1"
+    },
+    "realistic evaluation": {
+        "definition": "A practical and accurate assessment of a situation.",
+        "pos": "noun",
+        "pron": "/ˌrɪəˈlɪs.tɪk ɪˌvæl.juˈeɪ.ʃən/",
+        "example": "We need a realistic evaluation of the risks.",
+        "vietnamese": "đánh giá thực tế",
+        "vietnamese_example": "Chúng ta cần một đánh giá thực tế về các rủi ro.",
+        "cefr": "C1"
+    },
+    "prove through research": {
+        "definition": "To demonstrate something is true using systematic investigation.",
+        "pos": "phrase",
+        "pron": "/pruːv θruː rɪˈsɜːtʃ/",
+        "example": "The theory was proven through research.",
+        "vietnamese": "chứng minh qua nghiên cứu",
+        "vietnamese_example": "Lý thuyết đã được chứng minh qua nghiên cứu.",
+        "cefr": "C1"
+    },
+    "redirect resources": {
+        "definition": "To change the allocation of resources to a different use.",
+        "pos": "phrase",
+        "pron": "/ˌriː.daɪˈrekt rɪˈzɔː.sɪz/",
+        "example": "The company decided to redirect resources to innovation.",
+        "vietnamese": "điều chỉnh lại nguồn lực",
+        "vietnamese_example": "Công ty quyết định điều chỉnh lại nguồn lực cho đổi mới.",
+        "cefr": "C1"
+    },
+    "position against competitors": {
+        "definition": "To establish a place in the market relative to rivals.",
+        "pos": "phrase",
+        "pron": "/pəˈzɪʃ.ən əˈɡenst kəmˈpet.ɪ.təz/",
+        "example": "The brand positioned itself strongly against competitors.",
+        "vietnamese": "vị thế so với đối thủ",
+        "vietnamese_example": "Thương hiệu đã tạo vị thế vững chắc so với đối thủ.",
+        "cefr": "C1"
+    },
+    "eliminate risk": {
+        "definition": "To remove or reduce the possibility of danger or loss.",
+        "pos": "phrase",
+        "pron": "/ɪˈlɪm.ɪ.neɪt rɪsk/",
+        "example": "They implemented measures to eliminate risk.",
+        "vietnamese": "loại bỏ rủi ro",
+        "vietnamese_example": "Họ đã áp dụng các biện pháp để loại bỏ rủi ro.",
+        "cefr": "C1"
+    },
+    "measure up against": {
+        "definition": "To compare something with another standard or competitor.",
+        "pos": "phrase",
+        "pron": "/ˈmeʒ.ə rʌp əˈɡenst/",
+        "example": "Our product measures up well against others.",
+        "vietnamese": "so sánh với",
+        "vietnamese_example": "Sản phẩm của chúng tôi so sánh tốt với các sản phẩm khác.",
+        "cefr": "C1"
+    },
+    "niche in the market": {
+        "definition": "A specific, specialized segment of the market.",
+        "pos": "noun",
+        "pron": "/niːʃ ɪn ðə ˈmɑː.kɪt/",
+        "example": "The company found a niche in the market.",
+        "vietnamese": "thị trường ngách",
+        "vietnamese_example": "Công ty đã tìm được một thị trường ngách.",
+        "cefr": "C1"
+    },
+    "evaluate a need": {
+        "definition": "To assess or determine the necessity of something.",
+        "pos": "phrase",
+        "pron": "/ɪˈvæl.ju.eɪt ə niːd/",
+        "example": "We must evaluate the need before investing.",
+        "vietnamese": "đánh giá nhu cầu",
+        "vietnamese_example": "Chúng ta phải đánh giá nhu cầu trước khi đầu tư.",
+        "cefr": "C1"
+    },
+    "address an issue": {
+        "definition": "To deal with or take action on a problem.",
+        "pos": "phrase",
+        "pron": "/əˈdres ən ˈɪʃ.uː/",
+        "example": "The team worked to address the issue quickly.",
+        "vietnamese": "giải quyết vấn đề",
+        "vietnamese_example": "Nhóm đã cố gắng giải quyết vấn đề nhanh chóng.",
+        "cefr": "B2+"
+    },
+    "insufficient capital": {
+        "definition": "Not enough financial resources to support an activity.",
+        "pos": "noun",
+        "pron": "/ˌɪn.səˈfɪʃ.ənt ˈkæp.ɪ.təl/",
+        "example": "The project failed due to insufficient capital.",
+        "vietnamese": "vốn không đủ",
+        "vietnamese_example": "Dự án thất bại do vốn không đủ.",
+        "cefr": "C1"
+    },
+    "distinguish from": {
+        "definition": "To recognize or show the difference between things.",
+        "pos": "phrase",
+        "pron": "/dɪˈstɪŋ.ɡwɪʃ frəm/",
+        "example": "It is important to distinguish this product from others.",
+        "vietnamese": "phân biệt với",
+        "vietnamese_example": "Điều quan trọng là phân biệt sản phẩm này với các sản phẩm khác.",
+        "cefr": "B2+"
+    },
+    "in regard to": {
+        "definition": "Concerning or relating to something.",
+        "pos": "phrase",
+        "pron": "/ɪn rɪˈɡɑːd tuː/",
+        "example": "In regard to your request, we will respond shortly.",
+        "vietnamese": "liên quan đến",
+        "vietnamese_example": "Liên quan đến yêu cầu của bạn, chúng tôi sẽ phản hồi sớm.",
+        "cefr": "C1"
+    },
+    "rearrange the budget": {
+        "definition": "To change how money is allocated or distributed.",
+        "pos": "phrase",
+        "pron": "/ˌriː.əˈreɪndʒ ðə ˈbʌdʒ.ɪt/",
+        "example": "They had to rearrange the budget to cover new expenses.",
+        "vietnamese": "điều chỉnh ngân sách",
+        "vietnamese_example": "Họ phải điều chỉnh ngân sách để chi trả các chi phí mới.",
+        "cefr": "C1"
+    },
+    "address objections": {
+        "definition": "To deal with or respond to disagreements or concerns.",
+        "pos": "phrase",
+        "pron": "/əˈdres əbˈdʒek.ʃənz/",
+        "example": "The speaker addressed objections from the audience.",
+        "vietnamese": "xử lý phản đối",
+        "vietnamese_example": "Diễn giả đã xử lý các phản đối từ khán giả.",
+        "cefr": "C1"
+    },
+    "event coordinators": {
+        "definition": "People responsible for organizing and managing events.",
+        "pos": "noun",
+        "pron": "/ɪˈvent kəʊˈɔː.dɪ.neɪ.təz/",
+        "example": "Event coordinators ensured everything ran smoothly.",
+        "vietnamese": "người điều phối sự kiện",
+        "vietnamese_example": "Những người điều phối sự kiện đã đảm bảo mọi thứ diễn ra suôn sẻ.",
+        "cefr": "C1"
+    },
+    "capable assistant": {
+        "definition": "A person who is skilled and competent in helping others.",
+        "pos": "noun",
+        "pron": "/ˈkeɪ.pə.bəl əˈsɪs.tənt/",
+        "example": "She is a capable assistant who handles tasks efficiently.",
+        "vietnamese": "trợ lý có năng lực",
+        "vietnamese_example": "Cô ấy là một trợ lý có năng lực, xử lý công việc hiệu quả.",
+        "cefr": "C1"
+    },
+    "mutual support": {
+        "definition": "Support shared between two or more people or groups.",
+        "pos": "noun",
+        "pron": "/ˈmjuː.tʃu.əl səˈpɔːt/",
+        "example": "The team thrived on mutual support.",
+        "vietnamese": "hỗ trợ lẫn nhau",
+        "vietnamese_example": "Nhóm phát triển nhờ sự hỗ trợ lẫn nhau.",
+        "cefr": "C1"
+    },
+    "improve efficiency": {
+        "definition": "To make a process work better with less waste or effort.",
+        "pos": "phrase",
+        "pron": "/ɪmˈpruːv ɪˈfɪʃ.ən.si/",
+        "example": "They introduced new tools to improve efficiency.",
+        "vietnamese": "cải thiện hiệu quả",
+        "vietnamese_example": "Họ đã giới thiệu các công cụ mới để cải thiện hiệu quả.",
+        "cefr": "C1"
+    },
+    "alphabetical order": {
+        "definition": "An arrangement based on the order of letters in the alphabet.",
+        "pos": "noun",
+        "pron": "/ˌæl.fəˈbet.ɪ.kəl ˈɔː.dər/",
+        "example": "The names were listed in alphabetical order.",
+        "vietnamese": "thứ tự bảng chữ cái",
+        "vietnamese_example": "Các tên được liệt kê theo thứ tự bảng chữ cái.",
+        "cefr": "C1"
+    },
+    "hurt feelings": {
+        "definition": "To cause someone emotional pain or upset.",
+        "pos": "phrase",
+        "pron": "/hɜːt ˈfiː.lɪŋz/",
+        "example": "His comments hurt her feelings.",
+        "vietnamese": "làm tổn thương cảm xúc",
+        "vietnamese_example": "Những lời nói của anh ấy đã làm tổn thương cảm xúc của cô.",
+        "cefr": "C1"
+    },
+    "accommodating": {
+        "definition": "Willing to help or adjust to others' needs.",
+        "pos": "adjective",
+        "pron": "/əˈkɒm.ə.deɪ.tɪŋ/",
+        "example": "The staff were very accommodating to our requests.",
+        "vietnamese": "linh hoạt; dễ thích nghi",
+        "vietnamese_example": "Nhân viên rất linh hoạt và dễ thích nghi với yêu cầu của chúng tôi.",
+        "cefr": "C1"
+    },
+    "get in touch with": {
+        "definition": "To contact or communicate with someone.",
+        "pos": "phrase",
+        "pron": "/ɡet ɪn tʌtʃ wɪð/",
+        "example": "Please get in touch with us for more details.",
+        "vietnamese": "liên hệ với",
+        "vietnamese_example": "Vui lòng liên hệ với chúng tôi để biết thêm chi tiết.",
+        "cefr": "B2+"
+    },
+    "make arrangements": {
+        "definition": "To organize or plan something in advance.",
+        "pos": "phrase",
+        "pron": "/meɪk əˈreɪndʒ.mənts/",
+        "example": "We need to make arrangements for the meeting.",
+        "vietnamese": "sắp xếp",
+        "vietnamese_example": "Chúng ta cần sắp xếp cho cuộc họp.",
+        "cefr": "B2+"
+    },
+    "suit someone’s needs": {
+        "definition": "To be appropriate or acceptable for someone’s requirements.",
+        "pos": "phrase",
+        "pron": "/suːt ˈsʌm.wʌnz niːdz/",
+        "example": "This solution suits our needs perfectly.",
+        "vietnamese": "phù hợp nhu cầu",
+        "vietnamese_example": "Giải pháp này hoàn toàn phù hợp với nhu cầu của chúng tôi.",
+        "cefr": "B2+"
+    },
+    "make room for": {
+        "definition": "To provide space or opportunity for something.",
+        "pos": "phrase",
+        "pron": "/meɪk ruːm fɔːr/",
+        "example": "We need to make room for new ideas.",
+        "vietnamese": "dành chỗ cho",
+        "vietnamese_example": "Chúng ta cần dành chỗ cho những ý tưởng mới.",
+        "cefr": "B2+"
+    },
+    "fill up quickly": {
+        "definition": "To become full in a short time.",
+        "pos": "phrase",
+        "pron": "/fɪl ʌp ˈkwɪk.li/",
+        "example": "The seats fill up quickly during peak hours.",
+        "vietnamese": "đầy nhanh",
+        "vietnamese_example": "Chỗ ngồi đầy nhanh vào giờ cao điểm.",
+        "cefr": "B2+"
+    },
+    "sign up early": {
+        "definition": "To register in advance.",
+        "pos": "phrase",
+        "pron": "/saɪn ʌp ˈɜː.li/",
+        "example": "You should sign up early to secure a spot.",
+        "vietnamese": "đăng ký sớm",
+        "vietnamese_example": "Bạn nên đăng ký sớm để giữ chỗ.",
+        "cefr": "B2+"
+    },
+    "no questions asked": {
+        "definition": "Without requiring explanations or reasons.",
+        "pos": "phrase",
+        "pron": "/nəʊ ˈkwes.tʃənz ɑːskt/",
+        "example": "Refunds are given with no questions asked.",
+        "vietnamese": "không hỏi lý do",
+        "vietnamese_example": "Hoàn tiền mà không hỏi lý do.",
+        "cefr": "C1"
+    },
+    "misuse or mishandling": {
+        "definition": "Incorrect or improper use or treatment of something.",
+        "pos": "noun",
+        "pron": "/ˌmɪsˈjuːs ɔː ˌmɪsˈhæn.dlɪŋ/",
+        "example": "Damage caused by misuse or mishandling is not covered.",
+        "vietnamese": "sử dụng sai cách",
+        "vietnamese_example": "Thiệt hại do sử dụng sai cách sẽ không được bảo hành.",
+        "cefr": "C1"
+    },
+    "under warranty": {
+        "definition": "Covered by a guarantee for repair or replacement.",
+        "pos": "phrase",
+        "pron": "/ˈʌn.dər ˈwɒr.ən.ti/",
+        "example": "The device is still under warranty.",
+        "vietnamese": "còn bảo hành",
+        "vietnamese_example": "Thiết bị vẫn còn bảo hành.",
+        "cefr": "B2+"
+    },
+    "limit the number": {
+        "definition": "To restrict the quantity of something.",
+        "pos": "phrase",
+        "pron": "/ˈlɪm.ɪt ðə ˈnʌm.bər/",
+        "example": "They decided to limit the number of participants.",
+        "vietnamese": "giới hạn số lượng",
+        "vietnamese_example": "Họ quyết định giới hạn số lượng người tham gia.",
+        "cefr": "B2+"
+    },
+    "allocate resources": {
+        "definition": "To distribute available assets or resources for a specific purpose.",
+        "pos": "phrase",
+        "pron": "/ˈæl.ə.keɪt rɪˈzɔː.sɪz/",
+        "example": "The manager allocated resources to improve productivity.",
+        "vietnamese": "phân bổ tài nguyên",
+        "vietnamese_example": "Người quản lý đã phân bổ tài nguyên để cải thiện năng suất.",
+        "cefr": "C1"
+    },
+    "duplication": {
+        "definition": "The act of copying or repeating something.",
+        "pos": "noun",
+        "pron": "/ˌdjuː.plɪˈkeɪ.ʃən/",
+        "example": "Duplication of work can waste time and effort.",
+        "vietnamese": "sự sao chép",
+        "vietnamese_example": "Sự sao chép công việc có thể gây lãng phí thời gian và công sức.",
+        "cefr": "C1"
+    },
+    "fallible": {
+        "definition": "Capable of making mistakes or being wrong.",
+        "pos": "adjective",
+        "pron": "/ˈfæl.ə.bəl/",
+        "example": "Humans are fallible and prone to errors.",
+        "vietnamese": "có thể sai sót",
+        "vietnamese_example": "Con người có thể sai sót và dễ mắc lỗi.",
+        "cefr": "C1"
+    },
+    "designate for a purpose": {
+        "definition": "To officially assign something for a specific use.",
+        "pos": "phrase",
+        "pron": "/ˈdez.ɪɡ.neɪt fɔːr ə ˈpɜː.pəs/",
+        "example": "The room was designated for meetings.",
+        "vietnamese": "chỉ định cho mục đích",
+        "vietnamese_example": "Phòng này được chỉ định cho các cuộc họp.",
+        "cefr": "C1"
+    },
+    "function together": {
+        "definition": "To operate or work effectively as a group.",
+        "pos": "phrase",
+        "pron": "/ˈfʌŋk.ʃən təˈɡeð.ər/",
+        "example": "The departments must function together smoothly.",
+        "vietnamese": "hoạt động cùng nhau",
+        "vietnamese_example": "Các bộ phận phải hoạt động cùng nhau một cách trơn tru.",
+        "cefr": "C1"
+    },
+    "examine capabilities": {
+        "definition": "To assess or evaluate abilities or potential.",
+        "pos": "phrase",
+        "pron": "/ɪɡˈzæm.ɪn ˌkeɪ.pəˈbɪl.ə.tiz/",
+        "example": "We need to examine the system's capabilities.",
+        "vietnamese": "kiểm tra khả năng",
+        "vietnamese_example": "Chúng ta cần kiểm tra khả năng của hệ thống.",
+        "cefr": "C1"
+    },
+    "adhere to": {
+        "definition": "To follow or stick to rules or guidelines.",
+        "pos": "phrase",
+        "pron": "/ədˈhɪər tuː/",
+        "example": "All staff must adhere to safety regulations.",
+        "vietnamese": "tuân thủ",
+        "vietnamese_example": "Tất cả nhân viên phải tuân thủ quy định an toàn.",
+        "cefr": "C1"
+    },
+    "establish a reputation": {
+        "definition": "To build a recognized and respected image over time.",
+        "pos": "phrase",
+        "pron": "/ɪˈstæb.lɪʃ ə ˌrep.jʊˈteɪ.ʃən/",
+        "example": "The company established a reputation for quality.",
+        "vietnamese": "xây dựng danh tiếng",
+        "vietnamese_example": "Công ty đã xây dựng danh tiếng về chất lượng.",
+        "cefr": "C1"
+    },
+    "figure out": {
+        "definition": "To understand or solve something.",
+        "pos": "phrase",
+        "pron": "/ˈfɪɡ.jər aʊt/",
+        "example": "She finally figured out the solution.",
+        "vietnamese": "hiểu ra; giải quyết",
+        "vietnamese_example": "Cô ấy cuối cùng đã hiểu ra giải pháp.",
+        "cefr": "B2+"
+    },
+    "shut down the system": {
+        "definition": "To turn off or stop a system from operating.",
+        "pos": "phrase",
+        "pron": "/ʃʌt daʊn ðə ˈsɪs.təm/",
+        "example": "Please shut down the system before leaving.",
+        "vietnamese": "tắt hệ thống",
+        "vietnamese_example": "Vui lòng tắt hệ thống trước khi rời đi.",
+        "cefr": "B2+"
+    },
+    "gain access to": {
+        "definition": "To obtain the ability or permission to enter or use something.",
+        "pos": "phrase",
+        "pron": "/ɡeɪn ˈæk.ses tuː/",
+        "example": "Users must log in to gain access to the platform.",
+        "vietnamese": "có quyền truy cập",
+        "vietnamese_example": "Người dùng phải đăng nhập để có quyền truy cập vào nền tảng.",
+        "cefr": "B2+"
+    },
+    "compatible with": {
+        "definition": "Able to work together without conflict.",
+        "pos": "phrase",
+        "pron": "/kəmˈpæt.ə.bəl wɪð/",
+        "example": "This software is compatible with most devices.",
+        "vietnamese": "tương thích với",
+        "vietnamese_example": "Phần mềm này tương thích với hầu hết các thiết bị.",
+        "cefr": "B2+"
+    },
+    "issue a warning": {
+        "definition": "To give an official or formal alert about something.",
+        "pos": "phrase",
+        "pron": "/ˈɪʃ.uː ə ˈwɔː.nɪŋ/",
+        "example": "The system issued a warning before shutting down.",
+        "vietnamese": "đưa ra cảnh báo",
+        "vietnamese_example": "Hệ thống đã đưa ra cảnh báo trước khi tắt.",
+        "cefr": "C1"
+    },
+    "system failure": {
+        "definition": "A breakdown or malfunction in a system.",
+        "pos": "noun",
+        "pron": "/ˈsɪs.təm ˈfeɪl.jər/",
+        "example": "The blackout was caused by a system failure.",
+        "vietnamese": "lỗi hệ thống",
+        "vietnamese_example": "Sự cố mất điện do lỗi hệ thống gây ra.",
+        "cefr": "B2+"
+    },
+    "frozen display/screen": {
+        "definition": "A screen that stops responding or updating.",
+        "pos": "noun",
+        "pron": "/ˈfrəʊ.zən dɪˈspleɪ/",
+        "example": "I had to restart the computer because of a frozen screen.",
+        "vietnamese": "màn hình bị đơ",
+        "vietnamese_example": "Tôi phải khởi động lại máy vì màn hình bị đơ.",
+        "cefr": "B2+"
+    },
+    "solve a dilemma": {
+        "definition": "To resolve a difficult situation involving a choice.",
+        "pos": "phrase",
+        "pron": "/sɒlv ə dɪˈlem.ə/",
+        "example": "They worked together to solve the dilemma.",
+        "vietnamese": "giải quyết tình huống khó xử",
+        "vietnamese_example": "Họ đã cùng nhau giải quyết tình huống khó xử.",
+        "cefr": "C1"
+    },
+    "software compatibility": {
+        "definition": "The ability of software to work with other systems or programs.",
+        "pos": "noun",
+        "pron": "/ˈsɒft.weər kəmˌpæt.əˈbɪl.ə.ti/",
+        "example": "Software compatibility is essential for integration.",
+        "vietnamese": "tính tương thích phần mềm",
+        "vietnamese_example": "Tính tương thích phần mềm là yếu tố cần thiết cho việc tích hợp.",
+        "cefr": "C1"
+    },
+    "observe guidelines": {
+        "definition": "To follow or comply with recommended rules.",
+        "pos": "phrase",
+        "pron": "/əbˈzɜːv ˈɡaɪd.laɪnz/",
+        "example": "All participants must observe the guidelines.",
+        "vietnamese": "tuân theo hướng dẫn",
+        "vietnamese_example": "Tất cả người tham gia phải tuân theo hướng dẫn.",
+        "cefr": "B2+"
+    },
+    "affordability": {
+        "definition": "The ability to pay for something without financial difficulty.",
+        "pos": "noun",
+        "pron": "/əˌfɔː.dəˈbɪl.ə.ti/",
+        "example": "Affordability is a key factor for many buyers.",
+        "vietnamese": "khả năng chi trả",
+        "vietnamese_example": "Khả năng chi trả là yếu tố quan trọng đối với nhiều người mua.",
+        "cefr": "C1"
+    },
+    "initiation": {
+        "definition": "The act of beginning or starting something.",
+        "pos": "noun",
+        "pron": "/ɪˌnɪʃ.iˈeɪ.ʃən/",
+        "example": "The initiation of the project took several months.",
+        "vietnamese": "sự khởi đầu",
+        "vietnamese_example": "Sự khởi đầu của dự án mất vài tháng.",
+        "cefr": "C1"
+    },
+    "recurrence": {
+        "definition": "The act of happening again repeatedly.",
+        "pos": "noun",
+        "pron": "/rɪˈkʌr.əns/",
+        "example": "They are trying to prevent the recurrence of the issue.",
+        "vietnamese": "sự tái diễn",
+        "vietnamese_example": "Họ đang cố gắng ngăn chặn sự tái diễn của vấn đề.",
+        "cefr": "C1"
+    },
+    "reducible": {
+        "definition": "Able to be made smaller or less in amount.",
+        "pos": "adjective",
+        "pron": "/rɪˈdjuː.sə.bəl/",
+        "example": "These costs are reducible with better planning.",
+        "vietnamese": "có thể giảm",
+        "vietnamese_example": "Những chi phí này có thể giảm bằng cách lập kế hoạch tốt hơn.",
+        "cefr": "C1"
+    },
+    "smooth-running operations": {
+        "definition": "Activities that function efficiently without problems.",
+        "pos": "noun",
+        "pron": "/smuːð ˈrʌn.ɪŋ ˌɒp.əˈreɪ.ʃənz/",
+        "example": "Good coordination ensures smooth-running operations.",
+        "vietnamese": "hoạt động trơn tru",
+        "vietnamese_example": "Sự phối hợp tốt đảm bảo hoạt động trơn tru.",
+        "cefr": "C1"
+    },
+    "minimize interruptions": {
+        "definition": "To reduce disruptions or breaks in a process.",
+        "pos": "phrase",
+        "pron": "/ˈmɪn.ɪ.maɪz ˌɪn.təˈrʌp.ʃənz/",
+        "example": "We need to minimize interruptions during work hours.",
+        "vietnamese": "giảm thiểu gián đoạn",
+        "vietnamese_example": "Chúng ta cần giảm thiểu gián đoạn trong giờ làm việc.",
+        "cefr": "C1"
+    },
+    "functional managers": {
+        "definition": "Managers responsible for specific departments or functions.",
+        "pos": "noun",
+        "pron": "/ˈfʌŋk.ʃən.əl ˈmæn.ɪ.dʒəz/",
+        "example": "Functional managers oversee different departments.",
+        "vietnamese": "quản lý chức năng",
+        "vietnamese_example": "Các quản lý chức năng giám sát các bộ phận khác nhau.",
+        "cefr": "C1"
+    },
+    "day-to-day operations": {
+        "definition": "Regular, everyday activities of a business or organization.",
+        "pos": "noun",
+        "pron": "/ˌdeɪ.təˈdeɪ ˌɒp.əˈreɪ.ʃənz/",
+        "example": "She handles the day-to-day operations of the company.",
+        "vietnamese": "hoạt động hàng ngày",
+        "vietnamese_example": "Cô ấy xử lý các hoạt động hàng ngày của công ty.",
+        "cefr": "C1"
+    },
+    "presentable for customers": {
+        "definition": "Suitable in appearance or condition for customer interaction.",
+        "pos": "phrase",
+        "pron": "/prɪˈzen.tə.bəl fɔː ˈkʌs.tə.məz/",
+        "example": "The showroom must always be presentable for customers.",
+        "vietnamese": "phù hợp để tiếp khách",
+        "vietnamese_example": "Phòng trưng bày phải luôn phù hợp để tiếp khách.",
+        "cefr": "C1"
+    },
+    "automatic ordering schedule": {
+        "definition": "A system that automatically plans when orders are made.",
+        "pos": "noun",
+        "pron": "/ˌɔː.təˈmæt.ɪk ˈɔː.dər.ɪŋ ˌʃed.juːl/",
+        "example": "They use an automatic ordering schedule to manage inventory.",
+        "vietnamese": "lịch đặt hàng tự động",
+        "vietnamese_example": "Họ sử dụng lịch đặt hàng tự động để quản lý hàng tồn kho.",
+        "cefr": "C1"
+    },
+    "purchase order": {
+        "definition": "An official document used to request goods or services.",
+        "pos": "noun",
+        "pron": "/ˈpɜː.tʃəs ˌɔː.dər/",
+        "example": "The company issued a purchase order to the supplier.",
+        "vietnamese": "đơn đặt hàng",
+        "vietnamese_example": "Công ty đã phát hành đơn đặt hàng cho nhà cung cấp.",
+        "cefr": "C1"
+    },
+    "stay on top of": {
+        "definition": "To remain in control of or well-informed about something.",
+        "pos": "phrase",
+        "pron": "/steɪ ɒn tɒp əv/",
+        "example": "She stays on top of all project updates.",
+        "vietnamese": "theo sát; kiểm soát tốt",
+        "vietnamese_example": "Cô ấy theo sát tất cả các cập nhật của dự án.",
+        "cefr": "B2+"
+    },
+    "be in charge of": {
+        "definition": "To be responsible for managing something.",
+        "pos": "phrase",
+        "pron": "/bi ɪn tʃɑːdʒ əv/",
+        "example": "He is in charge of the marketing team.",
+        "vietnamese": "chịu trách nhiệm về",
+        "vietnamese_example": "Anh ấy chịu trách nhiệm về nhóm marketing.",
+        "cefr": "B2+"
+    },
+    "take the initiative": {
+        "definition": "To act independently and start something without being told.",
+        "pos": "phrase",
+        "pron": "/teɪk ði ɪˈnɪʃ.ə.tɪv/",
+        "example": "She took the initiative to solve the problem.",
+        "vietnamese": "chủ động",
+        "vietnamese_example": "Cô ấy đã chủ động giải quyết vấn đề.",
+        "cefr": "B2+"
+    },
+    "as-needed basis": {
+        "definition": "When required rather than regularly.",
+        "pos": "phrase",
+        "pron": "/æz ˈniː.dɪd ˈbeɪ.sɪs/",
+        "example": "Support is provided on an as-needed basis.",
+        "vietnamese": "theo nhu cầu",
+        "vietnamese_example": "Hỗ trợ được cung cấp theo nhu cầu.",
+        "cefr": "B2+"
+    },
+    "recurring problem": {
+        "definition": "An issue that happens repeatedly over time.",
+        "pos": "noun",
+        "pron": "/rɪˈkɜː.rɪŋ ˈprɒb.ləm/",
+        "example": "This is a recurring problem that needs attention.",
+        "vietnamese": "vấn đề lặp lại",
+        "vietnamese_example": "Đây là vấn đề lặp lại cần được chú ý.",
+        "cefr": "B2+"
+    },
+    "reduce costs": {
+        "definition": "To lower expenses.",
+        "pos": "phrase",
+        "pron": "/rɪˈdjuːs kɒsts/",
+        "example": "The company aims to reduce costs this year.",
+        "vietnamese": "giảm chi phí",
+        "vietnamese_example": "Công ty đặt mục tiêu giảm chi phí trong năm nay.",
+        "cefr": "B2+"
+    },
+    "exceed capacity": {
+        "definition": "To go beyond the maximum limit.",
+        "pos": "phrase",
+        "pron": "/ɪkˈsiːd kəˈpæs.ə.ti/",
+        "example": "Demand may exceed capacity during peak times.",
+        "vietnamese": "vượt quá khả năng",
+        "vietnamese_example": "Nhu cầu có thể vượt quá khả năng vào giờ cao điểm.",
+        "cefr": "B2+"
+    },
+    "suit business needs": {
+        "definition": "To be appropriate for the requirements of a business.",
+        "pos": "phrase",
+        "pron": "/suːt ˈbɪz.nɪs niːdz/",
+        "example": "This solution suits our business needs.",
+        "vietnamese": "phù hợp nhu cầu kinh doanh",
+        "vietnamese_example": "Giải pháp này phù hợp với nhu cầu kinh doanh của chúng tôi.",
+        "cefr": "B2+"
+    },
+    "follow up on": {
+        "definition": "To take further action or check progress.",
+        "pos": "phrase",
+        "pron": "/ˈfɒl.əʊ ʌp ɒn/",
+        "example": "Please follow up on the client's request.",
+        "vietnamese": "theo dõi; xử lý tiếp",
+        "vietnamese_example": "Vui lòng theo dõi yêu cầu của khách hàng.",
+        "cefr": "B2+"
+    },
+    "look into": {
+        "definition": "To investigate or examine something.",
+        "pos": "phrase",
+        "pron": "/lʊk ˈɪn.tuː/",
+        "example": "The team will look into the issue.",
+        "vietnamese": "xem xét; điều tra",
+        "vietnamese_example": "Nhóm sẽ xem xét vấn đề.",
+        "cefr": "B2+"
+    },
+    "exposure": {
+        "definition": "The state of being in contact with something or experiencing it.",
+        "pos": "noun",
+        "pron": "/ɪkˈspəʊ.ʒər/",
+        "example": "Exposure to different cultures broadens your perspective.",
+        "vietnamese": "sự tiếp xúc",
+        "vietnamese_example": "Sự tiếp xúc với các nền văn hóa khác nhau mở rộng tầm nhìn của bạn.",
+        "cefr": "C1"
+    },
+    "reinforcement": {
+        "definition": "The act of strengthening or supporting something.",
+        "pos": "noun",
+        "pron": "/ˌriː.ɪnˈfɔːs.mənt/",
+        "example": "Positive reinforcement helps improve performance.",
+        "vietnamese": "sự củng cố",
+        "vietnamese_example": "Sự củng cố tích cực giúp cải thiện hiệu suất.",
+        "cefr": "C1"
+    },
+    "verbalize": {
+        "definition": "To express thoughts or feelings in words.",
+        "pos": "verb",
+        "pron": "/ˈvɜː.bə.laɪz/",
+        "example": "He struggled to verbalize his ideas clearly.",
+        "vietnamese": "diễn đạt bằng lời",
+        "vietnamese_example": "Anh ấy gặp khó khăn khi diễn đạt ý tưởng bằng lời.",
+        "cefr": "C1"
+    },
+    "unwritten code": {
+        "definition": "An informal set of rules or behaviors not officially documented.",
+        "pos": "noun",
+        "pron": "/ʌnˈrɪt.ən kəʊd/",
+        "example": "There is an unwritten code of conduct in the team.",
+        "vietnamese": "quy tắc không chính thức",
+        "vietnamese_example": "Có một quy tắc không chính thức trong nhóm.",
+        "cefr": "C1"
+    },
+    "verbal reprimand": {
+        "definition": "A spoken expression of disapproval or criticism.",
+        "pos": "noun",
+        "pron": "/ˈvɜː.bəl ˈrep.rɪ.mɑːnd/",
+        "example": "He received a verbal reprimand for being late.",
+        "vietnamese": "khiển trách bằng lời",
+        "vietnamese_example": "Anh ấy bị khiển trách bằng lời vì đến muộn.",
+        "cefr": "C1"
+    },
+    "overall operations": {
+        "definition": "All activities involved in running a business or system.",
+        "pos": "noun",
+        "pron": "/ˈəʊ.vər.ɔːl ˌɒp.əˈreɪ.ʃənz/",
+        "example": "She is responsible for overall operations.",
+        "vietnamese": "hoạt động tổng thể",
+        "vietnamese_example": "Cô ấy chịu trách nhiệm về hoạt động tổng thể.",
+        "cefr": "C1"
+    },
+    "thorough reading": {
+        "definition": "Careful and complete reading of something.",
+        "pos": "noun",
+        "pron": "/ˈθʌr.ə ˈriː.dɪŋ/",
+        "example": "A thorough reading is necessary to understand the document.",
+        "vietnamese": "đọc kỹ lưỡng",
+        "vietnamese_example": "Cần đọc kỹ lưỡng để hiểu tài liệu.",
+        "cefr": "C1"
+    },
+    "workplace culture": {
+        "definition": "The shared values, beliefs, and practices within a workplace.",
+        "pos": "noun",
+        "pron": "/ˈwɜːk.pleɪs ˈkʌl.tʃər/",
+        "example": "A positive workplace culture boosts morale.",
+        "vietnamese": "văn hóa nơi làm việc",
+        "vietnamese_example": "Văn hóa nơi làm việc tích cực giúp nâng cao tinh thần.",
+        "cefr": "C1"
+    },
+    "corporate procedures": {
+        "definition": "Official processes followed within a company.",
+        "pos": "noun",
+        "pron": "/ˈkɔː.pər.ət prəˈsiː.dʒəz/",
+        "example": "Employees must follow corporate procedures.",
+        "vietnamese": "quy trình công ty",
+        "vietnamese_example": "Nhân viên phải tuân theo quy trình công ty.",
+        "cefr": "C1"
+    },
+    "established routines": {
+        "definition": "Regular methods or practices that are already set.",
+        "pos": "noun",
+        "pron": "/ɪˈstæb.lɪʃt ruːˈtiːnz/",
+        "example": "Established routines help maintain efficiency.",
+        "vietnamese": "quy trình đã thiết lập",
+        "vietnamese_example": "Các quy trình đã thiết lập giúp duy trì hiệu quả.",
+        "cefr": "C1"
+    },
+    "cooperation between departments": {
+        "definition": "Collaboration among different parts of an organization.",
+        "pos": "noun",
+        "pron": "/kəʊˌɒp.əˈreɪ.ʃən bɪˈtwiːn dɪˈpɑːt.mənts/",
+        "example": "Cooperation between departments is essential.",
+        "vietnamese": "sự hợp tác giữa các bộ phận",
+        "vietnamese_example": "Sự hợp tác giữa các bộ phận là rất cần thiết.",
+        "cefr": "C1"
+    },
+    "carry out procedures": {
+        "definition": "To perform or execute set processes.",
+        "pos": "phrase",
+        "pron": "/ˈkær.i aʊt prəˈsiː.dʒəz/",
+        "example": "Staff must carry out procedures carefully.",
+        "vietnamese": "thực hiện quy trình",
+        "vietnamese_example": "Nhân viên phải thực hiện quy trình cẩn thận.",
+        "cefr": "C1"
+    },
+    "be made of": {
+        "definition": "To consist of a particular material.",
+        "pos": "phrase",
+        "pron": "/bi meɪd əv/",
+        "example": "The table is made of wood.",
+        "vietnamese": "được làm từ",
+        "vietnamese_example": "Cái bàn được làm từ gỗ.",
+        "cefr": "B2+"
+    },
+    "catch a glimpse of": {
+        "definition": "To see something briefly or partially.",
+        "pos": "phrase",
+        "pron": "/kætʃ ə ɡlɪmps əv/",
+        "example": "I caught a glimpse of her in the crowd.",
+        "vietnamese": "thoáng thấy",
+        "vietnamese_example": "Tôi thoáng thấy cô ấy trong đám đông.",
+        "cefr": "B2+"
+    },
+    "run out of supplies": {
+        "definition": "To use up all available materials or resources.",
+        "pos": "phrase",
+        "pron": "/rʌn aʊt əv səˈplaɪz/",
+        "example": "We ran out of supplies during the project.",
+        "vietnamese": "hết vật tư",
+        "vietnamese_example": "Chúng tôi đã hết vật tư trong dự án.",
+        "cefr": "B2+"
+    },
+    "expose someone to": {
+        "definition": "To make someone experience or come into contact with something.",
+        "pos": "phrase",
+        "pron": "/ɪkˈspəʊz ˈsʌm.wʌn tuː/",
+        "example": "The program exposes students to new ideas.",
+        "vietnamese": "cho ai tiếp xúc với",
+        "vietnamese_example": "Chương trình giúp sinh viên tiếp xúc với những ý tưởng mới.",
+        "cefr": "B2+"
+    },
+    "follow procedures": {
+        "definition": "To adhere to established processes or rules.",
+        "pos": "phrase",
+        "pron": "/ˈfɒl.əʊ prəˈsiː.dʒəz/",
+        "example": "Employees must follow procedures strictly.",
+        "vietnamese": "tuân thủ quy trình",
+        "vietnamese_example": "Nhân viên phải tuân thủ quy trình nghiêm ngặt.",
+        "cefr": "B2+"
+    },
+    "on a regular basis": {
+        "definition": "Happening frequently or at consistent intervals.",
+        "pos": "phrase",
+        "pron": "/ɒn ə ˈreɡ.jə.lər ˈbeɪ.sɪs/",
+        "example": "Meetings are held on a regular basis.",
+        "vietnamese": "thường xuyên",
+        "vietnamese_example": "Các cuộc họp được tổ chức thường xuyên.",
+        "cefr": "B2+"
+    },
+    "from time to time": {
+        "definition": "Occasionally or sometimes.",
+        "pos": "phrase",
+        "pron": "/frɒm taɪm tuː taɪm/",
+        "example": "He visits us from time to time.",
+        "vietnamese": "thỉnh thoảng",
+        "vietnamese_example": "Anh ấy thỉnh thoảng đến thăm chúng tôi.",
+        "cefr": "B2+"
+    },
+    "get used to": {
+        "definition": "To become familiar or comfortable with something.",
+        "pos": "phrase",
+        "pron": "/ɡet juːst tuː/",
+        "example": "She got used to the new environment quickly.",
+        "vietnamese": "quen với",
+        "vietnamese_example": "Cô ấy nhanh chóng quen với môi trường mới.",
+        "cefr": "B2+"
     }
 };
 
@@ -11288,6 +12179,145 @@ var coursesData = [
                     "requirement",
                     "requisite",
                     "satisfactory"
+                ]
+            },
+            {
+                "id": "600-4",
+                "title": "600 words - Lesson 4",
+                "words": [
+                    "steering committee",
+                    "lender",
+                    "national chain",
+                    "satisfy a requirement",
+                    "board of directors",
+                    "economically sound",
+                    "financial climate",
+                    "substitution",
+                    "on the strength of",
+                    "realistic evaluation",
+                    "prove through research",
+                    "redirect resources",
+                    "position against competitors",
+                    "eliminate risk",
+                    "measure up against",
+                    "niche in the market",
+                    "evaluate a need",
+                    "address an issue",
+                    "insufficient capital",
+                    "distinguish from",
+                    "credibility"
+                ]
+            },
+            {
+                "id": "600-5",
+                "title": "600 words - Lesson 5",
+                "words": [
+                    "in regard to",
+                    "rearrange the budget",
+                    "abide by",
+                    "provision",
+                    "address objections",
+                    "event coordinators",
+                    "capable assistant",
+                    "mutual support",
+                    "improve efficiency",
+                    "alphabetical order",
+                    "hurt feelings",
+                    "accommodating",
+                    "get in touch with",
+                    "make arrangements",
+                    "suit someone’s needs",
+                    "make room for",
+                    "fill up quickly",
+                    "sign up early",
+                    "no questions asked",
+                    "misuse or mishandling",
+                    "under warranty",
+                    "limit the number"
+                ]
+            },
+            {
+                "id": "600-6",
+                "title": "600 words - Lesson 6",
+                "words": [
+                    "allocate resources",
+                    "allocation",
+                    "duplication",
+                    "fallible",
+                    "ignorance",
+                    "designate for a purpose",
+                    "function together",
+                    "examine capabilities",
+                    "malfunction",
+                    "invalidate",
+                    "adhere to",
+                    "establish a reputation",
+                    "figure out",
+                    "shut down the system",
+                    "gain access to",
+                    "compatible with",
+                    "issue a warning",
+                    "system failure",
+                    "frozen display/screen",
+                    "solve a dilemma",
+                    "software compatibility",
+                    "observe guidelines"
+                ]
+            },
+            {
+                "id": "600-7",
+                "title": "600 words - Lesson 7",
+                "words": [
+                    "affordability",
+                    "initiation",
+                    "provision",
+                    "recurrence",
+                    "reducible",
+                    "smooth-running operations",
+                    "minimize interruptions",
+                    "functional managers",
+                    "day-to-day operations",
+                    "presentable for customers",
+                    "automatic ordering schedule",
+                    "purchase order",
+                    "stay on top of",
+                    "be in charge of",
+                    "take the initiative",
+                    "as-needed basis",
+                    "recurring problem",
+                    "reduce costs",
+                    "exceed capacity",
+                    "suit business needs",
+                    "follow up on",
+                    "look into"
+                ]
+            },
+            {
+                "id": "600-8",
+                "title": "600 words - Lesson 8",
+                "words": [
+                    "exposure",
+                    "reinforcement",
+                    "verbalize",
+                    "unwritten code",
+                    "verbal reprimand",
+                    "overall operations",
+                    "thorough reading",
+                    "workplace culture",
+                    "corporate procedures",
+                    "established routines",
+                    "cooperation between departments",
+                    "carry out procedures",
+                    "bring in",
+                    "be made of",
+                    "catch a glimpse of",
+                    "run out of supplies",
+                    "expose someone to",
+                    "take the initiative",
+                    "follow procedures",
+                    "on a regular basis",
+                    "from time to time",
+                    "get used to"
                 ]
             }
         ]
