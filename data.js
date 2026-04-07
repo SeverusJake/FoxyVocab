@@ -2467,13 +2467,13 @@ var dictionary = {
         "cefr": "C1"
     },
     "march": {
-        "definition": "an organized walk by many people from one place to another, in order to protest about something, or to express their opinions",
-        "pos": "noun",
+        "definition": "To walk in a steady, rhythmic way (often in a group).",
+        "pos": "verb",
         "pron": "/mɑːtʃ/",
-        "example": "protest marches",
-        "vietnamese": "bước đều",
-        "vietnamese_example": "tuần hành phản đối",
-        "cefr": "C1"
+        "example": "The soldiers marched through the city.",
+        "vietnamese": "diễu hành",
+        "vietnamese_example": "Những người lính đã hành quân / diễu hành qua thành phố.",
+        "cefr": "B1"
     },
     "discourse": {
         "definition": "a long and serious treatment or discussion of a subject in speech or writing",
@@ -11060,6 +11060,51 @@ var dictionary = {
         "vietnamese": "Sự tối ưu hóa",
         "vietnamese_example": "Bản cập nhật đã cải thiện việc tối ưu hóa pin trên thiết bị.",
         "cefr": "C1"
+    },
+    "censorship": {
+        "definition": "The act of controlling or limiting what people can see, read, or hear.",
+        "pos": "noun",
+        "pron": "/ˈsen.sɚ.ʃɪp/",
+        "example": "The government imposed strict censorship on the media.",
+        "vietnamese": "sự kiểm duyệt",
+        "vietnamese_example": "Chính phủ áp đặt sự kiểm duyệt nghiêm ngặt lên truyền thông.",
+        "cefr": "C1"
+    },
+    "biased": {
+        "definition": "Presenting information in a way that favors one side.",
+        "pos": "adj",
+        "pron": "/ˈbaɪ.əst/",
+        "example": "The article is clearly biased against the government.",
+        "vietnamese": "thành kiến, thiên lệch",
+        "vietnamese_example": "Bài báo rõ ràng thiên lệch chống lại chính phủ.",
+        "cefr": "B2"
+    },
+    "replication": {
+        "definition": "Repeating an experiment to confirm results.",
+        "pos": "noun",
+        "pron": "/ˌrep.ləˈkeɪ.ʃən/",
+        "example": "Replication is essential in scientific research.",
+        "vietnamese": "sự tái tạo",
+        "vietnamese_example": "Việc tái lặp thí nghiệm là rất quan trọng trong nghiên cứu khoa học.",
+        "cefr": "C1"
+    },
+    "citation": {
+        "definition": "A reference to a source of information, such as a book, article, or author.",
+        "pos": "noun",
+        "pron": "/saɪˈteɪ.ʃən/",
+        "example": "The essay included several citations from academic journals.",
+        "vietnamese": "trích dẫn",
+        "vietnamese_example": "Bài luận bao gồm nhiều trích dẫn từ các tạp chí học thuật.",
+        "cefr": "B2"
+    },
+    "inquiry": {
+        "definition": "The act of trying to discover facts or knowledge.",
+        "pos": "noun",
+        "pron": "/ɪnˈkwaɪə.ri/",
+        "example": "Scientific inquiry is essential for progress.",
+        "vietnamese": "quá trình tìm hiểu / nghiên cứu",
+        "vietnamese_example": "Quá trình tìm hiểu khoa học là rất quan trọng cho sự tiến bộ.",
+        "cefr": "B2"
     }
 };
 
@@ -11376,7 +11421,10 @@ var coursesData = [
                     "theology",
                     "undergraduate",
                     "warfare",
-                    "willingness"
+                    "willingness",
+                    "replication",
+                    "citation",
+                    "inquiry"
                 ]
             },
             {
@@ -11400,7 +11448,9 @@ var coursesData = [
                     "copyright",
                     "syndication",
                     "discard",
-                    "disclose"
+                    "disclose",
+                    "censorship",
+                    "biased"
                 ]
             },
             {

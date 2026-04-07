@@ -285,11 +285,11 @@ class FoxyVocabAdminApp:
         self.set_course_combo = ttk.Combobox(form, textvariable=self.set_vars["course_id"], state="readonly")
         self.set_course_combo.grid(row=2, column=1, sticky="ew", padx=6, pady=6)
 
-        words_frame = ttk.LabelFrame(form, text="Words in this set", style="Section.TLabelframe")
-        words_frame.grid(row=0, column=2, rowspan=6, sticky="nsew", padx=10, pady=6)
+        self.set_words_frame = ttk.LabelFrame(form, text="Words in this set (0)", style="Section.TLabelframe")
+        self.set_words_frame.grid(row=0, column=2, rowspan=6, sticky="nsew", padx=10, pady=6)
 
         self.set_word_tree = ttk.Treeview(
-            words_frame,
+            self.set_words_frame,
             columns=("word", "vietnamese", "pos", "cefr"),
             show="tree headings",
             selectmode="browse",
@@ -306,7 +306,7 @@ class FoxyVocabAdminApp:
         self.set_word_tree.column("pos", width=90, minwidth=70, stretch=False)
         self.set_word_tree.column("cefr", width=70, minwidth=60, stretch=False, anchor="center")
 
-        self.set_word_scroll = ttk.Scrollbar(words_frame, orient="vertical", command=self.set_word_tree.yview)
+        self.set_word_scroll = ttk.Scrollbar(self.set_words_frame, orient="vertical", command=self.set_word_tree.yview)
         self.set_word_tree.configure(yscrollcommand=self.set_word_scroll.set)
         self.set_word_tree.pack(side="left", fill="both", expand=True)
         self.set_word_scroll.pack(side="right", fill="y")
@@ -859,6 +859,11 @@ class FoxyVocabAdminApp:
                     payload.get("cefr", ""),
                 ),
             )
+        self.update_set_word_count()
+
+    def update_set_word_count(self):
+        selected_count = sum(1 for selected in self.set_word_states.values() if selected)
+        self.set_words_frame.configure(text=f"Words in this set ({selected_count})")
 
     def refresh_course_sets_list(self):
         self.course_set_tree.delete(*self.course_set_tree.get_children())

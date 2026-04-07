@@ -51,20 +51,58 @@ npx live-server
 
 ## How to Add Data
 
+### Recommended: Bulk Add Words
+Use the Python admin app in `admin_tool` when adding multiple words.
+
+1. Run `admin_tool/run.bat`.
+2. Open the **Bulk Add** tab.
+3. Paste words in JSON format.
+4. Choose an existing set or create a new set.
+5. Click **Process Bulk Add**.
+
+Bulk Add requires JSON syntax. That means every word key and every field name must use double quotes:
+
+```json
+{
+    "citation": {
+        "definition": "A reference to a source of information, such as a book, article, or author.",
+        "pos": "noun",
+        "pron": "/saɪˈteɪ.ʃən/",
+        "example": "The essay included several citations from academic journals.",
+        "vietnamese": "trich dan",
+        "vietnamese_example": "Bai luan bao gom nhieu trich dan tu cac tap chi hoc thuat.",
+        "cefr": "B2"
+    },
+    "inquiry": {
+        "definition": "A request for information or an investigation into a subject.",
+        "pos": "noun",
+        "pron": "/ɪnˈkwaɪə.ri/",
+        "example": "She made an inquiry about the job position.",
+        "vietnamese": "su hoi, su dieu tra",
+        "vietnamese_example": "Co ay da hoi ve vi tri cong viec.",
+        "cefr": "B1"
+    }
+}
+```
+
+The app also accepts the same content without the outer `{ ... }` braces.
+
+Do not paste JavaScript-object style fields like `definition: "..."`. Use JSON fields like `"definition": "..."`.
+
 FoxyVocab uses a completely frontend, local JavaScript data file (`data.js`). The data is split into two logical parts: **the Dictionary** and **the Courses**.
 
 ### 1. The Dictionary
 All vocabulary words must first be defined in the `dictionary` object at the top of the file. Each key is the exact word (case-sensitive), and its value contains its definition and translations.
 ```js
-const dictionary = {
+var dictionary = {
     "apple": {
-        definition: "A round fruit with red or green skin and a whitish interior.",
-        pos: "noun",
-        pron: "/ˈæp.əl/",
-        example: "She took a bite of the apple.",
-        vietnamese: "quả táo",
-        vietnamese_example: "Cô ấy cắn một miếng táo.",
-        cefr: "A1"
+        "definition": "A round fruit with red or green skin and a whitish interior.",
+        "pos": "noun",
+        "pron": "/ˈæp.əl/",
+        "example": "She took a bite of the apple.",
+        "vietnamese": "quả táo",
+        "vietnamese_example": "Cô ấy cắn một miếng táo.",
+        "cefr": "A1"
     }
 };
 ```
@@ -74,16 +112,16 @@ Once a word exists in the dictionary, it can be attached to any set! `coursesDat
 - **Course**: Contains an `id`, `title`, an emoji `icon`, and an array of `sets`.
 - **Set**: Contains an `id`, `title`, and an array of `words`. *Note: The strings here must exactly match the keys used in the dictionary.*
 ```js
-const coursesData = [
+var coursesData = [
     {
-        id: "fruits-course",
-        title: "Fruit Basics",
-        icon: "🍎",
-        sets: [
+        "id": "fruits-course",
+        "title": "Fruit Basics",
+        "icon": "🍎",
+        "sets": [
             { 
-                id: "basic-fruits", 
-                title: "Basic Fruits", 
-                words: ["apple", "banana", "orange"] 
+                "id": "basic-fruits", 
+                "title": "Basic Fruits", 
+                "words": ["apple", "banana", "orange"] 
             }
         ]
     }
